@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="2F9FCF7C-7324-EA8F-8F30-85C34D91FD9B" name="Serial">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:21:42 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_serialu" id="9A48447D-C90F-8342-2D36-9291B8477E1A">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:22:42 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nazwa" id="DAF42D56-C89D-BDCD-45B0-022F0AA7C711">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:22:42 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="liczba_sezonów" id="C985BAFD-70FA-789B-55FC-507A793D9755">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:22:54 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="liczba_odcinków" id="BECFEB19-C022-6CA0-DA3B-52FC8087D71A">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:23:03 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="DA0CC3D2-C901-3AA8-F3C0-7E8AD99CAAAE" name="Serial PK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:23:52 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>9A48447D-C90F-8342-2D36-9291B8477E1A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

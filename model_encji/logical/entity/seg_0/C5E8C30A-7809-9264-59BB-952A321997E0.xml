@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C5E8C30A-7809-9264-59BB-952A321997E0" name="Dziennikarz">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:41:03 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_dziennikarza" id="D2D708FA-38CB-4C6F-04CF-AB302F52135C">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:41:17 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="imię" id="C7298413-DC14-2C0D-74F5-8EFFCBDC8475">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:41:26 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nazwisko" id="699F886E-17D7-A313-A2C1-B18867C6CA82">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:41:53 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_użytkownika" id="5EC91DE6-D48F-5E22-49A8-1AED576D21A1">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 19:13:03 UTC</createdTime>
+<generatorID>CFE73885-90DF-D1A1-AA39-3BA31B29A5E7</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>AEA7BE5C-C669-8C8A-D66C-D4079A4F66D6</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="2499D917-9DE7-804A-03CA-5EF84E7CB854" name="Dziennikarz PK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:41:25 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>D2D708FA-38CB-4C6F-04CF-AB302F52135C</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

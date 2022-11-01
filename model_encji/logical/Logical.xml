@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="93967993-ED1E-E70F-C29D-14A17693F76D" mainViewID="EDC6ACC4-445F-B1C7-4511-F799A9CE0E23">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:10:20 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

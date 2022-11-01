@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="model_encji" id="D4FEACFE-89D2-D60F-0C7A-7A2B07946D51" version="3.5">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:10:20 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>D4FEACFE-89D2-D60F-0C7A-7A2B07946D51</designId>
+</OSDM_Design>

@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_3" directorySegmentName="seg_0" id="7014B704-A13A-6CB3-A996-074F40133B96">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 19:05:03 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<identifying>true</identifying>
+<nameOnSource>jest opisywany</nameOnSource>
+<nameOnTarget>opisuje</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>5A8B8C3B-970B-1089-173D-FA1F9007AA2F</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>28231375-6C76-7EE2-8046-D412F0B3DF77</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

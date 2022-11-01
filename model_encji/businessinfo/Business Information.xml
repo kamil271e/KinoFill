@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BusinessInfoDesign class="oracle.dbtools.crest.model.businessinfo.BusinessInfoDesign" name="Business Information" id="E5B7E20F-027F-B0D9-1C21-59579CFEC90D">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:10:20 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</BusinessInfoDesign>

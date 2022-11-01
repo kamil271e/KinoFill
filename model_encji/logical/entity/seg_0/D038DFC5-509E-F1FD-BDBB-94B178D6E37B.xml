@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D038DFC5-509E-F1FD-BDBB-94B178D6E37B" name="News">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:53:04 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_newsa" id="D4863FED-E9C6-CBDE-9C46-0F3A1D2E8F22">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:53:34 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="treść" id="B735BA32-3C8B-6094-D992-D3ED7F3A9187">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:53:44 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="data_publikacji" id="5830A307-7550-1306-3982-84B02315FC6C">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:53:59 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_dziennikarza" id="18FD6D2C-4FB6-CEA2-8194-74B3B9E52FED">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 19:08:00 UTC</createdTime>
+<generatorID>E5371295-7607-68E7-FA07-7C19066CF82A</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>D2D708FA-38CB-4C6F-04CF-AB302F52135C</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="FC443356-BD58-8F73-B02B-02CF566FC302" name="News PK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-01 18:53:41 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>D4863FED-E9C6-CBDE-9C46-0F3A1D2E8F22</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
