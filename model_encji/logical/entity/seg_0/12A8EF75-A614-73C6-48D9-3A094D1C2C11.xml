@@ -79,6 +79,17 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="ocena_widzów" id="2693DA76-A1AE-E786-FF35-E2BE6161E412">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-02 15:18:33 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="2C60F1DE-9582-2817-DACD-C7AA51879620" name="Film PK">

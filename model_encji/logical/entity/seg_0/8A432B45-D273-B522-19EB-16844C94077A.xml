@@ -68,18 +68,6 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_dziennikarza" id="CCEB2F74-EA7C-7ACB-4690-6838BC33C5AC">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-02 13:59:57 UTC</createdTime>
-<generatorID>DCA5BD5C-36D3-29CE-C251-A7676CF79E1F</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>D2D708FA-38CB-4C6F-04CF-AB302F52135C</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="id_aktora" id="98F21675-467B-11FB-9F7F-BB2DD037F20C">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-02 14:02:05 UTC</createdTime>

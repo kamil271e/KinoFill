@@ -25,16 +25,6 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="nazwa" id="CD5D04AA-97C8-8E3F-960C-F982E98A2E67">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-01 18:26:43 UTC</createdTime>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="data_dołączenia" id="D65700B9-9F41-A18F-B94D-D05B0C66077E">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:26:59 UTC</createdTime>

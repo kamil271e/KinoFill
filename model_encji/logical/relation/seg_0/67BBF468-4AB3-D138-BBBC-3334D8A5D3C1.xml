@@ -9,6 +9,7 @@
 <sourcePk>4609B31A-2C72-E093-55DD-DA02238CE297</sourcePk>
 <identifying>false</identifying>
 <nameOnSource>reżyseruje</nameOnSource>
+<nameOnTarget>jest reżyserowany</nameOnTarget>
 <optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>

@@ -79,6 +79,17 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="ocena_widzów" id="262E2B16-FB2B-D79F-820B-C7A5ACCC76B7">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-02 15:21:11 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="DA0CC3D2-C901-3AA8-F3C0-7E8AD99CAAAE" name="Serial PK">
