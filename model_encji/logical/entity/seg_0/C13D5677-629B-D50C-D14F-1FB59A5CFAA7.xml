@@ -1,0 +1,69 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C13D5677-629B-D50C-D14F-1FB59A5CFAA7" name="Postać w filmie">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-02 17:59:13 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="nazwa_postaci" id="AD56475C-D9A9-DD8E-D2B9-7843096C51EB">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-02 17:59:25 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_aktora" id="429C4D02-D74D-A32C-0BF0-C4C101B9EA04">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-02 17:59:53 UTC</createdTime>
+<generatorID>C23C609F-61C0-098C-3F9E-F81D44780126</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>DAA30EF8-943D-5B40-1AA5-F07718192037</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_filmu" id="CAB34749-B776-E002-CA3A-DB0393287C90">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-02 18:00:00 UTC</createdTime>
+<generatorID>602F9883-D8F6-13D4-F3D8-D046E115B64D</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>D8FD63A3-FD2C-50B5-2728-2E69CF3DD499</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E8F8E0AC-EE03-0F4D-ECB7-31AE8B6C4CE7" name="Postać w filmie PK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-02 17:59:31 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>AD56475C-D9A9-DD8E-D2B9-7843096C51EB</attributeRef>
+<attributeRef>429C4D02-D74D-A32C-0BF0-C4C101B9EA04</attributeRef>
+<attributeRef>CAB34749-B776-E002-CA3A-DB0393287C90</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
