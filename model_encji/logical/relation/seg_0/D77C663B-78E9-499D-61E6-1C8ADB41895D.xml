@@ -1,20 +1,20 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_10" directorySegmentName="seg_0" id="0294D8E8-6258-5EA8-F7BB-3756D65BCF90">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_24" directorySegmentName="seg_0" id="D77C663B-78E9-499D-61E6-1C8ADB41895D">
 <createdBy>ogerl</createdBy>
-<createdTime>2022-11-01 19:13:56 UTC</createdTime>
+<createdTime>2022-11-02 14:02:05 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
-<sourcePk>D2ECD9D1-6202-D994-344C-77013CA863FA</sourcePk>
-<arc>8EB810F2-13E2-5779-92B6-469D9FF8955C</arc>
+<sourcePk>C455E2DE-5BF3-7413-74B9-D91F7EFB4143</sourcePk>
+<arc>81A53741-572E-5904-D946-F113CE3A6650</arc>
 <identifying>false</identifying>
-<nameOnSource>jest autorem</nameOnSource>
-<nameOnTarget>stworzona przez</nameOnTarget>
+<nameOnSource>oceniony</nameOnSource>
+<nameOnTarget>odnosi się</nameOnTarget>
 <optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
-<sourceEntity>376FB298-D3E3-3923-94E8-B346B0163CFE</sourceEntity>
+<sourceEntity>B6CE353A-7229-AC69-C299-8B6ADBFEF9AF</sourceEntity>
 <targetCardinalityString>*</targetCardinalityString>
 <targetEntity>8A432B45-D273-B522-19EB-16844C94077A</targetEntity>
 <transferable>true</transferable>

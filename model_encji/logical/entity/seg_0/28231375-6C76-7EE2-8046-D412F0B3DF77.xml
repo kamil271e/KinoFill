@@ -15,16 +15,6 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_gatunku" id="1E86A0DB-5C7B-95A3-8912-D42E68ED87AA">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-01 18:59:24 UTC</createdTime>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="nazwa" id="0F15874F-CDEA-4070-B550-081EAB8DF15B">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:59:35 UTC</createdTime>
@@ -46,7 +36,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>1E86A0DB-5C7B-95A3-8912-D42E68ED87AA</attributeRef>
+<attributeRef>0F15874F-CDEA-4070-B550-081EAB8DF15B</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

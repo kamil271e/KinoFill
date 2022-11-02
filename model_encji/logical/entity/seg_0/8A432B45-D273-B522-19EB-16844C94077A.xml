@@ -56,6 +56,66 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id_widza" id="CEE40236-9FE4-D0CC-DDF6-7F15981D875C">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-02 13:51:39 UTC</createdTime>
+<generatorID>0294D8E8-6258-5EA8-F7BB-3756D65BCF90</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>FC8B3543-EF05-36EE-6025-6AC4041F1F64</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_dziennikarza" id="CCEB2F74-EA7C-7ACB-4690-6838BC33C5AC">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-02 13:59:57 UTC</createdTime>
+<generatorID>DCA5BD5C-36D3-29CE-C251-A7676CF79E1F</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>D2D708FA-38CB-4C6F-04CF-AB302F52135C</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_aktora" id="98F21675-467B-11FB-9F7F-BB2DD037F20C">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-02 14:02:05 UTC</createdTime>
+<generatorID>D77C663B-78E9-499D-61E6-1C8ADB41895D</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>DAA30EF8-943D-5B40-1AA5-F07718192037</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_filmu" id="20343693-E48D-689A-DE8B-2CAA2D0816D1">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-02 14:04:31 UTC</createdTime>
+<generatorID>C985DFCA-77A9-550E-16F5-FB6F734BAB27</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>D8FD63A3-FD2C-50B5-2728-2E69CF3DD499</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_serialu" id="0D7FA854-C454-5096-DC65-1B9C3C99B45D">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-02 14:05:13 UTC</createdTime>
+<generatorID>5401ED67-5EEE-5D82-1DA1-CB840932D618</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>9A48447D-C90F-8342-2D36-9291B8477E1A</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="C0933C62-D9F7-4866-E170-4B58004A6B8B" name="Recenzja PK">

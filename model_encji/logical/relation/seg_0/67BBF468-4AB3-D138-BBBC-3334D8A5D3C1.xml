@@ -1,20 +1,18 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_13" directorySegmentName="seg_0" id="300D8AD8-4399-540E-99AE-37963E220DD8">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_21" directorySegmentName="seg_0" id="67BBF468-4AB3-D138-BBBC-3334D8A5D3C1">
 <createdBy>ogerl</createdBy>
-<createdTime>2022-11-01 19:18:40 UTC</createdTime>
+<createdTime>2022-11-02 13:40:20 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
-<sourcePk>B8667AA7-20FB-C2CA-0E9F-FFF39617B912</sourcePk>
-<targetPk>DA0CC3D2-C901-3AA8-F3C0-7E8AD99CAAAE</targetPk>
+<sourcePk>4609B31A-2C72-E093-55DD-DA02238CE297</sourcePk>
 <identifying>false</identifying>
-<nameOnSource>produkuje</nameOnSource>
-<nameOnTarget>wyprodukowany</nameOnTarget>
-<optionalSource>false</optionalSource>
+<nameOnSource>reżyseruje</nameOnSource>
+<optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
-<sourceEntity>E3038697-BAD8-51AA-BA2F-B36DAEA2B54F</sourceEntity>
+<sourceEntity>3C75AC4D-BA21-FF4B-273D-6612F23FF845</sourceEntity>
 <targetCardinalityString>*</targetCardinalityString>
 <targetEntity>2F9FCF7C-7324-EA8F-8F30-85C34D91FD9B</targetEntity>
 <transferable>true</transferable>

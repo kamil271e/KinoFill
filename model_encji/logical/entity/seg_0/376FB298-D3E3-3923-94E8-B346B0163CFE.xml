@@ -45,10 +45,10 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_użytkownika" id="77DA7B75-A29E-332E-1A00-98C0C8C3EFE0">
+<Attribute name="id_użytkownika" id="D50DD4D9-50E1-8422-6B1D-32071358BE10">
 <createdBy>ogerl</createdBy>
-<createdTime>2022-11-01 19:12:47 UTC</createdTime>
-<generatorID>7E682F45-E05A-2038-85FD-3E76AE31E482</generatorID>
+<createdTime>2022-11-02 13:55:43 UTC</createdTime>
+<generatorID>AE2D23C9-8DC0-2E2C-CD1E-B39B60F79367</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>

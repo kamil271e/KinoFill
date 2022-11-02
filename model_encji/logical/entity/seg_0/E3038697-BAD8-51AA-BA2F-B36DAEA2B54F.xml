@@ -80,54 +80,6 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_aktora" id="A4AEFF9A-B344-71D5-34E1-93F4CD876B13">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-01 19:16:44 UTC</createdTime>
-<generatorID>B879D241-5468-F86D-5276-F83624BA364B</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>DAA30EF8-943D-5B40-1AA5-F07718192037</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_serialu" id="84BAD927-0465-6BE9-9478-1F31E0CF48A5">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-01 19:19:16 UTC</createdTime>
-<generatorID>300D8AD8-4399-540E-99AE-37963E220DD8</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>9A48447D-C90F-8342-2D36-9291B8477E1A</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_filmu" id="B724709B-A4E0-B9F3-429D-B54DD30A06B4">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-01 19:19:30 UTC</createdTime>
-<generatorID>BDE3B4FD-643E-8BAE-F56F-02A432E449B5</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>D8FD63A3-FD2C-50B5-2728-2E69CF3DD499</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_reżysera" id="BCE977D4-65CF-B49D-C675-A3747673CE97">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-01 19:20:43 UTC</createdTime>
-<generatorID>B0CA3866-97CD-FE8E-28B7-899106D05D8A</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>722BFAE0-3969-B407-E443-84606F3E4357</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="B8667AA7-20FB-C2CA-0E9F-FFF39617B912" name="Wytwórnia filmowa PK">
