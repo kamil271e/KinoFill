@@ -154,3 +154,5 @@ cython_debug/
 **/*.local
 **/*.git
 **/*.DS_Store
+
+fsql_env/

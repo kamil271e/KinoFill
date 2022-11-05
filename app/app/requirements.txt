@@ -1,11 +1,10 @@
 # This file is used by pip to install required python packages
-# Usage: pip install -r requirements.txt
-
-# Flask Framework
+# Usage: pip install -r app\requirements.txt
 Flask
-
-# Flask Packages
-Flask-Migrate
-Flask-SQLAlchemy
-
+Flask_Migrate
+Flask_SQLAlchemy
+Flask_Login
+Flask_WTF
+SQLAlchemy
 psycopg2-binary #for using postgres
+WTForms
