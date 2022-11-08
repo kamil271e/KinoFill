@@ -12,7 +12,7 @@
 <nameOnSource>należy do</nameOnSource>
 <nameOnTarget>zawiera</nameOnTarget>
 <optionalSource>false</optionalSource>
-<optionalTarget>false</optionalTarget>
+<optionalTarget>true</optionalTarget>
 <sourceCardinality>*</sourceCardinality>
 <sourceEntity>B6CE353A-7229-AC69-C299-8B6ADBFEF9AF</sourceEntity>
 <targetCardinalityString>1</targetCardinalityString>

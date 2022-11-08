@@ -25,27 +25,51 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_aktora" id="429C4D02-D74D-A32C-0BF0-C4C101B9EA04">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-02 17:59:53 UTC</createdTime>
-<generatorID>C23C609F-61C0-098C-3F9E-F81D44780126</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>DAA30EF8-943D-5B40-1AA5-F07718192037</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_filmu" id="CAB34749-B776-E002-CA3A-DB0393287C90">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-02 18:00:00 UTC</createdTime>
+<Attribute name="nazwa" id="2A789EF6-9FF2-6309-0CC0-6C8745552874">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-08 17:53:58 UTC</createdTime>
 <generatorID>602F9883-D8F6-13D4-F3D8-D046E115B64D</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
-<referedAttribute>D8FD63A3-FD2C-50B5-2728-2E69CF3DD499</referedAttribute>
+<referedAttribute>EB103683-FB70-0F62-48CF-618A0AA020D9</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rok_produkcji" id="5E43708D-B5F9-7BCF-0F71-799F6394DAEA">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-08 17:54:02 UTC</createdTime>
+<generatorID>602F9883-D8F6-13D4-F3D8-D046E115B64D</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>E1EB2125-2161-3F77-8772-880863869DE9</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="imię" id="7CD2473B-D263-05BB-9126-72BE95626076">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-08 17:54:24 UTC</createdTime>
+<generatorID>C23C609F-61C0-098C-3F9E-F81D44780126</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>8A6050C1-24D3-0574-403C-507CA1BDF53D</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nazwisko" id="F25BF65C-E7A5-BA1D-7714-BC4F32074F6B">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-08 17:54:26 UTC</createdTime>
+<generatorID>C23C609F-61C0-098C-3F9E-F81D44780126</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>4DE0B340-F901-4159-F112-A23772DD86E3</referedAttribute>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
@@ -61,8 +85,10 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>AD56475C-D9A9-DD8E-D2B9-7843096C51EB</attributeRef>
-<attributeRef>429C4D02-D74D-A32C-0BF0-C4C101B9EA04</attributeRef>
-<attributeRef>CAB34749-B776-E002-CA3A-DB0393287C90</attributeRef>
+<attributeRef>2A789EF6-9FF2-6309-0CC0-6C8745552874</attributeRef>
+<attributeRef>5E43708D-B5F9-7BCF-0F71-799F6394DAEA</attributeRef>
+<attributeRef>7CD2473B-D263-05BB-9126-72BE95626076</attributeRef>
+<attributeRef>F25BF65C-E7A5-BA1D-7714-BC4F32074F6B</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

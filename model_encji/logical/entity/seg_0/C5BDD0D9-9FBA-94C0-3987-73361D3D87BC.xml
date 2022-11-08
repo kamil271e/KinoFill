@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C5BDD0D9-9FBA-94C0-3987-73361D3D87BC" name="Recenzja widza">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-08 17:09:11 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<hierarchicalParent>8A432B45-D273-B522-19EB-16844C94077A</hierarchicalParent>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_widza" id="DB461A76-93ED-D6F5-BB35-C407E32D84D3">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-08 17:55:58 UTC</createdTime>
+<generatorID>0294D8E8-6258-5EA8-F7BB-3756D65BCF90</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>FC8B3543-EF05-36EE-6025-6AC4041F1F64</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="8317CD17-578B-705A-9CD7-A524739725EC" name="Recenzja widza PK">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-08 18:00:03 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>DB461A76-93ED-D6F5-BB35-C407E32D84D3</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

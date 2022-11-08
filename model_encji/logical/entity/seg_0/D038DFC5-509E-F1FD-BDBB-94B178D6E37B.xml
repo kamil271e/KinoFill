@@ -57,15 +57,15 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_wytwórni" id="15113276-4533-57AB-B239-0AA5703DF1FE">
+<Attribute name="nazwa" id="779299E6-8A34-D3A2-39E8-C2B56BA6543E">
 <createdBy>kamil</createdBy>
-<createdTime>2022-11-02 15:16:30 UTC</createdTime>
+<createdTime>2022-11-08 17:08:44 UTC</createdTime>
 <generatorID>E3A9EB1F-ACA2-FA7A-C24E-CAB9FE0A06E1</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
-<referedAttribute>AC91C4D2-2C25-C62B-4D1E-B152058091D5</referedAttribute>
+<referedAttribute>09FF3F01-7B32-B6A3-8A8E-41532AEE69D6</referedAttribute>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>

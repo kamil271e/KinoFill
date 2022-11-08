@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from urllib.parse import quote_plus
 
@@ -7,7 +7,6 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://postgres:{quote_plus('Welcome1@')}@localhost/Filmweb2"
 # app.config['UPLOAD_FOLDER'] = "static/images/"
 db = SQLAlchemy(app)
-
 
 class User(db.Model):
     __tablename__ = "users"
@@ -24,13 +23,19 @@ class User(db.Model):
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    if request.method == 'POST':
+    if request.method == 'POST' and request.form.get("login") == "admin":
+        return redirect(url_for('user', name='admin'))
+    elif request.method == 'POST': 
         print(request.form['login'])
         login = request.form['login']
         user = User(login)
         db.session.add(user)
         db.session.commit()
     return render_template('index.html')
+
+@app.route('/user/<name>')
+def user(name):
+    return '<h1>Hello, %s!</h1>' % name
 
 if __name__ == '__main__':
     with app.app_context(): #Flask-SQLAlchemy 3.0 all access to db.engine (and db.session) requires an active Flask application context

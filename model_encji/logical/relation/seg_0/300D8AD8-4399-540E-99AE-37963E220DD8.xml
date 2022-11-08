@@ -11,7 +11,7 @@
 <identifying>false</identifying>
 <nameOnSource>produkuje</nameOnSource>
 <nameOnTarget>wyprodukowany</nameOnTarget>
-<optionalSource>false</optionalSource>
+<optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
 <sourceEntity>E3038697-BAD8-51AA-BA2F-B36DAEA2B54F</sourceEntity>

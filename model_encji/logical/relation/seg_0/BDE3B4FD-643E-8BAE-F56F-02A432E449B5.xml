@@ -12,7 +12,7 @@
 <nameOnSource>wyprodukowany</nameOnSource>
 <nameOnTarget>produkuje</nameOnTarget>
 <optionalSource>false</optionalSource>
-<optionalTarget>false</optionalTarget>
+<optionalTarget>true</optionalTarget>
 <sourceCardinality>*</sourceCardinality>
 <sourceEntity>12A8EF75-A614-73C6-48D9-3A094D1C2C11</sourceEntity>
 <targetCardinalityString>1</targetCardinalityString>

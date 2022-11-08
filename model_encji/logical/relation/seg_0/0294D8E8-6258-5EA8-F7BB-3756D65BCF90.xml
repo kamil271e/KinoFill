@@ -7,8 +7,7 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <sourcePk>D2ECD9D1-6202-D994-344C-77013CA863FA</sourcePk>
-<arc>8EB810F2-13E2-5779-92B6-469D9FF8955C</arc>
-<identifying>false</identifying>
+<identifying>true</identifying>
 <nameOnSource>jest autorem</nameOnSource>
 <nameOnTarget>stworzona przez</nameOnTarget>
 <optionalSource>true</optionalSource>
@@ -16,7 +15,7 @@
 <sourceCardinality>1</sourceCardinality>
 <sourceEntity>376FB298-D3E3-3923-94E8-B346B0163CFE</sourceEntity>
 <targetCardinalityString>*</targetCardinalityString>
-<targetEntity>8A432B45-D273-B522-19EB-16844C94077A</targetEntity>
+<targetEntity>C5BDD0D9-9FBA-94C0-3987-73361D3D87BC</targetEntity>
 <transferable>true</transferable>
 <deleteRule>NO ACTION</deleteRule>
 </Relation>

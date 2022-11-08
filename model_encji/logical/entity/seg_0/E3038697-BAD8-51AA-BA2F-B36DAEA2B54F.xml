@@ -15,16 +15,6 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_wytwórni" id="AC91C4D2-2C25-C62B-4D1E-B152058091D5">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-01 18:39:48 UTC</createdTime>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="nazwa" id="09FF3F01-7B32-B6A3-8A8E-41532AEE69D6">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:39:57 UTC</createdTime>
@@ -57,18 +47,6 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_użytkownika" id="BDDBA0C0-766C-589C-21B0-D5C50A8972CC">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-01 19:09:26 UTC</createdTime>
-<generatorID>AC97BA01-8E78-07DB-A5B5-99BFCDB85C67</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>AEA7BE5C-C669-8C8A-D66C-D4079A4F66D6</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="ocena_widzów" id="3CDDD59F-45F3-EC09-534E-CFF882169282">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 19:11:36 UTC</createdTime>
@@ -77,6 +55,18 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="login" id="24F38AB8-3C77-83B3-7977-EA817BE9768A">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-08 17:54:55 UTC</createdTime>
+<generatorID>AC97BA01-8E78-07DB-A5B5-99BFCDB85C67</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>D44C6A9B-E75E-7A01-A695-5A8BC0522A4B</referedAttribute>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
@@ -91,7 +81,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>AC91C4D2-2C25-C62B-4D1E-B152058091D5</attributeRef>
+<attributeRef>09FF3F01-7B32-B6A3-8A8E-41532AEE69D6</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

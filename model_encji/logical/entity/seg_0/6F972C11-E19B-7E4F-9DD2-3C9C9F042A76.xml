@@ -37,15 +37,27 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_aktora" id="4794C0FC-2A84-F301-4397-C071437F58E1">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-02 17:45:39 UTC</createdTime>
+<Attribute name="imię" id="5A01A4C7-EB51-9D88-81C0-D8A9849D1CD9">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-08 17:54:24 UTC</createdTime>
 <generatorID>AC6494A4-62C5-3FD3-CFC3-54C45372636F</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
-<referedAttribute>DAA30EF8-943D-5B40-1AA5-F07718192037</referedAttribute>
+<referedAttribute>8A6050C1-24D3-0574-403C-507CA1BDF53D</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nazwisko" id="6D903747-9F24-5BD6-8455-CAFB2FAD9802">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-08 17:54:26 UTC</createdTime>
+<generatorID>AC6494A4-62C5-3FD3-CFC3-54C45372636F</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>4DE0B340-F901-4159-F112-A23772DD86E3</referedAttribute>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
@@ -62,7 +74,8 @@
 <usedAttributes>
 <attributeRef>43AAE1F9-7939-9E43-527B-0D35B7D30C09</attributeRef>
 <attributeRef>B42FB97C-38F3-F6D1-EF38-F33F416A6E9E</attributeRef>
-<attributeRef>4794C0FC-2A84-F301-4397-C071437F58E1</attributeRef>
+<attributeRef>5A01A4C7-EB51-9D88-81C0-D8A9849D1CD9</attributeRef>
+<attributeRef>6D903747-9F24-5BD6-8455-CAFB2FAD9802</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

@@ -15,16 +15,6 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_aktora" id="DAA30EF8-943D-5B40-1AA5-F07718192037">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-01 18:47:21 UTC</createdTime>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="imię" id="8A6050C1-24D3-0574-403C-507CA1BDF53D">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:47:27 UTC</createdTime>
@@ -78,15 +68,15 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_wytwórni" id="6090498C-46B0-417F-D89D-9BFBCADEDCF7">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-02 13:38:07 UTC</createdTime>
+<Attribute name="nazwa" id="332D5BF1-7C2A-FE45-70C6-5660A384167A">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-08 17:08:44 UTC</createdTime>
 <generatorID>B879D241-5468-F86D-5276-F83624BA364B</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
-<referedAttribute>AC91C4D2-2C25-C62B-4D1E-B152058091D5</referedAttribute>
+<referedAttribute>09FF3F01-7B32-B6A3-8A8E-41532AEE69D6</referedAttribute>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
@@ -101,7 +91,8 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>DAA30EF8-943D-5B40-1AA5-F07718192037</attributeRef>
+<attributeRef>8A6050C1-24D3-0574-403C-507CA1BDF53D</attributeRef>
+<attributeRef>4DE0B340-F901-4159-F112-A23772DD86E3</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

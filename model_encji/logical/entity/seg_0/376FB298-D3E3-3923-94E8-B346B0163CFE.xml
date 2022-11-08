@@ -35,15 +35,15 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_użytkownika" id="D50DD4D9-50E1-8422-6B1D-32071358BE10">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-02 13:55:43 UTC</createdTime>
+<Attribute name="login" id="0A59EB7D-7036-1D96-9341-1429F7405A1A">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-08 17:54:55 UTC</createdTime>
 <generatorID>AE2D23C9-8DC0-2E2C-CD1E-B39B60F79367</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
-<referedAttribute>AEA7BE5C-C669-8C8A-D66C-D4079A4F66D6</referedAttribute>
+<referedAttribute>D44C6A9B-E75E-7A01-A695-5A8BC0522A4B</referedAttribute>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>

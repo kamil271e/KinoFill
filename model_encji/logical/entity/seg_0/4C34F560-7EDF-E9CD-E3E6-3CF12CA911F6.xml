@@ -15,16 +15,6 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_użytkownika" id="AEA7BE5C-C669-8C8A-D66C-D4079A4F66D6">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-01 18:33:15 UTC</createdTime>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="login" id="D44C6A9B-E75E-7A01-A695-5A8BC0522A4B">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:31:39 UTC</createdTime>
@@ -67,7 +57,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>AEA7BE5C-C669-8C8A-D66C-D4079A4F66D6</attributeRef>
+<attributeRef>D44C6A9B-E75E-7A01-A695-5A8BC0522A4B</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

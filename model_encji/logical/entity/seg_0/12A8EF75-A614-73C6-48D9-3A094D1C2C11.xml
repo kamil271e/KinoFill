@@ -15,16 +15,6 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_filmu" id="D8FD63A3-FD2C-50B5-2728-2E69CF3DD499">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-01 18:15:45 UTC</createdTime>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="nazwa" id="EB103683-FB70-0F62-48CF-618A0AA020D9">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:17:19 UTC</createdTime>
@@ -55,30 +45,6 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_reżysera" id="C56E4356-B322-822D-938C-4447C43435AC">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-02 13:35:35 UTC</createdTime>
-<generatorID>B20A99B8-6C34-595D-C342-0739ECB795E3</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>722BFAE0-3969-B407-E443-84606F3E4357</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_wytwórni" id="09C5FD35-93E5-11BC-3F7E-E32B94FD1F71">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-02 13:37:51 UTC</createdTime>
-<generatorID>BDE3B4FD-643E-8BAE-F56F-02A432E449B5</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>AC91C4D2-2C25-C62B-4D1E-B152058091D5</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="ocena_widzów" id="2693DA76-A1AE-E786-FF35-E2BE6161E412">
 <createdBy>kamil</createdBy>
 <createdTime>2022-11-02 15:18:33 UTC</createdTime>
@@ -87,6 +53,42 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nazwa1" id="E3EDDC97-168A-38CC-F268-554EB29B549D">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-08 17:08:44 UTC</createdTime>
+<generatorID>BDE3B4FD-643E-8BAE-F56F-02A432E449B5</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>09FF3F01-7B32-B6A3-8A8E-41532AEE69D6</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="imię" id="837EAD5F-9EFE-CE0C-966D-2429FA1608FA">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-08 17:53:27 UTC</createdTime>
+<generatorID>B20A99B8-6C34-595D-C342-0739ECB795E3</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>3E4AE972-1FD3-CA36-9D0F-267933FF50FC</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nazwisko" id="F84205DD-3EB3-BE91-55AD-9B9C362768A3">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-08 17:53:28 UTC</createdTime>
+<generatorID>B20A99B8-6C34-595D-C342-0739ECB795E3</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>1B84D7EC-A9C4-DF21-4488-FD18B9C7D31A</referedAttribute>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
@@ -101,7 +103,8 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>D8FD63A3-FD2C-50B5-2728-2E69CF3DD499</attributeRef>
+<attributeRef>EB103683-FB70-0F62-48CF-618A0AA020D9</attributeRef>
+<attributeRef>E1EB2125-2161-3F77-8772-880863869DE9</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>
