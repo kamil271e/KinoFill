@@ -92,6 +92,18 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="data_urodzenia" id="79B29FAE-8C47-E00E-2DF1-B1A48DF60122">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-08 18:41:36 UTC</createdTime>
+<generatorID>B20A99B8-6C34-595D-C342-0739ECB795E3</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>AE0E80D5-6245-2922-B6D1-F1A920ADC699</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="2C60F1DE-9582-2817-DACD-C7AA51879620" name="Film PK">

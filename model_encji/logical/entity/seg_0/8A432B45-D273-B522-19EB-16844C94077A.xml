@@ -56,30 +56,6 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_widza" id="CEE40236-9FE4-D0CC-DDF6-7F15981D875C">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-02 13:51:39 UTC</createdTime>
-<generatorID>0294D8E8-6258-5EA8-F7BB-3756D65BCF90</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>FC8B3543-EF05-36EE-6025-6AC4041F1F64</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_serialu" id="0D7FA854-C454-5096-DC65-1B9C3C99B45D">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-02 14:05:13 UTC</createdTime>
-<generatorID>5401ED67-5EEE-5D82-1DA1-CB840932D618</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>9A48447D-C90F-8342-2D36-9291B8477E1A</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="nazwa" id="0177F685-FABA-9019-C0D4-6E70A205D9C9">
 <createdBy>kamil</createdBy>
 <createdTime>2022-11-08 17:53:58 UTC</createdTime>
@@ -128,6 +104,42 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="data_urodzenia" id="CA9AB931-4FA2-7681-9623-FE88C497C6DC">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-08 18:41:44 UTC</createdTime>
+<generatorID>D77C663B-78E9-499D-61E6-1C8ADB41895D</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>0C205938-73A3-EF4C-6599-9F6D4C4B20FE</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="liczba_odcinków" id="A6170BC6-BEFA-D484-7ED5-93110303B71E">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-08 18:41:54 UTC</createdTime>
+<generatorID>5401ED67-5EEE-5D82-1DA1-CB840932D618</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>BECFEB19-C022-6CA0-DA3B-52FC8087D71A</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nazwa1" id="EA0E2D7E-669F-464C-B721-F935638A56A0">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-08 18:41:58 UTC</createdTime>
+<generatorID>5401ED67-5EEE-5D82-1DA1-CB840932D618</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>DAF42D56-C89D-BDCD-45B0-022F0AA7C711</referedAttribute>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="C0933C62-D9F7-4866-E170-4B58004A6B8B" name="Recenzja PK">
@@ -142,9 +154,11 @@
 <attributeRef>0567082C-46D2-EAD7-7253-1CE8A89D7CA5</attributeRef>
 <attributeRef>0177F685-FABA-9019-C0D4-6E70A205D9C9</attributeRef>
 <attributeRef>E9A31664-7492-72BC-5F47-C07B017381CC</attributeRef>
-<attributeRef>0D7FA854-C454-5096-DC65-1B9C3C99B45D</attributeRef>
+<attributeRef>A6170BC6-BEFA-D484-7ED5-93110303B71E</attributeRef>
+<attributeRef>EA0E2D7E-669F-464C-B721-F935638A56A0</attributeRef>
 <attributeRef>9E80EFF0-6C93-BD04-EF77-8625F8536F26</attributeRef>
 <attributeRef>51B43C7F-CE87-BE0F-6933-180D710013EB</attributeRef>
+<attributeRef>CA9AB931-4FA2-7681-9623-FE88C497C6DC</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>
