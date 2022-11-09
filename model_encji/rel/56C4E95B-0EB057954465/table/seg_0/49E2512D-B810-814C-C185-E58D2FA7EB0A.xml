@@ -1,0 +1,235 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="49E2512D-B810-814C-C185-E58D2FA7EB0A" name="Recenzja">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>8A432B45-D273-B522-19EB-16844C94077A</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_recenzji" id="6EFDD473-4866-E775-2B21-9E0A756144C1">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>0567082C-46D2-EAD7-7253-1CE8A89D7CA5</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ocena" id="6430F8F6-4015-C926-E8B9-1EE89C42577C">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>D0804452-C982-7F49-1C33-26EF8AC84AEE</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data" id="2BBD2257-3313-A2D1-972E-A868F1A640EB">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>575140BF-D7A7-7F15-BFEC-A3205B799DF3</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="treść" id="6BBFA0CC-DB20-F1AC-AA63-5CC13F640CB0">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>FF5080DF-612D-EF1C-7D23-A7844A8253BC</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Film_nazwa" id="59D6E4D6-F482-F242-EC5E-2E3BFD53FFBA">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>0177F685-FABA-9019-C0D4-6E70A205D9C9</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A75F5828-E9C8-764D-EE11-10186D3BA3ED" referredColumn="EFEE3666-E5F5-9B2B-62C2-249544025937"/>
+</associations>
+</Column>
+<Column name="Film_rok_produkcji" id="AE41ED71-987F-58FC-C501-37C7D814D126">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>E9A31664-7492-72BC-5F47-C07B017381CC</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A75F5828-E9C8-764D-EE11-10186D3BA3ED" referredColumn="74EACEC2-E6BF-6D70-FF85-AAC296161EB6"/>
+</associations>
+</Column>
+<Column name="Aktor_imię" id="96296558-A362-CD9A-0A41-95EF1DB9FB9C">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>9E80EFF0-6C93-BD04-EF77-8625F8536F26</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C832B426-CCB4-3BAB-1AD2-168922009173" referredColumn="08A9987C-6E1F-63A9-1167-44F05E4B16BF"/>
+</associations>
+</Column>
+<Column name="Aktor_nazwisko" id="77D950B2-D07A-F669-3096-A921E859053C">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>51B43C7F-CE87-BE0F-6933-180D710013EB</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C832B426-CCB4-3BAB-1AD2-168922009173" referredColumn="D01C3DAE-7578-13FD-E73D-7F3CF87FC68D"/>
+</associations>
+</Column>
+<Column name="Aktor_data_urodzenia" id="EA97E7C9-EDC2-DF67-1C75-6EC77C904F83">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>CA9AB931-4FA2-7681-9623-FE88C497C6DC</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C832B426-CCB4-3BAB-1AD2-168922009173" referredColumn="27C2CCF2-EE10-6FF7-A1C3-1E2A7B9F450C"/>
+</associations>
+</Column>
+<Column name="Serial_liczba_odcinków" id="FA4C9DAC-4793-772D-BEBD-5733B73D9994">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>A6170BC6-BEFA-D484-7ED5-93110303B71E</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="877C5DC3-78A9-5E44-F44E-67E8A28EAD99" referredColumn="63522E6A-9F2F-D3E1-28EB-D4EC59B0A655"/>
+</associations>
+</Column>
+<Column name="Serial_nazwa" id="F12525EF-F940-25FA-3706-61D727F6012E">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>EA0E2D7E-669F-464C-B721-F935638A56A0</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="877C5DC3-78A9-5E44-F44E-67E8A28EAD99" referredColumn="DBF83685-202C-18D4-60C1-D89FE82098DF"/>
+</associations>
+</Column>
+<Column name="nazwa1" id="3C6F7178-19A7-EA1D-22C5-484E5AAD672C">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 14:19:57 UTC</createdTime>
+<generatorID>E5704C8C-69EE-8950-B057-CE7E7DA97BCF</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="imię" id="B3AC4C20-7280-31C7-7876-75E36C3D25EC">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 14:19:57 UTC</createdTime>
+<generatorID>72D37437-9A1C-FF09-0995-69703F232CE6</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A1E0559C-3F68-AF0A-65F8-572C585170CA" name="Recenzja_PK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>C0933C62-D9F7-4866-E170-4B58004A6B8B</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6EFDD473-4866-E775-2B21-9E0A756144C1"/>
+<colUsage columnID="59D6E4D6-F482-F242-EC5E-2E3BFD53FFBA"/>
+<colUsage columnID="AE41ED71-987F-58FC-C501-37C7D814D126"/>
+<colUsage columnID="FA4C9DAC-4793-772D-BEBD-5733B73D9994"/>
+<colUsage columnID="3C6F7178-19A7-EA1D-22C5-484E5AAD672C"/>
+<colUsage columnID="77D950B2-D07A-F669-3096-A921E859053C"/>
+<colUsage columnID="EA97E7C9-EDC2-DF67-1C75-6EC77C904F83"/>
+<colUsage columnID="B3AC4C20-7280-31C7-7876-75E36C3D25EC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A95120C6-FCF5-C785-E219-2DD12CC210D7" name="Recenzja_Aktor_FK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>D77C663B-78E9-499D-61E6-1C8ADB41895D</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="96296558-A362-CD9A-0A41-95EF1DB9FB9C"/>
+<colUsage columnID="77D950B2-D07A-F669-3096-A921E859053C"/>
+<colUsage columnID="EA97E7C9-EDC2-DF67-1C75-6EC77C904F83"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="638C87A6-6F3D-C7CC-0EE8-2ED315405DA6" name="Recenzja_Film_FK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>C985DFCA-77A9-550E-16F5-FB6F734BAB27</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="59D6E4D6-F482-F242-EC5E-2E3BFD53FFBA"/>
+<colUsage columnID="AE41ED71-987F-58FC-C501-37C7D814D126"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CB39ACD6-D4FA-56DE-A7A3-2249333732CC" name="Recenzja_Serial_FK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>5401ED67-5EEE-5D82-1DA1-CB840932D618</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FA4C9DAC-4793-772D-BEBD-5733B73D9994"/>
+<colUsage columnID="F12525EF-F940-25FA-3706-61D727F6012E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

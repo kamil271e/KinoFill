@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="2F0A180C-F1BA-104E-FAC4-DA816720C643" containerWithKeyObject="04BE48E4-7D77-1B6E-CC9A-601CADED1D52" localFKIndex="D285AE4A-6F92-7008-F32B-7DA55E8E6766" name="Reżyser_Wytwórnia_filmowa_FK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>B0CA3866-97CD-FE8E-28B7-899106D05D8A</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<referredTableLongName>Wytwórnia_filmowa</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>8040587A-825D-FDA5-DE84-21DEF888B461</referredTableID>
+<keyObject>3B40ACD3-D305-FC20-BF33-698C40673F91</keyObject>
+<referredKeyID>3B40ACD3-D305-FC20-BF33-698C40673F91</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>nazwa</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

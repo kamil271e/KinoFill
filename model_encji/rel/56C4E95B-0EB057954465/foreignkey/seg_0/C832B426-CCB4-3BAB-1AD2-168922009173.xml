@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="C832B426-CCB4-3BAB-1AD2-168922009173" containerWithKeyObject="49E2512D-B810-814C-C185-E58D2FA7EB0A" localFKIndex="A95120C6-FCF5-C785-E219-2DD12CC210D7" name="Recenzja_Aktor_FK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>D77C663B-78E9-499D-61E6-1C8ADB41895D</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<referredTableLongName>Aktor</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>CFCB968D-3017-FA5D-10A7-6BFF3018E740</referredTableID>
+<keyObject>9C7874B5-373C-37F0-3003-9BF00D434576</keyObject>
+<referredKeyID>9C7874B5-373C-37F0-3003-9BF00D434576</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>imię,nazwisko,data_urodzenia</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

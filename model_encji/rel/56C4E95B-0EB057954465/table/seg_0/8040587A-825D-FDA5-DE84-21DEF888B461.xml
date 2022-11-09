@@ -1,0 +1,123 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8040587A-825D-FDA5-DE84-21DEF888B461" name="Wytwórnia_filmowa">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>E3038697-BAD8-51AA-BA2F-B36DAEA2B54F</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="nazwa" id="1CBE837A-19FA-8F2D-42CE-E4E7483CE37D">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>09FF3F01-7B32-B6A3-8A8E-41532AEE69D6</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="kraj_pochodzenia" id="22083AD6-B66D-FFCB-CA3B-A57FF317686F">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>347E3EDD-B4E3-ED1C-0E5F-1BABA9985204</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_założenia" id="45BB8563-EE5A-ACE0-4832-4E0B13B25D6A">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>910FAF38-7CFB-F074-2F71-8284ADF7685E</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ocena_widzów" id="0107B979-5AC7-5128-9878-A4EA1ECFEEA2">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>3CDDD59F-45F3-EC09-534E-CFF882169282</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,3,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Użytkownik_login" id="D51E64BA-B3B3-9612-AE93-50237A103813">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>24F38AB8-3C77-83B3-7977-EA817BE9768A</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="00B11A51-D5EE-BF02-24D6-9085241EE8A3" referredColumn="A3000830-6FF4-931E-DECB-7EB8C7EA213A"/>
+</associations>
+</Column>
+<Column name="login" id="750DCE94-C2E5-96C5-3174-594C76F510A1">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:56:06 UTC</createdTime>
+<generatorID>93E72065-5B51-25EE-19EB-FC54B7FA831E</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3B40ACD3-D305-FC20-BF33-698C40673F91" name="Wytwórnia_filmowa_PK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>B8667AA7-20FB-C2CA-0E9F-FFF39617B912</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1CBE837A-19FA-8F2D-42CE-E4E7483CE37D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2E2E73C1-298B-46E3-16E8-477FE8BA476F" name="Wytwórnia_filmowa__IDX">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>AC97BA01-8E78-07DB-A5B5-99BFCDB85C67</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="D51E64BA-B3B3-9612-AE93-50237A103813"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3B8651AA-7E94-80DE-3138-DAD6F4BD5C3B" name="Wytwórnia_filmowa_Użytkownik_FK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>AC97BA01-8E78-07DB-A5B5-99BFCDB85C67</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D51E64BA-B3B3-9612-AE93-50237A103813"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

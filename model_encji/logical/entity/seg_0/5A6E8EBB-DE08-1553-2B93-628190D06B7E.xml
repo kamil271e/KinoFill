@@ -27,18 +27,6 @@
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_dziennikarza" id="D833B063-348F-823F-212B-7DD411D8866F">
-<createdBy>kamil</createdBy>
-<createdTime>2022-11-02 17:47:46 UTC</createdTime>
-<generatorID>25A45BD5-AEC6-FF24-13AE-FB52AADC4A76</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>D2D708FA-38CB-4C6F-04CF-AB302F52135C</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="id_widza" id="B5646C8D-EA6F-BBC3-AFA1-49EC09273869">
 <createdBy>kamil</createdBy>
 <createdTime>2022-11-08 09:05:12 UTC</createdTime>
@@ -48,7 +36,22 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>FC8B3543-EF05-36EE-6025-6AC4041F1F64</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nazwa" id="B3F5BEDF-A5BC-7576-EA92-AA04E941AAE9">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:45:57 UTC</createdTime>
+<generatorID>25A45BD5-AEC6-FF24-13AE-FB52AADC4A76</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>8A75E54F-6A96-F776-DE44-8AD9C5C43361</referedAttribute>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -62,7 +65,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>D833B063-348F-823F-212B-7DD411D8866F</attributeRef>
+<attributeRef>B3F5BEDF-A5BC-7576-EA92-AA04E941AAE9</attributeRef>
 <attributeRef>B5646C8D-EA6F-BBC3-AFA1-49EC09273869</attributeRef>
 </usedAttributes>
 </identifier>

@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="353D9FCC-6D79-D30E-2131-1B99B2E74302" name="Dziennikarz">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>C5E8C30A-7809-9264-59BB-952A321997E0</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_dziennikarza" id="CFB01078-10AF-0C1C-7240-6018519BAA83">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>D2D708FA-38CB-4C6F-04CF-AB302F52135C</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="imię" id="13D3D3C1-4D1D-6F66-67EA-AD55412447D1">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>C7298413-DC14-2C0D-74F5-8EFFCBDC8475</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nazwisko" id="A6D1DAE5-416D-5E79-A572-6144B13843FF">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>699F886E-17D7-A313-A2C1-B18867C6CA82</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Użytkownik_login" id="6C2918E5-E906-63FA-C7E9-65CEF172E76C">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>9461A630-D2DD-1D34-D2C4-CC5BE4A6B63D</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E3EFB6C6-5B86-432F-15A9-49B005E0D19C" referredColumn="A3000830-6FF4-931E-DECB-7EB8C7EA213A"/>
+</associations>
+</Column>
+<Column name="nazwa" id="36A61F9C-E725-EF33-3254-B058D26FCD8D">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:56:06 UTC</createdTime>
+<generatorID>8A75E54F-6A96-F776-DE44-8AD9C5C43361</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="login" id="21138EE1-3203-815C-F24F-5E939CE401F2">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:56:06 UTC</createdTime>
+<generatorID>4AAC6532-C4B5-4343-7C2A-8975713D48BB</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F717CD3A-1DA8-CFDC-6288-1D21C162B8AA" name="Dziennikarz_PK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>2499D917-9DE7-804A-03CA-5EF84E7CB854</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="36A61F9C-E725-EF33-3254-B058D26FCD8D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="773729AA-47F6-26B7-27B5-4F423D2BFD80" name="Dziennikarz__IDX">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>CFE73885-90DF-D1A1-AA39-3BA31B29A5E7</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="6C2918E5-E906-63FA-C7E9-65CEF172E76C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8A6B57F8-7080-9CB6-1002-0C803A91E080" name="Dziennikarz_Użytkownik_FK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>CFE73885-90DF-D1A1-AA39-3BA31B29A5E7</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6C2918E5-E906-63FA-C7E9-65CEF172E76C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

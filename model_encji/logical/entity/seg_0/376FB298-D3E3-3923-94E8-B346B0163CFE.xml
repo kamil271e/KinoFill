@@ -22,8 +22,11 @@
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="data_dołączenia" id="D65700B9-9F41-A18F-B94D-D05B0C66077E">
 <createdBy>ogerl</createdBy>
@@ -32,19 +35,22 @@
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="login" id="0A59EB7D-7036-1D96-9341-1429F7405A1A">
-<createdBy>kamil</createdBy>
-<createdTime>2022-11-08 17:54:55 UTC</createdTime>
+<Attribute name="login" id="2C9FB550-C9BB-12B9-2AEA-648BF1FD2E54">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:53:02 UTC</createdTime>
 <generatorID>AE2D23C9-8DC0-2E2C-CD1E-B39B60F79367</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>D44C6A9B-E75E-7A01-A695-5A8BC0522A4B</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -53,8 +59,9 @@
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:26:42 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

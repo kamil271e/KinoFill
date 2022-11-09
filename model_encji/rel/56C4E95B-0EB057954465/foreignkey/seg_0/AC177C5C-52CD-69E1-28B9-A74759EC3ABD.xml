@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AC177C5C-52CD-69E1-28B9-A74759EC3ABD" containerWithKeyObject="07B0613D-7C59-A18D-1991-9310A16E077E" localFKIndex="2F818DB4-85C5-262C-4314-C498F27B025F" name="Postać_w_serialu_Aktor_FK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>AC6494A4-62C5-3FD3-CFC3-54C45372636F</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<referredTableLongName>Aktor</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>CFCB968D-3017-FA5D-10A7-6BFF3018E740</referredTableID>
+<keyObject>9C7874B5-373C-37F0-3003-9BF00D434576</keyObject>
+<referredKeyID>9C7874B5-373C-37F0-3003-9BF00D434576</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>imię,nazwisko,data_urodzenia</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

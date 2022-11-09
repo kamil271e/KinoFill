@@ -421,11 +421,11 @@
 <lineWidth>1</lineWidth>
 <sourceLabel class="oracle.dbtools.crest.model.design.Label">
 <site>0</site>
-<labelBounds x="313" y="817" width="60" height="30"/>
+<labelBounds x="313" y="787" width="60" height="30"/>
 </sourceLabel>
 <targetLabel class="oracle.dbtools.crest.model.design.Label">
 <site>2</site>
-<labelBounds x="695" y="817" width="74" height="20"/>
+<labelBounds x="695" y="820" width="74" height="20"/>
 </targetLabel>
 <points>
 <point x="303" y="817"/>

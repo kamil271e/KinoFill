@@ -22,7 +22,9 @@
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="nazwisko" id="4DE0B340-F901-4159-F112-A23772DD86E3">
@@ -32,7 +34,9 @@
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="data_urodzenia" id="0C205938-73A3-EF4C-6599-9F6D4C4B20FE">
@@ -42,7 +46,9 @@
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="kraj_pochodzenia" id="275CB0F0-EAE7-6FD9-81D2-3D88B08F0B35">
@@ -53,7 +59,9 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="ocena" id="21943338-4622-0907-80D1-90F7EB6EA5E8">
@@ -64,19 +72,25 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,3,2</ownDataTypeParameters>
 </Attribute>
-<Attribute name="nazwa" id="332D5BF1-7C2A-FE45-70C6-5660A384167A">
-<createdBy>kamil</createdBy>
-<createdTime>2022-11-08 17:08:44 UTC</createdTime>
+<Attribute name="nazwa" id="167D29EF-781C-C498-9C74-4B1194EEA40C">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 14:09:23 UTC</createdTime>
 <generatorID>B879D241-5468-F86D-5276-F83624BA364B</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>09FF3F01-7B32-B6A3-8A8E-41532AEE69D6</referedAttribute>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -85,14 +99,15 @@
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:48:11 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>8A6050C1-24D3-0574-403C-507CA1BDF53D</attributeRef>
 <attributeRef>4DE0B340-F901-4159-F112-A23772DD86E3</attributeRef>
 <attributeRef>0C205938-73A3-EF4C-6599-9F6D4C4B20FE</attributeRef>
+<attributeRef>8A6050C1-24D3-0574-403C-507CA1BDF53D</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

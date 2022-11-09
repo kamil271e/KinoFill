@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="201FB9FF-3429-1EF5-AD32-5FE7A7CBA890" containerWithKeyObject="0FA6B8C0-8344-DCBA-171E-64D811532FC5" localFKIndex="4EA8638A-55E2-46C6-6B90-97FE289F415B" name="Widz_Użytkownik_FK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>AE2D23C9-8DC0-2E2C-CD1E-B39B60F79367</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<referredTableLongName>Użytkownik</referredTableLongName>
+<arc>8E6FD3CE-5768-70E8-9545-B72A05BA3FBE</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>7CE1F6E2-656F-A6C9-53D8-947346CCE838</referredTableID>
+<keyObject>E2CBB574-150E-B828-EB6C-19CEAF4FBECF</keyObject>
+<referredKeyID>E2CBB574-150E-B828-EB6C-19CEAF4FBECF</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>login</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

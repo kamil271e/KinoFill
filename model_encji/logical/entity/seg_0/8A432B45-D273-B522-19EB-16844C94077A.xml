@@ -65,7 +65,8 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>EB103683-FB70-0F62-48CF-618A0AA020D9</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="rok_produkcji" id="E9A31664-7492-72BC-5F47-C07B017381CC">
@@ -77,19 +78,8 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>E1EB2125-2161-3F77-8772-880863869DE9</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="imię" id="9E80EFF0-6C93-BD04-EF77-8625F8536F26">
-<createdBy>kamil</createdBy>
-<createdTime>2022-11-08 17:54:24 UTC</createdTime>
-<generatorID>D77C663B-78E9-499D-61E6-1C8ADB41895D</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>8A6050C1-24D3-0574-403C-507CA1BDF53D</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="nazwisko" id="51B43C7F-CE87-BE0F-6933-180D710013EB">
@@ -101,7 +91,8 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>4DE0B340-F901-4159-F112-A23772DD86E3</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="data_urodzenia" id="CA9AB931-4FA2-7681-9623-FE88C497C6DC">
@@ -113,7 +104,8 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>0C205938-73A3-EF4C-6599-9F6D4C4B20FE</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="liczba_odcinków" id="A6170BC6-BEFA-D484-7ED5-93110303B71E">
@@ -125,19 +117,35 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>BECFEB19-C022-6CA0-DA3B-52FC8087D71A</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="nazwa1" id="EA0E2D7E-669F-464C-B721-F935638A56A0">
+<Attribute name="imię" id="72D37437-9A1C-FF09-0995-69703F232CE6">
 <createdBy>ogerl</createdBy>
-<createdTime>2022-11-08 18:41:58 UTC</createdTime>
+<createdTime>2022-11-09 14:17:08 UTC</createdTime>
+<generatorID>D77C663B-78E9-499D-61E6-1C8ADB41895D</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>8A6050C1-24D3-0574-403C-507CA1BDF53D</referedAttribute>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nazwa1" id="E5704C8C-69EE-8950-B057-CE7E7DA97BCF">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 14:18:07 UTC</createdTime>
 <generatorID>5401ED67-5EEE-5D82-1DA1-CB840932D618</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>DAF42D56-C89D-BDCD-45B0-022F0AA7C711</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -146,8 +154,9 @@
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:24:52 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
@@ -155,10 +164,10 @@
 <attributeRef>0177F685-FABA-9019-C0D4-6E70A205D9C9</attributeRef>
 <attributeRef>E9A31664-7492-72BC-5F47-C07B017381CC</attributeRef>
 <attributeRef>A6170BC6-BEFA-D484-7ED5-93110303B71E</attributeRef>
-<attributeRef>EA0E2D7E-669F-464C-B721-F935638A56A0</attributeRef>
-<attributeRef>9E80EFF0-6C93-BD04-EF77-8625F8536F26</attributeRef>
+<attributeRef>E5704C8C-69EE-8950-B057-CE7E7DA97BCF</attributeRef>
 <attributeRef>51B43C7F-CE87-BE0F-6933-180D710013EB</attributeRef>
 <attributeRef>CA9AB931-4FA2-7681-9623-FE88C497C6DC</attributeRef>
+<attributeRef>72D37437-9A1C-FF09-0995-69703F232CE6</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

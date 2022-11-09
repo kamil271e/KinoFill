@@ -1,0 +1,165 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="07B0613D-7C59-A18D-1991-9310A16E077E" name="Postać_w_serialu">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>6F972C11-E19B-7E4F-9DD2-3C9C9F042A76</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="nazwa_postaci" id="E9044471-59BE-2084-795B-9AC9216D22E1">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>43AAE1F9-7939-9E43-527B-0D35B7D30C09</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Aktor_imię" id="D10AC0D2-517D-72B2-FF5F-5CA252648EAB">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>5A01A4C7-EB51-9D88-81C0-D8A9849D1CD9</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AC177C5C-52CD-69E1-28B9-A74759EC3ABD" referredColumn="08A9987C-6E1F-63A9-1167-44F05E4B16BF"/>
+</associations>
+</Column>
+<Column name="Aktor_nazwisko" id="7FABC162-3FCD-A0CA-5638-0403BAAF26C2">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>6D903747-9F24-5BD6-8455-CAFB2FAD9802</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AC177C5C-52CD-69E1-28B9-A74759EC3ABD" referredColumn="D01C3DAE-7578-13FD-E73D-7F3CF87FC68D"/>
+</associations>
+</Column>
+<Column name="Aktor_data_urodzenia" id="C80D440A-E139-B857-66E3-5083E0842685">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>C2B939EC-876C-A314-16BD-8720E7A991AC</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AC177C5C-52CD-69E1-28B9-A74759EC3ABD" referredColumn="27C2CCF2-EE10-6FF7-A1C3-1E2A7B9F450C"/>
+</associations>
+</Column>
+<Column name="Serial_liczba_odcinków" id="C6D3360D-6DC8-7AE9-D429-125CE3D9AC5E">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>FA2BFD35-50F7-4601-D70E-A1B3AAB2BA34</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3650BCAE-9970-1B3D-0E28-B56630F2C9E4" referredColumn="63522E6A-9F2F-D3E1-28EB-D4EC59B0A655"/>
+</associations>
+</Column>
+<Column name="Serial_nazwa" id="66F66708-22B3-5954-23DA-3693750415EF">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>0CAA37BB-AB02-DC3F-C398-68ABF3A070E4</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3650BCAE-9970-1B3D-0E28-B56630F2C9E4" referredColumn="DBF83685-202C-18D4-60C1-D89FE82098DF"/>
+</associations>
+</Column>
+<Column name="imię" id="0C9AAD45-579D-0D5C-F300-DAD764BD2FFA">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 14:19:57 UTC</createdTime>
+<generatorID>6966FF70-0B08-EA17-4DE6-874E1494A60D</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nazwa" id="2AC6A8AE-C4EE-BDC3-232B-D120EF9F0D48">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 14:19:57 UTC</createdTime>
+<generatorID>8D78DA29-F443-EC5D-AE6B-DDAF9E2791F5</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F1A4E94B-04D2-3D84-3A33-32908FB65E9B" name="Postać_w_serialu_PK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>33300F7C-612F-15C0-53A4-B67A7EEF5D89</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E9044471-59BE-2084-795B-9AC9216D22E1"/>
+<colUsage columnID="C6D3360D-6DC8-7AE9-D429-125CE3D9AC5E"/>
+<colUsage columnID="66F66708-22B3-5954-23DA-3693750415EF"/>
+<colUsage columnID="D10AC0D2-517D-72B2-FF5F-5CA252648EAB"/>
+<colUsage columnID="7FABC162-3FCD-A0CA-5638-0403BAAF26C2"/>
+<colUsage columnID="C80D440A-E139-B857-66E3-5083E0842685"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E2CB60A9-F6CB-AA4B-7C07-C451D5BD9D91" name="Postać_w_serialu_Serial_FK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>E8318B82-993F-0D6A-AB44-9F1A1F5A658D</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C6D3360D-6DC8-7AE9-D429-125CE3D9AC5E"/>
+<colUsage columnID="66F66708-22B3-5954-23DA-3693750415EF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2F818DB4-85C5-262C-4314-C498F27B025F" name="Postać_w_serialu_Aktor_FK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>AC6494A4-62C5-3FD3-CFC3-54C45372636F</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D10AC0D2-517D-72B2-FF5F-5CA252648EAB"/>
+<colUsage columnID="7FABC162-3FCD-A0CA-5638-0403BAAF26C2"/>
+<colUsage columnID="C80D440A-E139-B857-66E3-5083E0842685"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

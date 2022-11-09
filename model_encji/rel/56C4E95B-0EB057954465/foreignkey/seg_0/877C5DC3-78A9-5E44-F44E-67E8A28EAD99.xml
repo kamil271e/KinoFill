@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="877C5DC3-78A9-5E44-F44E-67E8A28EAD99" containerWithKeyObject="49E2512D-B810-814C-C185-E58D2FA7EB0A" localFKIndex="CB39ACD6-D4FA-56DE-A7A3-2249333732CC" name="Recenzja_Serial_FK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>5401ED67-5EEE-5D82-1DA1-CB840932D618</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<referredTableLongName>Serial</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>4E3816D0-68C1-87B3-6608-E9687FBCF90A</referredTableID>
+<keyObject>5F064637-9525-0F2E-A329-8F3C59588684</keyObject>
+<referredKeyID>5F064637-9525-0F2E-A329-8F3C59588684</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>liczba_odcinków,nazwa</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

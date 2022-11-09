@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="00B11A51-D5EE-BF02-24D6-9085241EE8A3" containerWithKeyObject="8040587A-825D-FDA5-DE84-21DEF888B461" localFKIndex="3B8651AA-7E94-80DE-3138-DAD6F4BD5C3B" name="Wytwórnia_filmowa_Użytkownik_FK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>AC97BA01-8E78-07DB-A5B5-99BFCDB85C67</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<referredTableLongName>Użytkownik</referredTableLongName>
+<arc>8E6FD3CE-5768-70E8-9545-B72A05BA3FBE</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>7CE1F6E2-656F-A6C9-53D8-947346CCE838</referredTableID>
+<keyObject>E2CBB574-150E-B828-EB6C-19CEAF4FBECF</keyObject>
+<referredKeyID>E2CBB574-150E-B828-EB6C-19CEAF4FBECF</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>login</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

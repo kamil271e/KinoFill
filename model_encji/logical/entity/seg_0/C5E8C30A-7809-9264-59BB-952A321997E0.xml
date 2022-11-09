@@ -15,14 +15,16 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_dziennikarza" id="D2D708FA-38CB-4C6F-04CF-AB302F52135C">
+<Attribute name="nazwa" id="8A75E54F-6A96-F776-DE44-8AD9C5C43361">
 <createdBy>ogerl</createdBy>
-<createdTime>2022-11-01 18:41:17 UTC</createdTime>
+<createdTime>2022-11-09 13:45:40 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="imię" id="C7298413-DC14-2C0D-74F5-8EFFCBDC8475">
@@ -32,7 +34,9 @@
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="nazwisko" id="699F886E-17D7-A313-A2C1-B18867C6CA82">
@@ -42,19 +46,22 @@
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="login" id="9461A630-D2DD-1D34-D2C4-CC5BE4A6B63D">
-<createdBy>kamil</createdBy>
-<createdTime>2022-11-08 17:54:55 UTC</createdTime>
+<Attribute name="login" id="4AAC6532-C4B5-4343-7C2A-8975713D48BB">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:53:02 UTC</createdTime>
 <generatorID>CFE73885-90DF-D1A1-AA39-3BA31B29A5E7</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>D44C6A9B-E75E-7A01-A695-5A8BC0522A4B</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -63,12 +70,13 @@
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:41:25 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>D2D708FA-38CB-4C6F-04CF-AB302F52135C</attributeRef>
+<attributeRef>8A75E54F-6A96-F776-DE44-8AD9C5C43361</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

@@ -1,0 +1,133 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0E2BBBDC-6582-4B70-71DD-F2AB45614F6E" name="News">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>D038DFC5-509E-F1FD-BDBB-94B178D6E37B</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_newsa" id="4EF932CD-4541-75D2-9B14-2724EB733F67">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>D4863FED-E9C6-CBDE-9C46-0F3A1D2E8F22</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="treść" id="5D54D238-52B6-C3C1-A822-62C23149E7BA">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>B735BA32-3C8B-6094-D992-D3ED7F3A9187</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT028</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_publikacji" id="D8D5DDE7-965F-823C-9549-C5F5A36E524E">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>5830A307-7550-1306-3982-84B02315FC6C</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Dziennikarz_id_dziennikarza" id="34C45507-F3D0-53E5-3CE7-B51ED259AA14">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>18FD6D2C-4FB6-CEA2-8194-74B3B9E52FED</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Wytwórnia_filmowa_nazwa" id="621BCCC5-7976-5C8C-FEF5-02D53CDF35F2">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>779299E6-8A34-D3A2-39E8-C2B56BA6543E</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6D14269A-441E-7F8A-6366-13EC95D068BC" referredColumn="1CBE837A-19FA-8F2D-42CE-E4E7483CE37D"/>
+</associations>
+</Column>
+<Column name="Dziennikarz_nazwa" id="46379E98-74B3-063A-85C8-FC13FFB83E44">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:56:06 UTC</createdTime>
+<generatorID>E11E60D3-22E6-46B7-4935-5932D68E9206</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CF40E78E-D9AC-35C1-FBFC-511F518D4E3C" referredColumn="36A61F9C-E725-EF33-3254-B058D26FCD8D"/>
+</associations>
+</Column>
+<Column name="nazwa" id="3DE5F4D0-2230-5F33-3AFD-210C6C0A1FE6">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 14:09:52 UTC</createdTime>
+<generatorID>95541C7D-D8CD-C4A5-95B2-C40FF452A89A</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="84400CE0-BF0F-AA5F-0ED3-27897D019203" name="News_PK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:11 UTC</createdTime>
+<generatorID>FC443356-BD58-8F73-B02B-02CF566FC302</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4EF932CD-4541-75D2-9B14-2724EB733F67"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="32539146-3B40-3727-529B-71C72644128A" name="News_Wytwórnia_filmowa_FK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>E3A9EB1F-ACA2-FA7A-C24E-CAB9FE0A06E1</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="621BCCC5-7976-5C8C-FEF5-02D53CDF35F2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FFAC8326-6A7A-CF6A-4160-C65107001BA7" name="News_Dziennikarz_FK">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<generatorID>E5371295-7607-68E7-FA07-7C19066CF82A</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="46379E98-74B3-063A-85C8-FC13FFB83E44"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
