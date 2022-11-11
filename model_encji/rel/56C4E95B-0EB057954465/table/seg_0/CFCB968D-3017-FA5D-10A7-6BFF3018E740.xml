@@ -72,6 +72,7 @@
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>332D5BF1-7C2A-FE45-70C6-5660A384167A</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
@@ -104,9 +105,9 @@
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="08A9987C-6E1F-63A9-1167-44F05E4B16BF"/>
 <colUsage columnID="D01C3DAE-7578-13FD-E73D-7F3CF87FC68D"/>
 <colUsage columnID="27C2CCF2-EE10-6FF7-A1C3-1E2A7B9F450C"/>
+<colUsage columnID="08A9987C-6E1F-63A9-1167-44F05E4B16BF"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="462A3A2D-14E3-62D7-791D-9618638E5899" name="Aktor_Wytwórnia_filmowa_FK">

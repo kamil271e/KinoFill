@@ -1,16 +1,14 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0A3387D0-DE82-F4ED-556E-30D515E0E508" containerWithKeyObject="6D4A8E7D-15EE-3018-7885-D8BB23F0BF2A" localFKIndex="D11198BC-FE96-9133-AAA9-5DF3ECED4CC4" name="Relation_19_Gatunek_FK">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D3073878-5B12-D866-5353-44383510DB4D" containerWithKeyObject="0985CE39-E67E-66AC-6785-38E9862F5FBA" localFKIndex="C996FB57-ED82-F34F-E1C7-C50AFC3F8780" name="Gatunek_filmu">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-11 15:55:41 UTC</createdTime>
 <generatorID>458FB89F-8AED-7777-956C-454295D7AD00</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
-<referredTableLongName>Gatunek</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>DEC44643-FC45-D905-436B-7C0349E5F41E</referredTableID>
 <keyObject>E13F4DA1-5ECF-C414-EA78-D4F5C3BBB330</keyObject>
 <referredKeyID>E13F4DA1-5ECF-C414-EA78-D4F5C3BBB330</referredKeyID>
 <mandatory>true</mandatory>
-<refColNames>nazwa</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

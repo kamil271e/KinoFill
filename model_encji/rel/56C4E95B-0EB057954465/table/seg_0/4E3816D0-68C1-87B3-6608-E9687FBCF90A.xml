@@ -62,6 +62,7 @@
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>14E34D80-5D08-C816-D85E-ABC71C6C7390</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
@@ -166,6 +167,14 @@
 <colUsage columnID="3252D36A-F6CD-A508-07F7-28F59F0121B7"/>
 <colUsage columnID="2C3FADA8-CAB8-524D-01C8-BC1AAD242CD4"/>
 </indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="572C9A0D-F539-6A30-E9D3-9237E2866F51" name="Gatunek_serialu">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-11 15:55:41 UTC</createdTime>
+<generatorID>16949114-84B7-C63E-39C0-1903AD9BF6E7</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
 </ind_PK_UK>
 </indexes>
 </Table>

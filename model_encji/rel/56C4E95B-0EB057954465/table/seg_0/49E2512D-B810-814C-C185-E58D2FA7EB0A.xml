@@ -13,8 +13,11 @@
 <createdTime>2022-11-09 13:28:12 UTC</createdTime>
 <generatorID>0567082C-46D2-EAD7-7253-1CE8A89D7CA5</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="ocena" id="6430F8F6-4015-C926-E8B9-1EE89C42577C">
@@ -22,8 +25,11 @@
 <createdTime>2022-11-09 13:28:12 UTC</createdTime>
 <generatorID>D0804452-C982-7F49-1C33-26EF8AC84AEE</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="data" id="2BBD2257-3313-A2D1-972E-A868F1A640EB">
@@ -31,7 +37,9 @@
 <createdTime>2022-11-09 13:28:12 UTC</createdTime>
 <generatorID>575140BF-D7A7-7F15-BFEC-A3205B799DF3</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
@@ -42,6 +50,8 @@
 <ownerDesignName>model_encji</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <use>0</use>
+<logicalDatatype>LOGDT028</logicalDatatype>
+<domain>DOM10009</domain>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
@@ -80,6 +90,7 @@
 <createdTime>2022-11-09 13:28:12 UTC</createdTime>
 <generatorID>9E80EFF0-6C93-BD04-EF77-8625F8536F26</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
@@ -128,7 +139,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>4</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -140,6 +151,7 @@
 <createdTime>2022-11-09 13:28:12 UTC</createdTime>
 <generatorID>EA0E2D7E-669F-464C-B721-F935638A56A0</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
@@ -202,9 +214,9 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="96296558-A362-CD9A-0A41-95EF1DB9FB9C"/>
 <colUsage columnID="77D950B2-D07A-F669-3096-A921E859053C"/>
 <colUsage columnID="EA97E7C9-EDC2-DF67-1C75-6EC77C904F83"/>
+<colUsage columnID="96296558-A362-CD9A-0A41-95EF1DB9FB9C"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="638C87A6-6F3D-C7CC-0EE8-2ED315405DA6" name="Recenzja_Film_FK">

@@ -24,6 +24,7 @@
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>5A01A4C7-EB51-9D88-81C0-D8A9849D1CD9</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
@@ -72,7 +73,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>4</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -84,6 +85,7 @@
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>0CAA37BB-AB02-DC3F-C398-68ABF3A070E4</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
@@ -130,10 +132,10 @@
 <indexColumnUsage>
 <colUsage columnID="E9044471-59BE-2084-795B-9AC9216D22E1"/>
 <colUsage columnID="C6D3360D-6DC8-7AE9-D429-125CE3D9AC5E"/>
-<colUsage columnID="66F66708-22B3-5954-23DA-3693750415EF"/>
-<colUsage columnID="D10AC0D2-517D-72B2-FF5F-5CA252648EAB"/>
+<colUsage columnID="2AC6A8AE-C4EE-BDC3-232B-D120EF9F0D48"/>
 <colUsage columnID="7FABC162-3FCD-A0CA-5638-0403BAAF26C2"/>
 <colUsage columnID="C80D440A-E139-B857-66E3-5083E0842685"/>
+<colUsage columnID="0C9AAD45-579D-0D5C-F300-DAD764BD2FFA"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="E2CB60A9-F6CB-AA4B-7C07-C451D5BD9D91" name="Postać_w_serialu_Serial_FK">
@@ -156,9 +158,9 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="D10AC0D2-517D-72B2-FF5F-5CA252648EAB"/>
 <colUsage columnID="7FABC162-3FCD-A0CA-5638-0403BAAF26C2"/>
 <colUsage columnID="C80D440A-E139-B857-66E3-5083E0842685"/>
+<colUsage columnID="D10AC0D2-517D-72B2-FF5F-5CA252648EAB"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

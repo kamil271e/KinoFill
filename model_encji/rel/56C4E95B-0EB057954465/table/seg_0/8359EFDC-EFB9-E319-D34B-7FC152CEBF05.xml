@@ -54,6 +54,7 @@
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>7CD2473B-D263-05BB-9126-72BE95626076</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
@@ -119,9 +120,9 @@
 <colUsage columnID="C8B32EEF-4B02-EBD1-D0E6-D77658EEB59D"/>
 <colUsage columnID="66E89344-D27E-0BA3-35D6-930B75B063C9"/>
 <colUsage columnID="E8783ACB-9BEA-066D-3F02-BC51FB7D8282"/>
-<colUsage columnID="54D9F509-E856-504F-4FD1-5FF600399835"/>
 <colUsage columnID="FDC22938-C640-05F7-CA90-3437489EA60D"/>
 <colUsage columnID="A9775A3B-FB02-8992-23E1-956EC3D24E74"/>
+<colUsage columnID="3D25EA2E-B327-9960-F383-40953FD42656"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="A71EC018-38B1-D82C-AE9F-41B836025799" name="Postać_w_filmie_Aktor_FK">
@@ -132,9 +133,9 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="54D9F509-E856-504F-4FD1-5FF600399835"/>
 <colUsage columnID="FDC22938-C640-05F7-CA90-3437489EA60D"/>
 <colUsage columnID="A9775A3B-FB02-8992-23E1-956EC3D24E74"/>
+<colUsage columnID="54D9F509-E856-504F-4FD1-5FF600399835"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="95A6B128-6877-E0DE-67F4-72C821033DF5" name="Postać_w_filmie_Film_FK">

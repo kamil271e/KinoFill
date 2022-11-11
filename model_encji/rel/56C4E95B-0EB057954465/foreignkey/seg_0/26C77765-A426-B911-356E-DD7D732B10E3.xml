@@ -1,16 +1,14 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="8322484E-A783-9A32-70BE-E29735EB50D3" containerWithKeyObject="6D4A8E7D-15EE-3018-7885-D8BB23F0BF2A" localFKIndex="CC99ADD2-17D2-6E83-B2E9-6218AB9EF7BD" name="Relation_19_Film_FK">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="26C77765-A426-B911-356E-DD7D732B10E3" containerWithKeyObject="E1854843-B7BE-3500-A27B-BEEC011B9E7B" localFKIndex="E32DA0BC-3454-12AE-576A-211C2DE462A5" name="FK_ASS_6">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-11 15:55:41 UTC</createdTime>
 <generatorID>458FB89F-8AED-7777-956C-454295D7AD00</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
-<referredTableLongName>Film</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>0985CE39-E67E-66AC-6785-38E9862F5FBA</referredTableID>
 <keyObject>3EB5EE61-BD9A-6A62-1654-D708188FB469</keyObject>
 <referredKeyID>3EB5EE61-BD9A-6A62-1654-D708188FB469</referredKeyID>
 <mandatory>true</mandatory>
-<refColNames>nazwa,rok_produkcji</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

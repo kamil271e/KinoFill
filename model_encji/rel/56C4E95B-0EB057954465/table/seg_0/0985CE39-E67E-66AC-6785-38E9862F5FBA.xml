@@ -35,8 +35,11 @@
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>407EC6D0-2772-415F-3D67-546D143DF139</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="ocena_widzów" id="63CC3756-2B3F-E0AB-F97E-1F3C14AC6B80">
@@ -58,6 +61,7 @@
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>E3EDDC97-168A-38CC-F268-554EB29B549D</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
@@ -162,6 +166,14 @@
 <colUsage columnID="9FDDF43F-C621-7937-0225-19DE90B58142"/>
 <colUsage columnID="08CBD0FD-5929-4973-F9A0-9768359312B3"/>
 </indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C996FB57-ED82-F34F-E1C7-C50AFC3F8780" name="Gatunek_filmu">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-11 15:55:41 UTC</createdTime>
+<generatorID>458FB89F-8AED-7777-956C-454295D7AD00</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
 </ind_PK_UK>
 </indexes>
 </Table>
