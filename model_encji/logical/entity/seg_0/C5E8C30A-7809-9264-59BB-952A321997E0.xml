@@ -60,8 +60,22 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>D44C6A9B-E75E-7A01-A695-5A8BC0522A4B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="data_urodzenia" id="44D3B2ED-1C4B-453E-A9BF-BFB17E961BDD">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-15 14:13:33 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

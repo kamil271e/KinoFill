@@ -25,7 +25,7 @@ class User(db.Model):
 def home():
     if request.method == 'POST' and request.form.get("login") == "admin":
         return redirect(url_for('user', name='admin'))
-    elif request.method == 'POST': 
+    elif request.method == 'POST':
         print(request.form['login'])
         login = request.form['login']
         user = User(login)
