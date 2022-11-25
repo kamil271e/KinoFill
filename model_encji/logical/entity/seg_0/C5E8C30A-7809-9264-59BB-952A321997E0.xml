@@ -25,9 +25,10 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="imię" id="C7298413-DC14-2C0D-74F5-8EFFCBDC8475">
+<Attribute name="imie" id="C7298413-DC14-2C0D-74F5-8EFFCBDC8475">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:41:26 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
@@ -37,7 +38,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="nazwisko" id="699F886E-17D7-A313-A2C1-B18867C6CA82">
 <createdBy>ogerl</createdBy>
@@ -49,7 +51,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="login" id="4AAC6532-C4B5-4343-7C2A-8975713D48BB">
 <createdBy>ogerl</createdBy>
@@ -63,6 +66,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="data_urodzenia" id="44D3B2ED-1C4B-453E-A9BF-BFB17E961BDD">

@@ -20,7 +20,7 @@
 <ownDataTypeParameters>,4,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="data_dołączenia" id="B0AC1373-1E10-CAF2-F102-76F2BFD97760">
+<Column name="data_dolaczenia" id="B0AC1373-1E10-CAF2-F102-76F2BFD97760">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:12 UTC</createdTime>
 <generatorID>D65700B9-9F41-A18F-B94D-D05B0C66077E</generatorID>
@@ -31,13 +31,15 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Użytkownik_login" id="907C2A4C-602A-6F8C-C1FD-2C47A58EE946">
+<Column name="login" id="907C2A4C-602A-6F8C-C1FD-2C47A58EE946">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:12 UTC</createdTime>
 <generatorID>0A59EB7D-7036-1D96-9341-1429F7405A1A</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
@@ -45,16 +47,27 @@
 <colAssociation fkAssociation="201FB9FF-3429-1EF5-AD32-5FE7A7CBA890" referredColumn="A3000830-6FF4-931E-DECB-7EB8C7EA213A"/>
 </associations>
 </Column>
-<Column name="login" id="719ABAB9-0DD3-E3B4-0C4D-707765567C56">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:56:06 UTC</createdTime>
-<generatorID>2C9FB550-C9BB-12B9-2AEA-648BF1FD2E54</generatorID>
+<Column name="czy_publiczny" id="56E967F1-CBEF-3008-F841-7D18559D053A">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-25 11:04:32 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nazwa" id="2B06CF2C-5234-FD60-20AA-85BC3286F9F9">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-25 11:05:06 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>

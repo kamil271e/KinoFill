@@ -4,13 +4,12 @@
 <createdTime>2022-11-09 13:28:12 UTC</createdTime>
 <generatorID>E3A9EB1F-ACA2-FA7A-C24E-CAB9FE0A06E1</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
-<referredTableLongName>Wytwórnia_filmowa</referredTableLongName>
+<arc>4DBDA94E-88D0-043F-264C-1DF85EBB4B40</arc>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>8040587A-825D-FDA5-DE84-21DEF888B461</referredTableID>
 <keyObject>3B40ACD3-D305-FC20-BF33-698C40673F91</keyObject>
 <referredKeyID>3B40ACD3-D305-FC20-BF33-698C40673F91</referredKeyID>
-<mandatory>true</mandatory>
-<refColNames>nazwa</refColNames>
+<mandatory>false</mandatory>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

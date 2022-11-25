@@ -4,13 +4,12 @@
 <createdTime>2022-11-09 13:28:12 UTC</createdTime>
 <generatorID>D77C663B-78E9-499D-61E6-1C8ADB41895D</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
-<referredTableLongName>Aktor</referredTableLongName>
+<arc>CEF3CB78-A31B-0DEA-65C7-77612BC2CC88</arc>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>CFCB968D-3017-FA5D-10A7-6BFF3018E740</referredTableID>
 <keyObject>9C7874B5-373C-37F0-3003-9BF00D434576</keyObject>
 <referredKeyID>9C7874B5-373C-37F0-3003-9BF00D434576</referredKeyID>
-<mandatory>true</mandatory>
-<refColNames>imię,nazwisko,data_urodzenia</refColNames>
+<mandatory>false</mandatory>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

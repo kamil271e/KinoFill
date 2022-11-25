@@ -25,7 +25,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="rok_produkcji" id="E1EB2125-2161-3F77-8772-880863869DE9">
 <createdBy>ogerl</createdBy>
@@ -39,7 +40,7 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="długość" id="407EC6D0-2772-415F-3D67-546D143DF139">
+<Attribute name="dlugosc" id="407EC6D0-2772-415F-3D67-546D143DF139">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:18:00 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
@@ -52,7 +53,7 @@
 <dataTypePrecision>3</dataTypePrecision>
 <ownDataTypeParameters>,3,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="ocena_widzów" id="2693DA76-A1AE-E786-FF35-E2BE6161E412">
+<Attribute name="ocena_widzow" id="2693DA76-A1AE-E786-FF35-E2BE6161E412">
 <createdBy>kamil</createdBy>
 <createdTime>2022-11-02 15:18:33 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
@@ -67,7 +68,7 @@
 <dataTypeScale>2</dataTypeScale>
 <ownDataTypeParameters>,3,2</ownDataTypeParameters>
 </Attribute>
-<Attribute name="imię" id="837EAD5F-9EFE-CE0C-966D-2429FA1608FA">
+<Attribute name="imie" id="837EAD5F-9EFE-CE0C-966D-2429FA1608FA">
 <createdBy>kamil</createdBy>
 <createdTime>2022-11-08 17:53:27 UTC</createdTime>
 <generatorID>B20A99B8-6C34-595D-C342-0739ECB795E3</generatorID>
@@ -79,6 +80,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="nazwisko" id="F84205DD-3EB3-BE91-55AD-9B9C362768A3">
@@ -93,6 +95,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="data_urodzenia" id="79B29FAE-8C47-E00E-2DF1-B1A48DF60122">
@@ -121,6 +124,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

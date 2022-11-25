@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8359EFDC-EFB9-E319-D34B-7FC152CEBF05" name="Postać_w_filmie">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8359EFDC-EFB9-E319-D34B-7FC152CEBF05" name="Postac_w_filmie">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>C13D5677-629B-D50C-D14F-1FB59A5CFAA7</generatorID>
@@ -8,6 +8,17 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_postaci" id="D5BA7B6E-8515-D1E2-9C53-09D0EFB5D1C8">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-25 11:39:01 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="nazwa_postaci" id="C8B32EEF-4B02-EBD1-D0E6-D77658EEB59D">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
@@ -16,95 +27,39 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Film_nazwa" id="66E89344-D27E-0BA3-35D6-930B75B063C9">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:11 UTC</createdTime>
-<generatorID>2A789EF6-9FF2-6309-0CC0-6C8745552874</generatorID>
+<Column name="id_filmu" id="E0A8A2C9-E120-F9C2-7239-CC22D777030F">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-25 10:42:22 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="D2D14094-2D93-A35E-76D3-707C20C327D2" referredColumn="EFEE3666-E5F5-9B2B-62C2-249544025937"/>
+<colAssociation fkAssociation="D2D14094-2D93-A35E-76D3-707C20C327D2" referredColumn="18E2FFFF-6157-1EE9-E09F-C2D1ECF1603E"/>
 </associations>
 </Column>
-<Column name="Film_rok_produkcji" id="E8783ACB-9BEA-066D-3F02-BC51FB7D8282">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:11 UTC</createdTime>
-<generatorID>5E43708D-B5F9-7BCF-0F71-799F6394DAEA</generatorID>
+<Column name="id_aktora" id="3CA93BF5-E6B9-2A97-9D21-2893DA651E63">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-25 10:56:34 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT007</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="D2D14094-2D93-A35E-76D3-707C20C327D2" referredColumn="74EACEC2-E6BF-6D70-FF85-AAC296161EB6"/>
+<colAssociation fkAssociation="6928D6DE-F7F6-D940-0CD5-1D2364232E72" referredColumn="0E16AF3C-5ECC-ABF2-454B-CBE43D5B5740"/>
 </associations>
-</Column>
-<Column name="Aktor_imię" id="54D9F509-E856-504F-4FD1-5FF600399835">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:11 UTC</createdTime>
-<generatorID>7CD2473B-D263-05BB-9126-72BE95626076</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="6928D6DE-F7F6-D940-0CD5-1D2364232E72" referredColumn="08A9987C-6E1F-63A9-1167-44F05E4B16BF"/>
-</associations>
-</Column>
-<Column name="Aktor_nazwisko" id="FDC22938-C640-05F7-CA90-3437489EA60D">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:11 UTC</createdTime>
-<generatorID>F25BF65C-E7A5-BA1D-7714-BC4F32074F6B</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="6928D6DE-F7F6-D940-0CD5-1D2364232E72" referredColumn="D01C3DAE-7578-13FD-E73D-7F3CF87FC68D"/>
-</associations>
-</Column>
-<Column name="Aktor_data_urodzenia" id="A9775A3B-FB02-8992-23E1-956EC3D24E74">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:11 UTC</createdTime>
-<generatorID>0BAAF7DC-1ADA-C282-3616-3DE329E4EAC6</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT007</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="6928D6DE-F7F6-D940-0CD5-1D2364232E72" referredColumn="27C2CCF2-EE10-6FF7-A1C3-1E2A7B9F450C"/>
-</associations>
-</Column>
-<Column name="imię" id="3D25EA2E-B327-9960-F383-40953FD42656">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 14:19:57 UTC</createdTime>
-<generatorID>6102D7DB-E54A-FB13-7BC6-A75B844015D9</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -117,12 +72,7 @@
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="C8B32EEF-4B02-EBD1-D0E6-D77658EEB59D"/>
-<colUsage columnID="66E89344-D27E-0BA3-35D6-930B75B063C9"/>
-<colUsage columnID="E8783ACB-9BEA-066D-3F02-BC51FB7D8282"/>
-<colUsage columnID="FDC22938-C640-05F7-CA90-3437489EA60D"/>
-<colUsage columnID="A9775A3B-FB02-8992-23E1-956EC3D24E74"/>
-<colUsage columnID="3D25EA2E-B327-9960-F383-40953FD42656"/>
+<colUsage columnID="D5BA7B6E-8515-D1E2-9C53-09D0EFB5D1C8"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="A71EC018-38B1-D82C-AE9F-41B836025799" name="Postać_w_filmie_Aktor_FK">
@@ -133,9 +83,7 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="FDC22938-C640-05F7-CA90-3437489EA60D"/>
-<colUsage columnID="A9775A3B-FB02-8992-23E1-956EC3D24E74"/>
-<colUsage columnID="54D9F509-E856-504F-4FD1-5FF600399835"/>
+<colUsage columnID="3CA93BF5-E6B9-2A97-9D21-2893DA651E63"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="95A6B128-6877-E0DE-67F4-72C821033DF5" name="Postać_w_filmie_Film_FK">
@@ -146,8 +94,7 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="66E89344-D27E-0BA3-35D6-930B75B063C9"/>
-<colUsage columnID="E8783ACB-9BEA-066D-3F02-BC51FB7D8282"/>
+<colUsage columnID="E0A8A2C9-E120-F9C2-7239-CC22D777030F"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

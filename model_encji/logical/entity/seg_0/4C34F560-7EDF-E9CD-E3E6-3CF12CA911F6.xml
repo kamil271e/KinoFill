@@ -25,9 +25,10 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="hasło" id="B0EE89B5-BED5-88BD-51FC-6219120EA79B">
+<Attribute name="haslo" id="B0EE89B5-BED5-88BD-51FC-6219120EA79B">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:31:43 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
@@ -37,7 +38,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="opis_profilu" id="62FC5983-9B47-8C53-28D6-E96B2323AA77">
 <createdBy>ogerl</createdBy>

@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7CE1F6E2-656F-A6C9-53D8-947346CCE838" name="Użytkownik">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7CE1F6E2-656F-A6C9-53D8-947346CCE838" name="Uzytkownik">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>4C34F560-7EDF-E9CD-E3E6-3CF12CA911F6</generatorID>
@@ -16,10 +16,11 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="hasło" id="7B145D7E-AD86-DB3C-8C2A-C47DBE37B0B3">
+<Column name="haslo" id="7B145D7E-AD86-DB3C-8C2A-C47DBE37B0B3">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>B0EE89B5-BED5-88BD-51FC-6219120EA79B</generatorID>
@@ -27,7 +28,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="opis_profilu" id="7713D9AC-13A4-6649-5349-B3F03B2CB1F1">
@@ -40,6 +42,18 @@
 <use>1</use>
 <logicalDatatype>LOGDT028</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="typ_uzytkownika" id="1C046F0C-6A1C-AF62-3F2C-01F5EF5234DE">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-24 11:25:44 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>

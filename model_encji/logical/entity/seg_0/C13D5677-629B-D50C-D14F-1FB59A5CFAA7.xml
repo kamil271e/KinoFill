@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C13D5677-629B-D50C-D14F-1FB59A5CFAA7" name="Postać w filmie">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C13D5677-629B-D50C-D14F-1FB59A5CFAA7" name="Postac w filmie">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-02 17:59:13 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
@@ -25,7 +25,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="nazwa" id="2A789EF6-9FF2-6309-0CC0-6C8745552874">
 <createdBy>kamil</createdBy>
@@ -36,8 +37,10 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>EB103683-FB70-0F62-48CF-618A0AA020D9</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="rok_produkcji" id="5E43708D-B5F9-7BCF-0F71-799F6394DAEA">
@@ -49,6 +52,7 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>E1EB2125-2161-3F77-8772-880863869DE9</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
@@ -62,9 +66,11 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>4DE0B340-F901-4159-F112-A23772DD86E3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="data_urodzenia" id="0BAAF7DC-1ADA-C282-3616-3DE329E4EAC6">
 <createdBy>ogerl</createdBy>
@@ -75,11 +81,12 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>0C205938-73A3-EF4C-6599-9F6D4C4B20FE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="imię" id="6102D7DB-E54A-FB13-7BC6-A75B844015D9">
+<Attribute name="imie" id="6102D7DB-E54A-FB13-7BC6-A75B844015D9">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 14:17:08 UTC</createdTime>
 <generatorID>C23C609F-61C0-098C-3F9E-F81D44780126</generatorID>
@@ -88,9 +95,11 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>8A6050C1-24D3-0574-403C-507CA1BDF53D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

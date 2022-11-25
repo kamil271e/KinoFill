@@ -40,7 +40,7 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="treść" id="FF5080DF-612D-EF1C-7D23-A7844A8253BC">
+<Attribute name="tresc" id="FF5080DF-612D-EF1C-7D23-A7844A8253BC">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:24:47 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
@@ -65,6 +65,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="rok_produkcji" id="E9A31664-7492-72BC-5F47-C07B017381CC">
@@ -93,6 +94,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="data_urodzenia" id="CA9AB931-4FA2-7681-9623-FE88C497C6DC">
@@ -109,7 +111,7 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="liczba_odcinków" id="A6170BC6-BEFA-D484-7ED5-93110303B71E">
+<Attribute name="liczba_odcinkow" id="A6170BC6-BEFA-D484-7ED5-93110303B71E">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-08 18:41:54 UTC</createdTime>
 <generatorID>5401ED67-5EEE-5D82-1DA1-CB840932D618</generatorID>
@@ -122,9 +124,9 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>4</dataTypePrecision>
-<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="imię" id="72D37437-9A1C-FF09-0995-69703F232CE6">
+<Attribute name="imie" id="72D37437-9A1C-FF09-0995-69703F232CE6">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 14:17:08 UTC</createdTime>
 <generatorID>D77C663B-78E9-499D-61E6-1C8ADB41895D</generatorID>
@@ -136,6 +138,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="nazwa1" id="E5704C8C-69EE-8950-B057-CE7E7DA97BCF">
@@ -150,6 +153,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

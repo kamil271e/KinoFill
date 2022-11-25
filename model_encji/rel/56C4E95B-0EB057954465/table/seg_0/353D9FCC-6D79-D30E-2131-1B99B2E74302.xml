@@ -8,16 +8,19 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id_dziennikarza" id="CFB01078-10AF-0C1C-7240-6018519BAA83">
+<Column name="nazwa" id="36A61F9C-E725-EF33-3254-B058D26FCD8D">
 <createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:11 UTC</createdTime>
-<generatorID>D2D708FA-38CB-4C6F-04CF-AB302F52135C</generatorID>
+<createdTime>2022-11-09 13:56:06 UTC</createdTime>
+<generatorID>8A75E54F-6A96-F776-DE44-8AD9C5C43361</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="imię" id="13D3D3C1-4D1D-6F66-67EA-AD55412447D1">
+<Column name="imie" id="13D3D3C1-4D1D-6F66-67EA-AD55412447D1">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>C7298413-DC14-2C0D-74F5-8EFFCBDC8475</generatorID>
@@ -25,7 +28,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="nazwisko" id="A6D1DAE5-416D-5E79-A572-6144B13843FF">
@@ -36,16 +40,19 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Użytkownik_login" id="6C2918E5-E906-63FA-C7E9-65CEF172E76C">
+<Column name="login" id="6C2918E5-E906-63FA-C7E9-65CEF172E76C">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>9461A630-D2DD-1D34-D2C4-CC5BE4A6B63D</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
@@ -53,27 +60,16 @@
 <colAssociation fkAssociation="E3EFB6C6-5B86-432F-15A9-49B005E0D19C" referredColumn="A3000830-6FF4-931E-DECB-7EB8C7EA213A"/>
 </associations>
 </Column>
-<Column name="nazwa" id="36A61F9C-E725-EF33-3254-B058D26FCD8D">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:56:06 UTC</createdTime>
-<generatorID>8A75E54F-6A96-F776-DE44-8AD9C5C43361</generatorID>
+<Column name="data_urodzenia" id="3A26AC38-E7C2-B38B-C533-9D0CCB252EFA">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-24 11:21:29 UTC</createdTime>
+<generatorID>44D3B2ED-1C4B-453E-A9BF-BFB17E961BDD</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="login" id="21138EE1-3203-815C-F24F-5E939CE401F2">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:56:06 UTC</createdTime>
-<generatorID>4AAC6532-C4B5-4343-7C2A-8975713D48BB</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>

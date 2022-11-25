@@ -25,7 +25,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="kraj_pochodzenia" id="347E3EDD-B4E3-ED1C-0E5F-1BABA9985204">
 <createdBy>ogerl</createdBy>
@@ -38,9 +39,10 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="data_założenia" id="910FAF38-7CFB-F074-2F71-8284ADF7685E">
+<Attribute name="data_zalozenia" id="910FAF38-7CFB-F074-2F71-8284ADF7685E">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:40:13 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
@@ -53,7 +55,7 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="ocena_widzów" id="3CDDD59F-45F3-EC09-534E-CFF882169282">
+<Attribute name="ocena_widzow" id="3CDDD59F-45F3-EC09-534E-CFF882169282">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 19:11:36 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
@@ -80,7 +82,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

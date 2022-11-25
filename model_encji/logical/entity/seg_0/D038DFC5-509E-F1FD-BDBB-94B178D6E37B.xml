@@ -28,7 +28,7 @@
 <dataTypePrecision>4</dataTypePrecision>
 <ownDataTypeParameters>,4,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="treść" id="B735BA32-3C8B-6094-D992-D3ED7F3A9187">
+<Attribute name="tresc" id="B735BA32-3C8B-6094-D992-D3ED7F3A9187">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:53:44 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
@@ -61,9 +61,11 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>8A75E54F-6A96-F776-DE44-8AD9C5C43361</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="nazwa" id="95541C7D-D8CD-C4A5-95B2-C40FF452A89A">
 <createdBy>ogerl</createdBy>
@@ -77,6 +79,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D3073878-5B12-D866-5353-44383510DB4D" containerWithKeyObject="0985CE39-E67E-66AC-6785-38E9862F5FBA" localFKIndex="C996FB57-ED82-F34F-E1C7-C50AFC3F8780" name="Gatunek_filmu">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="5B5679F8-6C01-C8E3-1C7D-CAC706B3F638" containerWithKeyObject="6B9425BD-74A7-83D1-4232-DDDE2E4676E2" localFKIndex="DDE73305-DAFD-586C-789E-3FD1AB438CA8" name="FK_ASS_1">
 <createdBy>kamil</createdBy>
-<createdTime>2022-11-11 15:55:41 UTC</createdTime>
+<createdTime>2022-11-24 11:21:29 UTC</createdTime>
 <generatorID>458FB89F-8AED-7777-956C-454295D7AD00</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <deleteRule>NO ACTION</deleteRule>

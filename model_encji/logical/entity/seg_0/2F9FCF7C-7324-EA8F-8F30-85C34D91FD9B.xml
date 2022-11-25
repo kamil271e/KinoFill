@@ -25,7 +25,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="liczba_odcinków" id="BECFEB19-C022-6CA0-DA3B-52FC8087D71A">
 <createdBy>ogerl</createdBy>
@@ -68,7 +69,7 @@
 <dataTypeScale>2</dataTypeScale>
 <ownDataTypeParameters>,3,2</ownDataTypeParameters>
 </Attribute>
-<Attribute name="imię" id="3704F436-927C-5961-DE08-37AD4D7E5C05">
+<Attribute name="imie" id="3704F436-927C-5961-DE08-37AD4D7E5C05">
 <createdBy>kamil</createdBy>
 <createdTime>2022-11-08 17:53:27 UTC</createdTime>
 <generatorID>67BBF468-4AB3-D138-BBBC-3334D8A5D3C1</generatorID>
@@ -80,6 +81,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="nazwisko" id="140D97EE-2C2F-A164-C19D-B810536B85C3">
@@ -94,6 +96,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="data_urodzenia" id="4BEB4966-D4FD-1A62-005F-D1BDFBFEFAB7">
@@ -122,6 +125,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

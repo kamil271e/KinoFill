@@ -16,7 +16,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="ocena_widzów" id="4329847F-00D9-6703-AADA-63C7D8216125">
+<Attribute name="ocena_widzow" id="4329847F-00D9-6703-AADA-63C7D8216125">
 <createdBy>kamil</createdBy>
 <createdTime>2022-11-02 17:45:07 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
@@ -58,6 +58,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

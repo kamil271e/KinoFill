@@ -20,7 +20,7 @@
 <ownDataTypeParameters>,4,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="treść" id="5D54D238-52B6-C3C1-A822-62C23149E7BA">
+<Column name="tresc" id="5D54D238-52B6-C3C1-A822-62C23149E7BA">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>B735BA32-3C8B-6094-D992-D3ED7F3A9187</generatorID>
@@ -42,23 +42,16 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Dziennikarz_id_dziennikarza" id="34C45507-F3D0-53E5-3CE7-B51ED259AA14">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:11 UTC</createdTime>
-<generatorID>18FD6D2C-4FB6-CEA2-8194-74B3B9E52FED</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Wytwórnia_filmowa_nazwa" id="621BCCC5-7976-5C8C-FEF5-02D53CDF35F2">
+<Column name="nazwa_wytworni" id="621BCCC5-7976-5C8C-FEF5-02D53CDF35F2">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>779299E6-8A34-D3A2-39E8-C2B56BA6543E</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
@@ -66,32 +59,22 @@
 <colAssociation fkAssociation="6D14269A-441E-7F8A-6366-13EC95D068BC" referredColumn="1CBE837A-19FA-8F2D-42CE-E4E7483CE37D"/>
 </associations>
 </Column>
-<Column name="Dziennikarz_nazwa" id="46379E98-74B3-063A-85C8-FC13FFB83E44">
+<Column name="nazwa_dziennikarza" id="46379E98-74B3-063A-85C8-FC13FFB83E44">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:56:06 UTC</createdTime>
 <generatorID>E11E60D3-22E6-46B7-4935-5932D68E9206</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="CF40E78E-D9AC-35C1-FBFC-511F518D4E3C" referredColumn="36A61F9C-E725-EF33-3254-B058D26FCD8D"/>
 </associations>
-</Column>
-<Column name="nazwa" id="3DE5F4D0-2230-5F33-3AFD-210C6C0A1FE6">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 14:09:52 UTC</createdTime>
-<generatorID>95541C7D-D8CD-C4A5-95B2-C40FF452A89A</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">

@@ -25,7 +25,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="nazwisko" id="6D903747-9F24-5BD6-8455-CAFB2FAD9802">
 <createdBy>kamil</createdBy>
@@ -36,8 +37,10 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>4DE0B340-F901-4159-F112-A23772DD86E3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="data_urodzenia" id="C2B939EC-876C-A314-16BD-8720E7A991AC">
@@ -49,6 +52,7 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>0C205938-73A3-EF4C-6599-9F6D4C4B20FE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
@@ -62,12 +66,13 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>BECFEB19-C022-6CA0-DA3B-52FC8087D71A</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>4</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="imię" id="6966FF70-0B08-EA17-4DE6-874E1494A60D">
+<Attribute name="imie" id="6966FF70-0B08-EA17-4DE6-874E1494A60D">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 14:17:08 UTC</createdTime>
 <generatorID>AC6494A4-62C5-3FD3-CFC3-54C45372636F</generatorID>
@@ -76,8 +81,10 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>8A6050C1-24D3-0574-403C-507CA1BDF53D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="nazwa" id="8D78DA29-F443-EC5D-AE6B-DDAF9E2791F5">
@@ -89,8 +96,10 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
 <referedAttribute>DAF42D56-C89D-BDCD-45B0-022F0AA7C711</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

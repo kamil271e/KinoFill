@@ -16,7 +16,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
@@ -32,22 +33,6 @@
 <indexColumnUsage>
 <colUsage columnID="870A7560-EBDF-FDC3-F908-3C987CF41643"/>
 </indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="FFA5984F-A266-B386-360A-E9FC2FB5898E" name="Gatunek_filmuv1">
-<createdBy>kamil</createdBy>
-<createdTime>2022-11-11 15:55:41 UTC</createdTime>
-<generatorID>458FB89F-8AED-7777-956C-454295D7AD00</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-</ind_PK_UK>
-<ind_PK_UK id="900DBFCC-5CAC-2A67-B331-C4FAEB2EE901" name="Gatunek_serialuv1">
-<createdBy>kamil</createdBy>
-<createdTime>2022-11-11 15:55:41 UTC</createdTime>
-<generatorID>16949114-84B7-C63E-39C0-1903AD9BF6E7</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
 </ind_PK_UK>
 </indexes>
 </Table>

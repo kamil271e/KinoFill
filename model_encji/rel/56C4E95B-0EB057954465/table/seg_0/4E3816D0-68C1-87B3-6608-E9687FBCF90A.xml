@@ -8,6 +8,17 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_serialu" id="2857C4B6-B347-6452-226C-B37EAA11C344">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-25 10:45:10 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="nazwa" id="DBF83685-202C-18D4-60C1-D89FE82098DF">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
@@ -16,7 +27,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="liczba_odcinków" id="63522E6A-9F2F-D3E1-28EB-D4EC59B0A655">
@@ -57,7 +69,7 @@
 <ownDataTypeParameters>,3,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Wytwórnia_filmowa_nazwa" id="1E27EA9E-C0F4-335B-0D32-5E31EB5A4D41">
+<Column name="nazwa_wytworni" id="1E27EA9E-C0F4-335B-0D32-5E31EB5A4D41">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>14E34D80-5D08-C816-D85E-ABC71C6C7390</generatorID>
@@ -65,6 +77,7 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
@@ -72,62 +85,20 @@
 <colAssociation fkAssociation="84830521-379C-0381-1223-99751F6655B6" referredColumn="1CBE837A-19FA-8F2D-42CE-E4E7483CE37D"/>
 </associations>
 </Column>
-<Column name="Reżyser_imię" id="B5A6A7E2-C265-8700-7FEB-0957BBA84B98">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:11 UTC</createdTime>
-<generatorID>3704F436-927C-5961-DE08-37AD4D7E5C05</generatorID>
+<Column name="id_rezysera" id="0B03202C-22E0-9C36-49AC-AD71A6B41247">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-24 11:30:06 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="A30C28A4-2050-C21F-4B85-24140AD6F2A0" referredColumn="55C8C8D4-E532-7D56-12B9-11F4DBAD694A"/>
+<colAssociation fkAssociation="A30C28A4-2050-C21F-4B85-24140AD6F2A0" referredColumn="3B90E1AA-B800-93FC-8CAF-9D8521C90630"/>
 </associations>
-</Column>
-<Column name="Reżyser_nazwisko" id="3252D36A-F6CD-A508-07F7-28F59F0121B7">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:11 UTC</createdTime>
-<generatorID>140D97EE-2C2F-A164-C19D-B810536B85C3</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="A30C28A4-2050-C21F-4B85-24140AD6F2A0" referredColumn="622A9E07-ABEB-9E41-D233-06165B0B17F6"/>
-</associations>
-</Column>
-<Column name="Reżyser_data_urodzenia" id="2C3FADA8-CAB8-524D-01C8-BC1AAD242CD4">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:11 UTC</createdTime>
-<generatorID>4BEB4966-D4FD-1A62-005F-D1BDFBFEFAB7</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT007</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="A30C28A4-2050-C21F-4B85-24140AD6F2A0" referredColumn="8783385E-DD72-EA5E-0E72-4D879B9117B4"/>
-</associations>
-</Column>
-<Column name="nazwa1" id="AA0435C8-F659-7244-247C-D25BAC1EBB5A">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 14:09:52 UTC</createdTime>
-<generatorID>08FF387D-E260-0211-5EB8-205005711819</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -140,8 +111,18 @@
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="63522E6A-9F2F-D3E1-28EB-D4EC59B0A655"/>
+<colUsage columnID="2857C4B6-B347-6452-226C-B37EAA11C344"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="20422681-3EC5-3DCE-D992-2AB5A9D506E2" name="Serial__UN">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-25 10:55:31 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
 <colUsage columnID="DBF83685-202C-18D4-60C1-D89FE82098DF"/>
+<colUsage columnID="63522E6A-9F2F-D3E1-28EB-D4EC59B0A655"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="AD578C38-F6C1-EE2F-EE81-B18E3902DD6A" name="Serial_Wytwórnia_filmowa_FK">
@@ -163,18 +144,8 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="B5A6A7E2-C265-8700-7FEB-0957BBA84B98"/>
-<colUsage columnID="3252D36A-F6CD-A508-07F7-28F59F0121B7"/>
-<colUsage columnID="2C3FADA8-CAB8-524D-01C8-BC1AAD242CD4"/>
+<colUsage columnID="0B03202C-22E0-9C36-49AC-AD71A6B41247"/>
 </indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="572C9A0D-F539-6A30-E9D3-9237E2866F51" name="Gatunek_serialu">
-<createdBy>kamil</createdBy>
-<createdTime>2022-11-11 15:55:41 UTC</createdTime>
-<generatorID>16949114-84B7-C63E-39C0-1903AD9BF6E7</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
 </ind_PK_UK>
 </indexes>
 </Table>

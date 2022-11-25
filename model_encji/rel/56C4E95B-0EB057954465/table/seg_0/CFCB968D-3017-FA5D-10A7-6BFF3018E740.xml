@@ -8,7 +8,18 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="imię" id="08A9987C-6E1F-63A9-1167-44F05E4B16BF">
+<Column name="id_aktora" id="0E16AF3C-5ECC-ABF2-454B-CBE43D5B5740">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-25 10:56:10 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="imie" id="08A9987C-6E1F-63A9-1167-44F05E4B16BF">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>8A6050C1-24D3-0574-403C-507CA1BDF53D</generatorID>
@@ -16,7 +27,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="nazwisko" id="D01C3DAE-7578-13FD-E73D-7F3CF87FC68D">
@@ -27,7 +39,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="data_urodzenia" id="27C2CCF2-EE10-6FF7-A1C3-1E2A7B9F450C">
@@ -50,7 +63,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="ocena" id="48CF9AF8-6031-FE2A-305B-2ECE2C46481E">
@@ -67,32 +81,22 @@
 <ownDataTypeParameters>,3,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Wytwórnia_filmowa_nazwa" id="76ED43F7-087B-DB6E-6364-5B015A72ED45">
+<Column name="nazwa_wytworni" id="76ED43F7-087B-DB6E-6364-5B015A72ED45">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>332D5BF1-7C2A-FE45-70C6-5660A384167A</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="2D9DBE2F-B235-15B9-54A0-5AB477F9246C" referredColumn="1CBE837A-19FA-8F2D-42CE-E4E7483CE37D"/>
 </associations>
-</Column>
-<Column name="nazwa" id="AA26590E-EC27-61AC-B5B8-03878715696A">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 14:09:52 UTC</createdTime>
-<generatorID>167D29EF-781C-C498-9C74-4B1194EEA40C</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -105,9 +109,19 @@
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
+<colUsage columnID="0E16AF3C-5ECC-ABF2-454B-CBE43D5B5740"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="620E31A9-E3A4-4008-26D4-31F0A2FA166C" name="Aktor__UN">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-25 10:57:39 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="08A9987C-6E1F-63A9-1167-44F05E4B16BF"/>
 <colUsage columnID="D01C3DAE-7578-13FD-E73D-7F3CF87FC68D"/>
 <colUsage columnID="27C2CCF2-EE10-6FF7-A1C3-1E2A7B9F450C"/>
-<colUsage columnID="08A9987C-6E1F-63A9-1167-44F05E4B16BF"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="462A3A2D-14E3-62D7-791D-9618638E5899" name="Aktor_Wytwórnia_filmowa_FK">

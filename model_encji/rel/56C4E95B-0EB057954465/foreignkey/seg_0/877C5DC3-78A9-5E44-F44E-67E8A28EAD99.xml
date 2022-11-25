@@ -4,13 +4,12 @@
 <createdTime>2022-11-09 13:28:12 UTC</createdTime>
 <generatorID>5401ED67-5EEE-5D82-1DA1-CB840932D618</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
-<referredTableLongName>Serial</referredTableLongName>
+<arc>CEF3CB78-A31B-0DEA-65C7-77612BC2CC88</arc>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>4E3816D0-68C1-87B3-6608-E9687FBCF90A</referredTableID>
 <keyObject>5F064637-9525-0F2E-A329-8F3C59588684</keyObject>
 <referredKeyID>5F064637-9525-0F2E-A329-8F3C59588684</referredKeyID>
-<mandatory>true</mandatory>
-<refColNames>liczba_odcinków,nazwa</refColNames>
+<mandatory>false</mandatory>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

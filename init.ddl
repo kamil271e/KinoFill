@@ -107,6 +107,7 @@ CREATE TABLE Recenzje(
     id_serialu number(4),
     id_aktora number(4),
     ocena_widzow number(3,2),
+    fk_id_widza_oceniajacego number(4),
     CONSTRAINT pk_recenzje PRIMARY KEY(id_recenzji),
     CONSTRAINT chk_typ_autora check(typ_autora in ('w','d')),
     CONSTRAINT chk_obiekt_recenzji check(obiekt_recenzji in ('f','s','a')),
@@ -115,7 +116,8 @@ CREATE TABLE Recenzje(
     CONSTRAINT fk_recenzja_film FOREIGN KEY(id_filmu) REFERENCES Filmy(id_filmu),
     CONSTRAINT fk_recenzja_serial FOREIGN KEY(id_serialu) REFERENCES Seriale(id_serialu),
     CONSTRAINT fk_recenzja_aktor FOREIGN KEY(id_aktora) REFERENCES Aktorzy(id_aktora),
-    CONSTRAINT chk_autor check(((id_widza is null) or (nazwa_dziennikarza is null)) and (not ((id_widza is null) and (nazwa_dziennikarza is null))))
+    CONSTRAINT fk_id_widza_oceniajacego FOREIGN KEY(id_widza) REFERENCES Widzowie(id_widza)
+    --CONSTRAINT chk_autor check(((id_widza is null) or (nazwa_dziennikarza is null)) and (not ((id_widza is null) and (nazwa_dziennikarza is null))))
     --CONSTRAINT chk_autor check(XOR(id_widza is null, nazwa_dziennikarza is null)),
     --CONSTRAINT chk_obiekt_recenzji check(XOR(id_filmu is null, id_serialu is null, id_aktora is null))
 );
@@ -178,3 +180,6 @@ CREATE TABLE Gatunki_serialu(
     CONSTRAINT fk_gatunek_s FOREIGN KEY(nazwa) REFERENCES Gatunki(nazwa),
     CONSTRAINT fk_serial FOREIGN KEY(id_serialu) REFERENCES Seriale(id_serialu)
 );
+
+
+-- arch miedzy dwoma widzami przy recenzji

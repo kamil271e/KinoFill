@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6B9425BD-74A7-83D1-4232-DDDE2E4676E2" name="Gatunek_filmu">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-24 11:21:29 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="nazwa" id="02CF51E5-9A11-7D78-0FF0-C2C474439289">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-24 11:21:29 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5B5679F8-6C01-C8E3-1C7D-CAC706B3F638" referredColumn="870A7560-EBDF-FDC3-F908-3C987CF41643"/>
+</associations>
+</Column>
+<Column name="id_filmu" id="093A2AB4-5B99-4C8A-D13F-D372B64C80DC">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-25 10:42:22 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="89388C09-8164-211A-CC2B-681B78613D78" referredColumn="18E2FFFF-6157-1EE9-E09F-C2D1ECF1603E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8D064D05-F532-FA69-E1CC-B605F8CD7D49" name="Gatunek_filmu_PK">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-24 11:21:29 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="02CF51E5-9A11-7D78-0FF0-C2C474439289"/>
+<colUsage columnID="093A2AB4-5B99-4C8A-D13F-D372B64C80DC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DDE73305-DAFD-586C-789E-3FD1AB438CA8" name="FK_ASS_1">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-24 11:21:29 UTC</createdTime>
+<generatorID>458FB89F-8AED-7777-956C-454295D7AD00</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="02CF51E5-9A11-7D78-0FF0-C2C474439289"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="232573F3-CC6B-A8A4-EC65-9AD65EF140DA" name="FK_ASS_2">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-24 11:21:29 UTC</createdTime>
+<generatorID>458FB89F-8AED-7777-956C-454295D7AD00</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="093A2AB4-5B99-4C8A-D13F-D372B64C80DC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

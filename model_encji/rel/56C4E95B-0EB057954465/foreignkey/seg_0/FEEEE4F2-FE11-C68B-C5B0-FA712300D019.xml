@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A39FFD07-7BDE-3A2D-C8C3-A58867A2CB75" containerWithKeyObject="4E3816D0-68C1-87B3-6608-E9687FBCF90A" localFKIndex="572C9A0D-F539-6A30-E9D3-9237E2866F51" name="Gatunek_serialu">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="FEEEE4F2-FE11-C68B-C5B0-FA712300D019" containerWithKeyObject="443407CC-9948-DCF2-6CAB-DFB072893B5A" localFKIndex="5BC44542-3DA8-4D56-2299-A71D0A99C2A8" name="FK_ASS_5">
 <createdBy>kamil</createdBy>
-<createdTime>2022-11-11 15:55:41 UTC</createdTime>
+<createdTime>2022-11-24 11:21:29 UTC</createdTime>
 <generatorID>16949114-84B7-C63E-39C0-1903AD9BF6E7</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <deleteRule>NO ACTION</deleteRule>

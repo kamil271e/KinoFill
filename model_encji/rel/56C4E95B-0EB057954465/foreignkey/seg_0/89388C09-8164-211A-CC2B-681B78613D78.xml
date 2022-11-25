@@ -1,14 +1,14 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="32DB0C03-2A4E-B2DE-1209-8A23A40E7046" containerWithKeyObject="DEC44643-FC45-D905-436B-7C0349E5F41E" localFKIndex="FFA5984F-A266-B386-360A-E9FC2FB5898E" name="Gatunek_filmuv1">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="89388C09-8164-211A-CC2B-681B78613D78" containerWithKeyObject="6B9425BD-74A7-83D1-4232-DDDE2E4676E2" localFKIndex="232573F3-CC6B-A8A4-EC65-9AD65EF140DA" name="FK_ASS_2">
 <createdBy>kamil</createdBy>
-<createdTime>2022-11-11 15:55:41 UTC</createdTime>
+<createdTime>2022-11-24 11:21:29 UTC</createdTime>
 <generatorID>458FB89F-8AED-7777-956C-454295D7AD00</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>0985CE39-E67E-66AC-6785-38E9862F5FBA</referredTableID>
 <keyObject>3EB5EE61-BD9A-6A62-1654-D708188FB469</keyObject>
 <referredKeyID>3EB5EE61-BD9A-6A62-1654-D708188FB469</referredKeyID>
-<mandatory>false</mandatory>
+<mandatory>true</mandatory>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8040587A-825D-FDA5-DE84-21DEF888B461" name="Wytwórnia_filmowa">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8040587A-825D-FDA5-DE84-21DEF888B461" name="Wytwornia_filmowa">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>E3038697-BAD8-51AA-BA2F-B36DAEA2B54F</generatorID>
@@ -16,7 +16,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="kraj_pochodzenia" id="22083AD6-B66D-FFCB-CA3B-A57FF317686F">
@@ -28,10 +29,11 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="data_założenia" id="45BB8563-EE5A-ACE0-4832-4E0B13B25D6A">
+<Column name="data_zalozenia" id="45BB8563-EE5A-ACE0-4832-4E0B13B25D6A">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>910FAF38-7CFB-F074-2F71-8284ADF7685E</generatorID>
@@ -43,7 +45,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="ocena_widzów" id="0107B979-5AC7-5128-9878-A4EA1ECFEEA2">
+<Column name="ocena_widzow" id="0107B979-5AC7-5128-9878-A4EA1ECFEEA2">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>3CDDD59F-45F3-EC09-534E-CFF882169282</generatorID>
@@ -57,31 +59,21 @@
 <ownDataTypeParameters>,3,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Użytkownik_login" id="D51E64BA-B3B3-9612-AE93-50237A103813">
+<Column name="login" id="D51E64BA-B3B3-9612-AE93-50237A103813">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>24F38AB8-3C77-83B3-7977-EA817BE9768A</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="00B11A51-D5EE-BF02-24D6-9085241EE8A3" referredColumn="A3000830-6FF4-931E-DECB-7EB8C7EA213A"/>
 </associations>
-</Column>
-<Column name="login" id="750DCE94-C2E5-96C5-3174-594C76F510A1">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:56:06 UTC</createdTime>
-<generatorID>93E72065-5B51-25EE-19EB-FC54B7FA831E</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
