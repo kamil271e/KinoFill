@@ -75,6 +75,18 @@
 <colUsage columnID="D5BA7B6E-8515-D1E2-9C53-09D0EFB5D1C8"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="1EE4DCBC-17C1-E008-EA0C-3B116C19E546" name="Postac_w_filmie__UN">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-26 18:30:00 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C8B32EEF-4B02-EBD1-D0E6-D77658EEB59D"/>
+<colUsage columnID="E0A8A2C9-E120-F9C2-7239-CC22D777030F"/>
+<colUsage columnID="3CA93BF5-E6B9-2A97-9D21-2893DA651E63"/>
+</indexColumnUsage>
+</ind_PK_UK>
 <ind_PK_UK id="A71EC018-38B1-D82C-AE9F-41B836025799" name="Postać_w_filmie_Aktor_FK">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:12 UTC</createdTime>

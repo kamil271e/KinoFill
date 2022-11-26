@@ -76,6 +76,18 @@
 <colUsage columnID="22C4E1C1-060C-EBC5-404B-2249AC42D29C"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="0C65D12C-A659-349A-9773-5498C5001C08" name="Postać_w_serialu__UN">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-26 18:30:10 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E9044471-59BE-2084-795B-9AC9216D22E1"/>
+<colUsage columnID="5BF71F94-11AD-332E-A91D-178DBCD06422"/>
+<colUsage columnID="1296A90C-722B-6C7A-49CF-39F70F92E026"/>
+</indexColumnUsage>
+</ind_PK_UK>
 <ind_PK_UK id="E2CB60A9-F6CB-AA4B-7C07-C451D5BD9D91" name="Postać_w_serialu_Serial_FK">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:12 UTC</createdTime>

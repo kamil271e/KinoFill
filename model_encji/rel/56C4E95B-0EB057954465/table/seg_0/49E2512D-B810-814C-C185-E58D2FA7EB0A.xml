@@ -165,25 +165,10 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>1</dataTypePrecision>
-<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,3,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="id_widza_oceniajacego" id="B9384D56-61D4-4A40-991E-B9DE9F3ABC43">
-<createdBy>kamil</createdBy>
-<createdTime>2022-11-25 11:19:05 UTC</createdTime>
-<ownerDesignName>model_encji</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>4</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="D59760E1-E655-2913-6D7E-DDEAB09F26D7" referredColumn="92E5F7DB-E118-37A6-C4B9-F766870B8015"/>
-</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -241,17 +226,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="F1F64839-E633-1892-9F73-D4250507DA5D"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="B380C239-2742-4C00-1D8C-06F8FE642995" name="Recenzja_Widz_Oceniajacy_FK">
-<createdBy>kamil</createdBy>
-<createdTime>2022-11-25 11:19:05 UTC</createdTime>
-<generatorID>D2ECD9D1-6202-D994-344C-77013CA863FA</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="B9384D56-61D4-4A40-991E-B9DE9F3ABC43"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="4E92A902-205C-CC97-0979-1E10D4D4BA01" name="Recenzja_Dziennikarz_FK">

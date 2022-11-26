@@ -1,10 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="6D14269A-441E-7F8A-6366-13EC95D068BC" containerWithKeyObject="0E2BBBDC-6582-4B70-71DD-F2AB45614F6E" localFKIndex="32539146-3B40-3727-529B-71C72644128A" name="News_Wytwórnia_filmowa_FK">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:12 UTC</createdTime>
-<generatorID>E3A9EB1F-ACA2-FA7A-C24E-CAB9FE0A06E1</generatorID>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D4937675-9959-375C-C001-FB70CEAE2AE4" containerWithKeyObject="0E2BBBDC-6582-4B70-71DD-F2AB45614F6E" localFKIndex="B8605B84-7E31-1278-C7BD-9A5A25A29944" name="News_Wytwornia_filmowa_FK">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-26 18:31:15 UTC</createdTime>
+<generatorID>B8667AA7-20FB-C2CA-0E9F-FFF39617B912</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
-<arc>4DBDA94E-88D0-043F-264C-1DF85EBB4B40</arc>
+<arc>62E30842-D9ED-1C56-D663-5EA5396A5D94</arc>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>8040587A-825D-FDA5-DE84-21DEF888B461</referredTableID>
 <keyObject>3B40ACD3-D305-FC20-BF33-698C40673F91</keyObject>

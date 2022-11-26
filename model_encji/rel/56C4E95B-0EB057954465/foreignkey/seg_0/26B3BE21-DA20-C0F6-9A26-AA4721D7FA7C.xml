@@ -1,10 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="CF40E78E-D9AC-35C1-FBFC-511F518D4E3C" containerWithKeyObject="0E2BBBDC-6582-4B70-71DD-F2AB45614F6E" localFKIndex="FFAC8326-6A7A-CF6A-4160-C65107001BA7" name="News_Dziennikarz_FK">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:12 UTC</createdTime>
-<generatorID>E5371295-7607-68E7-FA07-7C19066CF82A</generatorID>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="26B3BE21-DA20-C0F6-9A26-AA4721D7FA7C" containerWithKeyObject="0E2BBBDC-6582-4B70-71DD-F2AB45614F6E" localFKIndex="314D7A35-4173-9C1E-3F37-F878533AA28A" name="News_Dziennikarz_FK">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-26 18:31:35 UTC</createdTime>
+<generatorID>2499D917-9DE7-804A-03CA-5EF84E7CB854</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
-<arc>4DBDA94E-88D0-043F-264C-1DF85EBB4B40</arc>
+<arc>62E30842-D9ED-1C56-D663-5EA5396A5D94</arc>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>353D9FCC-6D79-D30E-2131-1B99B2E74302</referredTableID>
 <keyObject>F717CD3A-1DA8-CFDC-6288-1D21C162B8AA</keyObject>

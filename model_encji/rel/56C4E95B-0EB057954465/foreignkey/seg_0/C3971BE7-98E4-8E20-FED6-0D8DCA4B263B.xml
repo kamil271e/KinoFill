@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D59760E1-E655-2913-6D7E-DDEAB09F26D7" containerWithKeyObject="49E2512D-B810-814C-C185-E58D2FA7EB0A" localFKIndex="B380C239-2742-4C00-1D8C-06F8FE642995" name="Recenzja_Widz_Oceniajacy_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="C3971BE7-98E4-8E20-FED6-0D8DCA4B263B" containerWithKeyObject="5D017D3B-5325-3739-8068-0EED15F66FED" localFKIndex="109C2349-E84C-0F58-CF0B-4B32E5EE655D" name="Ocena_recenzji_dziennikarza_Widz_FK">
 <createdBy>kamil</createdBy>
-<createdTime>2022-11-25 11:19:05 UTC</createdTime>
+<createdTime>2022-11-26 18:22:29 UTC</createdTime>
 <generatorID>D2ECD9D1-6202-D994-344C-77013CA863FA</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <deleteRule>NO ACTION</deleteRule>

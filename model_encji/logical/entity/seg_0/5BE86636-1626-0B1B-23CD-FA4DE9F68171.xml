@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5BE86636-1626-0B1B-23CD-FA4DE9F68171" name="Ocena_recenzji_dziennikarza">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-26 18:37:19 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ocena" id="95089D62-9D5D-D663-9521-43A0E098E0BC">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-26 18:37:32 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nazwa" id="D35A81B7-7CBB-A0A7-961C-88FB2E5B6952">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-26 18:39:08 UTC</createdTime>
+<generatorID>F8348A4E-AA1C-7C84-F106-F8F834FA2F8B</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>B3F5BEDF-A5BC-7576-EA92-AA04E941AAE9</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_widza" id="63546067-AA64-48F7-6B9D-9BA14AF2A80B">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-26 18:42:10 UTC</createdTime>
+<generatorID>BE7ED786-7E39-0D98-F0A2-C2994C71400E</generatorID>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<referedAttribute>FC8B3543-EF05-36EE-6025-6AC4041F1F64</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="4A7214B9-068B-B56E-4B51-3B14268D3F4E" name="Ocena_recenzji_dziennikarza PK">
+<createdBy>kamil</createdBy>
+<createdTime>2022-11-26 18:39:50 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>D35A81B7-7CBB-A0A7-961C-88FB2E5B6952</attributeRef>
+<attributeRef>63546067-AA64-48F7-6B9D-9BA14AF2A80B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

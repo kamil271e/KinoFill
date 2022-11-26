@@ -7,7 +7,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="nazwa" id="02CF51E5-9A11-7D78-0FF0-C2C474439289">
+<Column name="nazwa_gatunku" id="02CF51E5-9A11-7D78-0FF0-C2C474439289">
 <createdBy>kamil</createdBy>
 <createdTime>2022-11-24 11:21:29 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
