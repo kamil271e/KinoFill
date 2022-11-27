@@ -8,3 +8,4 @@ Flask_WTF
 SQLAlchemy
 psycopg2-binary #for using postgres
 WTForms
+Werkzeug

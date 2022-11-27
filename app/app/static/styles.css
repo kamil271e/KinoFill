@@ -1,0 +1,8 @@
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+.container {
+    padding-bottom: 70px;    /* Footer height */
+}

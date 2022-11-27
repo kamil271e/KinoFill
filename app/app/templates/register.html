@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <h1 class="lh-lg display-5">Rejestracja</h1>
+        {{ form.hidden_tag() }}
+        {{ form.login.label(class="form-label") }}
+        {{ form.login(class="form-control") }}
+        {{ form.password.label(class="form-label") }}
+        {{ form.password(class="form-control") }}
+        {{ form.role.label(class="form-label") }}
+        <br/>
+        {{ form.role(class="form-control") }}
+        <br/>
+        {{ form.submit(class="btn btn-info") }}
+        <br/><br/>
+        <p class="lh-lg">Masz już konto? <a class="link-info" href="{{url_for('login')}}">Zaloguj się</a></p>
+    </form>
+{% endblock %}
