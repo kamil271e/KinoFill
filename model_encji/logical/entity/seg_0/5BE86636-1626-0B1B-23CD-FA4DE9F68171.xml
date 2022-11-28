@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5BE86636-1626-0B1B-23CD-FA4DE9F68171" name="Ocena_recenzji_dziennikarza">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5BE86636-1626-0B1B-23CD-FA4DE9F68171" name="Ocena recenzji dziennikarza">
 <createdBy>kamil</createdBy>
 <createdTime>2022-11-26 18:37:19 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
@@ -22,7 +22,6 @@
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
@@ -39,22 +38,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_widza" id="63546067-AA64-48F7-6B9D-9BA14AF2A80B">
-<createdBy>kamil</createdBy>
-<createdTime>2022-11-26 18:42:10 UTC</createdTime>
-<generatorID>BE7ED786-7E39-0D98-F0A2-C2994C71400E</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>FC8B3543-EF05-36EE-6025-6AC4041F1F64</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>4</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -68,7 +52,6 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>D35A81B7-7CBB-A0A7-961C-88FB2E5B6952</attributeRef>
-<attributeRef>63546067-AA64-48F7-6B9D-9BA14AF2A80B</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

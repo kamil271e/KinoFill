@@ -11,6 +11,7 @@
 <fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
 <growthPercent>0</growthPercent>
 <growthType>Year</growthType>
+<hierarchicalParent>4C34F560-7EDF-E9CD-E3E6-3CF12CA911F6</hierarchicalParent>
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
@@ -53,21 +54,6 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>20,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="login" id="4AAC6532-C4B5-4343-7C2A-8975713D48BB">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:53:02 UTC</createdTime>
-<generatorID>CFE73885-90DF-D1A1-AA39-3BA31B29A5E7</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>D44C6A9B-E75E-7A01-A695-5A8BC0522A4B</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="data_urodzenia" id="44D3B2ED-1C4B-453E-A9BF-BFB17E961BDD">
 <createdBy>kamil</createdBy>

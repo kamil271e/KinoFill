@@ -41,6 +41,18 @@
 <dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="data_dołączenia" id="2287B8F2-6DB1-1CA6-09AF-B7A9178443F6">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-28 12:43:04 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<engineerTo>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="opis_profilu" id="62FC5983-9B47-8C53-28D6-E96B2323AA77">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:31:55 UTC</createdTime>

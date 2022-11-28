@@ -11,6 +11,7 @@
 <fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
 <growthPercent>0</growthPercent>
 <growthType>Year</growthType>
+<hierarchicalParent>4C34F560-7EDF-E9CD-E3E6-3CF12CA911F6</hierarchicalParent>
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
@@ -69,21 +70,6 @@
 <dataTypePrecision>3</dataTypePrecision>
 <dataTypeScale>2</dataTypeScale>
 <ownDataTypeParameters>,3,2</ownDataTypeParameters>
-</Attribute>
-<Attribute name="login" id="93E72065-5B51-25EE-19EB-FC54B7FA831E">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:53:02 UTC</createdTime>
-<generatorID>AC97BA01-8E78-07DB-A5B5-99BFCDB85C67</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>D44C6A9B-E75E-7A01-A695-5A8BC0522A4B</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

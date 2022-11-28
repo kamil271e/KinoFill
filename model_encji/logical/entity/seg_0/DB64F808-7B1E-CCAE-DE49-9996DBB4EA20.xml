@@ -3,8 +3,9 @@
 <createdBy>kamil</createdBy>
 <createdTime>2022-11-02 15:26:20 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
+<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="false"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>

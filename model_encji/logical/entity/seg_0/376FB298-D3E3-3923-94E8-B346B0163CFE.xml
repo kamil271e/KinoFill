@@ -11,49 +11,23 @@
 <fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
 <growthPercent>0</growthPercent>
 <growthType>Year</growthType>
+<hierarchicalParent>4C34F560-7EDF-E9CD-E3E6-3CF12CA911F6</hierarchicalParent>
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_widza" id="FC8B3543-EF05-36EE-6025-6AC4041F1F64">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-01 18:26:37 UTC</createdTime>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>4</dataTypePrecision>
-<ownDataTypeParameters>,4,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="data_dolaczenia" id="D65700B9-9F41-A18F-B94D-D05B0C66077E">
+<Attribute name="Attribute_80" id="D65700B9-9F41-A18F-B94D-D05B0C66077E">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-01 18:26:59 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
 <engineerTo>
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="login" id="2C9FB550-C9BB-12B9-2AEA-648BF1FD2E54">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:53:02 UTC</createdTime>
-<generatorID>AE2D23C9-8DC0-2E2C-CD1E-B39B60F79367</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<engineerTo>
-<item key="56C4E95B-9341-4F70-E486-0EB057954465" value="true"/>
-</engineerTo>
-<referedAttribute>D44C6A9B-E75E-7A01-A695-5A8BC0522A4B</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -66,9 +40,6 @@
 <item key="56C4E95B-9341-4F70-E486-0EB057954465" value="false"/>
 </engineerTo>
 <pk>true</pk>
-<usedAttributes>
-<attributeRef>FC8B3543-EF05-36EE-6025-6AC4041F1F64</attributeRef>
-</usedAttributes>
 </identifier>
 </identifiers>
 </Entity>

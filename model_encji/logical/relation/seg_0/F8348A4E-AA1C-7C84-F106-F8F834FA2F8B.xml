@@ -10,7 +10,7 @@
 <identifying>true</identifying>
 <nameOnSource>oceniona </nameOnSource>
 <nameOnTarget>odnosi się</nameOnTarget>
-<optionalSource>false</optionalSource>
+<optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
 <sourceEntity>5A6E8EBB-DE08-1553-2B93-628190D06B7E</sourceEntity>

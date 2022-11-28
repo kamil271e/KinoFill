@@ -32,6 +32,16 @@
 <ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="data_dolaczenia" id="5CA66A04-A2AE-939C-BC8F-32BDB2A07BB2">
+<createdBy>ogerl</createdBy>
+<createdTime>2022-11-28 13:07:59 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="opis_profilu" id="7713D9AC-13A4-6649-5349-B3F03B2CB1F1">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>

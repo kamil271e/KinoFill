@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C13D5677-629B-D50C-D14F-1FB59A5CFAA7" name="Postac w filmie">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C13D5677-629B-D50C-D14F-1FB59A5CFAA7" name="Postać w filmie">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-02 17:59:13 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
@@ -41,7 +41,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>30</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="rok_produkcji" id="5E43708D-B5F9-7BCF-0F71-799F6394DAEA">
 <createdBy>kamil</createdBy>
