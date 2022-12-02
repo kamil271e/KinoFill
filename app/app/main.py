@@ -38,11 +38,15 @@ def register():
                 val = "s"  # studio
             else:
                 val = ""
-            user = User(form.login.data, hashed_password, today, val)
+            if form.user_desc.data:
+                user = User(form.login.data, hashed_password, today, val, form.user_desc.data)
+            else:
+                user = User(form.login.data, hashed_password, today, val)
             # print(User.query.get(current_user, login))
             db.session.add(user)
             db.session.commit()
             flash("Poprawnie zarejestrowano użytkownika")
+            # https://codepen.io/astrit/pen/OJPyqyx
             # return redirect(url_for("developer_details_change", login=form.login.data))
             return redirect(url_for("login"))
         else:
