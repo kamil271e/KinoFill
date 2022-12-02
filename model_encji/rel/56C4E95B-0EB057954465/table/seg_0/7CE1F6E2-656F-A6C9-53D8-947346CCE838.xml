@@ -8,6 +8,17 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_uzytkownika" id="743A340D-5DFB-8DE2-0AFB-32130BC481E3">
+<createdBy>kamil</createdBy>
+<createdTime>2022-12-02 08:00:53 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="login" id="A3000830-6FF4-931E-DECB-7EB8C7EA213A">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
@@ -77,7 +88,7 @@
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="A3000830-6FF4-931E-DECB-7EB8C7EA213A"/>
+<colUsage columnID="743A340D-5DFB-8DE2-0AFB-32130BC481E3"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

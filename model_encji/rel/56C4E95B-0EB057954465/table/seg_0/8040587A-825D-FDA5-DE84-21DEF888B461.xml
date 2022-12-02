@@ -8,6 +8,21 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_wytworni" id="2DA81D25-E772-AFC4-0354-E3953098FE3A">
+<createdBy>kamil</createdBy>
+<createdTime>2022-12-02 08:00:57 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="00B11A51-D5EE-BF02-24D6-9085241EE8A3" referredColumn="743A340D-5DFB-8DE2-0AFB-32130BC481E3"/>
+</associations>
+</Column>
 <Column name="nazwa" id="1CBE837A-19FA-8F2D-42CE-E4E7483CE37D">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
@@ -59,22 +74,6 @@
 <ownDataTypeParameters>,3,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="login" id="D51E64BA-B3B3-9612-AE93-50237A103813">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:11 UTC</createdTime>
-<generatorID>24F38AB8-3C77-83B3-7977-EA817BE9768A</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="00B11A51-D5EE-BF02-24D6-9085241EE8A3" referredColumn="A3000830-6FF4-931E-DECB-7EB8C7EA213A"/>
-</associations>
-</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="3B40ACD3-D305-FC20-BF33-698C40673F91" name="Wytwórnia_filmowa_PK">
@@ -86,18 +85,17 @@
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="1CBE837A-19FA-8F2D-42CE-E4E7483CE37D"/>
+<colUsage columnID="2DA81D25-E772-AFC4-0354-E3953098FE3A"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="2E2E73C1-298B-46E3-16E8-477FE8BA476F" name="Wytwórnia_filmowa__IDX">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<ind_PK_UK id="3844B349-255D-EFC2-298F-6D436D53361F" name="Wytwornia_filmowa__UN">
+<createdBy>kamil</createdBy>
+<createdTime>2022-12-02 08:08:07 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
-<indexState>Unique Plain Index</indexState>
+<indexState>Unique Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
-<relationGeneratorID>AC97BA01-8E78-07DB-A5B5-99BFCDB85C67</relationGeneratorID>
 <indexColumnUsage>
-<colUsage columnID="D51E64BA-B3B3-9612-AE93-50237A103813"/>
+<colUsage columnID="1CBE837A-19FA-8F2D-42CE-E4E7483CE37D"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="3B8651AA-7E94-80DE-3138-DAD6F4BD5C3B" name="Wytwórnia_filmowa_Użytkownik_FK">
@@ -108,7 +106,7 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="D51E64BA-B3B3-9612-AE93-50237A103813"/>
+<colUsage columnID="2DA81D25-E772-AFC4-0354-E3953098FE3A"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

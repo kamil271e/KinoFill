@@ -42,36 +42,36 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="nazwa_wytworni" id="747D02FE-BDF7-CF0B-6524-A2A32D91D500">
+<Column name="id_wytworni" id="13844FB4-DF9D-7953-AC5C-B7D5AD3D7E32">
 <createdBy>kamil</createdBy>
-<createdTime>2022-11-26 18:31:15 UTC</createdTime>
+<createdTime>2022-12-02 08:08:07 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>30</dataTypeSize>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="D4937675-9959-375C-C001-FB70CEAE2AE4" referredColumn="1CBE837A-19FA-8F2D-42CE-E4E7483CE37D"/>
+<colAssociation fkAssociation="D4937675-9959-375C-C001-FB70CEAE2AE4" referredColumn="2DA81D25-E772-AFC4-0354-E3953098FE3A"/>
 </associations>
 </Column>
-<Column name="nazwa_dziennikarza" id="64344EC8-61CC-D2AB-35F8-88D5D36A4B7E">
+<Column name="Dziennikarz_id_dziennikarza" id="882B5514-906C-2CCD-CD4E-87B6739AB802">
 <createdBy>kamil</createdBy>
-<createdTime>2022-11-26 18:31:35 UTC</createdTime>
+<createdTime>2022-12-02 08:27:06 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="26B3BE21-DA20-C0F6-9A26-AA4721D7FA7C" referredColumn="36A61F9C-E725-EF33-3254-B058D26FCD8D"/>
+<colAssociation fkAssociation="685AE394-0607-CE2D-28C4-46866759DD8A" referredColumn="3A4FEECC-5D01-DB38-E779-78AD01853349"/>
 </associations>
 </Column>
 </columns>
@@ -96,18 +96,18 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="747D02FE-BDF7-CF0B-6524-A2A32D91D500"/>
+<colUsage columnID="13844FB4-DF9D-7953-AC5C-B7D5AD3D7E32"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="314D7A35-4173-9C1E-3F37-F878533AA28A" name="News_Dziennikarz_FK">
+<ind_PK_UK id="4FBE4FCD-C477-F680-B118-200E4C50FFBB" name="News_Dziennikarz_FK">
 <createdBy>kamil</createdBy>
-<createdTime>2022-11-26 18:31:35 UTC</createdTime>
+<createdTime>2022-12-02 08:27:06 UTC</createdTime>
 <generatorID>2499D917-9DE7-804A-03CA-5EF84E7CB854</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="64344EC8-61CC-D2AB-35F8-88D5D36A4B7E"/>
+<colUsage columnID="882B5514-906C-2CCD-CD4E-87B6739AB802"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

@@ -8,6 +8,21 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_dziennikarza" id="3A4FEECC-5D01-DB38-E779-78AD01853349">
+<createdBy>kamil</createdBy>
+<createdTime>2022-12-02 08:00:57 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E3EFB6C6-5B86-432F-15A9-49B005E0D19C" referredColumn="743A340D-5DFB-8DE2-0AFB-32130BC481E3"/>
+</associations>
+</Column>
 <Column name="nazwa" id="36A61F9C-E725-EF33-3254-B058D26FCD8D">
 <createdBy>ogerl</createdBy>
 <createdTime>2022-11-09 13:56:06 UTC</createdTime>
@@ -44,22 +59,6 @@
 <ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="login" id="6C2918E5-E906-63FA-C7E9-65CEF172E76C">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:11 UTC</createdTime>
-<generatorID>9461A630-D2DD-1D34-D2C4-CC5BE4A6B63D</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="E3EFB6C6-5B86-432F-15A9-49B005E0D19C" referredColumn="A3000830-6FF4-931E-DECB-7EB8C7EA213A"/>
-</associations>
-</Column>
 <Column name="data_urodzenia" id="3A26AC38-E7C2-B38B-C533-9D0CCB252EFA">
 <createdBy>kamil</createdBy>
 <createdTime>2022-11-24 11:21:29 UTC</createdTime>
@@ -83,18 +82,17 @@
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="36A61F9C-E725-EF33-3254-B058D26FCD8D"/>
+<colUsage columnID="3A4FEECC-5D01-DB38-E779-78AD01853349"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="773729AA-47F6-26B7-27B5-4F423D2BFD80" name="Dziennikarz__IDX">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:12 UTC</createdTime>
+<ind_PK_UK id="2BF0E8D7-B22E-A319-34D7-9F17416DF355" name="Dziennikarz__UN">
+<createdBy>kamil</createdBy>
+<createdTime>2022-12-02 08:06:10 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
-<indexState>Unique Plain Index</indexState>
+<indexState>Unique Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
-<relationGeneratorID>CFE73885-90DF-D1A1-AA39-3BA31B29A5E7</relationGeneratorID>
 <indexColumnUsage>
-<colUsage columnID="6C2918E5-E906-63FA-C7E9-65CEF172E76C"/>
+<colUsage columnID="36A61F9C-E725-EF33-3254-B058D26FCD8D"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="8A6B57F8-7080-9CB6-1002-0C803A91E080" name="Dziennikarz_Użytkownik_FK">
@@ -105,7 +103,7 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="6C2918E5-E906-63FA-C7E9-65CEF172E76C"/>
+<colUsage columnID="3A4FEECC-5D01-DB38-E779-78AD01853349"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

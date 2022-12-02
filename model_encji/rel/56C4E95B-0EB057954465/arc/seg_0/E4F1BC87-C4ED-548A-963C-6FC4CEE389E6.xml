@@ -1,12 +1,12 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKArc class="oracle.dbtools.crest.model.design.relational.FKArc" directorySegmentName="seg_0" id="62E30842-D9ED-1C56-D663-5EA5396A5D94" name="FKArc_5">
+<FKArc class="oracle.dbtools.crest.model.design.relational.FKArc" directorySegmentName="seg_0" id="E4F1BC87-C4ED-548A-963C-6FC4CEE389E6" name="FKArc_7">
 <createdBy>kamil</createdBy>
-<createdTime>2022-11-26 18:32:35 UTC</createdTime>
+<createdTime>2022-12-02 08:27:27 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
 <mandatory>false</mandatory>
 <table>0E2BBBDC-6582-4B70-71DD-F2AB45614F6E</table>
 <fkeys>
+<fkeyID>685AE394-0607-CE2D-28C4-46866759DD8A</fkeyID>
 <fkeyID>D4937675-9959-375C-C001-FB70CEAE2AE4</fkeyID>
-<fkeyID>26B3BE21-DA20-C0F6-9A26-AA4721D7FA7C</fkeyID>
 </fkeys>
 </FKArc>

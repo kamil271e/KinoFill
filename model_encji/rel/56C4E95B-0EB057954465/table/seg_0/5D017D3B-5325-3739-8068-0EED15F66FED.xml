@@ -34,9 +34,9 @@
 <colAssociation fkAssociation="6EA12DBB-281D-F8F4-2501-4BAC6C1AE868" referredColumn="6EFDD473-4866-E775-2B21-9E0A756144C1"/>
 </associations>
 </Column>
-<Column name="id_widza" id="5E71B087-1F68-8908-D0E7-AD4604449295">
+<Column name="id_widza" id="396AEE88-BF4D-651C-E705-B293C1123BE6">
 <createdBy>kamil</createdBy>
-<createdTime>2022-11-26 18:22:29 UTC</createdTime>
+<createdTime>2022-12-02 08:01:53 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -46,7 +46,7 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="C3971BE7-98E4-8E20-FED6-0D8DCA4B263B" referredColumn="92E5F7DB-E118-37A6-C4B9-F766870B8015"/>
+<colAssociation fkAssociation="C3971BE7-98E4-8E20-FED6-0D8DCA4B263B" referredColumn="4D727F0E-8D01-E473-9C56-D54DC07BBF14"/>
 </associations>
 </Column>
 </columns>
@@ -60,7 +60,7 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="4BDABF1D-9C54-149C-5169-7216D737E113"/>
-<colUsage columnID="5E71B087-1F68-8908-D0E7-AD4604449295"/>
+<colUsage columnID="396AEE88-BF4D-651C-E705-B293C1123BE6"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="4BCFA87A-CFDB-1072-0970-6A088572086C" name="Ocena_recenzji_dziennikarza_Recenzja_FK">
@@ -82,7 +82,7 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="5E71B087-1F68-8908-D0E7-AD4604449295"/>
+<colUsage columnID="396AEE88-BF4D-651C-E705-B293C1123BE6"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

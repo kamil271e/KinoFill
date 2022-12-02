@@ -1,10 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="26B3BE21-DA20-C0F6-9A26-AA4721D7FA7C" containerWithKeyObject="0E2BBBDC-6582-4B70-71DD-F2AB45614F6E" localFKIndex="314D7A35-4173-9C1E-3F37-F878533AA28A" name="News_Dziennikarz_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="685AE394-0607-CE2D-28C4-46866759DD8A" containerWithKeyObject="0E2BBBDC-6582-4B70-71DD-F2AB45614F6E" localFKIndex="4FBE4FCD-C477-F680-B118-200E4C50FFBB" name="News_Dziennikarz_FK">
 <createdBy>kamil</createdBy>
-<createdTime>2022-11-26 18:31:35 UTC</createdTime>
+<createdTime>2022-12-02 08:27:06 UTC</createdTime>
 <generatorID>2499D917-9DE7-804A-03CA-5EF84E7CB854</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
-<arc>62E30842-D9ED-1C56-D663-5EA5396A5D94</arc>
+<arc>E4F1BC87-C4ED-548A-963C-6FC4CEE389E6</arc>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>353D9FCC-6D79-D30E-2131-1B99B2E74302</referredTableID>
 <keyObject>F717CD3A-1DA8-CFDC-6288-1D21C162B8AA</keyObject>

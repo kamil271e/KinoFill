@@ -68,22 +68,6 @@
 <ownDataTypeParameters>,3,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="nazwa_wytworni" id="9C76DFAF-45D2-9414-7557-1057DF05D416">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:11 UTC</createdTime>
-<generatorID>E3EDDC97-168A-38CC-F268-554EB29B549D</generatorID>
-<ownerDesignName>model_encji</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>30</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="65835CF9-2978-9D06-C330-9F0997C2473C" referredColumn="1CBE837A-19FA-8F2D-42CE-E4E7483CE37D"/>
-</associations>
-</Column>
 <Column name="id_rezysera" id="E168CD7A-4049-43EB-6813-E8F18FB239A3">
 <createdBy>kamil</createdBy>
 <createdTime>2022-11-24 11:30:06 UTC</createdTime>
@@ -97,6 +81,21 @@
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="975408A1-E734-4842-4F61-8C1A18574C07" referredColumn="3B90E1AA-B800-93FC-8CAF-9D8521C90630"/>
+</associations>
+</Column>
+<Column name="id_wytworni" id="94E2DFBB-FCCC-89CE-9B4C-A877A1EAAA37">
+<createdBy>kamil</createdBy>
+<createdTime>2022-12-02 08:08:07 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="65835CF9-2978-9D06-C330-9F0997C2473C" referredColumn="2DA81D25-E772-AFC4-0354-E3953098FE3A"/>
 </associations>
 </Column>
 </columns>
@@ -132,7 +131,7 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="9C76DFAF-45D2-9414-7557-1057DF05D416"/>
+<colUsage columnID="94E2DFBB-FCCC-89CE-9B4C-A877A1EAAA37"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="BFD2D2A9-284F-3D4B-5900-5EE5D796C181" name="Film_Reżyser_FK">

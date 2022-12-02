@@ -66,9 +66,9 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="id_widza" id="F1F64839-E633-1892-9F73-D4250507DA5D">
+<Column name="id_widza" id="836637CA-245B-4322-46AE-74D5FE30427E">
 <createdBy>kamil</createdBy>
-<createdTime>2022-11-25 11:16:20 UTC</createdTime>
+<createdTime>2022-12-02 08:27:58 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -79,23 +79,23 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="2F9CD560-3934-2201-ED9D-817E7E3B8DA9" referredColumn="92E5F7DB-E118-37A6-C4B9-F766870B8015"/>
+<colAssociation fkAssociation="AF0D9341-012B-56A3-1834-6197CF7FFA32" referredColumn="4D727F0E-8D01-E473-9C56-D54DC07BBF14"/>
 </associations>
 </Column>
-<Column name="nazwa_dziennikarza" id="9790EB2C-CBFE-9D0F-61E4-DE42EEA6746F">
+<Column name="id_dziennikarza" id="52585727-24AC-BFE1-457F-40534F7F536D">
 <createdBy>kamil</createdBy>
-<createdTime>2022-11-25 11:20:16 UTC</createdTime>
+<createdTime>2022-12-02 08:28:34 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="89ADB7E1-2B4F-5493-CAC9-1D96878AD478" referredColumn="36A61F9C-E725-EF33-3254-B058D26FCD8D"/>
+<colAssociation fkAssociation="661C8D22-6A0E-FF86-E56D-52292CE0936F" referredColumn="3A4FEECC-5D01-DB38-E779-78AD01853349"/>
 </associations>
 </Column>
 <Column name="obiekt_recenzji" id="4ABB354E-3F47-D299-4797-FC96884FA87B">
@@ -217,26 +217,26 @@
 <colUsage columnID="7B4BF750-A8E3-6408-D08E-5973BC8F28D8"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="BB0D2975-FEFD-885E-BB60-866897D3B430" name="Recenzja_Widz_FK">
+<ind_PK_UK id="CBADA879-99EA-AEBB-3CD3-33A13836A509" name="Recenzja_Widz_FK">
 <createdBy>kamil</createdBy>
-<createdTime>2022-11-25 11:16:20 UTC</createdTime>
+<createdTime>2022-12-02 08:27:58 UTC</createdTime>
 <generatorID>D2ECD9D1-6202-D994-344C-77013CA863FA</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="F1F64839-E633-1892-9F73-D4250507DA5D"/>
+<colUsage columnID="836637CA-245B-4322-46AE-74D5FE30427E"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="4E92A902-205C-CC97-0979-1E10D4D4BA01" name="Recenzja_Dziennikarz_FK">
+<ind_PK_UK id="7B4A8BB2-5E28-07EE-9E22-240DCB5741AD" name="Recenzja_Dziennikarz_FK">
 <createdBy>kamil</createdBy>
-<createdTime>2022-11-25 11:20:16 UTC</createdTime>
+<createdTime>2022-12-02 08:28:34 UTC</createdTime>
 <generatorID>2499D917-9DE7-804A-03CA-5EF84E7CB854</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="9790EB2C-CBFE-9D0F-61E4-DE42EEA6746F"/>
+<colUsage columnID="52585727-24AC-BFE1-457F-40534F7F536D"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

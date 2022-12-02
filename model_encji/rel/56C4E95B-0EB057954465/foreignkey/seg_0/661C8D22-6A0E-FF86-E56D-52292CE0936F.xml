@@ -1,10 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="89ADB7E1-2B4F-5493-CAC9-1D96878AD478" containerWithKeyObject="49E2512D-B810-814C-C185-E58D2FA7EB0A" localFKIndex="4E92A902-205C-CC97-0979-1E10D4D4BA01" name="Recenzja_Dziennikarz_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="661C8D22-6A0E-FF86-E56D-52292CE0936F" containerWithKeyObject="49E2512D-B810-814C-C185-E58D2FA7EB0A" localFKIndex="7B4A8BB2-5E28-07EE-9E22-240DCB5741AD" name="Recenzja_Dziennikarz_FK">
 <createdBy>kamil</createdBy>
-<createdTime>2022-11-25 11:20:16 UTC</createdTime>
+<createdTime>2022-12-02 08:28:34 UTC</createdTime>
 <generatorID>2499D917-9DE7-804A-03CA-5EF84E7CB854</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
-<arc>3C5F90DE-ACDF-3C29-1851-68B035A81508</arc>
+<arc>13ADF1BF-B248-5327-80AF-C3F3BEF4F0EA</arc>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>353D9FCC-6D79-D30E-2131-1B99B2E74302</referredTableID>
 <keyObject>F717CD3A-1DA8-CFDC-6288-1D21C162B8AA</keyObject>

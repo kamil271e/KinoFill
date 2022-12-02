@@ -81,21 +81,20 @@
 <ownDataTypeParameters>,3,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="nazwa_wytworni" id="76ED43F7-087B-DB6E-6364-5B015A72ED45">
-<createdBy>ogerl</createdBy>
-<createdTime>2022-11-09 13:28:11 UTC</createdTime>
-<generatorID>332D5BF1-7C2A-FE45-70C6-5660A384167A</generatorID>
+<Column name="id_wytworni" id="9D3F436C-B8D6-1CB1-02F4-9D67154AFAA0">
+<createdBy>kamil</createdBy>
+<createdTime>2022-12-02 08:08:07 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>30</dataTypeSize>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="2D9DBE2F-B235-15B9-54A0-5AB477F9246C" referredColumn="1CBE837A-19FA-8F2D-42CE-E4E7483CE37D"/>
+<colAssociation fkAssociation="2D9DBE2F-B235-15B9-54A0-5AB477F9246C" referredColumn="2DA81D25-E772-AFC4-0354-E3953098FE3A"/>
 </associations>
 </Column>
 </columns>
@@ -132,7 +131,7 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="76ED43F7-087B-DB6E-6364-5B015A72ED45"/>
+<colUsage columnID="9D3F436C-B8D6-1CB1-02F4-9D67154AFAA0"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
