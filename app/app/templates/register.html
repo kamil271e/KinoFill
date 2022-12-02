@@ -21,6 +21,12 @@
         <br/>
         {{ form.role(class="form-control") }}
         <br/>
+        {{ form.user_desc.label(class="form-label") }}
+        {{ form.user_desc(class="form-control") }}
+        <br/>
+        {{ form.viewer_role.label(class="form-label") }}
+        {{ form.viewer_role(class="form-control") }}
+        <br/>
         {{ form.submit(class="btn btn-info") }}
         <br/><br/>
         <p class="lh-lg">Masz już konto? <a class="link-info" href="{{url_for('login')}}">Zaloguj się</a></p>
