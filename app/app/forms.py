@@ -6,4 +6,5 @@ class RegisterForm(FlaskForm):
     role = SelectField("Rola", choices=["Widz", "Dziennikarz", "Wytwórnia filmowa"])
     user_desc = StringField("Opis profilu", widget=TextArea())
     viewer_role = SelectField("Typ konta", choices=["Prywatne", "Publiczne"])
+    name = StringField("Nazwa", validators=[DataRequired(), Length(1, 16)])
     submit = SubmitField("Zarejestruj")

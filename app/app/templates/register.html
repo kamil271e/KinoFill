@@ -19,16 +19,24 @@
         {{ form.password(class="form-control") }}
         {{ form.role.label(class="form-label") }}
         <br/>
-        {{ form.role(class="form-control") }}
+        {{ form.role(class="form-control", onchange="showDetails()") }}
+        <div id="viewer_role_div">
+            <br/>
+            {{ form.viewer_role.label(class="form-label") }}
+            {{ form.viewer_role(class="form-control", onchange="showDetails()") }}
+        </div>
+        <div id="name_div">
+            <br/>
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="form-control") }}
+        </div>
         <br/>
         {{ form.user_desc.label(class="form-label") }}
         {{ form.user_desc(class="form-control") }}
-        <br/>
-        {{ form.viewer_role.label(class="form-label") }}
-        {{ form.viewer_role(class="form-control") }}
         <br/>
         {{ form.submit(class="btn btn-info") }}
         <br/><br/>
         <p class="lh-lg">Masz już konto? <a class="link-info" href="{{url_for('login')}}">Zaloguj się</a></p>
     </form>
+<script src="{{url_for('static', filename='registerDropdown.js')}}"></script>
 {% endblock %}
