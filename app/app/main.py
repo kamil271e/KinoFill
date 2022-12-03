@@ -31,20 +31,39 @@ def register():
         if user is None: #user doesn't exist
             hashed_password = generate_password_hash(form.password.data, "sha256")
             if form.role.data == "Widz":
-                val = "v"  # viewer
+                role = "v"  # viewer
             elif form.role.data == "Dziennikarz":
-                val = "j"  # journalist
+                role = "j"  # journalist
             elif form.role.data == "Wytwórnia filmowa":
-                val = "s"  # studio
+                role = "s"  # studio
             else:
-                val = ""
-            user = User(form.login.data, hashed_password, today, val, form.user_desc.data)
-            # print(User.query.get(current_user, login))
+                role = ""
+            user = User(form.login.data, hashed_password, today, role, form.user_desc.data)
             db.session.add(user)
+
+            user = db.session.query(User).filter(User.login == form.login.data).first()
+            if role == "v":
+                viewer_name = None
+                viewer_is_public = None
+                if form.viewer_role.data == "Prywatne":
+                    viewer_is_public = "n" # no
+                elif form.viewer_role.data == "Publiczne":
+                    viewer_is_public = "y" # yes
+                    viewer_name = form.name.data
+                viewer = Viewer(user.id, viewer_is_public, viewer_name)
+                db.session.add(viewer)
+            elif role == "j":
+                name = form.name.data
+                journalist = Journalist(journalist_id=user.id, name=name)
+                db.session.add(journalist)
+            elif role == "s":
+                name = form.name.data
+                studio = Studio(studio_id=user.id, name=name)
+                db.session.add(studio)
+
             db.session.commit()
             flash("Poprawnie zarejestrowano użytkownika")
             # https://codepen.io/astrit/pen/OJPyqyx
-            # return redirect(url_for("developer_details_change", login=form.login.data))
             return redirect(url_for("login"))
         else:
             flash("Użytkownik o podanym loginie istnieje")
@@ -60,6 +79,6 @@ def user(name):
 
 if __name__ == '__main__':
     with app.app_context(): #Flask-SQLAlchemy 3.0 all access to db.engine (and db.session) requires an active Flask application context
-        # db.drop_all()
+        db.drop_all()
         db.create_all()
     app.run(debug=True)
