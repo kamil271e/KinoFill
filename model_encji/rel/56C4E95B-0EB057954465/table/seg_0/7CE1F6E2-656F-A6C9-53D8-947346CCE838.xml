@@ -69,7 +69,6 @@
 <createdBy>kamil</createdBy>
 <createdTime>2022-11-24 11:25:44 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT025</logicalDatatype>

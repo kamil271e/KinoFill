@@ -14,7 +14,7 @@ def login():
             if check:
                 # login_user(user)
                 flash("Poprawnie zalogowano użytkownika")
-                return redirect(url_for('home'))
+                return redirect(url_for("user",name=user.login))
             else:
                 flash("Podano błędne hasło")
         else:
@@ -38,10 +38,7 @@ def register():
                 val = "s"  # studio
             else:
                 val = ""
-            if form.user_desc.data:
-                user = User(form.login.data, hashed_password, today, val, form.user_desc.data)
-            else:
-                user = User(form.login.data, hashed_password, today, val)
+            user = User(form.login.data, hashed_password, today, val, form.user_desc.data)
             # print(User.query.get(current_user, login))
             db.session.add(user)
             db.session.commit()
@@ -58,7 +55,8 @@ def register():
 
 @app.route('/user/<name>')
 def user(name):
-    return '<h1>Hello, %s!</h1>' % name
+    #return '<h1>Hello, %s!</h1>' % name
+    return render_template('user.html', name=name, today=today)
 
 if __name__ == '__main__':
     with app.app_context(): #Flask-SQLAlchemy 3.0 all access to db.engine (and db.session) requires an active Flask application context

@@ -40,6 +40,7 @@
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>C7298413-DC14-2C0D-74F5-8EFFCBDC8475</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
@@ -52,6 +53,7 @@
 <createdTime>2022-11-09 13:28:11 UTC</createdTime>
 <generatorID>699F886E-17D7-A313-A2C1-B18867C6CA82</generatorID>
 <ownerDesignName>model_encji</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>

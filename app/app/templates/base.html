@@ -11,6 +11,7 @@
   <body class="d-flex flex-column" style="min-height: 100vh">
     {% include 'navbar.html' %}
     <div class="container">
+      <!--It’s the job of “child” templates to fill the empty blocks with content:-->
       {% block content %}
       {% endblock %}
     </div>
