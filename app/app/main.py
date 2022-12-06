@@ -42,23 +42,21 @@ def register():
             db.session.add(user)
 
             user = db.session.query(User).filter(User.login == form.login.data).first()
+            name = form.name.data.strip()
+
             if role == "v":
-                viewer_name = None
                 viewer_is_public = None
                 if form.viewer_role.data == "Prywatne":
                     viewer_is_public = "n" # no
                 elif form.viewer_role.data == "Publiczne":
                     viewer_is_public = "y" # yes
-                    viewer_name = form.name.data
-                viewer = Viewer(user.id, viewer_is_public, viewer_name)
+                viewer = Viewer(user.id, viewer_is_public, name)
                 db.session.add(viewer)
             elif role == "j":
-                name = form.name.data
-                journalist = Journalist(journalist_id=user.id, name=name)
+                journalist = Journalist(journalist_id=user.id, name=name, birthday=today)
                 db.session.add(journalist)
             elif role == "s":
-                name = form.name.data
-                studio = Studio(studio_id=user.id, name=name)
+                studio = Studio(studio_id=user.id, name=name, creation_date=today)
                 db.session.add(studio)
 
             db.session.commit()
@@ -74,7 +72,6 @@ def register():
 
 @app.route('/user/<name>')
 def user(name):
-    #return '<h1>Hello, %s!</h1>' % name
     return render_template('user.html', name=name, today=today)
 
 if __name__ == '__main__':

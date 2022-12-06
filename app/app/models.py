@@ -53,7 +53,7 @@ class Journalist(db.Model):
     name = db.Column(db.String(20), nullable=False, unique=True)
     firstname = db.Column(db.String(20))
     surname = db.Column(db.String(20))
-    birthday = db.Column(db.String(20)) # TODO change data type
+    birthday = db.Column(db.Date)
 
     def __init__(self, journalist_id, name, firstname='', surname='', birthday=''):
         self.journalist_id = journalist_id
@@ -70,7 +70,7 @@ class Studio(db.Model):
     studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.users.id"), primary_key=True)
     name = db.Column(db.String(20), nullable=False, unique=True)
     country = db.Column(db.String(20))
-    creation_date = db.Column(db.String(20)) # TODO change data type
+    creation_date = db.Column(db.Date)
     viewers_grade = db.Column(db.Float)
 
     def __init__(self, studio_id, name, country='', creation_date=today, viewers_grade=0.0):
