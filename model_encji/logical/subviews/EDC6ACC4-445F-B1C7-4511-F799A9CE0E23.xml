@@ -662,10 +662,22 @@
 <sourceLabel class="oracle.dbtools.crest.model.design.Label">
 <site>0</site>
 <labelBounds x="386" y="866" width="34" height="20"/>
+<fonts itemClass="oracle.dbtools.crest.model.design.FontObjectWr">
+<FontObject>
+<foType>Text</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
 </sourceLabel>
 <targetLabel class="oracle.dbtools.crest.model.design.Label">
 <site>2</site>
 <labelBounds x="630" y="866" width="83" height="20"/>
+<fonts itemClass="oracle.dbtools.crest.model.design.FontObjectWr">
+<FontObject>
+<foType>Text</foType>
+<colorRGB>-16777216</colorRGB>
+</FontObject>
+</fonts>
 </targetLabel>
 <points>
 <point x="282" y="863"/>
