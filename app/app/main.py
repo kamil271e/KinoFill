@@ -1,6 +1,11 @@
 from models import *
 from forms import *
 
+@login_manager.user_loader # user loader tells Flask-Login how to find a specific user from the ID that is stored in their session cookie
+def load_user(user_id):
+    # since the user_id is just the primary key of our user table, use it in the query for the user
+    return User.query.get(int(user_id))
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template('home.html', today=today)
@@ -12,9 +17,9 @@ def login():
         if user:
             check = check_password_hash(user.password_hash, request.form['password'])
             if check:
-                # login_user(user)
+                login_user(user)
                 flash("Poprawnie zalogowano użytkownika")
-                return redirect(url_for("user",name=user.login))
+                return redirect(url_for("user"))
             else:
                 flash("Podano błędne hasło")
         else:
@@ -70,9 +75,17 @@ def register():
         form.password.data = ''
     return render_template('register.html', login=login, form=form, today=today)
 
-@app.route('/user/<name>')
-def user(name):
-    return render_template('user.html', name=name, today=today)
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash("Poprawnie wylogowano użytkownika")
+    return redirect(url_for("home"))
+
+@app.route('/user')
+@login_required # protect from not logged users
+def user():
+    return render_template('user.html', name=current_user.login, today=today)
 
 if __name__ == '__main__':
     with app.app_context(): #Flask-SQLAlchemy 3.0 all access to db.engine (and db.session) requires an active Flask application context

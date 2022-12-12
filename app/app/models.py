@@ -1,7 +1,7 @@
 from config import *
 # from forms import *
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = "users"
     __table_args__ = {'quote': False, 'schema': "filmweb"}
 

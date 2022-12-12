@@ -2,12 +2,18 @@
     <a class="navbar-brand" style="margin-left: 20px;" href="{{ url_for('home') }}">SiteFilms</a>
     <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent" style="margin-right: 20px;">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('login') }}">Logowanie</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('register') }}">Rejestracja</a>
-            </li>
+            {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('logout')}}">Wyloguj</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Logowanie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('register') }}">Rejestracja</a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
