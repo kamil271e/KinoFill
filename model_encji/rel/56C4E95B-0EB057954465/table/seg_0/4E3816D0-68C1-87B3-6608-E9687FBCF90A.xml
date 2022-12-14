@@ -77,14 +77,14 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>4</dataTypePrecision>
-<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="A30C28A4-2050-C21F-4B85-24140AD6F2A0" referredColumn="3B90E1AA-B800-93FC-8CAF-9D8521C90630"/>
 </associations>
 </Column>
-<Column name="Wytwornia_filmowa_id_wytworni" id="3654DE69-BD99-F62C-5814-989652D48A53">
+<Column name="id_wytworni" id="3654DE69-BD99-F62C-5814-989652D48A53">
 <createdBy>kamil</createdBy>
 <createdTime>2022-12-02 08:08:07 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>

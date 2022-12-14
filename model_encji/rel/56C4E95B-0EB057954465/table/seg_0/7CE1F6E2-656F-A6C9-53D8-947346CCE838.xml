@@ -90,5 +90,15 @@
 <colUsage columnID="743A340D-5DFB-8DE2-0AFB-32130BC481E3"/>
 </indexColumnUsage>
 </ind_PK_UK>
+<ind_PK_UK id="72BA70D7-FBD1-3155-D950-7BE255683F50" name="Uzytkownik__UN">
+<createdBy>kamil</createdBy>
+<createdTime>2022-12-14 18:29:53 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A3000830-6FF4-931E-DECB-7EB8C7EA213A"/>
+</indexColumnUsage>
+</ind_PK_UK>
 </indexes>
 </Table>

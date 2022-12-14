@@ -58,7 +58,7 @@
 <colAssociation fkAssociation="D4937675-9959-375C-C001-FB70CEAE2AE4" referredColumn="2DA81D25-E772-AFC4-0354-E3953098FE3A"/>
 </associations>
 </Column>
-<Column name="Dziennikarz_id_dziennikarza" id="882B5514-906C-2CCD-CD4E-87B6739AB802">
+<Column name="id_dziennikarza" id="882B5514-906C-2CCD-CD4E-87B6739AB802">
 <createdBy>kamil</createdBy>
 <createdTime>2022-12-02 08:27:06 UTC</createdTime>
 <ownerDesignName>model_encji</ownerDesignName>

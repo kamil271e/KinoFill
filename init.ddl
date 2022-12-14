@@ -1,185 +1,186 @@
 CREATE TABLE Uzytkownicy(
-    login varchar(20) not null,
-    haslo varchar(20) not null,
-    opis_profilu clob,
-    typ_uzytkownika char(1) not null,
-    CONSTRAINT pk_uzytkownik PRIMARY KEY(login),
-    CONSTRAINT chk_typ_uzytkownika check(typ_uzytkownika in ('f', 'w', 'd'))
-    -- f - wytowrnia filmowa
+    id_uzytkownika serial PRIMARY KEY,
+    login varchar(20) NOT NULL UNIQUE,
+    haslo varchar(20) NOT NULL,
+    data_dolaczenia date NOT NULL DEFAULT CURRENT_DATE,
+    opis_profilu text,
+    typ_uzytkownika char(1) NOT NULL CHECK (typ_uzytkownika IN ('d', 's', 'w'))
 );
 
 CREATE TABLE Wytwornie(
-    nazwa varchar(30) not null,
+    id_wytworni serial PRIMARY KEY,
+    nazwa varchar(30) NOT NULL UNIQUE,
     kraj_pochodzenia varchar(20),
     data_zalozenia date,
-    ocena_widzow number(3,2),
-    login varchar(20) not null,
-    CONSTRAINT fk_wytwornia_uzytkownik FOREIGN KEY(login) REFERENCES Uzytkownicy(login),
-    CONSTRAINT pk_wytwornia PRIMARY KEY(nazwa)
+    ocena_widzow decimal(3, 2),
+    FOREIGN KEY(id_wytworni) REFERENCES Uzytkownicy(id_uzytkownika)
 );
 
 CREATE TABLE Rezyserowie(
-    id_rezysera number(4) not null,
-    imie varchar(20) not null,
-    nazwisko varchar(20) not null,
-    data_urodzenia date not null,
+    id_rezysera serial PRIMARY KEY,
+    imie varchar(20) NOT NULL,
+    nazwisko varchar(20) NOT NULL,
+    data_urodzenia date NOT NULL,
     kraj_pochodzenia varchar(20),
-    ocena number(3,2),
-    nazwa_wytworni varchar(30),
-    CONSTRAINT fk_rezyser_wytwornia FOREIGN KEY(nazwa_wytworni) REFERENCES Wytwornie(nazwa),
-    CONSTRAINT pk_rezyser PRIMARY KEY(id_rezysera),
-    CONSTRAINT uk_rezyser UNIQUE (imie, nazwisko, data_urodzenia)
+    ocena decimal(3, 2),
+    id_wytworni integer,
+    FOREIGN KEY(id_wytworni) REFERENCES Wytwornie(id_wytworni),
+    UNIQUE(imie, nazwisko, data_urodzenia)
 );
 
 CREATE TABLE Filmy(
-    id_filmu number(4) not null,
-    nazwa varchar(30) not null,
-    rok_produkcji number(4) not null,
-    dlugosc number(3) not null,
-    ocena_widzow number(3,2),
-    nazwa_wytworni varchar(30) not null,
-    id_rezysera number(4) not null,
-    CONSTRAINT pk_film PRIMARY KEY(id_filmu),
-    CONSTRAINT uk_film UNIQUE (nazwa, rok_produkcji),
-    CONSTRAINT fk_film_wytwornia FOREIGN KEY(nazwa_wytworni) REFERENCES Wytwornie(nazwa),
-    CONSTRAINT fk_film_rezyser FOREIGN KEY(id_rezysera) REFERENCES Rezyserowie(id_rezysera)
+    id_filmu serial PRIMARY KEY,
+    nazwa varchar(30) NOT NULL,
+    rok_produkcji integer NOT NULL,
+    dlugosc integer NOT NULL,
+    ocena_widzow decimal(3,2),
+    id_wytworni integer NOT NULL,
+    id_rezysera integer NOT NULL,
+    UNIQUE(nazwa, rok_produkcji),
+    FOREIGN KEY(id_wytworni) REFERENCES Wytwornie(id_wytworni),
+    FOREIGN KEY(id_rezysera) REFERENCES Rezyserowie(id_rezysera)
 );
 
 CREATE TABLE Seriale(
-    id_serialu number(4) not null,
-    nazwa varchar(30) not null,
-    liczba_odcinkow number(4) not null,
-    liczba_sezonow number(2) not null,
-    ocena_widzow number(3,2),
-    nazwa_wytworni varchar(30) not null,
-    id_rezysera number(4) not null,
-    CONSTRAINT pk_serial PRIMARY KEY(id_serialu),
-    CONSTRAINT uk_serial UNIQUE (nazwa, liczba_odcinkow),
-    CONSTRAINT fk_serial_wytwornia FOREIGN KEY(nazwa_wytworni) REFERENCES Wytwornie(nazwa),
-    CONSTRAINT fk_serial_rezyser FOREIGN KEY(id_rezysera) REFERENCES Rezyserowie(id_rezysera)
+    id_serialu serial PRIMARY KEY,
+    nazwa varchar(30) NOT NULL,
+    liczba_odcinkow integer NOT NULL,
+    liczba_sezonow integer NOT NULL,
+    ocena_widzow decimal(3,2),
+    id_wytworni integer NOT NULL,
+    id_rezysera integer NOT NULL,
+    UNIQUE(nazwa, liczba_odcinkow),
+    FOREIGN KEY(id_wytworni) REFERENCES Wytwornie(id_wytworni),
+    FOREIGN KEY(id_rezysera) REFERENCES Rezyserowie(id_rezysera)
 );
-
 
 CREATE TABLE Aktorzy(
-    id_aktora number(4) not null,
-    imie varchar(20) not null,
-    nazwisko varchar(20) not null,
-    data_urodzenia date not null,
+    id_aktora serial PRIMARY KEY,
+    imie varchar(20) NOT NULL,
+    nazwisko varchar(20) NOT NULL,
+    data_urodzenia date NOT NULL,
     kraj_pochodzenia varchar(20),
-    ocena number(3,2),
-    nazwa_wytworni varchar(30),
-    CONSTRAINT pk_aktor PRIMARY KEY(id_aktora),
-    CONSTRAINT fk_aktor_wytwornia FOREIGN KEY(nazwa_wytworni) REFERENCES Wytwornie(nazwa),
-    CONSTRAINT uk_aktor UNIQUE (imie, nazwisko, data_urodzenia)
+    ocena decimal(3, 2),
+    id_wytworni integer,
+    FOREIGN KEY(id_wytworni) REFERENCES Wytwornie(id_wytworni),
+    UNIQUE(imie, nazwisko, data_urodzenia)
 );
-
 
 CREATE TABLE Dziennikarze(
-    nazwa varchar(20) not null,
-    imie varchar(20) not null,
-    nazwisko varchar(20) not null,
-    login varchar(20) not null,
-    CONSTRAINT pk_dziennikarz PRIMARY KEY(nazwa),
-    CONSTRAINT fk_dziennikarz_uzytkownik FOREIGN KEY(login) REFERENCES Uzytkownicy(login)
+    id_dziennikarza serial PRIMARY KEY,
+    nazwa varchar(20) NOT NULL,
+    imie varchar(20),
+    nazwisko varchar(20),
+    data_urodzenia date,
+    FOREIGN KEY(id_dziennikarza) REFERENCES Uzytkownicy(id_uzytkownika),
+    UNIQUE(nazwa)
 );
-
 
 CREATE TABLE Widzowie(
-    id_widza number(4) not null,
-    data_dolaczenia date default CURRENT_DATE not null,
-    czy_publiczny char(1) not null,
+    id_widza serial PRIMARY KEY,
+    czy_publiczny char(1) NOT NULL,
     nazwa varchar(30),
-    login varchar(20) not null,
-    CONSTRAINT pk_widz PRIMARY KEY(id_widza),
-    CONSTRAINT fk_widz_uzytkownik FOREIGN KEY(login) REFERENCES Uzytkownicy(login)
+    FOREIGN KEY(id_widza) REFERENCES Uzytkownicy(id_uzytkownika)
 );
+
+CREATE OR REPLACE FUNCTION xor3(a int, b int, c int)
+RETURNS boolean AS $$
+BEGIN
+  -- Check if exactly one of the input values is NOT NULL
+  IF (a IS NOT NULL AND b IS NULL AND c IS NULL) OR
+     (a IS NULL AND b IS NOT NULL AND c IS NULL) OR
+     (a IS NULL AND b IS NULL AND c IS NOT NULL) THEN
+    -- Return true if exactly one input value is NOT NULL
+    RETURN true;
+  ELSE
+    -- Return false if zero or more than one input values are NOT NULL
+    RETURN false;
+  END IF;
+END;
+$$ LANGUAGE plpgsql;
+
 
 CREATE TABLE Recenzje(
-    id_recenzji NUMBER(4) not null,
-    ocena NUMBER(1) not null,
-    data date default CURRENT_DATE not null,
-    tresc clob,
-    typ_autora char(1) not null,
-    obiekt_recenzji char(1) not null,
-    id_widza number(4),
-    nazwa_dziennikarza varchar(20),
-    id_filmu number(4),
-    id_serialu number(4),
-    id_aktora number(4),
-    ocena_widzow number(3,2),
-    fk_id_widza_oceniajacego number(4),
-    CONSTRAINT pk_recenzje PRIMARY KEY(id_recenzji),
-    CONSTRAINT chk_typ_autora check(typ_autora in ('w','d')),
-    CONSTRAINT chk_obiekt_recenzji check(obiekt_recenzji in ('f','s','a')),
-    CONSTRAINT fk_recenzja_widz FOREIGN KEY(id_widza) REFERENCES Widzowie(id_widza),
-    CONSTRAINT fk_recenzja_dziennikarz FOREIGN KEY(nazwa_dziennikarza) REFERENCES Dziennikarze(nazwa),
-    CONSTRAINT fk_recenzja_film FOREIGN KEY(id_filmu) REFERENCES Filmy(id_filmu),
-    CONSTRAINT fk_recenzja_serial FOREIGN KEY(id_serialu) REFERENCES Seriale(id_serialu),
-    CONSTRAINT fk_recenzja_aktor FOREIGN KEY(id_aktora) REFERENCES Aktorzy(id_aktora),
-    CONSTRAINT fk_id_widza_oceniajacego FOREIGN KEY(id_widza) REFERENCES Widzowie(id_widza)
-    --CONSTRAINT chk_autor check(((id_widza is null) or (nazwa_dziennikarza is null)) and (not ((id_widza is null) and (nazwa_dziennikarza is null))))
-    --CONSTRAINT chk_autor check(XOR(id_widza is null, nazwa_dziennikarza is null)),
-    --CONSTRAINT chk_obiekt_recenzji check(XOR(id_filmu is null, id_serialu is null, id_aktora is null))
+    id_recenzji serial PRIMARY KEY,
+    ocena integer NOT NULL,
+    data date default CURRENT_DATE NOT NULL,
+    tresc text,
+    typ_autora char(1) NOT NULL,
+    id_widza integer,
+    id_dziennikarza integer,
+    obiekt_recenzji char(1) NOT NULL,
+    id_filmu integer,
+    id_serialu integer,
+    id_aktora integer,
+    ocena_widzow decimal(3,2),
+    CHECK(typ_autora IN ('w','d')),
+    CHECK( (id_widza is NOT NULL AND id_dziennikarza is NULL) OR (id_widza is NULL AND id_dziennikarza is NOT NULL)),
+    CHECK(obiekt_recenzji IN ('f','s','a')),
+    CHECK( xor3(id_filmu, id_serialu, id_aktora) ),
+    FOREIGN KEY(id_widza) REFERENCES Widzowie(id_widza),
+    FOREIGN KEY(id_dziennikarza) REFERENCES Dziennikarze(id_dziennikarza),
+    FOREIGN KEY(id_filmu) REFERENCES Filmy(id_filmu),
+    FOREIGN KEY(id_serialu) REFERENCES Seriale(id_serialu),
+    FOREIGN KEY(id_aktora) REFERENCES Aktorzy(id_aktora)
 );
-
-
 
 CREATE TABLE Newsy(
-    id_newsa number(4) not null,
-    tresc clob not null,
-    data_publikacji date not null,
-    nazwa_dziennikarza varchar(20),
-    nazwa_wytworni varchar(30),
-    CONSTRAINT fk_news_dziennikarz FOREIGN KEY(nazwa_dziennikarza) REFERENCES Dziennikarze(nazwa),
-    CONSTRAINT fk_news_wytwornia FOREIGN KEY(nazwa_wytworni) REFERENCES Wytwornie(nazwa),
-    CONSTRAINT pk_news PRIMARY KEY(id_newsa)
-    --CONSTRAINT chk_autor check(XOR(nazwa_wytworni is null, nazwa_dziennikarza is null))
+    id_newsa serial PRIMARY KEY,
+    tresc text NOT NULL,
+    data_publikacji date default CURRENT_DATE NOT NULL,
+    id_dziennikarza integer,
+    id_wytworni integer,
+    FOREIGN KEY(id_dziennikarza) REFERENCES Dziennikarze(id_dziennikarza),
+    FOREIGN KEY(id_wytworni) REFERENCES Wytwornie(id_wytworni),
+    CHECK( (id_wytworni is NOT NULL AND id_dziennikarza is NULL) OR (id_wytworni is NULL AND id_dziennikarza is NOT NULL) )
 );
-
 
 CREATE TABLE Postacie_filmowe(
-    id_postaci number(4) not null,
-    nazwa_postaci varchar(30) not null,
-    id_filmu number(4) not null,
-    id_aktora number(4) not null,
-    CONSTRAINT pk_postac_f PRIMARY KEY(id_postaci),
-    CONSTRAINT fk_postac_f_film FOREIGN KEY(id_filmu) REFERENCES Filmy(id_filmu),
-    CONSTRAINT fk_postac_f_aktor FOREIGN KEY(id_aktora) REFERENCES Aktorzy(id_aktora)
+    id_postaci serial PRIMARY KEY,
+    nazwa_postaci varchar(30) NOT NULL,
+    id_filmu integer NOT NULL,
+    id_aktora integer NOT NULL,
+    FOREIGN KEY(id_filmu) REFERENCES Filmy(id_filmu),
+    FOREIGN KEY(id_aktora) REFERENCES Aktorzy(id_aktora),
+    UNIQUE(nazwa_postaci, id_filmu, id_aktora)
 );
-
 
 CREATE TABLE Postacie_serialowe(
-    id_postaci number(4) not null,
-    nazwa_postaci varchar(30) not null,
-    id_serialu number(4) not null,
-    id_aktora number(4) not null,
-    CONSTRAINT pk_postac_s PRIMARY KEY(id_postaci),
-    CONSTRAINT fk_postac_s_serial FOREIGN KEY(id_serialu) REFERENCES Seriale(id_serialu),
-    CONSTRAINT fk_postac_s_aktor FOREIGN KEY(id_aktora) REFERENCES Aktorzy(id_aktora)
+    id_postaci serial PRIMARY KEY,
+    nazwa_postaci varchar(30) NOT NULL,
+    id_serialu integer NOT NULL,
+    id_aktora integer NOT NULL,
+    FOREIGN KEY(id_serialu) REFERENCES Seriale(id_serialu),
+    FOREIGN KEY(id_aktora) REFERENCES Aktorzy(id_aktora),
+    UNIQUE(nazwa_postaci, id_serialu, id_aktora)
 );
-
 
 CREATE TABLE Gatunki(
-    nazwa varchar(20) not null,
-    CONSTRAINT pk_gatunek PRIMARY KEY(nazwa)
+    nazwa varchar(20) PRIMARY KEY
 );
 
-
 CREATE TABLE Gatunki_filmu(
-    nazwa varchar(20) not null,
-    id_filmu number(4) not null,
-    CONSTRAINT pk_gatunek_filmu PRIMARY KEY(nazwa, id_filmu),
-    CONSTRAINT fk_gatunek_f FOREIGN KEY(nazwa) REFERENCES Gatunki(nazwa),
-    CONSTRAINT fk_film FOREIGN KEY(id_filmu) REFERENCES Filmy(id_filmu)
+    nazwa varchar(20),
+    id_filmu integer,
+    PRIMARY KEY(nazwa, id_filmu),
+    FOREIGN KEY(nazwa) REFERENCES Gatunki(nazwa),
+    FOREIGN KEY(id_filmu) REFERENCES Filmy(id_filmu)
 );
 
 CREATE TABLE Gatunki_serialu(
-    nazwa varchar(20) not null,
-    id_serialu number(4) not null,
-    CONSTRAINT pk_gatunek_serialu PRIMARY KEY(nazwa, id_serialu),
-    CONSTRAINT fk_gatunek_s FOREIGN KEY(nazwa) REFERENCES Gatunki(nazwa),
-    CONSTRAINT fk_serial FOREIGN KEY(id_serialu) REFERENCES Seriale(id_serialu)
+    nazwa varchar(20),
+    id_serialu integer,
+    PRIMARY KEY(nazwa, id_serialu),
+    FOREIGN KEY(nazwa) REFERENCES Gatunki(nazwa),
+    FOREIGN KEY(id_serialu) REFERENCES Seriale(id_serialu)
 );
 
-
--- arch miedzy dwoma widzami przy recenzji
+CREATE TABLE Oceny_recenzji_dziennikarzy(
+    ocena_widza integer not null,
+    id_recenzji integer not null,
+    id_widza integer not null,
+    PRIMARY KEY(id_recenzji, id_widza),
+    FOREIGN KEY(id_widza) REFERENCES Widzowie(id_widza),
+    FOREIGN KEY(id_recenzji) REFERENCES Recenzje(id_recenzji),
+    CHECK(ocena_widza < 6 AND ocena_widza > 0)
+);
