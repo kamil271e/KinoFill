@@ -78,6 +78,7 @@ CREATE TABLE Aktorzy(
     CHECK((ocena >= 1) and (ocena <= 5))
 );
 
+
 CREATE TABLE Dziennikarze(
     id_dziennikarza integer PRIMARY KEY,
     nazwa varchar(20) NOT NULL,
@@ -218,3 +219,42 @@ drop table Rezyserowie;
 drop table Wytwornie;
 drop table Uzytkownicy;
 drop function xor3;
+
+-- sample inserts
+insert into Uzytkownicy (login, haslo, typ_uzytkownika) values ('wytwornia', 'xyz', 's');
+insert into Uzytkownicy (login, haslo, typ_uzytkownika) values ('widz', 'xyz', 'w');
+insert into Uzytkownicy (login, haslo, typ_uzytkownika) values ('dziennikarz', 'xyz', 'd');
+
+insert into Wytwornie (id_wytworni, nazwa) values (1, 'wywtornia1');
+
+insert into Widzowie (id_widza, czy_publiczny, nazwa) values(2, 't','widz1');
+
+insert into Dziennikarze (id_dziennikarza, nazwa) values (3, 'dziennikarz1');
+
+insert into Rezyserowie (imie, nazwisko, data_urodzenia)
+	values('janusz','iksinski','1988-02-02');
+
+insert into Filmy (nazwa, rok_produkcji, dlugosc, id_wytworni, id_rezysera)
+	values('Le-fleur', 1998, 122, 1, 1);
+
+insert into Seriale (nazwa, liczba_odcinkow, liczba_sezonow, id_wytworni, id_rezysera)
+	values('jakistam', 107, 13, 1, 1);
+
+insert into Aktorzy (imie, nazwisko, data_urodzenia) values ('John', 'Doe', '1992-02-12');
+
+insert into Recenzje (ocena, typ_autora, id_widza, obiekt_recenzji, id_filmu)
+					values (5, 'w', 2, 'f', 1);
+
+insert into Newsy (tresc, id_dziennikarza) values('siema', 3);
+
+insert into Postacie_filmowe (nazwa_postaci, id_filmu, id_aktora) values ('batman', 1, 1);
+
+insert into Postacie_serialowe (nazwa_postaci, id_serialu, id_aktora) values ('hulk', 1, 1);
+
+insert into Gatunki (nazwa) values ('sci-fi');
+
+insert into Gatunki_filmu (nazwa, id_filmu) values ('sci-fi', 1);
+
+insert into Gatunki_serialu (nazwa, id_serialu) values ('sci-fi', 1);
+
+insert into Oceny_recenzji_dziennikarzy (ocena_widza, id_recenzji, id_widza) values (1, 1, 2);
