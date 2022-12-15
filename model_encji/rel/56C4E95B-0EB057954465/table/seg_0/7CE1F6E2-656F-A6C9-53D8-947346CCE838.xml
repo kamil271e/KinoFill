@@ -76,6 +76,17 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="aktywny" id="06A7338D-CF0B-7082-9E3C-4B7A5F85234C">
+<createdBy>kamil</createdBy>
+<createdTime>2022-12-15 19:36:02 UTC</createdTime>
+<ownerDesignName>model_encji</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="E2CBB574-150E-B828-EB6C-19CEAF4FBECF" name="Użytkownik_PK">

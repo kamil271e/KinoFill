@@ -4,16 +4,20 @@ CREATE TABLE Uzytkownicy(
     haslo varchar(20) NOT NULL,
     data_dolaczenia date NOT NULL DEFAULT CURRENT_DATE,
     opis_profilu text,
-    typ_uzytkownika char(1) NOT NULL CHECK (typ_uzytkownika IN ('d', 's', 'w'))
+    aktywny char(1) NOT NULL DEFAULT 't',
+    typ_uzytkownika char(1) NOT NULL CHECK (typ_uzytkownika IN ('d', 's', 'w')),
+    CHECK(data_dolaczenia <= CURRENT_DATE),
+    CHECK(aktywny in ('t','n'))
 );
 
 CREATE TABLE Wytwornie(
-    id_wytworni serial PRIMARY KEY,
+    id_wytworni integer PRIMARY KEY,
     nazwa varchar(30) NOT NULL UNIQUE,
     kraj_pochodzenia varchar(20),
     data_zalozenia date,
     ocena_widzow decimal(3, 2),
-    FOREIGN KEY(id_wytworni) REFERENCES Uzytkownicy(id_uzytkownika)
+    FOREIGN KEY(id_wytworni) REFERENCES Uzytkownicy(id_uzytkownika),
+    CHECK(data_zalozenia <= CURRENT_DATE)
 );
 
 CREATE TABLE Rezyserowie(
@@ -38,7 +42,9 @@ CREATE TABLE Filmy(
     id_rezysera integer NOT NULL,
     UNIQUE(nazwa, rok_produkcji),
     FOREIGN KEY(id_wytworni) REFERENCES Wytwornie(id_wytworni),
-    FOREIGN KEY(id_rezysera) REFERENCES Rezyserowie(id_rezysera)
+    FOREIGN KEY(id_rezysera) REFERENCES Rezyserowie(id_rezysera),
+    CHECK( (CAST (EXTRACT(year from CURRENT_DATE) AS INTEGER) ) >= rok_produkcji),
+    CHECK(dlugosc > 0)
 );
 
 CREATE TABLE Seriale(
@@ -51,7 +57,11 @@ CREATE TABLE Seriale(
     id_rezysera integer NOT NULL,
     UNIQUE(nazwa, liczba_odcinkow),
     FOREIGN KEY(id_wytworni) REFERENCES Wytwornie(id_wytworni),
-    FOREIGN KEY(id_rezysera) REFERENCES Rezyserowie(id_rezysera)
+    FOREIGN KEY(id_rezysera) REFERENCES Rezyserowie(id_rezysera),
+    CHECK(liczba_odcinkow >= 0),
+    CHECK(liczba_sezonow >= 0),
+    CHECK(liczba_odcinkow >= liczba_sezonow),
+    CHECK((ocena_widzow >= 1) and (ocena_widzow <= 5))
 );
 
 CREATE TABLE Aktorzy(
@@ -63,37 +73,39 @@ CREATE TABLE Aktorzy(
     ocena decimal(3, 2),
     id_wytworni integer,
     FOREIGN KEY(id_wytworni) REFERENCES Wytwornie(id_wytworni),
-    UNIQUE(imie, nazwisko, data_urodzenia)
+    UNIQUE(imie, nazwisko, data_urodzenia),
+    CHECK(data_urodzenia < CURRENT_DATE),
+    CHECK((ocena >= 1) and (ocena <= 5))
 );
 
 CREATE TABLE Dziennikarze(
-    id_dziennikarza serial PRIMARY KEY,
+    id_dziennikarza integer PRIMARY KEY,
     nazwa varchar(20) NOT NULL,
     imie varchar(20),
     nazwisko varchar(20),
     data_urodzenia date,
     FOREIGN KEY(id_dziennikarza) REFERENCES Uzytkownicy(id_uzytkownika),
-    UNIQUE(nazwa)
+    UNIQUE(nazwa),
+    CHECK(data_urodzenia < CURRENT_DATE)
 );
 
 CREATE TABLE Widzowie(
-    id_widza serial PRIMARY KEY,
+    id_widza integer PRIMARY KEY,
     czy_publiczny char(1) NOT NULL,
     nazwa varchar(30),
-    FOREIGN KEY(id_widza) REFERENCES Uzytkownicy(id_uzytkownika)
+    FOREIGN KEY(id_widza) REFERENCES Uzytkownicy(id_uzytkownika),
+    CHECK(czy_publiczny in ('t', 'n')),
+    CHECK(((czy_publiczny in ('t')) and (nazwa is NOT NULL)) or ((czy_publiczny in ('n')) and (nazwa is NULL)))
 );
 
 CREATE OR REPLACE FUNCTION xor3(a int, b int, c int)
 RETURNS boolean AS $$
 BEGIN
-  -- Check if exactly one of the input values is NOT NULL
   IF (a IS NOT NULL AND b IS NULL AND c IS NULL) OR
      (a IS NULL AND b IS NOT NULL AND c IS NULL) OR
      (a IS NULL AND b IS NULL AND c IS NOT NULL) THEN
-    -- Return true if exactly one input value is NOT NULL
     RETURN true;
   ELSE
-    -- Return false if zero or more than one input values are NOT NULL
     RETURN false;
   END IF;
 END;
@@ -114,14 +126,16 @@ CREATE TABLE Recenzje(
     id_aktora integer,
     ocena_widzow decimal(3,2),
     CHECK(typ_autora IN ('w','d')),
-    CHECK( (id_widza is NOT NULL AND id_dziennikarza is NULL) OR (id_widza is NULL AND id_dziennikarza is NOT NULL)),
+    CHECK((id_widza is NOT NULL AND id_dziennikarza is NULL) OR (id_widza is NULL AND id_dziennikarza is NOT NULL)),
+    CHECK(((typ_autora IN ('w')) AND (id_widza IS NOT NULL)) or (typ_autora IN ('d') AND (id_dziennikarza is NOT NULL))),
     CHECK(obiekt_recenzji IN ('f','s','a')),
-    CHECK( xor3(id_filmu, id_serialu, id_aktora) ),
+    CHECK(xor3(id_filmu, id_serialu, id_aktora)),
     FOREIGN KEY(id_widza) REFERENCES Widzowie(id_widza),
     FOREIGN KEY(id_dziennikarza) REFERENCES Dziennikarze(id_dziennikarza),
     FOREIGN KEY(id_filmu) REFERENCES Filmy(id_filmu),
     FOREIGN KEY(id_serialu) REFERENCES Seriale(id_serialu),
-    FOREIGN KEY(id_aktora) REFERENCES Aktorzy(id_aktora)
+    FOREIGN KEY(id_aktora) REFERENCES Aktorzy(id_aktora),
+    CHECK((ocena_widzow >= 1) and (ocena_widzow <= 5))
 );
 
 CREATE TABLE Newsy(
@@ -132,7 +146,8 @@ CREATE TABLE Newsy(
     id_wytworni integer,
     FOREIGN KEY(id_dziennikarza) REFERENCES Dziennikarze(id_dziennikarza),
     FOREIGN KEY(id_wytworni) REFERENCES Wytwornie(id_wytworni),
-    CHECK( (id_wytworni is NOT NULL AND id_dziennikarza is NULL) OR (id_wytworni is NULL AND id_dziennikarza is NOT NULL) )
+    CHECK((id_wytworni is NOT NULL AND id_dziennikarza is NULL) OR (id_wytworni is NULL AND id_dziennikarza is NOT NULL)),
+    CHECK(data_publikacji <= CURRENT_DATE)
 );
 
 CREATE TABLE Postacie_filmowe(
@@ -182,5 +197,24 @@ CREATE TABLE Oceny_recenzji_dziennikarzy(
     PRIMARY KEY(id_recenzji, id_widza),
     FOREIGN KEY(id_widza) REFERENCES Widzowie(id_widza),
     FOREIGN KEY(id_recenzji) REFERENCES Recenzje(id_recenzji),
-    CHECK(ocena_widza < 6 AND ocena_widza > 0)
+    CHECK(ocena_widza <= 5 AND ocena_widza >= 1)
 );
+
+
+drop table Oceny_recenzji_dziennikarzy;
+drop table Gatunki_serialu;
+drop table Gatunki_filmu;
+drop table Gatunki;
+drop table Postacie_serialowe;
+drop table Postacie_filmowe;
+drop table Newsy;
+drop table Recenzje;
+drop table Widzowie;
+drop table Dziennikarze;
+drop table Aktorzy;
+drop table Seriale;
+drop table Filmy;
+drop table Rezyserowie;
+drop table Wytwornie;
+drop table Uzytkownicy;
+drop function xor3;
