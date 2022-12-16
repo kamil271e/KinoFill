@@ -1,7 +1,10 @@
+CREATE SEQUENCE users_id_seq;
+
+
 CREATE TABLE Uzytkownicy(
-    id_uzytkownika serial PRIMARY KEY,
+    id_uzytkownika integer PRIMARY KEY DEFAULT nextval('users_id_seq'),
     login varchar(20) NOT NULL UNIQUE,
-    haslo varchar(20) NOT NULL,
+    haslo varchar(128) NOT NULL,
     data_dolaczenia date NOT NULL DEFAULT CURRENT_DATE,
     opis_profilu text,
     aktywny char(1) NOT NULL DEFAULT 't',
@@ -98,6 +101,37 @@ CREATE TABLE Widzowie(
     CHECK(czy_publiczny in ('t', 'n')),
     CHECK(((czy_publiczny in ('t')) and (nazwa is NOT NULL)) or ((czy_publiczny in ('n')) and (nazwa is NULL)))
 );
+
+CREATE OR REPLACE PROCEDURE nowyUzytkownik(
+  login VARCHAR(20),
+  haslo VARCHAR(128),
+  data_dolaczenia DATE,
+  opis_profilu TEXT,
+  aktywny CHAR(1),
+  typ_uzytkownika CHAR(1), -- Użytkownik
+  nazwa VARCHAR(30),
+  kraj_pochodzenia VARCHAR(20),
+  data_zalozenia DATE,  -- Wytwórnia
+  imie VARCHAR(20),
+  nazwisko VARCHAR(20),
+  data_urodzenia DATE, -- Dziennikarz
+  czy_publiczny CHAR(1) -- Widz
+)
+AS $$
+DECLARE
+  id_uzytkownika Uzytkownicy.id_uzytkownika%TYPE;
+BEGIN
+  SELECT nextval('users_id_seq') INTO id_uzytkownika;
+  INSERT INTO Uzytkownicy VALUES (id_uzytkownika, login, haslo, data_dolaczenia, opis_profilu, aktywny, typ_uzytkownika);
+  IF typ_uzytkownika = 'w' THEN
+    INSERT INTO Widzowie VALUES (id_uzytkownika, czy_publiczny, nazwa);
+  ELSIF typ_uzytkownika = 'd' THEN
+    INSERT INTO Dziennikarze VALUES (id_uzytkownika, imie, nazwisko, data_urodzenia, nazwa);
+  ELSIF typ_uzytkownika = 's' THEN
+    INSERT INTO Wytwornie VALUES (id_uzytkownika, nazwa, kraj_pochodzenia, data_zalozenia);
+  END IF;
+END;
+$$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION xor3(a int, b int, c int)
 RETURNS boolean AS $$
@@ -202,23 +236,6 @@ CREATE TABLE Oceny_recenzji_dziennikarzy(
 );
 
 
-drop table Oceny_recenzji_dziennikarzy;
-drop table Gatunki_serialu;
-drop table Gatunki_filmu;
-drop table Gatunki;
-drop table Postacie_serialowe;
-drop table Postacie_filmowe;
-drop table Newsy;
-drop table Recenzje;
-drop table Widzowie;
-drop table Dziennikarze;
-drop table Aktorzy;
-drop table Seriale;
-drop table Filmy;
-drop table Rezyserowie;
-drop table Wytwornie;
-drop table Uzytkownicy;
-drop function xor3;
 
 -- sample inserts
 insert into Uzytkownicy (login, haslo, typ_uzytkownika) values ('wytwornia', 'xyz', 's');
@@ -258,3 +275,40 @@ insert into Gatunki_filmu (nazwa, id_filmu) values ('sci-fi', 1);
 insert into Gatunki_serialu (nazwa, id_serialu) values ('sci-fi', 1);
 
 insert into Oceny_recenzji_dziennikarzy (ocena_widza, id_recenzji, id_widza) values (1, 1, 2);
+
+
+CALL nowyUzytkownik(
+  'user123',
+  'password123',
+  '2022-01-01',
+  'I am a new viewer',
+  't',
+  'w',
+  'viewer1',
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  't'
+);
+
+
+drop table Oceny_recenzji_dziennikarzy;
+drop table Gatunki_serialu;
+drop table Gatunki_filmu;
+drop table Gatunki;
+drop table Postacie_serialowe;
+drop table Postacie_filmowe;
+drop table Newsy;
+drop table Recenzje;
+drop table Widzowie;
+drop table Dziennikarze;
+drop table Aktorzy;
+drop table Seriale;
+drop table Filmy;
+drop table Rezyserowie;
+drop table Wytwornie;
+drop table Uzytkownicy;
+drop function xor3;
+drop procedure nowyUzytkownik;
