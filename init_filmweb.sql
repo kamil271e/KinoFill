@@ -126,7 +126,7 @@ BEGIN
   IF typ_uzytkownika = 'w' THEN
     INSERT INTO filmweb.Widzowie VALUES (id_uzytkownika, czy_publiczny, nazwa);
   ELSIF typ_uzytkownika = 'd' THEN
-    INSERT INTO filmweb.Dziennikarze VALUES (id_uzytkownika, imie, nazwisko, data_urodzenia, nazwa);
+    INSERT INTO filmweb.Dziennikarze VALUES (id_uzytkownika, nazwa, imie, nazwisko, data_urodzenia);
   ELSIF typ_uzytkownika = 's' THEN
     INSERT INTO filmweb.Wytwornie VALUES (id_uzytkownika, nazwa, kraj_pochodzenia, data_zalozenia);
   END IF;
