@@ -1,16 +1,17 @@
 from config import *
-# from forms import *
 
-class User(db.Model, UserMixin):
-    __tablename__ = "users"
+
+class Users(db.Model, UserMixin):
+    __tablename__ = "uzytkownicy"
     __table_args__ = {'quote': False, 'schema': "filmweb"}
 
-    id = db.Column(db.Integer, primary_key=True)
-    login = db.Column(db.String(64), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128))
-    register_date = db.Column(db.Date)
-    role = db.Column(db.String(5))
-    user_desc = db.Column(db.String(256))
+    id_uzytkownika = db.Column(db.Integer, primary_key=True)
+    login = db.Column(db.String(20), unique=True, nullable=False)
+    haslo = db.Column(db.String(128))
+    data_dolaczenia = db.Column(db.Date)
+    opis_profilu = db.Column(db.String(256))
+    aktywny = db.Column(db.String(1))
+    typ_uzytkownika = db.Column(db.String(1))
 
     @property
     def password(self):
@@ -18,17 +19,18 @@ class User(db.Model, UserMixin):
 
     @password.setter
     def password(self, password):
-        self.password_hash = generate_password_hash(password)
+        self.haslo = generate_password_hash(password)
 
     def verify_password(self, password):
-        return check_password_hash(self.password_hash, password)
+        return check_password_hash(self.haslo, password)
 
-    def __init__(self, login, password_hash, today, role, desc=None):
+    def __init__(self, login, password, today, user_type, desc=None, active='t'):
         self.login = login
-        self.password_hash = password_hash
-        self.role = role
-        self.register_date = today
-        self.user_desc = desc
+        self.haslo = password
+        self.data_dolaczenia = today
+        self.opis_profilu = desc
+        self.aktywny = active
+        self.typ_uzytkownika = user_type
 
 
 class Viewer(db.Model):
