@@ -2,9 +2,9 @@ from models import *
 from forms import *
 
 @login_manager.user_loader # user loader tells Flask-Login how to find a specific user from the ID that is stored in their session cookie
-def load_user(id_uzytkownika):
+def load_user(user_id):
     # since the user_id is just the primary key of our user table, use it in the query for the user
-    return Users.query.get(int(id_uzytkownika))
+    return Users.query.get(int(user_id))
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -15,7 +15,7 @@ def login():
     if request.method == 'POST':
         user = db.session.query(Users).filter(Users.login == request.form['login']).first()
         if user:
-            check = check_password_hash(user.haslo, request.form['password'])
+            check = check_password_hash(user.password_hash, request.form['password'])
             if check:
                 login_user(user)
                 flash("Poprawnie zalogowano użytkownika")
@@ -37,21 +37,21 @@ def register():
             hashed_password = generate_password_hash(form.password.data, "sha256")
             is_public = ""
             if form.role.data == "Widz":
-                role = "w"  # viewer
+                role = "v"  # viewer
                 if form.viewer_role.data == "Prywatne":
-                    is_public = "n"
+                    is_public = "f"
                 else:
                     is_public = "t"
             elif form.role.data == "Dziennikarz":
-                role = "d"  # journalist
+                role = "j"  # journalist
             elif form.role.data == "Wytwórnia filmowa":
                 role = "s"  # studio
 
-            command = f"CALL filmweb.nowyUzytkownik(" \
+            command = f"CALL filmweb.newuser(" \
                       f"'{form.login.data}', " \
                       f"'{hashed_password}', " \
                       f"'{today}', " \
-                      f"NULL, " \
+                      f"'{form.user_desc.data}', " \
                       f"'t', " \
                       f"'{role}', " \
                       f"'{form.name.data}', " \
@@ -85,6 +85,11 @@ def logout():
 @login_required # protect from not logged users
 def user():
     return render_template('user.html', name=current_user.login, today=today)
+
+@app.route('/list')
+@login_required
+def list_objects():
+    return render_template('list_of_objects.html')
 
 if __name__ == '__main__':
     # with app.app_context(): #Flask-SQLAlchemy 3.0 all access to db.engine (and db.session) requires an active Flask application context

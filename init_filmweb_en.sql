@@ -24,14 +24,14 @@ CREATE TABLE filmweb.Studios(
 
 CREATE TABLE filmweb.Directors(
     director_id serial PRIMARY KEY,
-    name varchar(20) NOT NULL,
+    firstname varchar(20) NOT NULL,
     surname varchar(20) NOT NULL,
     birth_date date NOT NULL,
     country varchar(20),
     rate decimal(3, 2),
     studio_id integer,
     FOREIGN KEY(studio_id) REFERENCES filmweb.Studios(studio_id),
-    UNIQUE(name, surname, birth_date)
+    UNIQUE(firstname, surname, birth_date)
 );
 
 CREATE TABLE filmweb.Movies(
@@ -68,14 +68,14 @@ CREATE TABLE filmweb.Series(
 
 CREATE TABLE filmweb.Actors(
     actor_id serial PRIMARY KEY,
-    name varchar(20) NOT NULL,
+    firstname varchar(20) NOT NULL,
     surname varchar(20) NOT NULL,
     birth_date date NOT NULL,
     country varchar(20),
     viewers_rating decimal(3, 2),
     studio_id integer,
     FOREIGN KEY(studio_id) REFERENCES filmweb.Studios(studio_id),
-    UNIQUE(name, surname, birth_date),
+    UNIQUE(firstname, surname, birth_date),
     CHECK(birth_date < CURRENT_DATE),
     CHECK((viewers_rating >= 1) and (viewers_rating <= 5))
 );
@@ -84,7 +84,7 @@ CREATE TABLE filmweb.Actors(
 CREATE TABLE filmweb.Journalists(
     journalist_id integer PRIMARY KEY,
     nickname varchar(20) NOT NULL,
-    name varchar(20),
+    firstname varchar(20),
     surname varchar(20),
     birth_date date,
     FOREIGN KEY(journalist_id) REFERENCES filmweb.Users(user_id),
@@ -111,7 +111,7 @@ CREATE OR REPLACE PROCEDURE filmweb.newUser(
   nickname VARCHAR(30),
   country VARCHAR(20),
   creation_date DATE, -- Studio
-  name VARCHAR(20),
+  firstname VARCHAR(20),
   surname VARCHAR(20),
   birth_date DATE, -- Journalist
   is_public CHAR(1) -- Viewer
@@ -125,7 +125,7 @@ BEGIN
   IF user_type = 'w' THEN
     INSERT INTO filmweb.Viewers VALUES (user_id, is_public, nickname);
   ELSIF user_type = 'd' THEN
-    INSERT INTO filmweb.Journalists VALUES (user_id, nickname, name, surname, birth_date);
+    INSERT INTO filmweb.Journalists VALUES (user_id, nickname, firstname, surname, birth_date);
   ELSIF user_type = 's' THEN
     INSERT INTO filmweb.Studio VALUES (user_id, nickname, country, creation_date);
   END IF;
@@ -224,7 +224,7 @@ CREATE TABLE filmweb.Series_genres(
     FOREIGN KEY(series_id) REFERENCES filmweb.Series(series_id)
 );
 
-CREATE TABLE filmweb.Journalists_reviews_viewers_ratings(
+CREATE TABLE filmweb.Journalists_reviews_ratings(
     viewers_rating integer not null,
     review_id integer not null,
     viewer_id integer not null,
@@ -287,7 +287,7 @@ CALL filmweb.newUser(
 );
 
 
-drop table filmweb.Journalists_reviews_viewers_ratings;
+drop table filmweb.Journalists_reviews_ratings;
 drop table filmweb.Series_genres;
 drop table filmweb.Movie_genres;
 drop table filmweb.Genres;
