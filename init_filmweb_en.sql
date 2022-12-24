@@ -127,7 +127,7 @@ BEGIN
   ELSIF user_type = 'd' THEN
     INSERT INTO filmweb.Journalists VALUES (user_id, nickname, firstname, surname, birth_date);
   ELSIF user_type = 's' THEN
-    INSERT INTO filmweb.Studio VALUES (user_id, nickname, country, creation_date);
+    INSERT INTO filmweb.Studios VALUES (user_id, nickname, country, creation_date);
   END IF;
 end;
 $$ LANGUAGE plpgsql;

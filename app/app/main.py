@@ -89,7 +89,10 @@ def user():
 @app.route('/list')
 @login_required
 def list_objects():
-    return render_template('list_of_objects.html', today=today)
+    studios = db.session.query(Studio)
+    films = db.session.query(Movie)
+    series = db.session.query(Series)
+    return render_template('list_of_objects.html', today=today, studios=studios, films=films, series=series)
 
 if __name__ == '__main__':
     # with app.app_context(): #Flask-SQLAlchemy 3.0 all access to db.engine (and db.session) requires an active Flask application context
