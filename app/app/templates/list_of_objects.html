@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h1 class="lh-lg display-5">Lista</h1>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="films-tab" data-bs-toggle="tab" data-bs-target="#films" type="button" role="tab" aria-controls="films" aria-selected="true">Filmy</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="series-tab" data-bs-toggle="tab" data-bs-target="#series" type="button" role="tab" aria-controls="series" aria-selected="false">Seriale</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="actors-tab" data-bs-toggle="tab" data-bs-target="#actors" type="button" role="tab" aria-controls="actors" aria-selected="false">Aktorzy</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="studios-tab" data-bs-toggle="tab" data-bs-target="#studios" type="button" role="tab" aria-controls="studios" aria-selected="false">Wytwórnie filmowe</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="films" role="tabpanel" aria-labelledby="films-tab">
+            {% if films.count() > 0 %}
+                <table class="table table-hover">
+                    <thead class="table-info">
+                        <th>Nazwa</th>
+                        <th>Rok powstania</th>
+                        <th>Długość</th>
+                        <th>Ocena widzów</th>
+                    </thead>
+                    <tbody>
+                        {% for film in films %}
+                        <tr>
+                            <td>{{ film.name }}</td>
+                            <td>{{ film.creation_year }}</td>
+                            <td>{{ film.length }}</td>
+                            <td>{{ film.viewers_rating }}</td>
+                            <br/>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                Nie mamy tego w bazie
+            {% endif %}
+        </div>
+        <div class="tab-pane fade" id="series" role="tabpanel" aria-labelledby="series-tab">
+            {% if series.count() > 0 %}
+                <table class="table table-hover">
+                    <thead class="table-info">
+                        <th>Nazwa</th>
+                        <th>Liczba odcinków</th>
+                        <th>Liczba sezonow</th>
+                        <th>Ocena widzów</th>
+                    </thead>
+                    <tbody>
+                        {% for s in series %}
+                        <tr>
+                            <td>{{ s.name }}</td>
+                            <td>{{ s.episodes }}</td>
+                            <td>{{ s.seasons }}</td>
+                            <td>{{ s.viewers_rating }}</td>
+                            <br/>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                Nie mamy tego w bazie
+            {% endif %}
+        </div>
+        <div class="tab-pane fade" id="actors" role="tabpanel" aria-labelledby="actors-tab">...</div>
+        <div class="tab-pane fade" id="studios" role="tabpanel" aria-labelledby="studios-tab">
+            {% if studios.count() > 0 %}
+                <table class="table table-hover">
+                    <thead class="table-info">
+                        <th>Nazwa</th>
+                        <th>Państwo</th>
+                        <th>Data założenia</th>
+                        <th>Ocena widzów</th>
+                    </thead>
+                    <tbody>
+                        {% for studio in studios %}
+                        <tr>
+                            <td>{{ studio.name }}</td>
+                            <td>{{ studio.country }}</td>
+                            <td>{{ studio.creation_date }}</td>
+                            <td>{{ studio.viewers_rating }}</td>
+                            <br/>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                Nie mamy tego w bazie
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
