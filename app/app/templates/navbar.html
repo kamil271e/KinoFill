@@ -3,12 +3,11 @@
     <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent" style="margin-right: 20px;">
         <ul class="navbar-nav mr-auto">
             {% if current_user.is_authenticated %}
-                {% if current_user.typ_uzytkownika == 'w' %}
-                {% elif current_user.typ_uzytkownika == 'd' %}
-                {% elif current_user.typ_uzytkownika == 's' %}
-                {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url_for('logout')}}">Wyloguj</a>
+                    <a class="nav-link" href="{{ url_for('list_objects') }}">Lista</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Wyloguj</a>
                 </li>
             {% else %}
                 <li class="nav-item">

@@ -93,3 +93,70 @@ class Studio(db.Model):
 
     def get_id(self):
         return (self.studio_id)
+
+
+class Director(db.Model):
+    __tablename__ = "director"
+    __table_args__ = {'quote': False, 'schema': "filmweb", }
+
+    director_id = db.Column(db.Integer, primary_key=True)
+    firstname = db.Column(db.String(20), nullable=False, unique=True)
+    surname = db.Column(db.String(20), nullable=False, unique=True)
+    birth_date = db.Column(db.Date, nullable=False, unique=True)
+    country = db.Column(db.String(20))
+    rate = db.Column(db.Float)
+    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studio.studio_id"))
+
+    def __init__(self, firstname, surname, birth_date, country, rate):
+        # self.studio_id = studio_id
+        self.firstname = firstname
+        self.surname = surname
+        self.birth_date = birth_date
+        self.country = country
+        self.rate = rate
+
+    def get_id(self):
+        return (self.director_id)
+
+
+class Movie(db.Model):
+    __tablename__ = "movies"
+    __table_args__ = {'quote': False, 'schema': "filmweb", }
+
+    movie_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30), nullable=False, unique=True)
+    creation_year = db.Column(db.Integer, nullable=False, unique=True)
+    length = db.Column(db.Integer, nullable=False)
+    viewers_rating = db.Column(db.Float)
+    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studio.studio_id"), nullable=False)
+    director_id = db.Column(db.Integer, db.ForeignKey("filmweb.directors.director_id"), nullable=False)
+
+    def __init__(self, name, creation_year, length, viewers_rating):
+        self.name = name
+        self.creation_year = creation_year
+        self.length = length
+        self.viewers_rating = viewers_rating
+
+    def get_id(self):
+        return (self.movie_id)
+
+class Series(db.Model):
+    __tablename__ = "series"
+    __table_args__ = {'quote': False, 'schema': "filmweb", }
+
+    series_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30), nullable=False, unique=True)
+    episodes = db.Column(db.Integer, nullable=False, unique=True)
+    seasons = db.Column(db.Integer, nullable=False)
+    viewers_rating = db.Column(db.Float)
+    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studio.studio_id"), nullable=False)
+    director_id = db.Column(db.Integer, db.ForeignKey("filmweb.directors.director_id"), nullable=False)
+
+    def __init__(self, name, episodes, seasons, viewers_rating):
+        self.name = name
+        self.episodes = episodes
+        self.seasons = seasons
+        self.viewers_rating = viewers_rating
+
+    def get_id(self):
+        return (self.series_id)
