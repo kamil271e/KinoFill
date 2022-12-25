@@ -36,42 +36,56 @@ def register():
         if user is None: #user doesn't exist
             hashed_password = generate_password_hash(form.password.data, "sha256")
             is_public = ""
+            existing_name = ""
             if form.role.data == "Widz":
                 role = "v"  # viewer
                 if form.viewer_role.data == "Prywatne":
                     is_public = "f"
                 else:
                     is_public = "t"
+                    viewer = db.session.query(Viewer).filter(Viewer.nickname == form.name.data).first()
+                    if viewer:
+                        existing_name = "x"
             elif form.role.data == "Dziennikarz":
                 role = "j"  # journalist
+                journalist = db.session.query(Journalist).filter(Journalist.nickname == form.name.data).first()
+                if journalist:
+                    existing_name = "x"
             elif form.role.data == "Wytwórnia filmowa":
                 role = "s"  # studio
+                studio = db.session.query(Studio).filter(Studio.name == form.name.data).first()
+                if studio:
+                    existing_name = "x"
 
-            command = f"CALL filmweb.newuser(" \
-                      f"'{form.login.data}', " \
-                      f"'{hashed_password}', " \
-                      f"'{today}', " \
-                      f"'{form.user_desc.data}', " \
-                      f"'t', " \
-                      f"'{role}', " \
-                      f"'{form.name.data}', " \
-                      f"NULL, " \
-                      f"NULL, " \
-                      f"NULL, " \
-                      f"NULL, " \
-                      f"NULL, " \
-                      f"'{is_public}'" \
-                      f");"
-            print(command)
-            db.session.execute(command)
-            db.session.commit()
-            flash("Poprawnie zarejestrowano użytkownika")
-            return redirect(url_for("login"))
+            if existing_name == "":
+                command = f"CALL filmweb.newuser(" \
+                          f"'{form.login.data}', " \
+                          f"'{hashed_password}', " \
+                          f"'{today}', " \
+                          f"'{form.user_desc.data}', " \
+                          f"'t', " \
+                          f"'{role}', " \
+                          f"'{form.name.data}', " \
+                          f"NULL, " \
+                          f"NULL, " \
+                          f"NULL, " \
+                          f"NULL, " \
+                          f"NULL, " \
+                          f"'{is_public}'" \
+                          f");"
+                print(command)
+                db.session.execute(command)
+                db.session.commit()
+                flash("Poprawnie zarejestrowano użytkownika")
+                return redirect(url_for("login"))
+            else:
+                flash("Użytkownik o podanej nazwie istnieje. Wprowadź inną nazwę")
+                form.name.data = ''
         else:
             flash("Użytkownik o podanym loginie istnieje")
+            form.login.data = ''
+            form.password.data = ''
         login = form.login.data
-        form.login.data = ''
-        form.password.data = ''
     return render_template('register.html', login=login, form=form, today=today)
 
 @app.route('/logout')
@@ -93,6 +107,15 @@ def list_objects():
     films = db.session.query(Movie)
     series = db.session.query(Series)
     return render_template('list_of_objects.html', today=today, studios=studios, films=films, series=series)
+
+@app.route('/add_studio_objects') #access only for studio - role_required
+@login_required
+def add_studio_objects():
+    if current_user.user_type != 's':
+        return redirect(url_for("home"))
+    form = AddFilm()
+    return render_template('add_child_studio_objects.html', today=today)
+
 
 if __name__ == '__main__':
     # with app.app_context(): #Flask-SQLAlchemy 3.0 all access to db.engine (and db.session) requires an active Flask application context

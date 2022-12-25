@@ -21,3 +21,7 @@ class RegisterForm(FlaskForm):
                 flash("Nazwa uzytkownika powinna mieć od 5 do 20 znaków")
                 return False
         return True
+
+
+class AddFilm(FlaskForm):
+    name = StringField("Name", validators=[DataRequired()])

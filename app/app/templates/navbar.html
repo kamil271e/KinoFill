@@ -6,6 +6,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('list_objects') }}">Lista</a>
                 </li>
+                {% if current_user.user_type == 's' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('add_studio_objects') }}">Dodaj nowe obiekty</a>
+                    </li>
+                {% endif %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('logout') }}">Wyloguj</a>
                 </li>
