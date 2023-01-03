@@ -96,7 +96,7 @@ class Studio(db.Model):
 
 
 class Director(db.Model):
-    __tablename__ = "director"
+    __tablename__ = "directors"
     __table_args__ = {'quote': False, 'schema': "filmweb", }
 
     director_id = db.Column(db.Integer, primary_key=True)
@@ -105,15 +105,15 @@ class Director(db.Model):
     birth_date = db.Column(db.Date, nullable=False, unique=True)
     country = db.Column(db.String(20))
     rate = db.Column(db.Float)
-    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studio.studio_id"))
+    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studios.studio_id"))
 
-    def __init__(self, firstname, surname, birth_date, country, rate):
-        # self.studio_id = studio_id
+    def __init__(self, firstname, surname, birth_date, country, rate, studio_id):
         self.firstname = firstname
         self.surname = surname
         self.birth_date = birth_date
         self.country = country
         self.rate = rate
+        self.studio_id = studio_id
 
     def get_id(self):
         return (self.director_id)
@@ -128,7 +128,7 @@ class Movie(db.Model):
     creation_year = db.Column(db.Integer, nullable=False, unique=True)
     length = db.Column(db.Integer, nullable=False)
     viewers_rating = db.Column(db.Float)
-    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studio.studio_id"), nullable=False)
+    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studios.studio_id"), nullable=False)
     director_id = db.Column(db.Integer, db.ForeignKey("filmweb.directors.director_id"), nullable=False)
 
     def __init__(self, name, creation_year, length, viewers_rating):

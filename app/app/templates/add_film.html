@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <h1 class="lh-lg display-5">Dodaj film</h1>
+        {{ form.hidden_tag() }}
+        {{ form.title.label(class="form-label") }}
+        {{ form.title(class="form-control") }}
+        </br>
+        {{ form.submit(class="btn btn-info") }}
+    </form>
+{% endblock %}

@@ -24,4 +24,19 @@ class RegisterForm(FlaskForm):
 
 
 class AddFilm(FlaskForm):
-    name = StringField("Name", validators=[DataRequired()])
+    title = StringField("Tytuł", validators=[DataRequired()])
+    submit = SubmitField("Dodaj film")
+
+
+class AddDirector(FlaskForm):
+    firstname = StringField("Imię", validators=[DataRequired()])
+    surname = StringField("Nazwisko", validators=[DataRequired()])
+    birth_date = DateField("Data urodzenia")#, format='%d.%m.%Y', validators=[DataRequired()])
+    submit = SubmitField("Dodaj reżysera")
+
+    def validate_date(self):
+        if self.birth_date.data >= today:
+            flash("Data musi być przeszła")
+            return False
+        return True
+

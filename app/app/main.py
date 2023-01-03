@@ -108,13 +108,40 @@ def list_objects():
     series = db.session.query(Series)
     return render_template('list_of_objects.html', today=today, studios=studios, films=films, series=series)
 
-@app.route('/add_studio_objects') #access only for studio - role_required
+@app.route('/add_director', methods=['POST', 'GET']) #access only for studio - role_required
 @login_required
-def add_studio_objects():
+def add_director():
+    if current_user.user_type != 's':
+        return redirect(url_for("home"))
+    form = AddDirector()
+    if form.validate_on_submit():
+        director = db.session.query(Director).filter(
+            Director.firstname == form.firstname.data,
+            Director.surname == form.surname.data,
+            Director.birth_date == form.birth_date.data).first()
+        if director is None:
+            director = Director(
+                firstname=form.firstname.data,
+                surname=form.surname.data,
+                birth_date=form.birth_date.data,
+                country=None,
+                rate=None,
+                studio_id=current_user.user_id)
+            db.session.add(director)
+            db.session.commit()
+        else:
+            flash("Ten reżyser został już dodany do bazy danych")
+    return render_template('add_director.html', today=today, form=form)
+
+@app.route('/add_film', methods=['POST', 'GET'])
+@login_required
+def add_film():
     if current_user.user_type != 's':
         return redirect(url_for("home"))
     form = AddFilm()
-    return render_template('add_child_studio_objects.html', today=today)
+    if form.validate_on_submit():
+        print(form.title.data)
+    return render_template('add_film.html', today=today, form=form)
 
 
 if __name__ == '__main__':
