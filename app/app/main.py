@@ -165,8 +165,8 @@ def add_movie():
             db.session.commit()
 
             movie_genre = Movie_genres(
-                movie_id = movie.get_id(),
-                genre = form.genre.data
+                series_id=movie.get_id(),
+                genre=form.genre.data
             )
             movie_genre.movie_id = movie.movie_id
             movie_genre.genre = form.genre.data
@@ -178,6 +178,45 @@ def add_movie():
             flash("Ten film został już dodany do bazy danych")
     return render_template('add_movie.html', today=today, form=form)
 
+@app.route('/add_series', methods=['POST', 'GET'])
+@login_required
+def add_series():
+    if current_user.user_type != 's':
+        return redirect(url_for("home"))
+    form = AddSeries()
+    form.studio.choices = getStudios()
+    form.genre.choices = getGenres()
+    form.director.choices = getDirectors()
+    if form.validate_on_submit():
+        series = db.session.query(Series).filter(
+            Series.name == form.name.data,
+            Series.episodes == form.episodes.data
+        ).first()
+        if series is None:
+            series = Series(
+                name=form.name.data,
+                episodes=form.episodes.data,
+                seasons=form.seasons.data,
+                viewers_rating=None
+            )
+            series.studio_id = form.studio.data
+            series.director_id = form.director.data
+            db.session.add(series)
+            db.session.commit()
+
+            series_genre = Series_genres(
+                series_id=series.get_id(),
+                genre=form.genre.data
+            )
+            series_genre.series_id = series.series_id
+            series_genre.genre = form.genre.data
+            db.session.add(series_genre)
+            db.session.commit()
+            flash("Dodano serial")
+            return redirect(url_for("home"))
+        else:
+            flash("Ten serial został już dodany do bazy danych")
+    return render_template('add_series.html', today=today, form=form)
 
 if __name__ == '__main__':
     # with app.app_context(): #Flask-SQLAlchemy 3.0 all access to db.engine (and db.session) requires an active Flask application context

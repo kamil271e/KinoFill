@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <h1 class="lh-lg display-5">Dodaj serial</h1>
+        {{ form.hidden_tag() }}
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control") }}
+        </br>
+        {{ form.episodes.label(class="form-label") }}
+        {{ form.episodes(class="form-control") }}
+        </br>
+        {{ form.seasons.label(class="form-label") }}
+        {{ form.seasons(class="form-control range-seasons", id="seasons") }}
+        <label id="seasons-value">{{ form.seasons.data }}</label> <!--TODO nie zmienia siw wartosc-->
+        <style>
+            .range-seasons {
+                width: 200px;
+            }
+            #seasons-value{
+                position: absolute;
+                right: 750px;
+                top: 375px;
+            }
+        </style>
+        <script>
+            import $ from 'jquery';
+            $(document).ready(function(){
+                $("#seasons").on("input", function(){
+                    $("#seasons-value").text($(this).val());
+                });
+            });
+        </script>
+        </br>
+        {{ form.director.label(class="form-label") }}
+        {{ form.director(class="form-control") }}
+        </br>
+        {{ form.studio.label(class="form-label") }}
+        {{ form.studio(class="form-control") }}
+        </br>
+        {{ form.genre.label(class="form-label") }}
+        {{ form.genre(class="form-control") }}
+        </br>
+        {{ form.submit(class="btn btn-info") }}
+    </form>
+{% endblock %}

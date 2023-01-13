@@ -149,7 +149,7 @@ class Series(db.Model):
     episodes = db.Column(db.Integer, nullable=False, unique=True)
     seasons = db.Column(db.Integer, nullable=False)
     viewers_rating = db.Column(db.Float)
-    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studio.studio_id"), nullable=False)
+    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studios.studio_id"), nullable=False)
     director_id = db.Column(db.Integer, db.ForeignKey("filmweb.directors.director_id"), nullable=False)
 
     def __init__(self, name, episodes, seasons, viewers_rating):
@@ -180,4 +180,15 @@ class Movie_genres(db.Model):
 
     def __init__(self, movie_id, genre):
         self.movie_id = movie_id
+        self.genre = genre
+
+class Series_genres(db.Model):
+    __tablename___ = "series_genres"
+    __table_args__ = {'quote': False, 'schema': "filmweb", }
+
+    series_id = db.Column(db.Integer, db.ForeignKey("filmweb.series.series_id"), primary_key = True)
+    genre = db.Column(db.String(20), db.ForeignKey("filmweb.genres.genre"), primary_key=True)
+
+    def __init__(self, series_id, genre):
+        self.series_id = series_id
         self.genre = genre

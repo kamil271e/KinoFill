@@ -35,8 +35,18 @@ class AddMovie(FlaskForm):
     submit = SubmitField("Dodaj film")
 
     def validate(self):
-        if float(self.length.data) <= 0:
+        try:
+            _ = int(self.length.data)
+        except:
+            flash("Długość filmu musi być liczbą całkowitą")
+            return False
+
+        if int(self.length.data) <= 0:
             flash("Podaj poprawną długość trwania filmu")
+            return False
+        if len(self.name.data.strip()) > 30:
+            flash("Podano za długą nazwę")
+            return False
         return True
 
 
@@ -61,3 +71,30 @@ class AddDirector(FlaskForm):
             self.country.data = None
         return True
 
+
+class AddSeries(FlaskForm):
+    name = StringField("Tytuł", validators=[DataRequired()])                          
+    episodes = StringField("Liczba odcinków", default=10, validators=[NumberRange(min=0, max=10000)], render_kw={'step': 1})
+    seasons = DecimalRangeField("Liczba sezonów", default=1, validators=[NumberRange(min=0, max=200)], render_kw={'step': 1})
+    director = SelectField("Reżyser")
+    studio = SelectField("Wytwórnia")
+    genre = SelectField("Gatunek")
+    submit = SubmitField("Dodaj serial")
+
+    def validate(self):
+        try:
+            self.episodes.data = int(self.episodes.data)
+        except:
+            flash("Liczba odcinków musi być liczbą całkowitą")
+            return False
+
+        if len(self.name.data.strip()) > 30:
+            flash("Podano za długą nazwę")
+            return False
+        if int(self.episodes.data) < 0:
+            flash("Liczba odcinków nie może być ujemna")
+            return False
+
+        self.seasons.data = int(self.seasons.data)
+        
+        return True
