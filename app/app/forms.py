@@ -112,7 +112,6 @@ class AddSeries(FlaskForm):
             flash("Podano za długą nazwę")
             return False
         
-        
         self.seasons.data = int(float(self.seasons.data))
         
         return True

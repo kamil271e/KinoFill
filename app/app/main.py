@@ -158,21 +158,17 @@ def add_movie():
                 name=form.name.data,
                 creation_year=form.creation_year.data,
                 length=form.length.data,
-                viewers_rating=None
-                # studio_id=form.studio.data, # passing key attribute values in constructor is incorrect
-                # director_id=form.director.data        
+                viewers_rating=None,
+                studio_id=form.studio.data,
+                director_id=form.director.data        
             )
-            movie.studio_id = form.studio.data
-            movie.director_id = form.director.data
             db.session.add(movie)
             db.session.commit()
 
             movie_genre = Movie_genres(
-                series_id=movie.get_id(),
+                movie_id=movie.get_id(),
                 genre=form.genre.data
             )
-            movie_genre.movie_id = movie.movie_id
-            movie_genre.genre = form.genre.data
             db.session.add(movie_genre)
             db.session.commit()
             flash("Dodano film")
@@ -202,10 +198,10 @@ def add_series():
                 name=form.name.data,
                 episodes=form.episodes.data,
                 seasons=form.seasons.data,
-                viewers_rating=None
+                viewers_rating=None,
+                studio_id=form.studio.data,
+                director_id=form.director.data
             )
-            series.studio_id = form.studio.data
-            series.director_id = form.director.data
             db.session.add(series)
             db.session.commit()
 
@@ -213,8 +209,6 @@ def add_series():
                 series_id=series.get_id(),
                 genre=form.genre.data
             )
-            series_genre.series_id = series.series_id
-            series_genre.genre = form.genre.data
             db.session.add(series_genre)
             db.session.commit()
             flash("Dodano serial")
