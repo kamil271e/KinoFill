@@ -13,14 +13,24 @@
         {% endwith %}
         <h1 class="lh-lg display-5">Dodaj film</h1>
         {{ form.hidden_tag() }}
-        {{ form.title.label(class="form-label") }}
-        {{ form.title(class="form-control") }}
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control") }}
         </br>
-        {{ form.production_date.label(class="form-label") }}
-        {{ form.production_date(class="form-control") }}
+        {{ form.creation_year.label(class="form-label") }}
+        {{ form.creation_year(class="form-control") }}
         </br>
-        {{ form.runtime.label(class="form-label") }}
-        {{ form.runtime(class="form-control") }}
+        {{ form.length.label(class="form-label") }}
+        {{ form.length(class="form-control") }}
+        </br>
+        {{ form.director.label(class="form-label") }}
+        {{ form.director(class="form-control") }}
+        </br>
+        {{ form.studio.label(class="form-label") }}
+        {{ form.studio(class="form-control") }}
+        </br>
+        {{ form.genre.label(class="form-label") }}
+        {{ form.genre(class="form-control") }}
+        <!-- {{ form.genre(multiple="multiple") }} -->
         </br>
         {{ form.submit(class="btn btn-info") }}
     </form>

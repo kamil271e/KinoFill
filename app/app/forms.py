@@ -23,18 +23,27 @@ class RegisterForm(FlaskForm):
         return True
 
 
-class AddFilm(FlaskForm):
-    title = StringField("Tytuł", validators=[DataRequired()])
-    production_date = DateField("Data produkcji", validators=[DataRequired()])
-    runtime = StringField("Długość (w minutach)")
-    # director = SelectField("Reżyserowie", )
+class AddMovie(FlaskForm):
+    name = StringField("Tytuł", validators=[DataRequired()])
+    creation_year = SelectField('Rok produkcji', coerce=int, choices=range(int(today[6:]), int(today[6:]) - 100, -1))
+    length = StringField("Długość (w minutach)", validators=[DataRequired()])
+    director = SelectField("Reżyser")
+    studio = SelectField("Wytwórnia")
+    # choices = [('value1', 'label1'), ('value2', 'label2'), ('value3', 'label3')]
+    # genre = SelectMultipleField("Gatunek", choices=choices) # TODO multiple choices
+    genre = SelectField("Gatunek")
     submit = SubmitField("Dodaj film")
+
+    def validate(self):
+        if float(self.length.data) <= 0:
+            flash("Podaj poprawną długość trwania filmu")
+        return True
 
 
 class AddDirector(FlaskForm):
     firstname = StringField("Imię", validators=[DataRequired()])
     surname = StringField("Nazwisko", validators=[DataRequired()])
-    birth_date = DateField("Data urodzenia")#, format='%d.%m.%Y', validators=[DataRequired()])
+    birth_date = DateField("Data urodzenia", validators=[DataRequired()])#, format='%d.%m.%Y', validators=[DataRequired()])
     country = SelectField("Kraj pochodzenia", choices=countries)
     submit = SubmitField("Dodaj reżysera")
 
@@ -42,10 +51,10 @@ class AddDirector(FlaskForm):
         if self.birth_date.data >= datetime.datetime.strptime(today, "%d.%m.%Y").date():
             flash("Data musi być przeszła")
             return False
-        if len(self.firstname.data.strip()) < 3:
+        if len(self.firstname.data.strip()) < 3 or len(self.firstname.data.strip()) > 20:
             flash("Wprowadź poprawne imię")
             return False
-        if len(self.surname.data.strip()) < 3:
+        if len(self.surname.data.strip()) < 3 or len(self.surname.data.strip()) > 20:
             flash("Wprowadź poprawne nazwisko")
             return False
         if self.country.data == '-':

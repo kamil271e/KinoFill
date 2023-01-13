@@ -1,5 +1,6 @@
 from models import *
 from forms import *
+from utils import *
 
 @login_manager.user_loader # user loader tells Flask-Login how to find a specific user from the ID that is stored in their session cookie
 def load_user(user_id):
@@ -104,9 +105,9 @@ def user():
 @login_required
 def list_objects():
     studios = db.session.query(Studio)
-    films = db.session.query(Movie)
+    movies = db.session.query(Movie)
     series = db.session.query(Series)
-    return render_template('list_of_objects.html', today=today, studios=studios, films=films, series=series)
+    return render_template('list_of_objects.html', today=today, studios=studios, movies=movies, series=series)
 
 @app.route('/add_director', methods=['POST', 'GET']) #access only for studio - role_required
 @login_required
@@ -118,8 +119,7 @@ def add_director():
         director = db.session.query(Director).filter(
             Director.firstname == form.firstname.data,
             Director.surname == form.surname.data,
-            Director.birth_date == form.birth_date.data,
-            Director.country == form.country.data).first()
+            Director.birth_date == form.birth_date.data).first()
         if director is None:
             director = Director(
                 firstname=form.firstname.data,
@@ -136,15 +136,47 @@ def add_director():
             flash("Ten reżyser został już dodany do bazy danych")
     return render_template('add_director.html', today=today, form=form)
 
-@app.route('/add_film', methods=['POST', 'GET'])
+@app.route('/add_movie', methods=['POST', 'GET'])
 @login_required
-def add_film():
+def add_movie():
     if current_user.user_type != 's':
         return redirect(url_for("home"))
-    form = AddFilm()
+    form = AddMovie()
+    form.studio.choices = getStudios()
+    form.genre.choices = getGenres()
+    form.director.choices = getDirectors()
     if form.validate_on_submit():
-        print(form.title.data)
-    return render_template('add_film.html', today=today, form=form)
+        movie = db.session.query(Movie).filter(
+            Movie.name == form.name.data,
+            Movie.creation_year == form.creation_year.data
+        ).first()
+        if movie is None:
+            movie = Movie(
+                name=form.name.data,
+                creation_year=form.creation_year.data,
+                length=form.length.data,
+                viewers_rating=None
+                # studio_id=form.studio.data, # passing key attribute values in constructor is incorrect
+                # director_id=form.director.data        
+            )
+            movie.studio_id = form.studio.data
+            movie.director_id = form.director.data
+            db.session.add(movie)
+            db.session.commit()
+
+            movie_genre = Movie_genres(
+                movie_id = movie.get_id(),
+                genre = form.genre.data
+            )
+            movie_genre.movie_id = movie.movie_id
+            movie_genre.genre = form.genre.data
+            db.session.add(movie_genre)
+            db.session.commit()
+            flash("Dodano film")
+            return redirect(url_for("home"))
+        else:
+            flash("Ten film został już dodany do bazy danych")
+    return render_template('add_movie.html', today=today, form=form)
 
 
 if __name__ == '__main__':

@@ -160,3 +160,24 @@ class Series(db.Model):
 
     def get_id(self):
         return (self.series_id)
+
+
+class Genres(db.Model):
+    __tablename___ = "genres"
+    __table_args__ = {'quote': False, 'schema': "filmweb", }
+
+    genre = db.Column(db.String(20), primary_key=True)
+
+    def __init__(self, genre):
+        self.genre = genre
+    
+class Movie_genres(db.Model):
+    __tablename___ = "movie_genres"
+    __table_args__ = {'quote': False, 'schema': "filmweb", }
+
+    movie_id = db.Column(db.Integer, db.ForeignKey("filmweb.movies.movie_id"), primary_key = True)
+    genre = db.Column(db.String(20), db.ForeignKey("filmweb.genres.genre"), primary_key=True)
+
+    def __init__(self, movie_id, genre):
+        self.movie_id = movie_id
+        self.genre = genre

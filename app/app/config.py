@@ -6,7 +6,7 @@ from flask_login import login_user, login_required, logout_user, current_user, U
 from datetime import date
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField, PasswordField, EmailField, DateField
+from wtforms import StringField, SubmitField, SelectField, PasswordField, EmailField, DateField, SelectMultipleField
 from wtforms.widgets import TextArea
 from wtforms.validators import DataRequired, Length
 import datetime
