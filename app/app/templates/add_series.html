@@ -21,28 +21,10 @@
         </br>
         {{ form.seasons.label(class="form-label") }}
         {{ form.seasons(class="form-control range-seasons", id="seasons") }}
-        <label id="seasons-value">{{ form.seasons.data }}</label> <!--TODO nie zmienia siw wartosc-->
-        <style>
-            .range-seasons {
-                width: 200px;
-            }
-            #seasons-value{
-                position: absolute;
-                right: 750px;
-                top: 375px;
-            }
-        </style>
-        <script>
-            import $ from 'jquery';
-            $(document).ready(function(){
-                $("#seasons").on("input", function(){
-                    $("#seasons-value").text($(this).val());
-                });
-            });
-        </script>
         </br>
         {{ form.director.label(class="form-label") }}
-        {{ form.director(class="form-control") }}
+        {{ form.director(class="form-control director-field") }}
+        {{ form.redirect_add_director(class="btn btn-info director-btn") }}
         </br>
         {{ form.studio.label(class="form-label") }}
         {{ form.studio(class="form-control") }}
@@ -52,4 +34,5 @@
         </br>
         {{ form.submit(class="btn btn-info") }}
     </form>
+    <script src="{{url_for('static', filename='addDirectorBtn.js')}}"></script>
 {% endblock %}

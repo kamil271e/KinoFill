@@ -24,29 +24,38 @@ class RegisterForm(FlaskForm):
 
 
 class AddMovie(FlaskForm):
-    name = StringField("Tytuł", validators=[DataRequired()])
+    name = StringField("Tytuł")
     creation_year = SelectField('Rok produkcji', coerce=int, choices=range(int(today[6:]), int(today[6:]) - 100, -1))
-    length = StringField("Długość (w minutach)", validators=[DataRequired()])
+    length = StringField("Długość (w minutach)")
     director = SelectField("Reżyser")
     studio = SelectField("Wytwórnia")
     # choices = [('value1', 'label1'), ('value2', 'label2'), ('value3', 'label3')]
     # genre = SelectMultipleField("Gatunek", choices=choices) # TODO multiple choices
     genre = SelectField("Gatunek")
     submit = SubmitField("Dodaj film")
+    redirect_add_director = SubmitField("Dodaj reżysera")
 
     def validate(self):
+        if self.redirect_add_director.data:
+            return True
+        if not self.name.data:
+            flash("Proszę wprowadzić nazwę filmu")
+            return False
+        if not self.length.data:
+            flash("Proszę wprowadzić długość filmu")
+            return False
         try:
             _ = int(self.length.data)
         except:
             flash("Długość filmu musi być liczbą całkowitą")
             return False
-
         if int(self.length.data) <= 0:
             flash("Podaj poprawną długość trwania filmu")
             return False
         if len(self.name.data.strip()) > 30:
             flash("Podano za długą nazwę")
             return False
+        
         return True
 
 
@@ -73,28 +82,37 @@ class AddDirector(FlaskForm):
 
 
 class AddSeries(FlaskForm):
-    name = StringField("Tytuł", validators=[DataRequired()])                          
-    episodes = StringField("Liczba odcinków", default=10, validators=[NumberRange(min=0, max=10000)], render_kw={'step': 1})
-    seasons = DecimalRangeField("Liczba sezonów", default=1, validators=[NumberRange(min=0, max=200)], render_kw={'step': 1})
+    name = StringField("Tytuł")                          
+    episodes = StringField("Liczba odcinków")
+    seasons = DecimalRangeField("Liczba sezonów", default=1, render_kw={'step': 1})
     director = SelectField("Reżyser")
     studio = SelectField("Wytwórnia")
     genre = SelectField("Gatunek")
     submit = SubmitField("Dodaj serial")
+    redirect_add_director = SubmitField("Dodaj reżysera")
 
     def validate(self):
+        if self.redirect_add_director.data:
+            return True
+        if not self.name.data:
+            flash("Proszę wprowadzić nazwę serialu")
+            return False
+        if not self.episodes.data:
+            flash("Proszę wprowadzić liczbę odcników")
+            return False
         try:
             self.episodes.data = int(self.episodes.data)
         except:
             flash("Liczba odcinków musi być liczbą całkowitą")
             return False
-
+        if self.episodes.data < 0:
+            flash("Liczba odcinków nie może być ujemna")
+            return False
         if len(self.name.data.strip()) > 30:
             flash("Podano za długą nazwę")
             return False
-        if int(self.episodes.data) < 0:
-            flash("Liczba odcinków nie może być ujemna")
-            return False
-
-        self.seasons.data = int(self.seasons.data)
+        
+        
+        self.seasons.data = int(float(self.seasons.data))
         
         return True

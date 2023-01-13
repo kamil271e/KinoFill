@@ -23,7 +23,8 @@
         {{ form.length(class="form-control") }}
         </br>
         {{ form.director.label(class="form-label") }}
-        {{ form.director(class="form-control") }}
+        {{ form.director(class="form-control director-field", id="director-field") }}
+        {{ form.redirect_add_director(class="btn btn-info director-btn") }}
         </br>
         {{ form.studio.label(class="form-label") }}
         {{ form.studio(class="form-control") }}
@@ -34,4 +35,5 @@
         </br>
         {{ form.submit(class="btn btn-info") }}
     </form>
+<script src="{{url_for('static', filename='addDirectorBtn.js')}}"></script>
 {% endblock %}

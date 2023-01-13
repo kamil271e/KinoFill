@@ -146,6 +146,9 @@ def add_movie():
     form.genre.choices = getGenres()
     form.director.choices = getDirectors()
     if form.validate_on_submit():
+        if form.redirect_add_director.data:
+            return redirect(url_for("add_director"))
+    
         movie = db.session.query(Movie).filter(
             Movie.name == form.name.data,
             Movie.creation_year == form.creation_year.data
@@ -188,6 +191,8 @@ def add_series():
     form.genre.choices = getGenres()
     form.director.choices = getDirectors()
     if form.validate_on_submit():
+        if form.redirect_add_director.data:
+            return redirect(url_for("add_director"))
         series = db.session.query(Series).filter(
             Series.name == form.name.data,
             Series.episodes == form.episodes.data

@@ -6,3 +6,18 @@ body {
 .container {
     padding-bottom: 70px;    /* Footer height */
 }
+
+.range-seasons {
+    width: 200px;
+}
+
+.director-field {
+    position: relative;
+    width: 85%;
+}
+
+.director-btn {
+    position: absolute;
+    top: 470px;
+    margin-left: 75%;
+}
