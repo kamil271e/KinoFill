@@ -25,6 +25,9 @@ class RegisterForm(FlaskForm):
 
 class AddFilm(FlaskForm):
     title = StringField("Tytuł", validators=[DataRequired()])
+    production_date = DateField("Data produkcji", validators=[DataRequired()])
+    runtime = StringField("Długość (w minutach)")
+    # director = SelectField("Reżyserowie", )
     submit = SubmitField("Dodaj film")
 
 
@@ -32,11 +35,20 @@ class AddDirector(FlaskForm):
     firstname = StringField("Imię", validators=[DataRequired()])
     surname = StringField("Nazwisko", validators=[DataRequired()])
     birth_date = DateField("Data urodzenia")#, format='%d.%m.%Y', validators=[DataRequired()])
+    country = SelectField("Kraj pochodzenia", choices=countries)
     submit = SubmitField("Dodaj reżysera")
 
-    def validate_date(self):
-        if self.birth_date.data >= today:
+    def validate(self):
+        if self.birth_date.data >= datetime.datetime.strptime(today, "%d.%m.%Y").date():
             flash("Data musi być przeszła")
             return False
+        if len(self.firstname.data.strip()) < 3:
+            flash("Wprowadź poprawne imię")
+            return False
+        if len(self.surname.data.strip()) < 3:
+            flash("Wprowadź poprawne nazwisko")
+            return False
+        if self.country.data == '-':
+            self.country.data = None
         return True
 

@@ -118,17 +118,20 @@ def add_director():
         director = db.session.query(Director).filter(
             Director.firstname == form.firstname.data,
             Director.surname == form.surname.data,
-            Director.birth_date == form.birth_date.data).first()
+            Director.birth_date == form.birth_date.data,
+            Director.country == form.country.data).first()
         if director is None:
             director = Director(
                 firstname=form.firstname.data,
                 surname=form.surname.data,
                 birth_date=form.birth_date.data,
-                country=None,
+                country=form.country.data,
                 rate=None,
                 studio_id=current_user.user_id)
             db.session.add(director)
             db.session.commit()
+            flash("Dodano reżysera")
+            return redirect(url_for("home"))
         else:
             flash("Ten reżyser został już dodany do bazy danych")
     return render_template('add_director.html', today=today, form=form)
