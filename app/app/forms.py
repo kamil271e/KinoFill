@@ -40,7 +40,6 @@ class AddMovie(FlaskForm):
         self.choose_studio = choose_studio
         super(AddMovie, self).__init__(*args, **kwargs)
 
-
     def validate(self):
         if self.redirect_add_director.data:
             return True
@@ -82,10 +81,10 @@ class AddDirector(FlaskForm):
         if self.birth_date.data >= datetime.datetime.strptime(today, "%d.%m.%Y").date():
             flash("Data musi być przeszła")
             return False
-        if len(self.firstname.data.strip()) < 3 or len(self.firstname.data.strip()) > 20:
+        if len(self.firstname.data.strip()) < 2 or len(self.firstname.data.strip()) > 20:
             flash("Wprowadź poprawne imię")
             return False
-        if len(self.surname.data.strip()) < 3 or len(self.surname.data.strip()) > 20:
+        if len(self.surname.data.strip()) < 2 or len(self.surname.data.strip()) > 20:
             flash("Wprowadź poprawne nazwisko")
             return False
         if self.country.data == '-':
@@ -136,18 +135,24 @@ class AddSeries(FlaskForm):
 class AddActor(FlaskForm):
     firstname = StringField("Imię", validators=[DataRequired()])
     surname = StringField("Nazwisko", validators=[DataRequired()])
-    birth_date = DateField("Data urodzenia", validators=[DataRequired()])#, format='%d.%m.%Y', validators=[DataRequired()])
+    birth_date = DateField("Data urodzenia", validators=[DataRequired()])
     country = SelectField("Kraj pochodzenia", choices=countries)
+    choose_studio = False
+    studio = SelectField("Wytwórnia")
     submit = SubmitField("Dodaj aktora")
+
+    def __init__(self, choose_studio, *args, **kwargs):
+        self.choose_studio = choose_studio
+        super(AddActor, self).__init__(*args, **kwargs)
 
     def validate(self):
         if self.birth_date.data >= datetime.datetime.strptime(today, "%d.%m.%Y").date():
             flash("Data musi być przeszła")
             return False
-        if len(self.firstname.data.strip()) < 3 or len(self.firstname.data.strip()) > 20:
+        if len(self.firstname.data.strip()) < 2 or len(self.firstname.data.strip()) > 20:
             flash("Wprowadź poprawne imię")
             return False
-        if len(self.surname.data.strip()) < 3 or len(self.surname.data.strip()) > 20:
+        if len(self.surname.data.strip()) < 2 or len(self.surname.data.strip()) > 20:
             flash("Wprowadź poprawne nazwisko")
             return False
         if self.country.data == '-':

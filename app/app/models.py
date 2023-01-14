@@ -198,7 +198,7 @@ class Series_genres(db.Model):
         self.genre = genre
 
 class Actor(db.Model):
-    __tablename__tablename___ = "actors"
+    __tablename__ = "actors"
     __table_args__ = {'quote': False, 'schema': "filmweb", }
 
     actor_id = db.Column(db.Integer, primary_key=True)
@@ -206,7 +206,7 @@ class Actor(db.Model):
     surname = db.Column(db.String(20), nullable=False, unique=True)
     birth_date = db.Column(db.Date, nullable=False, unique=True)
     country = db.Column(db.String(20))
-    rate = db.Column(db.Float)
+    viewers_rating = db.Column(db.Float)
     studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studios.studio_id"))
 
     def __init__(self, firstname, surname, birth_date, country, rate, studio_id):
@@ -214,7 +214,7 @@ class Actor(db.Model):
         self.surname = surname
         self.birth_date = birth_date
         self.country = country
-        self.rate = rate
+        self.viewers_rating = rate
         self.studio_id = studio_id
 
     def get_id(self):

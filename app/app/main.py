@@ -135,7 +135,7 @@ def add_director():
                 surname=form.surname.data,
                 birth_date=form.birth_date.data,
                 country=form.country.data,
-                rate=None,
+                viewers_rating=None,
                 studio_id=stud_id)
             db.session.add(director)
             db.session.commit()
@@ -199,9 +199,9 @@ def add_series():
     if current_user.user_type not in ['s', 'a']:
         return redirect(url_for("home"))
     if current_user.user_type == 's':
-        choose_studio = True
+        choose_studio = False
     else: 
-        choose_studio = False 
+        choose_studio = True 
     form = AddSeries(choose_studio=choose_studio)
     form.studio.choices = getStudios()
     form.genre.choices = getGenres()
@@ -240,6 +240,42 @@ def add_series():
         else:
             flash("Ten serial został już dodany do bazy danych")
     return render_template('add_series.html', today=today, form=form)
+
+@app.route('/add_actor', methods=['POST', 'GET'])
+@login_required
+def add_actor():
+    if current_user.user_type not in ['s', 'a']:
+        return redirect(url_for("home"))
+    if current_user.user_type == 's':
+        choose_studio = False
+    else: 
+        choose_studio = True 
+    form = AddActor(choose_studio=choose_studio)
+    form.studio.choices = getStudios()
+    if form.validate_on_submit():
+        actor = db.session.query(Actor).filter(
+            Actor.firstname == form.firstname.data,
+            Actor.surname == form.surname.data,
+            Actor.birth_date == form.birth_date.data).first()
+        if actor is None:
+            if choose_studio:
+                stud_id = form.studio.data
+            else:
+                stud_id = current_user.user_id
+            actor = Actor(
+                firstname=form.firstname.data,
+                surname=form.surname.data,
+                birth_date=form.birth_date.data,
+                country=form.country.data,
+                rate=None,
+                studio_id=stud_id)
+            db.session.add(actor)
+            db.session.commit()
+            flash("Dodano aktora")
+            return redirect(url_for("home"))
+        else:
+            flash("Ten aktor został już dodany do bazy danych")
+    return render_template('add_actor.html', today=today, form=form)
 
 if __name__ == '__main__':
     # with app.app_context(): #Flask-SQLAlchemy 3.0 all access to db.engine (and db.session) requires an active Flask application context

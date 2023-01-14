@@ -25,6 +25,11 @@
         {{ form.country.label(class="form-label") }}
         {{ form.country(class="form-control") }}
         </br>
+        {% if form.choose_studio == True %}
+            {{ form.studio.label(class="form-label") }}
+            {{ form.studio(class="form-control") }}
+        {% endif %}
+        </br>
         {{ form.submit(class="btn btn-info") }}
     </form>
 {% endblock %}

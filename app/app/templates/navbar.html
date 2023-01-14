@@ -6,7 +6,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('list_objects') }}">Lista</a>
                 </li>
-                {% if current_user.user_type == 's' %}
+                {% if current_user.user_type == 's' or current_user.user_type == 'a' %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('add_director') }}">Dodaj reżysera</a>
                     </li>
@@ -15,6 +15,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('add_series') }}">Dodaj serial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('add_actor') }}">Dodaj aktora</a>
                     </li>
                 {% endif %}
                 <li class="nav-item">
