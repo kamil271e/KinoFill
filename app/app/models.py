@@ -131,11 +131,13 @@ class Movie(db.Model):
     studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studios.studio_id"), nullable=False)
     director_id = db.Column(db.Integer, db.ForeignKey("filmweb.directors.director_id"), nullable=False)
 
-    def __init__(self, name, creation_year, length, viewers_rating):
+    def __init__(self, name, creation_year, length, viewers_rating, studio_id, director_id):
         self.name = name
         self.creation_year = creation_year
         self.length = length
         self.viewers_rating = viewers_rating
+        self.studio_id = studio_id
+        self.director_id = director_id
 
     def get_id(self):
         return (self.movie_id)
@@ -152,11 +154,13 @@ class Series(db.Model):
     studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studios.studio_id"), nullable=False)
     director_id = db.Column(db.Integer, db.ForeignKey("filmweb.directors.director_id"), nullable=False)
 
-    def __init__(self, name, episodes, seasons, viewers_rating):
+    def __init__(self, name, episodes, seasons, viewers_rating, studio_id, director_id):
         self.name = name
         self.episodes = episodes
         self.seasons = seasons
         self.viewers_rating = viewers_rating
+        self.studio_id = studio_id
+        self.director_id = director_id
 
     def get_id(self):
         return (self.series_id)
@@ -192,3 +196,26 @@ class Series_genres(db.Model):
     def __init__(self, series_id, genre):
         self.series_id = series_id
         self.genre = genre
+
+class Actor(db.Model):
+    __tablename__ = "actors"
+    __table_args__ = {'quote': False, 'schema': "filmweb", }
+
+    actor_id = db.Column(db.Integer, primary_key=True)
+    firstname = db.Column(db.String(20), nullable=False, unique=True)
+    surname = db.Column(db.String(20), nullable=False, unique=True)
+    birth_date = db.Column(db.Date, nullable=False, unique=True)
+    country = db.Column(db.String(20))
+    viewers_rating = db.Column(db.Float)
+    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studios.studio_id"))
+
+    def __init__(self, firstname, surname, birth_date, country, rate, studio_id):
+        self.firstname = firstname
+        self.surname = surname
+        self.birth_date = birth_date
+        self.country = country
+        self.viewers_rating = rate
+        self.studio_id = studio_id
+
+    def get_id(self):
+        return (self.actor_id)

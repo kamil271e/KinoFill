@@ -112,22 +112,31 @@ def list_objects():
 @app.route('/add_director', methods=['POST', 'GET']) #access only for studio - role_required
 @login_required
 def add_director():
-    if current_user.user_type != 's':
+    if current_user.user_type not in ['s', 'a']: # 'a' - 'admin'
         return redirect(url_for("home"))
-    form = AddDirector()
+    if current_user.user_type == 's': # Studio will not have option to add anything related to a different studio
+        choose_studio = False
+    else: 
+        choose_studio = True # Admin can choose to which studio assign the director
+    form = AddDirector(choose_studio=choose_studio)
+    form.studio.choices = getStudios()
     if form.validate_on_submit():
         director = db.session.query(Director).filter(
             Director.firstname == form.firstname.data,
             Director.surname == form.surname.data,
             Director.birth_date == form.birth_date.data).first()
         if director is None:
+            if choose_studio:
+                stud_id = form.studio.data
+            else:
+                stud_id = current_user.user_id
             director = Director(
                 firstname=form.firstname.data,
                 surname=form.surname.data,
                 birth_date=form.birth_date.data,
                 country=form.country.data,
-                rate=None,
-                studio_id=current_user.user_id)
+                viewers_rating=None,
+                studio_id=stud_id)
             db.session.add(director)
             db.session.commit()
             flash("Dodano reżysera")
@@ -139,37 +148,43 @@ def add_director():
 @app.route('/add_movie', methods=['POST', 'GET'])
 @login_required
 def add_movie():
-    if current_user.user_type != 's':
+    if current_user.user_type not in ['s', 'a']:
         return redirect(url_for("home"))
-    form = AddMovie()
+    if current_user.user_type == 's':
+        choose_studio = False
+    else: 
+        choose_studio = True 
+    form = AddMovie(choose_studio=choose_studio)
     form.studio.choices = getStudios()
     form.genre.choices = getGenres()
     form.director.choices = getDirectors()
     if form.validate_on_submit():
+        if form.redirect_add_director.data:
+            return redirect(url_for("add_director"))
         movie = db.session.query(Movie).filter(
             Movie.name == form.name.data,
             Movie.creation_year == form.creation_year.data
         ).first()
         if movie is None:
+            if choose_studio:
+                stud_id = form.studio.data
+            else:
+                stud_id = current_user.user_id
             movie = Movie(
                 name=form.name.data,
                 creation_year=form.creation_year.data,
                 length=form.length.data,
-                viewers_rating=None
-                # studio_id=form.studio.data, # passing key attribute values in constructor is incorrect
-                # director_id=form.director.data        
+                viewers_rating=None,
+                studio_id=stud_id,
+                director_id=form.director.data        
             )
-            movie.studio_id = form.studio.data
-            movie.director_id = form.director.data
             db.session.add(movie)
             db.session.commit()
 
             movie_genre = Movie_genres(
-                series_id=movie.get_id(),
+                movie_id=movie.get_id(),
                 genre=form.genre.data
             )
-            movie_genre.movie_id = movie.movie_id
-            movie_genre.genre = form.genre.data
             db.session.add(movie_genre)
             db.session.commit()
             flash("Dodano film")
@@ -181,27 +196,36 @@ def add_movie():
 @app.route('/add_series', methods=['POST', 'GET'])
 @login_required
 def add_series():
-    if current_user.user_type != 's':
+    if current_user.user_type not in ['s', 'a']:
         return redirect(url_for("home"))
-    form = AddSeries()
+    if current_user.user_type == 's':
+        choose_studio = False
+    else: 
+        choose_studio = True 
+    form = AddSeries(choose_studio=choose_studio)
     form.studio.choices = getStudios()
     form.genre.choices = getGenres()
     form.director.choices = getDirectors()
     if form.validate_on_submit():
-        print(request.form['range'])
+        if form.redirect_add_director.data:
+            return redirect(url_for("add_director"))
         series = db.session.query(Series).filter(
             Series.name == form.name.data,
             Series.episodes == form.episodes.data
         ).first()
         if series is None:
+            if choose_studio:
+                stud_id = form.studio.data
+            else:
+                stud_id = current_user.user_id
             series = Series(
                 name=form.name.data,
                 episodes=form.episodes.data,
                 seasons=request.form['range'],
-                viewers_rating=None
+                viewers_rating=None,
+                studio_id=stud_id,
+                director_id=form.director.data
             )
-            series.studio_id = form.studio.data
-            series.director_id = form.director.data
             db.session.add(series)
             db.session.commit()
 
@@ -209,8 +233,6 @@ def add_series():
                 series_id=series.get_id(),
                 genre='gatunek'#form.genre.data
             )
-            series_genre.series_id = series.series_id
-            series_genre.genre = 'gatunek'#form.genre.data
             # db.session.add(series_genre)
             # db.session.commit()
             flash("Dodano serial")
@@ -218,6 +240,42 @@ def add_series():
         else:
             flash("Ten serial został już dodany do bazy danych")
     return render_template('add_series.html', today=today, form=form)
+
+@app.route('/add_actor', methods=['POST', 'GET'])
+@login_required
+def add_actor():
+    if current_user.user_type not in ['s', 'a']:
+        return redirect(url_for("home"))
+    if current_user.user_type == 's':
+        choose_studio = False
+    else: 
+        choose_studio = True 
+    form = AddActor(choose_studio=choose_studio)
+    form.studio.choices = getStudios()
+    if form.validate_on_submit():
+        actor = db.session.query(Actor).filter(
+            Actor.firstname == form.firstname.data,
+            Actor.surname == form.surname.data,
+            Actor.birth_date == form.birth_date.data).first()
+        if actor is None:
+            if choose_studio:
+                stud_id = form.studio.data
+            else:
+                stud_id = current_user.user_id
+            actor = Actor(
+                firstname=form.firstname.data,
+                surname=form.surname.data,
+                birth_date=form.birth_date.data,
+                country=form.country.data,
+                rate=None,
+                studio_id=stud_id)
+            db.session.add(actor)
+            db.session.commit()
+            flash("Dodano aktora")
+            return redirect(url_for("home"))
+        else:
+            flash("Ten aktor został już dodany do bazy danych")
+    return render_template('add_actor.html', today=today, form=form)
 
 if __name__ == '__main__':
     # with app.app_context(): #Flask-SQLAlchemy 3.0 all access to db.engine (and db.session) requires an active Flask application context

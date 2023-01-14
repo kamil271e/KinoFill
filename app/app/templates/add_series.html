@@ -26,10 +26,13 @@
         </div>
         </br>
         {{ form.director.label(class="form-label") }}
-        {{ form.director(class="form-control") }}
+        {{ form.director(class="form-control director-field") }}
+        {{ form.redirect_add_director(class="btn btn-info director-btn") }}
         </br>
-        {{ form.studio.label(class="form-label") }}
-        {{ form.studio(class="form-control") }}
+        {% if form.choose_studio == True %}
+            {{ form.studio.label(class="form-label") }}
+            {{ form.studio(class="form-control") }}
+        {% endif %}
         </br>
         {{ form.genre.label(class="form-label") }}
         {{ form.genre(class="form-control") }}
@@ -44,3 +47,4 @@
 </style>
 <script src="{{url_for('static', filename='seriesSlider.js')}}"></script>
 {% endblock %}
+<script src="{{url_for('static', filename='addDirectorBtn.js')}}"></script>
