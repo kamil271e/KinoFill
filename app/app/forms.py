@@ -28,12 +28,18 @@ class AddMovie(FlaskForm):
     creation_year = SelectField('Rok produkcji', coerce=int, choices=range(int(today[6:]), int(today[6:]) - 100, -1))
     length = StringField("Długość (w minutach)")
     director = SelectField("Reżyser")
-    studio = SelectField("Wytwórnia")
+    studio = SelectField("Wytwórnia") # Only for admin to choose
+    choose_studio = False
     # choices = [('value1', 'label1'), ('value2', 'label2'), ('value3', 'label3')]
     # genre = SelectMultipleField("Gatunek", choices=choices) # TODO multiple choices
     genre = SelectField("Gatunek")
     submit = SubmitField("Dodaj film")
     redirect_add_director = SubmitField("Dodaj reżysera")
+
+    def __init__(self, choose_studio, *args, **kwargs):
+        self.choose_studio = choose_studio
+        super(AddMovie, self).__init__(*args, **kwargs)
+
 
     def validate(self):
         if self.redirect_add_director.data:
@@ -64,7 +70,13 @@ class AddDirector(FlaskForm):
     surname = StringField("Nazwisko", validators=[DataRequired()])
     birth_date = DateField("Data urodzenia", validators=[DataRequired()])#, format='%d.%m.%Y', validators=[DataRequired()])
     country = SelectField("Kraj pochodzenia", choices=countries)
+    studio = SelectField("Wytwórnia") # Only for admin to choose
+    choose_studio = False
     submit = SubmitField("Dodaj reżysera")
+
+    def __init__(self, choose_studio, *args, **kwargs):
+        self.choose_studio = choose_studio
+        super(AddDirector, self).__init__(*args, **kwargs)
 
     def validate(self):
         if self.birth_date.data >= datetime.datetime.strptime(today, "%d.%m.%Y").date():
@@ -87,9 +99,14 @@ class AddSeries(FlaskForm):
     seasons = DecimalRangeField("Liczba sezonów", default=1, render_kw={'step': 1})
     director = SelectField("Reżyser")
     studio = SelectField("Wytwórnia")
+    choose_studio = False
     genre = SelectField("Gatunek")
     submit = SubmitField("Dodaj serial")
     redirect_add_director = SubmitField("Dodaj reżysera")
+
+    def __init__(self, choose_studio, *args, **kwargs):
+        self.choose_studio = choose_studio
+        super(AddSeries, self).__init__(*args, **kwargs)
 
     def validate(self):
         if self.redirect_add_director.data:
@@ -114,4 +131,25 @@ class AddSeries(FlaskForm):
         
         self.seasons.data = int(float(self.seasons.data))
         
+        return True
+
+class AddActor(FlaskForm):
+    firstname = StringField("Imię", validators=[DataRequired()])
+    surname = StringField("Nazwisko", validators=[DataRequired()])
+    birth_date = DateField("Data urodzenia", validators=[DataRequired()])#, format='%d.%m.%Y', validators=[DataRequired()])
+    country = SelectField("Kraj pochodzenia", choices=countries)
+    submit = SubmitField("Dodaj aktora")
+
+    def validate(self):
+        if self.birth_date.data >= datetime.datetime.strptime(today, "%d.%m.%Y").date():
+            flash("Data musi być przeszła")
+            return False
+        if len(self.firstname.data.strip()) < 3 or len(self.firstname.data.strip()) > 20:
+            flash("Wprowadź poprawne imię")
+            return False
+        if len(self.surname.data.strip()) < 3 or len(self.surname.data.strip()) > 20:
+            flash("Wprowadź poprawne nazwisko")
+            return False
+        if self.country.data == '-':
+            self.country.data = None
         return True

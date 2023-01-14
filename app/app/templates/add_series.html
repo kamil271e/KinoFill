@@ -26,8 +26,10 @@
         {{ form.director(class="form-control director-field") }}
         {{ form.redirect_add_director(class="btn btn-info director-btn") }}
         </br>
-        {{ form.studio.label(class="form-label") }}
-        {{ form.studio(class="form-control") }}
+        {% if form.choose_studio == True %}
+            {{ form.studio.label(class="form-label") }}
+            {{ form.studio(class="form-control") }}
+        {% endif %}
         </br>
         {{ form.genre.label(class="form-label") }}
         {{ form.genre(class="form-control") }}

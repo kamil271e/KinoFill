@@ -11,7 +11,7 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        <h1 class="lh-lg display-5">Dodaj reżysera</h1>
+        <h1 class="lh-lg display-5">Dodaj aktora</h1>
         {{ form.hidden_tag() }}
         {{ form.firstname.label(class="form-label") }}
         {{ form.firstname(class="form-control") }}
@@ -24,11 +24,6 @@
         </br>
         {{ form.country.label(class="form-label") }}
         {{ form.country(class="form-control") }}
-        </br>
-        {% if form.choose_studio == True %}
-            {{ form.studio.label(class="form-label") }}
-            {{ form.studio(class="form-control") }}
-        {% endif %}
         </br>
         {{ form.submit(class="btn btn-info") }}
     </form>

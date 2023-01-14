@@ -112,22 +112,31 @@ def list_objects():
 @app.route('/add_director', methods=['POST', 'GET']) #access only for studio - role_required
 @login_required
 def add_director():
-    if current_user.user_type != 's':
+    if current_user.user_type not in ['s', 'a']: # 'a' - 'admin'
         return redirect(url_for("home"))
-    form = AddDirector()
+    if current_user.user_type == 's': # Studio will not have option to add anything related to a different studio
+        choose_studio = False
+    else: 
+        choose_studio = True # Admin can choose to which studio assign the director
+    form = AddDirector(choose_studio=choose_studio)
+    form.studio.choices = getStudios()
     if form.validate_on_submit():
         director = db.session.query(Director).filter(
             Director.firstname == form.firstname.data,
             Director.surname == form.surname.data,
             Director.birth_date == form.birth_date.data).first()
         if director is None:
+            if choose_studio:
+                stud_id = form.studio.data
+            else:
+                stud_id = current_user.user_id
             director = Director(
                 firstname=form.firstname.data,
                 surname=form.surname.data,
                 birth_date=form.birth_date.data,
                 country=form.country.data,
                 rate=None,
-                studio_id=current_user.user_id)
+                studio_id=stud_id)
             db.session.add(director)
             db.session.commit()
             flash("Dodano reżysera")
@@ -139,27 +148,34 @@ def add_director():
 @app.route('/add_movie', methods=['POST', 'GET'])
 @login_required
 def add_movie():
-    if current_user.user_type != 's':
+    if current_user.user_type not in ['s', 'a']:
         return redirect(url_for("home"))
-    form = AddMovie()
+    if current_user.user_type == 's':
+        choose_studio = False
+    else: 
+        choose_studio = True 
+    form = AddMovie(choose_studio=choose_studio)
     form.studio.choices = getStudios()
     form.genre.choices = getGenres()
     form.director.choices = getDirectors()
     if form.validate_on_submit():
         if form.redirect_add_director.data:
             return redirect(url_for("add_director"))
-    
         movie = db.session.query(Movie).filter(
             Movie.name == form.name.data,
             Movie.creation_year == form.creation_year.data
         ).first()
         if movie is None:
+            if choose_studio:
+                stud_id = form.studio.data
+            else:
+                stud_id = current_user.user_id
             movie = Movie(
                 name=form.name.data,
                 creation_year=form.creation_year.data,
                 length=form.length.data,
                 viewers_rating=None,
-                studio_id=form.studio.data,
+                studio_id=stud_id,
                 director_id=form.director.data        
             )
             db.session.add(movie)
@@ -180,9 +196,13 @@ def add_movie():
 @app.route('/add_series', methods=['POST', 'GET'])
 @login_required
 def add_series():
-    if current_user.user_type != 's':
+    if current_user.user_type not in ['s', 'a']:
         return redirect(url_for("home"))
-    form = AddSeries()
+    if current_user.user_type == 's':
+        choose_studio = True
+    else: 
+        choose_studio = False 
+    form = AddSeries(choose_studio=choose_studio)
     form.studio.choices = getStudios()
     form.genre.choices = getGenres()
     form.director.choices = getDirectors()
@@ -194,12 +214,16 @@ def add_series():
             Series.episodes == form.episodes.data
         ).first()
         if series is None:
+            if choose_studio:
+                stud_id = form.studio.data
+            else:
+                stud_id = current_user.user_id
             series = Series(
                 name=form.name.data,
                 episodes=form.episodes.data,
                 seasons=form.seasons.data,
                 viewers_rating=None,
-                studio_id=form.studio.data,
+                studio_id=stud_id,
                 director_id=form.director.data
             )
             db.session.add(series)
