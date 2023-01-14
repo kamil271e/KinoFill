@@ -19,27 +19,11 @@
         {{ form.episodes.label(class="form-label") }}
         {{ form.episodes(class="form-control") }}
         </br>
-        {{ form.seasons.label(class="form-label") }}
-        {{ form.seasons(class="form-control range-seasons", id="seasons") }}
-        <label id="seasons-value">{{ form.seasons.data }}</label> <!--TODO nie zmienia siw wartosc-->
-        <style>
-            .range-seasons {
-                width: 200px;
-            }
-            #seasons-value{
-                position: absolute;
-                right: 750px;
-                top: 375px;
-            }
-        </style>
-        <script>
-            import $ from 'jquery';
-            $(document).ready(function(){
-                $("#seasons").on("input", function(){
-                    $("#seasons-value").text($(this).val());
-                });
-            });
-        </script>
+        <p class="form-label">Liczba sezonów</p>
+        <div class="d-flex justify-content-between">
+            <span id="seasons_value"></span>
+            <input type="range" class="form-range" id="range_seasons" name="range" min="1" max="200" step="1" value="1">
+        </div>
         </br>
         {{ form.director.label(class="form-label") }}
         {{ form.director(class="form-control") }}
@@ -52,4 +36,11 @@
         </br>
         {{ form.submit(class="btn btn-info") }}
     </form>
+<style>
+    #range_seasons {
+        width: 95%;
+        padding-right: 0;
+    }
+</style>
+<script src="{{url_for('static', filename='seriesSlider.js')}}"></script>
 {% endblock %}

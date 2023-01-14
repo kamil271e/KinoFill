@@ -30,7 +30,7 @@ class AddMovie(FlaskForm):
     director = SelectField("Reżyser")
     studio = SelectField("Wytwórnia")
     # choices = [('value1', 'label1'), ('value2', 'label2'), ('value3', 'label3')]
-    # genre = SelectMultipleField("Gatunek", choices=choices) # TODO multiple choices
+    # genre = SelectMultipleField("Gatunek", choices=countries) # TODO multiple choices
     genre = SelectField("Gatunek")
     submit = SubmitField("Dodaj film")
 
@@ -75,7 +75,6 @@ class AddDirector(FlaskForm):
 class AddSeries(FlaskForm):
     name = StringField("Tytuł", validators=[DataRequired()])                          
     episodes = StringField("Liczba odcinków", default=10, validators=[NumberRange(min=0, max=10000)], render_kw={'step': 1})
-    seasons = DecimalRangeField("Liczba sezonów", default=1, validators=[NumberRange(min=0, max=200)], render_kw={'step': 1})
     director = SelectField("Reżyser")
     studio = SelectField("Wytwórnia")
     genre = SelectField("Gatunek")
@@ -95,6 +94,4 @@ class AddSeries(FlaskForm):
             flash("Liczba odcinków nie może być ujemna")
             return False
 
-        self.seasons.data = int(self.seasons.data)
-        
         return True

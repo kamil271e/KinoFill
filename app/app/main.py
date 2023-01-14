@@ -188,6 +188,7 @@ def add_series():
     form.genre.choices = getGenres()
     form.director.choices = getDirectors()
     if form.validate_on_submit():
+        print(request.form['range'])
         series = db.session.query(Series).filter(
             Series.name == form.name.data,
             Series.episodes == form.episodes.data
@@ -196,7 +197,7 @@ def add_series():
             series = Series(
                 name=form.name.data,
                 episodes=form.episodes.data,
-                seasons=form.seasons.data,
+                seasons=request.form['range'],
                 viewers_rating=None
             )
             series.studio_id = form.studio.data
@@ -206,12 +207,12 @@ def add_series():
 
             series_genre = Series_genres(
                 series_id=series.get_id(),
-                genre=form.genre.data
+                genre='gatunek'#form.genre.data
             )
             series_genre.series_id = series.series_id
-            series_genre.genre = form.genre.data
-            db.session.add(series_genre)
-            db.session.commit()
+            series_genre.genre = 'gatunek'#form.genre.data
+            # db.session.add(series_genre)
+            # db.session.commit()
             flash("Dodano serial")
             return redirect(url_for("home"))
         else:
