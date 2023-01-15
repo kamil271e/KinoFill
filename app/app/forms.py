@@ -30,9 +30,6 @@ class AddMovie(FlaskForm):
     director = SelectField("Reżyser")
     studio = SelectField("Wytwórnia") # Only for admin to choose
     choose_studio = False
-    # choices = [('value1', 'label1'), ('value2', 'label2'), ('value3', 'label3')]
-    # genre = SelectMultipleField("Gatunek", choices=countries) # TODO multiple choices
-    genre = SelectField("Gatunek")
     submit = SubmitField("Dodaj film")
     redirect_add_director = SubmitField("Dodaj reżysera")
 

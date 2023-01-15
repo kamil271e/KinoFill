@@ -156,7 +156,7 @@ def add_movie():
         choose_studio = True 
     form = AddMovie(choose_studio=choose_studio)
     form.studio.choices = getStudios()
-    form.genre.choices = getGenres()
+    # form.genre.choices = getGenres()
     form.director.choices = getDirectors()
     if form.validate_on_submit():
         if form.redirect_add_director.data:
@@ -183,7 +183,7 @@ def add_movie():
 
             movie_genre = Movie_genres(
                 movie_id=movie.get_id(),
-                genre=form.genre.data
+                genre=request.form.get("genre")
             )
             db.session.add(movie_genre)
             db.session.commit()
@@ -191,7 +191,7 @@ def add_movie():
             return redirect(url_for("home"))
         else:
             flash("Ten film został już dodany do bazy danych")
-    return render_template('add_movie.html', today=today, form=form)
+    return render_template('add_movie.html', today=today, form=form, genres_options=countries)
 
 @app.route('/add_series', methods=['POST', 'GET'])
 @login_required
