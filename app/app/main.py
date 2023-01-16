@@ -135,7 +135,7 @@ def add_director():
                 surname=form.surname.data,
                 birth_date=form.birth_date.data,
                 country=form.country.data,
-                viewers_rating=None,
+                rate=None,
                 studio_id=stud_id)
             db.session.add(director)
             db.session.commit()
