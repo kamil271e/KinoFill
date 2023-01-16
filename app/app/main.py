@@ -107,7 +107,8 @@ def list_objects():
     studios = db.session.query(Studio)
     movies = db.session.query(Movie)
     series = db.session.query(Series)
-    return render_template('list_of_objects.html', today=today, studios=studios, movies=movies, series=series)
+    actors = db.session.query(Actor)
+    return render_template('list_of_objects.html', today=today, studios=studios, movies=movies, series=series, actors=actors)
 
 @app.route('/add_director', methods=['POST', 'GET']) #access only for studio - role_required
 @login_required
