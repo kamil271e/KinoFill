@@ -1,4 +1,4 @@
--- CREATE SEQUENCE filmweb.users_id_seq;
+CREATE SEQUENCE filmweb.users_id_seq;
 
 CREATE TABLE filmweb.Users(
     user_id integer PRIMARY KEY DEFAULT nextval('filmweb.users_id_seq'),

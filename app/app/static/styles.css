@@ -4,5 +4,28 @@ body {
 }
 
 .container {
-    padding-bottom: 70px;    /* Footer height */
+    padding-bottom: 5%;    /* Footer height */
 }
+
+#range_seasons {
+    width: 95%;
+    padding-right: 0;
+}
+
+.director-field {
+    position: relative;
+    width: 85%;
+}
+
+
+input[type=text] {
+    padding: 5px 20px;
+    padding-left: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    height: 100%;
+    width: 100%;
+}
+
