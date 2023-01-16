@@ -156,7 +156,6 @@ def add_movie():
         choose_studio = True 
     form = AddMovie(choose_studio=choose_studio)
     form.studio.choices = getStudios()
-    # form.genre.choices = getGenres()
     form.director.choices = getDirectors()
     if form.validate_on_submit():
         if form.redirect_add_director.data:
@@ -188,7 +187,7 @@ def add_movie():
                     genre=genre
                 )
                 db.session.add(movie_genre)
-                db.session.commit()
+            db.session.commit()
             flash("Dodano film")
             return redirect(url_for("home"))
         else:
@@ -206,7 +205,6 @@ def add_series():
         choose_studio = True 
     form = AddSeries(choose_studio=choose_studio)
     form.studio.choices = getStudios()
-    form.genre.choices = getGenres()
     form.director.choices = getDirectors()
     if form.validate_on_submit():
         if form.redirect_add_director.data:
@@ -231,17 +229,19 @@ def add_series():
             db.session.add(series)
             db.session.commit()
 
-            series_genre = Series_genres(
-                series_id=series.get_id(),
-                genre='gatunek'#form.genre.data
-            )
-            # db.session.add(series_genre)
-            # db.session.commit()
+            genres = request.form.getlist("genre")
+            for genre in genres:
+                series_genre = Series_genres(
+                    series_id=series.get_id(),
+                    genre=genre
+                )
+                db.session.add(series_genre)
+            db.session.commit()
             flash("Dodano serial")
             return redirect(url_for("home"))
         else:
             flash("Ten serial został już dodany do bazy danych")
-    return render_template('add_series.html', today=today, form=form)
+    return render_template('add_series.html', today=today, form=form, genres_options=getGenres())
 
 @app.route('/add_actor', methods=['POST', 'GET'])
 @login_required

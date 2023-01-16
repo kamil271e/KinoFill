@@ -120,6 +120,9 @@ class AddSeries(FlaskForm):
         if self.episodes.data < 0:
             flash("Liczba odcinków nie może być ujemna")
             return False
+        if self.episodes.data < int(request.form['range']):
+            flash("Liczba sezonów nie może być większa od liczby odcinków")
+            return False
         if len(self.name.data.strip()) > 30:
             flash("Podano za długą nazwę")
             return False
