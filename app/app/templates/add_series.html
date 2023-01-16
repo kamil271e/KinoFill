@@ -26,8 +26,10 @@
         </div>
         </br>
         {{ form.director.label(class="form-label") }}
-        {{ form.director(class="form-control director-field") }}
-        {{ form.redirect_add_director(class="btn btn-info director-btn") }}
+        <div class="d-flex justify-content-between">
+            {{ form.director(class="form-control director-field") }}
+            {{ form.redirect_add_director(class="btn btn-info director-btn") }}
+        </div>
         </br>
         {% if form.choose_studio == True %}
             {{ form.studio.label(class="form-label") }}
@@ -35,21 +37,26 @@
         {% endif %}
         </br>
         <p class="form-label">Gatunek</p>
-        <select id="movie-genre" name="genre" class="selectpicker" multiple data-live-search="true" data-max-options="5" title="Maksymalnie 5 gatunków" data-width="100%" data-size="4">
+        <select id="choose-genre" name="genre" class="selectpicker" multiple data-live-search="true" data-max-options="5" title="Maksymalnie 5 gatunków" data-width="100%" data-size="4">
             {% for option in genres_options %}
             <option value="{{ option }}">{{ option }}</option>
             {% endfor %}
         </select>
         </br>
         </br>
+        <p class="form-label">Aktorzy</p>
+        <select id="actors-list" name="actors" class="selectpicker" multiple data-live-search="true" data-max-options="10" title="Maksymalnie 10 aktorów" data-width="100%" data-size="4">
+            {% for option in actors_options %}
+            <option value="{{ option }}">{{ option[1] }}</option>
+            {% endfor %}
+        </select>
+        </br>
+        </br>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='seriesSlider.js')}}"></script>
+        <script src="{{url_for('static', filename='addCharacters.js')}}"></script>
+        <div id="characters-container"></div>
         {{ form.submit(class="btn btn-info") }}
     </form>
-<style>
-    #range_seasons {
-        width: 95%;
-        padding-right: 0;
-    }
-</style>
-<script src="{{url_for('static', filename='seriesSlider.js')}}"></script>
 {% endblock %}
-<script src="{{url_for('static', filename='addDirectorBtn.js')}}"></script>
+ 

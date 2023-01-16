@@ -252,11 +252,27 @@ def add_series():
                 )
                 db.session.add(series_genre)
             db.session.commit()
+
+            for i in range(10):
+                role_form = 'actor_' + str(i)
+                hidden_form = role_form +'_h'
+                actor_id = request.form.get(hidden_form)
+                character_name = request.form.get(role_form)
+                if not actor_id or not character_name:
+                    break
+                series_character = Series_character(
+                    character_name=character_name,
+                    series_id=series.get_id(),
+                    actor_id=actor_id
+                )
+                db.session.add(series_character)
+            
+            db.session.commit()
             flash("Dodano serial")
             return redirect(url_for("home"))
         else:
             flash("Ten serial został już dodany do bazy danych")
-    return render_template('add_series.html', today=today, form=form, genres_options=getGenres())
+    return render_template('add_series.html', today=today, form=form, genres_options=getGenres(), actors_options=getActors())
 
 @app.route('/add_actor', methods=['POST', 'GET'])
 @login_required

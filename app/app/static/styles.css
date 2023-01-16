@@ -7,8 +7,9 @@ body {
     padding-bottom: 70px;    /* Footer height */
 }
 
-.range-seasons {
-    width: 200px;
+#range_seasons {
+    width: 95%;
+    padding-right: 0;
 }
 
 .director-field {
@@ -16,11 +17,6 @@ body {
     width: 85%;
 }
 
-.director-btn {
-    position: absolute;
-    top: 470px;
-    margin-left: 75%;
-}
 
 input[type=text] {
     padding: 5px 20px;
@@ -32,3 +28,4 @@ input[type=text] {
     height: 100%;
     width: 100%;
 }
+
