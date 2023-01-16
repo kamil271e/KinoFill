@@ -219,3 +219,38 @@ class Actor(db.Model):
 
     def get_id(self):
         return (self.actor_id)
+
+class Movie_character(db.Model):
+    __tablename__ = "movie_characters"
+    __table_args__ = {'quote': False, 'schema': "filmweb", }
+
+    character_id = db.Column(db.Integer, primary_key=True)
+    character_name = db.Column(db.String(30), nullable=False, unique=True)
+    movie_id = db.Column(db.Integer, db.ForeignKey("filmweb.movies.movie_id"), nullable=False, unique=True)
+    actor_id = db.Column(db.Integer, db.ForeignKey("filmweb.actors.actor_id"), nullable=False, unique=True)
+
+    def __init__(self, character_name, movie_id, actor_id):
+        self.character_name = character_name
+        self.movie_id = movie_id
+        self.actor_id = actor_id
+
+    def get_id(self):
+        return (self.character_id)
+
+
+class Series_character(db.Model):
+    __tablename__ = "series_characters"
+    __table_args__ = {'quote': False, 'schema': "filmweb", }
+
+    character_id = db.Column(db.Integer, primary_key=True)
+    character_name = db.Column(db.String(30), nullable=False, unique=True)
+    series_id = db.Column(db.Integer, db.ForeignKey("filmweb.series.series_id"), nullable=False, unique=True)
+    actor_id = db.Column(db.Integer, db.ForeignKey("filmweb.actors.actor_id"), nullable=False, unique=True)
+
+    def __init__(self, character_name, series_id, actor_id):
+        self.character_name = character_name
+        self.series_id = series_id
+        self.actor_id = actor_id
+
+    def get_id(self):
+        return (self.character_id)

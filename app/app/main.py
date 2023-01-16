@@ -179,7 +179,6 @@ def add_movie():
             )
             db.session.add(movie)
             db.session.commit()
-
             genres = request.form.getlist("genre")
             for genre in genres:
                 movie_genre = Movie_genres(
@@ -188,11 +187,27 @@ def add_movie():
                 )
                 db.session.add(movie_genre)
             db.session.commit()
+
+            for i in range(10):
+                role_form = 'actor_' + str(i)
+                hidden_form = role_form +'_h'
+                actor_id = request.form.get(hidden_form)
+                character_name = request.form.get(role_form)
+                if not actor_id or not character_name:
+                    break
+                movie_character = Movie_character(
+                    character_name=character_name,
+                    movie_id=movie.get_id(),
+                    actor_id=actor_id
+                )
+                db.session.add(movie_character)
+
+            db.session.commit()
             flash("Dodano film")
             return redirect(url_for("home"))
         else:
             flash("Ten film został już dodany do bazy danych")
-    return render_template('add_movie.html', today=today, form=form, genres_options=getGenres())
+    return render_template('add_movie.html', today=today, form=form, genres_options=getGenres(), actors_options=getActors())
 
 @app.route('/add_series', methods=['POST', 'GET'])
 @login_required

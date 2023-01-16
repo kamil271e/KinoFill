@@ -13,3 +13,7 @@ def getDirectors():
     data = db.session.query(Director.director_id, Director.firstname, Director.surname, Director.birth_date)
     return sorted([(str(row.director_id), row.firstname + ' ' + row.surname) for row in data], key=lambda x: x[1].lower())
     # TODO display birthdate if 2 directors with same firstname and surname
+
+def getActors():
+    data = db.session.query(Actor.actor_id, Actor.firstname, Actor.surname, Actor.birth_date)
+    return sorted([(str(row.actor_id), row.firstname + ' ' + row.surname) for row in data], key=lambda x: x[1].lower())

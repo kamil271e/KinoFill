@@ -30,7 +30,6 @@
             {{ form.studio.label(class="form-label") }}
             {{ form.studio(class="form-control") }}
         {% endif %}
-        </br>
         <p class="form-label">Gatunek</p>
         <select id="movie-genre" name="genre" class="selectpicker" multiple data-live-search="true" data-max-options="5" title="Maksymalnie 5 gatunków" data-width="100%" data-size="4">
             {% for option in genres_options %}
@@ -39,7 +38,19 @@
         </select>
         </br>
         </br>
-        {{ form.submit(class="btn btn-info") }}
+        <p class="form-label">Aktorzy</p>
+        <select id="movie-actors" name="actors" class="selectpicker" multiple data-live-search="true" data-max-options="10" title="Maksymalnie 10 aktorów" data-width="100%" data-size="4">
+            {% for option in actors_options %}
+            <option value="{{ option }}">{{ option[1] }}</option>
+            {% endfor %}
+        </select>
+        </br>
+        </br>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <script src="{{url_for('static', filename='addActors.js')}}"></script>
+        <script src="{{url_for('static', filename='emptyCharacters.js')}}"></script>
+        <div id="movie-screen-roles-container"></div>
+        </br>
+        {{ form.submit(class="btn btn-info submit-button") }}
     </form>
 {% endblock %}
-<script src="{{url_for('static', filename='addDirectorBtn.js')}}"></script>
