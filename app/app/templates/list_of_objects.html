@@ -22,7 +22,13 @@
             <button class="nav-link" id="actors-tab" data-bs-toggle="tab" data-bs-target="#actors" type="button" role="tab" aria-controls="actors" aria-selected="false">Aktorzy</button>
         </li>
         <li class="nav-item" role="presentation">
+            <button class="nav-link" id="directors-tab" data-bs-toggle="tab" data-bs-target="#directors" type="button" role="tab" aria-controls="directors" aria-selected="false">Reżyserowie</button>
+        </li>
+        <li class="nav-item" role="presentation">
             <button class="nav-link" id="studios-tab" data-bs-toggle="tab" data-bs-target="#studios" type="button" role="tab" aria-controls="studios" aria-selected="false">Wytwórnie filmowe</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="journalists-tab" data-bs-toggle="tab" data-bs-target="#journalists" type="button" role="tab" aria-controls="journalists" aria-selected="false">Dziennikarze</button>
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
@@ -34,15 +40,34 @@
                         <th>Nazwa</th>
                         <th>Rok powstania</th>
                         <th>Długość</th>
+                        <th>Reżyser</th>
+                        <th>Wytwórnia filmowa</th>
                         <th>Ocena widzów</th>
                     </thead>
                     <tbody>
-                        {% for film in movies %}
+                        {% for movie in movies %}
                         <tr>
-                            <td>{{ film.name }}</td>
-                            <td>{{ film.creation_year }}</td>
-                            <td>{{ film.length }}</td>
-                            <td>{{ film.viewers_rating }}</td>
+                            <td>
+                                <a href="{{url_for('movie_details', movie_id=movie.movie_id)}}">{{ movie.name }}</a>
+                            </td>
+                            <td>{{ movie.creation_year }}</td>
+                            <td>{{ movie.length }}</td>
+                            {% for d in directors %}
+                                {% if d.director_id == movie.director_id %}
+                                <td>
+                                    {{ d.firstname }} {{ d.surname }}
+                                </td>
+                                {% endif %}
+                            {% endfor %}
+                            {% for studio in studios %}
+                                {% if studio.studio_id == movie.studio_id %}
+                                <td>
+                                    {{ studio.name }}
+<!--                                <a href="{{url_for('movie_details', movie_id=movie.movie_id)}}">{{ studio.name }}</a>-->
+                                </td>
+                                {% endif %}
+                            {% endfor %}
+                            <td>{{ movie.viewers_rating }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -81,20 +106,55 @@
                 </br>
                 <table class="table table-hover">
                     <thead class="table-info">
-                        <th>Imię</th>
-                        <th>Nazwisko</th>
+                        <th>Imię i nazwisko</th>
                         <th>Data urodzenia</th>
                         <th>Kraj pochodzenia</th>
                         <th>Ocena widzów</th>
+                        <th>Wytwórnia</th>
                     </thead>
                     <tbody>
                         {% for actor in actors %}
                         <tr>
-                            <td>{{ actor.firstname }}</td>
-                            <td>{{ actor.surname }}</td>
+                            <td>{{ actor.firstname }} {{ actor.surname }}</td>
                             <td>{{ actor.birth_date }}</td>
                             <td>{{ actor.country }}</td>
                             <td>{{ actor.viewers_rating }}</td>
+                            {% for studio in studios %}
+                                {% if studio.studio_id == actor.studio_id %}
+                                    <td>{{ studio.name }}</td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                Nie mamy tego w bazie
+            {% endif %}
+        </div>
+        <div class="tab-pane fade" id="directors" role="tabpanel" aria-labelledby="directors-tab">
+            {% if directors.count() > 0 %}
+                </br>
+                <table class="table table-hover">
+                    <thead class="table-info">
+                        <th>Imię i nazwisko</th>
+                        <th>Data urodzenia</th>
+                        <th>Kraj pochodzenia</th>
+                        <th>Ocena widzów</th>
+                        <th>Wytwórnia</th>
+                    </thead>
+                    <tbody>
+                        {% for d in directors %}
+                        <tr>
+                            <td>{{ d.firstname }} {{ d.surname }}</td>
+                            <td>{{ d.birth_date }}</td>
+                            <td>{{ d.country }}</td>
+                            <td>{{ d.rate }}</td>
+                            {% for studio in studios %}
+                                {% if studio.studio_id == d.studio_id %}
+                                    <td>{{ studio.name }}</td>
+                                {% endif %}
+                            {% endfor %}
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -120,6 +180,29 @@
                             <td>{{ studio.country }}</td>
                             <td>{{ studio.creation_date }}</td>
                             <td>{{ studio.viewers_rating }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                Nie mamy tego w bazie
+            {% endif %}
+        </div>
+        <div class="tab-pane fade" id="journalists" role="tabpanel" aria-labelledby="journalists-tab">
+            {% if journalists.count() > 0 %}
+                </br>
+                <table class="table table-hover">
+                    <thead class="table-info">
+                        <th>Pseudonim</th>
+                        <th>Imię i nazwisko</th>
+                        <th>Data urodzenia</th>
+                    </thead>
+                    <tbody>
+                        {% for j in journalists %}
+                        <tr>
+                            <td>{{ j.nickname }}</td>
+                            <td>{{ j.firstname }} {{ j.surname }}</td>
+                            <td>{{ j.birth_date }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
