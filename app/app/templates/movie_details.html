@@ -17,7 +17,8 @@
         <h4>Gatunek/Gatunki: {{ genres }}</h4>
         <h4>Ocena widzów: {{ movie.viewers_rating }}</h4>
         <h4>Reżyser: {{ director.firstname }} {{ director.surname }}</h4>
-        <h4>Wytwórnia filmowa: {{ studio.name }}</h4>
+        <h4>Wytwórnia filmowa: <a href="{{url_for('studio_details', studio_id=movie.studio_id)}}">{{ studio.name }}</a></h4>
+        </br>
 
         <h3>Recenzje filmu</h3>
     </form>

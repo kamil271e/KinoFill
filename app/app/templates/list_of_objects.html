@@ -41,7 +41,7 @@
                         <th>Rok powstania</th>
                         <th>Długość</th>
                         <th>Reżyser</th>
-                        <th>Wytwórnia filmowa</th>
+                        <th>Wytwórnia</th>
                         <th>Ocena widzów</th>
                     </thead>
                     <tbody>
@@ -55,15 +55,14 @@
                             {% for d in directors %}
                                 {% if d.director_id == movie.director_id %}
                                 <td>
-                                    {{ d.firstname }} {{ d.surname }}
+                                    <a href="{{url_for('director_details', director_id=d.director_id)}}">{{ d.firstname }} {{ d.surname }}</a>
                                 </td>
                                 {% endif %}
                             {% endfor %}
                             {% for studio in studios %}
                                 {% if studio.studio_id == movie.studio_id %}
                                 <td>
-                                    {{ studio.name }}
-<!--                                <a href="{{url_for('movie_details', movie_id=movie.movie_id)}}">{{ studio.name }}</a>-->
+                                    <a href="{{url_for('studio_details', studio_id=studio.studio_id)}}">{{ studio.name }}</a>
                                 </td>
                                 {% endif %}
                             {% endfor %}
@@ -84,6 +83,8 @@
                         <th>Nazwa</th>
                         <th>Liczba odcinków</th>
                         <th>Liczba sezonow</th>
+                        <th>Reżyser</th>
+                        <th>Wytwórnia</th>
                         <th>Ocena widzów</th>
                     </thead>
                     <tbody>
@@ -92,6 +93,20 @@
                             <td>{{ s.name }}</td>
                             <td>{{ s.episodes }}</td>
                             <td>{{ s.seasons }}</td>
+                            {% for d in directors %}
+                                {% if d.director_id == s.director_id %}
+                                <td>
+                                    <a href="{{url_for('director_details', director_id=d.director_id)}}">{{ d.firstname }} {{ d.surname }}</a>
+                                </td>
+                                {% endif %}
+                            {% endfor %}
+                            {% for studio in studios %}
+                                {% if studio.studio_id == s.studio_id %}
+                                <td>
+                                    <a href="{{url_for('studio_details', studio_id=studio.studio_id)}}">{{ studio.name }}</a>
+                                </td>
+                                {% endif %}
+                            {% endfor %}
                             <td>{{ s.viewers_rating }}</td>
                         </tr>
                         {% endfor %}
@@ -121,7 +136,9 @@
                             <td>{{ actor.viewers_rating }}</td>
                             {% for studio in studios %}
                                 {% if studio.studio_id == actor.studio_id %}
-                                    <td>{{ studio.name }}</td>
+                                    <td>
+                                        <a href="{{url_for('studio_details', studio_id=studio.studio_id)}}">{{ studio.name }}</a>
+                                    </td>
                                 {% endif %}
                             {% endfor %}
                         </tr>
@@ -152,7 +169,9 @@
                             <td>{{ d.rate }}</td>
                             {% for studio in studios %}
                                 {% if studio.studio_id == d.studio_id %}
-                                    <td>{{ studio.name }}</td>
+                                    <td>
+                                        <a href="{{url_for('studio_details', studio_id=studio.studio_id)}}">{{ studio.name }}</a>
+                                    </td>
                                 {% endif %}
                             {% endfor %}
                         </tr>
@@ -176,7 +195,9 @@
                     <tbody>
                         {% for studio in studios %}
                         <tr>
-                            <td>{{ studio.name }}</td>
+                            <td>
+                                <a href="{{url_for('studio_details', studio_id=studio.studio_id)}}">{{ studio.name }}</a>
+                            </td>
                             <td>{{ studio.country }}</td>
                             <td>{{ studio.creation_date }}</td>
                             <td>{{ studio.viewers_rating }}</td>

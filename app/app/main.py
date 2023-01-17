@@ -325,6 +325,25 @@ def movie_details(movie_id):
     genres_str = genres_str[2:]
     return render_template('movie_details.html', today=today, movie=movie, genres=genres_str, director=director, studio=studio)
 
+@app.route('/studio_details/<studio_id>')
+def studio_details(studio_id):
+    studio = db.session.query(Studio).filter(Studio.studio_id == studio_id).first()
+    movies = db.session.query(Movie).filter(Movie.studio_id == studio_id)
+    series = db.session.query(Series).filter(Series.studio_id == studio_id)
+    actors = db.session.query(Actor).filter(Actor.studio_id == studio_id)
+    directors = db.session.query(Director).filter(Director.studio_id == studio_id)
+    return render_template('studio_details.html', today=today, studio=studio, movies=movies,
+                           series=series, actors=actors, directors=directors)
+
+@app.route('/director_details/<director_id>')
+def director_details(director_id):
+    director = db.session.query(Director).filter(Director.director_id == director_id).first()
+    studio = db.session.query(Studio).filter(Studio.studio_id == director.studio_id).first()
+    movies = db.session.query(Movie).filter(Movie.director_id == director_id)
+    series = db.session.query(Series).filter(Series.director_id == director_id)
+    return render_template('director_details.html', today=today, director=director,
+                           studio=studio, movies=movies, series=series)
+
 
 if __name__ == '__main__':
     # with app.app_context(): #Flask-SQLAlchemy 3.0 all access to db.engine (and db.session) requires an active Flask application context
