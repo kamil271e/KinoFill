@@ -35,7 +35,7 @@
         <div class="tab-pane fade show active" id="movies" role="tabpanel" aria-labelledby="movies-tab">
             {% if movies.count() > 0 %}
                 </br>
-                <table class="table table-hover">
+                <table id="movies_table", class="table table-hover">
                     <thead class="table-info">
                         <th>Nazwa</th>
                         <th>Rok powstania</th>
@@ -78,7 +78,7 @@
         <div class="tab-pane fade" id="series" role="tabpanel" aria-labelledby="series-tab">
             {% if series.count() > 0 %}
                 </br>
-                <table class="table table-hover">
+                <table id="series_table", class="table table-hover">
                     <thead class="table-info">
                         <th>Nazwa</th>
                         <th>Liczba odcinków</th>
@@ -119,7 +119,7 @@
         <div class="tab-pane fade" id="actors" role="tabpanel" aria-labelledby="actors-tab">
             {% if actors.count() > 0 %}
                 </br>
-                <table class="table table-hover">
+                <table id="actors_table", class="table table-hover">
                     <thead class="table-info">
                         <th>Imię i nazwisko</th>
                         <th>Data urodzenia</th>
@@ -152,7 +152,7 @@
         <div class="tab-pane fade" id="directors" role="tabpanel" aria-labelledby="directors-tab">
             {% if directors.count() > 0 %}
                 </br>
-                <table class="table table-hover">
+                <table id="directors_table", class="table table-hover">
                     <thead class="table-info">
                         <th>Imię i nazwisko</th>
                         <th>Data urodzenia</th>
@@ -185,7 +185,7 @@
         <div class="tab-pane fade" id="studios" role="tabpanel" aria-labelledby="studios-tab">
             {% if studios.count() > 0 %}
                 </br>
-                <table class="table table-hover">
+                <table id="studios_table", class="table table-hover">
                     <thead class="table-info">
                         <th>Nazwa</th>
                         <th>Państwo</th>
@@ -212,7 +212,7 @@
         <div class="tab-pane fade" id="journalists" role="tabpanel" aria-labelledby="journalists-tab">
             {% if journalists.count() > 0 %}
                 </br>
-                <table class="table table-hover">
+                <table id="journalists_table", class="table table-hover">
                     <thead class="table-info">
                         <th>Pseudonim</th>
                         <th>Imię i nazwisko</th>
@@ -233,4 +233,7 @@
             {% endif %}
         </div>
     </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{{url_for('static', filename='prettyTables.js')}}"></script>   
 {% endblock %}
