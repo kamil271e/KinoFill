@@ -12,7 +12,7 @@
             {% endif %}
         {% endwith %}
         <h1 class="lh-lg display-5">{{ director.firstname }} {{ director.surname }}</h1>
-        <h4>Rok produkcji: {{ director.birth_date }}</h4>
+        <h4>Data urodzenia: {{ director.birth_date }}</h4>
         <h4>Długość: {{ director.country }}</h4>
         <h4>Ocena widzów: {{ director.rate }}</h4>
         <h4>Wytwórnia filmowa: <a href="{{url_for('studio_details', studio_id=director.studio_id)}}">{{ studio.name }}</a></h4>

@@ -2,6 +2,7 @@ from models import *
 from forms import *
 from utils import *
 
+
 @login_manager.user_loader # user loader tells Flask-Login how to find a specific user from the ID that is stored in their session cookie
 def load_user(user_id):
     # since the user_id is just the primary key of our user table, use it in the query for the user
@@ -9,6 +10,7 @@ def load_user(user_id):
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
+    #initGenres()
     return render_template('home.html', today=today)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -346,6 +348,8 @@ def director_details(director_id):
 
 
 if __name__ == '__main__':
+    with app.app_context():
+        initGenres()
     # with app.app_context(): #Flask-SQLAlchemy 3.0 all access to db.engine (and db.session) requires an active Flask application context
         # db.drop_all()
         # db.create_all()
