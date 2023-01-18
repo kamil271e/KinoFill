@@ -11,7 +11,7 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        <h1 class="lh-lg display-5">Dodaj serial</h1>
+        <h1 class="lh-lg display-5">Add series</h1>
         {{ form.hidden_tag() }}
         {{ form.name.label(class="form-label") }}
         {{ form.name(class="form-control") }}
@@ -19,7 +19,7 @@
         {{ form.episodes.label(class="form-label") }}
         {{ form.episodes(class="form-control") }}
         </br>
-        <p class="form-label">Liczba sezonów</p>
+        <p class="form-label">Number of seasons</p>
         <div class="d-flex justify-content-between">
             <span id="seasons_value"></span>
             <input type="range" class="form-range" id="range_seasons" name="range" min="1" max="200" step="1" value="1">
@@ -36,7 +36,7 @@
             {{ form.studio(class="form-control") }}
         {% endif %}
         </br>
-        <p class="form-label">Gatunek</p>
+        <p class="form-label">Genre</p>
         <select id="choose-genre" name="genre" class="selectpicker" multiple data-live-search="true" data-max-options="5" title="Maksymalnie 5 gatunków" data-width="100%" data-size="4">
             {% for option in genres_options %}
             <option value="{{ option }}">{{ option }}</option>
@@ -44,7 +44,7 @@
         </select>
         </br>
         </br>
-        <p class="form-label">Aktorzy</p>
+        <p class="form-label">Actors</p>
         <select id="actors-list" name="actors" class="selectpicker" multiple data-live-search="true" data-max-options="10" title="Maksymalnie 10 aktorów" data-width="100%" data-size="4">
             {% for option in actors_options %}
             <option value="{{ option }}">{{ option[1] }}</option>
