@@ -1,34 +1,34 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
     <a class="navbar-brand" style="margin-left: 20px;" href="{{ url_for('home') }}">SiteFilms</a>
-    <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent" style="margin-right: 20px;">
+    <div class="collapse navbar-collapse d-flex flex-row-reverse flex-wrap-reverse" id="navbarSupportedContent" style="margin-right: 20px;">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('list_objects') }}">Lista</a>
+                <a class="nav-link" href="{{ url_for('list_objects') }}">List</a>
             </li>
             {% if current_user.is_authenticated %}
                 {% if current_user.user_type == 's' or current_user.user_type == 'a' %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('add_director') }}">Dodaj reżysera</a>
+                        <a class="nav-link" href="{{ url_for('add_director') }}">Add director</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('add_movie') }}">Dodaj film</a>
+                        <a class="nav-link" href="{{ url_for('add_movie') }}">Add movie</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('add_series') }}">Dodaj serial</a>
+                        <a class="nav-link" href="{{ url_for('add_series') }}">Add series</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('add_actor') }}">Dodaj aktora</a>
+                        <a class="nav-link" href="{{ url_for('add_actor') }}">Add actor</a>
                     </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('logout') }}">Wyloguj</a>
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('login') }}">Logowanie</a>
+                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('register') }}">Rejestracja</a>
+                    <a class="nav-link" href="{{ url_for('register') }}">Sign up</a>
                 </li>
             {% endif %}
         </ul>

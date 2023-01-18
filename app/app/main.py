@@ -21,12 +21,12 @@ def login():
             check = check_password_hash(user.password_hash, request.form['password'])
             if check:
                 login_user(user)
-                flash("Poprawnie zalogowano użytkownika")
+                flash("User successfuly logged in")
                 return redirect(url_for("user"))
             else:
-                flash("Podano błędne hasło")
+                flash("Incorrect password")
         else:
-            flash("Użytkownik o podanym loginie nie istnieje")
+            flash("User with specified login does not exist")
         return redirect(url_for('login'))  # clear input
     return render_template('login.html', today=today)
 
@@ -40,9 +40,9 @@ def register():
             hashed_password = generate_password_hash(form.password.data, "sha256")
             is_public = ""
             existing_name = ""
-            if form.role.data == "Widz":
+            if form.role.data == "Viewer":
                 role = "w"  # viewer
-                if form.viewer_role.data == "Prywatne":
+                if form.viewer_role.data == "Private":
                     is_public = "f"
                     form.name.data = 'NULL'
                 else:
@@ -50,12 +50,12 @@ def register():
                     viewer = db.session.query(Viewer).filter(Viewer.nickname == form.name.data).first()
                     if viewer:
                         existing_name = "x"
-            elif form.role.data == "Dziennikarz":
+            elif form.role.data == "Journalist":
                 role = "d"  # journalist
                 journalist = db.session.query(Journalist).filter(Journalist.nickname == form.name.data).first()
                 if journalist:
                     existing_name = "x"
-            elif form.role.data == "Wytwórnia filmowa":
+            elif form.role.data == "Studio":
                 role = "s"  # studio
                 studio = db.session.query(Studio).filter(Studio.name == form.name.data).first()
                 if studio:
@@ -83,13 +83,13 @@ def register():
                 print(command)
                 db.session.execute(command)
                 db.session.commit()
-                flash("Poprawnie zarejestrowano użytkownika")
+                flash("User successfuly registered")
                 return redirect(url_for("login"))
             else:
-                flash("Użytkownik o podanej nazwie istnieje. Wprowadź inną nazwę")
+                flash("User with specified username already exists. Choose different one.")
                 form.name.data = ''
         else:
-            flash("Użytkownik o podanym loginie istnieje")
+            flash("User with specified login already exists. Choose different one.")
             form.login.data = ''
             form.password.data = ''
         login = form.login.data
@@ -99,7 +99,7 @@ def register():
 @login_required
 def logout():
     logout_user()
-    flash("Poprawnie wylogowano użytkownika")
+    flash("User successfully logged out")
     return redirect(url_for("home"))
 
 @app.route('/user')
@@ -148,10 +148,10 @@ def add_director():
                 studio_id=stud_id)
             db.session.add(director)
             db.session.commit()
-            flash("Dodano reżysera")
+            flash("Director successfuly added")
             return redirect(url_for("home"))
         else:
-            flash("Ten reżyser został już dodany do bazy danych")
+            flash("This director has already been added to the database")
     return render_template('add_director.html', today=today, form=form)
 
 @app.route('/add_movie', methods=['POST', 'GET'])
@@ -212,10 +212,10 @@ def add_movie():
                 db.session.add(movie_character)
 
             db.session.commit()
-            flash("Dodano film")
+            flash("Movie successfuly added")
             return redirect(url_for("home"))
         else:
-            flash("Ten film został już dodany do bazy danych")
+            flash("This movie has already been added to the database")
     return render_template('add_movie.html', today=today, form=form, genres_options=getGenres(), actors_options=getActors())
 
 @app.route('/add_series', methods=['POST', 'GET'])
@@ -277,10 +277,10 @@ def add_series():
                 db.session.add(series_character)
             
             db.session.commit()
-            flash("Dodano serial")
+            flash("Series successfuly added")
             return redirect(url_for("home"))
         else:
-            flash("Ten serial został już dodany do bazy danych")
+            flash("This series has already been added to the database")
     return render_template('add_series.html', today=today, form=form, genres_options=getGenres(), actors_options=getActors())
 
 @app.route('/add_actor', methods=['POST', 'GET'])
@@ -313,10 +313,10 @@ def add_actor():
                 studio_id=stud_id)
             db.session.add(actor)
             db.session.commit()
-            flash("Dodano aktora")
+            flash("Actor successfuly added")
             return redirect(url_for("home"))
         else:
-            flash("Ten aktor został już dodany do bazy danych")
+            flash("This director has already been added to the database")
     return render_template('add_actor.html', today=today, form=form)
 
 @app.route('/movie_details/<movie_id>')

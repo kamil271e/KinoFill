@@ -1,6 +1,5 @@
 $(document).ready(function() {
     $("#actors-list").change(function(){
-        console.log("whatata");
         var selected_actors = $(this).val();
         var form_container = $("#characters-container");
         if(selected_actors){

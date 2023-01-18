@@ -2,36 +2,36 @@ from config import *
 
 class RegisterForm(FlaskForm):
     login = StringField("Login", validators=[DataRequired(), Length(5, 16)])
-    password = PasswordField("Hasło", validators=[DataRequired(), Length(5, 16)])
-    role = SelectField("Rola", choices=["Widz", "Dziennikarz", "Wytwórnia filmowa"])
-    user_desc = StringField("Opis profilu", widget=TextArea())
-    viewer_role = SelectField("Typ konta", choices=["Prywatne", "Publiczne"])
-    name = StringField("Nazwa")
-    submit = SubmitField("Zarejestruj")
+    password = PasswordField("Password", validators=[DataRequired(), Length(5, 16)])
+    role = SelectField("Role", choices=["Viewer", "Journalist", "Studio"])
+    user_desc = StringField("Profile description", widget=TextArea())
+    viewer_role = SelectField("Account type", choices=["Private", "Public"])
+    name = StringField("Name")
+    submit = SubmitField("Register")
 
     def validate(self):
-        if self.role.data != "Widz" or self.viewer_role.data == "Publiczne":
+        if self.role.data != "Viewer" or self.viewer_role.data == "Public":
             name = self.name.data.strip()
             if len(name) < 1:
                 # self.name.errors.append('Prosze podac nazwe użytkownika')
-                flash('Prosze podac nazwe użytkownika')
+                flash('Please enter username')
                 return False
             elif len(name) > 20 or len(name) < 5:
                 # self.name.errors.append("Nazwa uzytkownika powinna mieć od 5 do 20 znaków")
-                flash("Nazwa uzytkownika powinna mieć od 5 do 20 znaków")
+                flash("Username should have between 5 and 20 characters")
                 return False
         return True
 
 
 class AddMovie(FlaskForm):
-    name = StringField("Tytuł")
-    creation_year = SelectField('Rok produkcji', coerce=int, choices=range(int(today[6:]), int(today[6:]) - 100, -1))
-    length = StringField("Długość (w minutach)")
-    director = SelectField("Reżyser")
-    studio = SelectField("Wytwórnia") # Only for admin to choose
+    name = StringField("Title")
+    creation_year = SelectField('Creation year', coerce=int, choices=range(int(today[6:]), int(today[6:]) - 100, -1))
+    length = StringField("Length (in minutes)")
+    director = SelectField("Director")
+    studio = SelectField("Studio") # Only for admin to choose
     choose_studio = False
-    submit = SubmitField("Dodaj film")
-    redirect_add_director = SubmitField("Dodaj reżysera")
+    submit = SubmitField("Add movie")
+    redirect_add_director = SubmitField("Add director")
 
     def __init__(self, choose_studio, *args, **kwargs):
         self.choose_studio = choose_studio
@@ -41,34 +41,34 @@ class AddMovie(FlaskForm):
         if self.redirect_add_director.data:
             return True
         if not self.name.data:
-            flash("Proszę wprowadzić nazwę filmu")
+            flash("Please enter username")
             return False
         if not self.length.data:
-            flash("Proszę wprowadzić długość filmu")
+            flash("Please enter length of the movie")
             return False
         try:
             _ = int(self.length.data)
         except:
-            flash("Długość filmu musi być liczbą całkowitą")
+            flash("Length of the movie needs to be an integer. Please try again")
             return False
         if int(self.length.data) <= 0:
-            flash("Podaj poprawną długość trwania filmu")
+            flash("Please enter valid length of the movie")
             return False
         if len(self.name.data.strip()) > 30:
-            flash("Podano za długą nazwę")
+            flash("The name must not exceeded 30 characters. Please try again")
             return False
         
         return True
 
 
 class AddDirector(FlaskForm):
-    firstname = StringField("Imię", validators=[DataRequired()])
-    surname = StringField("Nazwisko", validators=[DataRequired()])
-    birth_date = DateField("Data urodzenia", validators=[DataRequired()])#, format='%d.%m.%Y', validators=[DataRequired()])
-    country = SelectField("Kraj pochodzenia", choices=countries)
-    studio = SelectField("Wytwórnia") # Only for admin to choose
+    firstname = StringField("Name", validators=[DataRequired()])
+    surname = StringField("Surname", validators=[DataRequired()])
+    birth_date = DateField("Birthdate", validators=[DataRequired()])#, format='%d.%m.%Y', validators=[DataRequired()])
+    country = SelectField("Country", choices=countries)
+    studio = SelectField("Studio") # Only for admin to choose
     choose_studio = False
-    submit = SubmitField("Dodaj reżysera")
+    submit = SubmitField("Add director")
 
     def __init__(self, choose_studio, *args, **kwargs):
         self.choose_studio = choose_studio
@@ -76,13 +76,13 @@ class AddDirector(FlaskForm):
 
     def validate(self):
         if self.birth_date.data >= datetime.datetime.strptime(today, "%d.%m.%Y").date():
-            flash("Data musi być przeszła")
+            flash("Date needs to be from past")
             return False
-        if len(self.firstname.data.strip()) < 2 or len(self.firstname.data.strip()) > 20:
-            flash("Wprowadź poprawne imię")
+        if len(self.firstname.data.strip()) < 2 or len(self.firstname.data.strip()) > 20: # TODO numbers and sepcial characters handling
+            flash("Enter valid name")
             return False
         if len(self.surname.data.strip()) < 2 or len(self.surname.data.strip()) > 20:
-            flash("Wprowadź poprawne nazwisko")
+            flash("Enter valid surname")
             return False
         if self.country.data == '-':
             self.country.data = None
@@ -90,14 +90,14 @@ class AddDirector(FlaskForm):
 
 
 class AddSeries(FlaskForm):
-    name = StringField("Tytuł")                          
-    episodes = StringField("Liczba odcinków")
-    director = SelectField("Reżyser")
-    studio = SelectField("Wytwórnia")
+    name = StringField("Title")                          
+    episodes = StringField("Number of episodes")
+    director = SelectField("Director")
+    studio = SelectField("Studio")
     choose_studio = False
-    genre = SelectField("Gatunek")
-    submit = SubmitField("Dodaj serial")
-    redirect_add_director = SubmitField("Dodaj reżysera")
+    genre = SelectField("Genre")
+    submit = SubmitField("Add series")
+    redirect_add_director = SubmitField("Add director")
 
     def __init__(self, choose_studio, *args, **kwargs):
         self.choose_studio = choose_studio
@@ -107,39 +107,39 @@ class AddSeries(FlaskForm):
         if self.redirect_add_director.data:
             return True
         if not self.name.data:
-            flash("Proszę wprowadzić nazwę serialu")
+            flash("Please enter series title")
             return False
         if not self.episodes.data:
-            flash("Proszę wprowadzić liczbę odcników")
+            flash("Please enter number of episodes")
             return False
         try:
             self.episodes.data = int(self.episodes.data)
         except:
-            flash("Liczba odcinków musi być liczbą całkowitą")
+            flash("Number of episodes needs to be an integer")
             return False
         if self.episodes.data < 0:
-            flash("Liczba odcinków nie może być ujemna")
+            flash("Number of episodes cannot be negative")
             return False
         if self.episodes.data < int(request.form['range']):
-            flash("Liczba sezonów nie może być większa od liczby odcinków")
+            flash("Number of seasons cannot be greater than number of episodes")
             return False
         if len(self.name.data.strip()) > 30:
-            flash("Podano za długą nazwę")
+            flash("Title is too long")
             return False
         if int(self.episodes.data) < 0:
-            flash("Liczba odcinków nie może być ujemna")
+            flash("Number of episodes cannot be negative")
             return False
 
         return True
 
 class AddActor(FlaskForm):
-    firstname = StringField("Imię", validators=[DataRequired()])
-    surname = StringField("Nazwisko", validators=[DataRequired()])
-    birth_date = DateField("Data urodzenia", validators=[DataRequired()])
-    country = SelectField("Kraj pochodzenia", choices=countries)
+    firstname = StringField("Name", validators=[DataRequired()])
+    surname = StringField("Surname", validators=[DataRequired()])
+    birth_date = DateField("Birthdate", validators=[DataRequired()])#, format='%d.%m.%Y', validators=[DataRequired()])
+    country = SelectField("Country", choices=countries)
+    studio = SelectField("Studio")
     choose_studio = False
-    studio = SelectField("Wytwórnia")
-    submit = SubmitField("Dodaj aktora")
+    submit = SubmitField("Add actor")
 
     def __init__(self, choose_studio, *args, **kwargs):
         self.choose_studio = choose_studio
@@ -147,13 +147,13 @@ class AddActor(FlaskForm):
 
     def validate(self):
         if self.birth_date.data >= datetime.datetime.strptime(today, "%d.%m.%Y").date():
-            flash("Data musi być przeszła")
+            flash("Date needs to be from past")
             return False
         if len(self.firstname.data.strip()) < 2 or len(self.firstname.data.strip()) > 20:
-            flash("Wprowadź poprawne imię")
+            flash("Enter valid name")
             return False
         if len(self.surname.data.strip()) < 2 or len(self.surname.data.strip()) > 20:
-            flash("Wprowadź poprawne nazwisko")
+            flash("Enter valid name")
             return False
         if self.country.data == '-':
             self.country.data = None

@@ -20,10 +20,10 @@
         
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="movies-tab" data-bs-toggle="tab" data-bs-target="#movies" type="button" role="tab" aria-controls="movies" aria-selected="true">Filmy</button>
+                <button class="nav-link active" id="movies-tab" data-bs-toggle="tab" data-bs-target="#movies" type="button" role="tab" aria-controls="movies" aria-selected="true">Movies</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="series-tab" data-bs-toggle="tab" data-bs-target="#series" type="button" role="tab" aria-controls="series" aria-selected="false">Seriale</button>
+                <button class="nav-link" id="series-tab" data-bs-toggle="tab" data-bs-target="#series" type="button" role="tab" aria-controls="series" aria-selected="false">Series</button>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -32,10 +32,10 @@
                     </br>
                     <table class="table table-hover">
                         <thead class="table-info">
-                            <th>Nazwa</th>
-                            <th>Rok powstania</th>
-                            <th>Długość</th>
-                            <th>Ocena widzów</th>
+                            <th>Name</th>
+                            <th>Creation year</th>
+                            <th>Length [min]</th>
+                            <th>Viewers rating</th>
                         </thead>
                         <tbody>
                             {% for movie in movies %}
@@ -51,7 +51,7 @@
                         </tbody>
                     </table>
                 {% else %}
-                    Nie mamy tego w bazie
+                    We don't have it in our database
                 {% endif %}
             </div>
             <div class="tab-pane fade" id="series" role="tabpanel" aria-labelledby="series-tab">
@@ -59,10 +59,10 @@
                     </br>
                     <table class="table table-hover">
                         <thead class="table-info">
-                            <th>Nazwa</th>
-                            <th>Liczba odcinków</th>
-                            <th>Liczba sezonow</th>
-                            <th>Ocena widzów</th>
+                            <th>Name</th>
+                            <th>Number of episodes</th>
+                            <th>Number of seasons</th>
+                            <th>Viewers rating</th>
                         </thead>
                         <tbody>
                             {% for s in series %}
@@ -76,7 +76,7 @@
                         </tbody>
                     </table>
                 {% else %}
-                    Nie mamy tego w bazie
+                    We don't have it in our database
                 {% endif %}
             </div>
         </div>

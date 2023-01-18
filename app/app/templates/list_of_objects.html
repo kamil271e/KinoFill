@@ -10,25 +10,25 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
-    <h1 class="lh-lg display-5">Lista</h1>
+    <h1 class="lh-lg display-5">List</h1>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="movies-tab" data-bs-toggle="tab" data-bs-target="#movies" type="button" role="tab" aria-controls="movies" aria-selected="true">Filmy</button>
+            <button class="nav-link active" id="movies-tab" data-bs-toggle="tab" data-bs-target="#movies" type="button" role="tab" aria-controls="movies" aria-selected="true">Movies</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="series-tab" data-bs-toggle="tab" data-bs-target="#series" type="button" role="tab" aria-controls="series" aria-selected="false">Seriale</button>
+            <button class="nav-link" id="series-tab" data-bs-toggle="tab" data-bs-target="#series" type="button" role="tab" aria-controls="series" aria-selected="false">Series</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="actors-tab" data-bs-toggle="tab" data-bs-target="#actors" type="button" role="tab" aria-controls="actors" aria-selected="false">Aktorzy</button>
+            <button class="nav-link" id="actors-tab" data-bs-toggle="tab" data-bs-target="#actors" type="button" role="tab" aria-controls="actors" aria-selected="false">Actors</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="directors-tab" data-bs-toggle="tab" data-bs-target="#directors" type="button" role="tab" aria-controls="directors" aria-selected="false">Reżyserowie</button>
+            <button class="nav-link" id="directors-tab" data-bs-toggle="tab" data-bs-target="#directors" type="button" role="tab" aria-controls="directors" aria-selected="false">Directors</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="studios-tab" data-bs-toggle="tab" data-bs-target="#studios" type="button" role="tab" aria-controls="studios" aria-selected="false">Wytwórnie filmowe</button>
+            <button class="nav-link" id="studios-tab" data-bs-toggle="tab" data-bs-target="#studios" type="button" role="tab" aria-controls="studios" aria-selected="false">Studios</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="journalists-tab" data-bs-toggle="tab" data-bs-target="#journalists" type="button" role="tab" aria-controls="journalists" aria-selected="false">Dziennikarze</button>
+            <button class="nav-link" id="journalists-tab" data-bs-toggle="tab" data-bs-target="#journalists" type="button" role="tab" aria-controls="journalists" aria-selected="false">Journalists</button>
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
@@ -37,12 +37,12 @@
                 </br>
                 <table id="movies_table", class="table table-hover">
                     <thead class="table-info">
-                        <th>Nazwa</th>
-                        <th>Rok powstania</th>
-                        <th>Długość</th>
-                        <th>Reżyser</th>
-                        <th>Wytwórnia</th>
-                        <th>Ocena widzów</th>
+                        <th>Name</th>
+                        <th>Creation year</th>
+                        <th>Length [min]</th>
+                        <th>Director</th>
+                        <th>Studio</th>
+                        <th>Viewers rating</th>
                     </thead>
                     <tbody>
                         {% for movie in movies %}
@@ -72,7 +72,7 @@
                     </tbody>
                 </table>
             {% else %}
-                Nie mamy tego w bazie
+                We don't have it in our database
             {% endif %}
         </div>
         <div class="tab-pane fade" id="series" role="tabpanel" aria-labelledby="series-tab">
@@ -80,12 +80,12 @@
                 </br>
                 <table id="series_table", class="table table-hover">
                     <thead class="table-info">
-                        <th>Nazwa</th>
-                        <th>Liczba odcinków</th>
-                        <th>Liczba sezonow</th>
-                        <th>Reżyser</th>
-                        <th>Wytwórnia</th>
-                        <th>Ocena widzów</th>
+                        <th>Name</th>
+                        <th>Episodes</th>
+                        <th>Seasons</th>
+                        <th>Director</th>
+                        <th>Studio</th>
+                        <th>Viewers rating</th>
                     </thead>
                     <tbody>
                         {% for s in series %}
@@ -113,7 +113,7 @@
                     </tbody>
                 </table>
             {% else %}
-                Nie mamy tego w bazie
+                We don't have it in our database
             {% endif %}
         </div>
         <div class="tab-pane fade" id="actors" role="tabpanel" aria-labelledby="actors-tab">
@@ -121,11 +121,11 @@
                 </br>
                 <table id="actors_table", class="table table-hover">
                     <thead class="table-info">
-                        <th>Imię i nazwisko</th>
-                        <th>Data urodzenia</th>
-                        <th>Kraj pochodzenia</th>
-                        <th>Ocena widzów</th>
-                        <th>Wytwórnia</th>
+                        <th>Full name</th>
+                        <th>Birthdate</th>
+                        <th>Country</th>
+                        <th>Viewers rating</th>
+                        <th>Studio</th>
                     </thead>
                     <tbody>
                         {% for actor in actors %}
@@ -146,7 +146,7 @@
                     </tbody>
                 </table>
             {% else %}
-                Nie mamy tego w bazie
+                We don't have it in our database
             {% endif %}
         </div>
         <div class="tab-pane fade" id="directors" role="tabpanel" aria-labelledby="directors-tab">
@@ -154,11 +154,11 @@
                 </br>
                 <table id="directors_table", class="table table-hover">
                     <thead class="table-info">
-                        <th>Imię i nazwisko</th>
-                        <th>Data urodzenia</th>
-                        <th>Kraj pochodzenia</th>
-                        <th>Ocena widzów</th>
-                        <th>Wytwórnia</th>
+                        <th>Full name</th>
+                        <th>Birthdate</th>
+                        <th>Country</th>
+                        <th>Viewers rating</th>
+                        <th>Studio</th>
                     </thead>
                     <tbody>
                         {% for d in directors %}
@@ -179,7 +179,7 @@
                     </tbody>
                 </table>
             {% else %}
-                Nie mamy tego w bazie
+                We don't have it in our database
             {% endif %}
         </div>
         <div class="tab-pane fade" id="studios" role="tabpanel" aria-labelledby="studios-tab">
@@ -187,10 +187,10 @@
                 </br>
                 <table id="studios_table", class="table table-hover">
                     <thead class="table-info">
-                        <th>Nazwa</th>
-                        <th>Państwo</th>
-                        <th>Data założenia</th>
-                        <th>Ocena widzów</th>
+                        <th>Name</th>
+                        <th>Country</th>
+                        <th>Creation date</th>
+                        <th>Viewers rating</th>
                     </thead>
                     <tbody>
                         {% for studio in studios %}
@@ -206,7 +206,7 @@
                     </tbody>
                 </table>
             {% else %}
-                Nie mamy tego w bazie
+                We don't have it in our database
             {% endif %}
         </div>
         <div class="tab-pane fade" id="journalists" role="tabpanel" aria-labelledby="journalists-tab">
@@ -214,9 +214,9 @@
                 </br>
                 <table id="journalists_table", class="table table-hover">
                     <thead class="table-info">
-                        <th>Pseudonim</th>
-                        <th>Imię i nazwisko</th>
-                        <th>Data urodzenia</th>
+                        <th>Nickname</th>
+                        <th>Full name</th>
+                        <th>Birthdate</th>
                     </thead>
                     <tbody>
                         {% for j in journalists %}
@@ -229,7 +229,7 @@
                     </tbody>
                 </table>
             {% else %}
-                Nie mamy tego w bazie
+                We don't have it in our database
             {% endif %}
         </div>
     </div>

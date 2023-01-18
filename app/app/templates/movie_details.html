@@ -12,14 +12,14 @@
             {% endif %}
         {% endwith %}
         <h1 class="lh-lg display-5">{{ movie.name }}</h1>
-        <h4>Rok produkcji: {{ movie.creation_year }}</h4>
-        <h4>Długość: {{ movie.length }} min</h4>
-        <h4>Gatunek/Gatunki: {{ genres }}</h4>
-        <h4>Ocena widzów: {{ movie.viewers_rating }}</h4>
-        <h4>Reżyser: {{ director.firstname }} {{ director.surname }}</h4>
-        <h4>Wytwórnia filmowa: <a href="{{url_for('studio_details', studio_id=movie.studio_id)}}">{{ studio.name }}</a></h4>
+        <h4>Creation year: {{ movie.creation_year }}</h4>
+        <h4>Length: {{ movie.length }} min</h4>
+        <h4>Genre/Genres: {{ genres }}</h4>
+        <h4>Viewers rating: {{ movie.viewers_rating }}</h4>
+        <h4>Director: {{ director.firstname }} {{ director.surname }}</h4>
+        <h4>Studio: <a href="{{url_for('studio_details', studio_id=movie.studio_id)}}">{{ studio.name }}</a></h4>
         </br>
 
-        <h3>Recenzje filmu</h3>
+        <h3>Movie reviews</h3>
     </form>
 {% endblock %}
