@@ -2,6 +2,7 @@ from models import *
 from forms import *
 from utils import *
 
+
 @login_manager.user_loader # user loader tells Flask-Login how to find a specific user from the ID that is stored in their session cookie
 def load_user(user_id):
     # since the user_id is just the primary key of our user table, use it in the query for the user
@@ -9,6 +10,7 @@ def load_user(user_id):
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
+    #initGenres()
     return render_template('home.html', today=today)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -102,13 +104,15 @@ def user():
     return render_template('user.html', name=current_user.login, today=today)
 
 @app.route('/list')
-@login_required
 def list_objects():
     studios = db.session.query(Studio)
     movies = db.session.query(Movie)
     series = db.session.query(Series)
     actors = db.session.query(Actor)
-    return render_template('list_of_objects.html', today=today, studios=studios, movies=movies, series=series, actors=actors)
+    directors = db.session.query(Director)
+    journalists = db.session.query(Journalist)
+    return render_template('list_of_objects.html', today=today, studios=studios, movies=movies, series=series,
+                           actors=actors, directors=directors, journalists=journalists)
 
 @app.route('/add_director', methods=['POST', 'GET']) #access only for studio - role_required
 @login_required
@@ -311,7 +315,41 @@ def add_actor():
             flash("Ten aktor został już dodany do bazy danych")
     return render_template('add_actor.html', today=today, form=form)
 
+@app.route('/movie_details/<movie_id>')
+def movie_details(movie_id):
+    movie = db.session.query(Movie).filter(Movie.movie_id == movie_id).first()
+    studio = db.session.query(Studio).filter(Studio.studio_id == movie.studio_id).first()
+    director = db.session.query(Director).filter(Director.director_id == movie.director_id).first()
+    genres = db.session.query(Movie_genres).filter(Movie_genres.movie_id == movie_id)
+    genres_str = '' #convert genres query to string
+    for genre in genres:
+        genres_str += ', ' + genre.genre
+    genres_str = genres_str[2:]
+    return render_template('movie_details.html', today=today, movie=movie, genres=genres_str, director=director, studio=studio)
+
+@app.route('/studio_details/<studio_id>')
+def studio_details(studio_id):
+    studio = db.session.query(Studio).filter(Studio.studio_id == studio_id).first()
+    movies = db.session.query(Movie).filter(Movie.studio_id == studio_id)
+    series = db.session.query(Series).filter(Series.studio_id == studio_id)
+    actors = db.session.query(Actor).filter(Actor.studio_id == studio_id)
+    directors = db.session.query(Director).filter(Director.studio_id == studio_id)
+    return render_template('studio_details.html', today=today, studio=studio, movies=movies,
+                           series=series, actors=actors, directors=directors)
+
+@app.route('/director_details/<director_id>')
+def director_details(director_id):
+    director = db.session.query(Director).filter(Director.director_id == director_id).first()
+    studio = db.session.query(Studio).filter(Studio.studio_id == director.studio_id).first()
+    movies = db.session.query(Movie).filter(Movie.director_id == director_id)
+    series = db.session.query(Series).filter(Series.director_id == director_id)
+    return render_template('director_details.html', today=today, director=director,
+                           studio=studio, movies=movies, series=series)
+
+
 if __name__ == '__main__':
+    with app.app_context():
+        initGenres()
     # with app.app_context(): #Flask-SQLAlchemy 3.0 all access to db.engine (and db.session) requires an active Flask application context
         # db.drop_all()
         # db.create_all()

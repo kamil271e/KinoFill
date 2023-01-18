@@ -35,3 +35,13 @@ def unambiguous(data): # when directors/actors with the exactly same full name o
                 data_unambiguous[count] = person[:2]
         count+=1
     return sorted(data_unambiguous, key=lambda x: x[1].lower())
+
+def initGenres():
+    for genre in init_genres:
+        g = db.session.query(Genres).filter(
+            Genres.genre == genre
+        ).first()
+        if g is None:
+            row = Genres(genre=genre)
+            db.session.add(row)
+    db.session.commit()
