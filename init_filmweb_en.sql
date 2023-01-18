@@ -7,7 +7,7 @@ CREATE TABLE filmweb.Users(
     join_date date NOT NULL DEFAULT CURRENT_DATE,
     description text,
     active char(1) NOT NULL DEFAULT 't',
-    user_type char(1) NOT NULL CHECK (user_type IN ('v', 's', 'j')),
+    user_type char(1) NOT NULL CHECK (user_type IN ('w', 's', 'd')),
     CHECK(join_date <= CURRENT_DATE),
     CHECK(active in ('t','f'))
 );
@@ -159,7 +159,7 @@ CREATE TABLE filmweb.Reviews(
     series_id integer,
     actor_id integer,
     viewers_rating decimal(3,2),
-    CHECK(author_type IN ('v','j')),
+    CHECK(author_type IN ('w','d')),
     CHECK((viewer_id is NOT NULL AND journalist_id is NULL) OR (viewer_id is NULL AND journalist_id is NOT NULL)),
     CHECK(((author_type IN ('w')) AND (viewer_id IS NOT NULL)) or (author_type IN ('d') AND (journalist_id is NOT NULL))),
     CHECK(review_object IN ('f','s','a')),
@@ -236,8 +236,8 @@ CREATE TABLE filmweb.Journalists_reviews_ratings(
 
 -- sample inserts
 -- insert into filmweb.Users (login, password_hash, user_type) values ('label', 'xyz', 's');
--- insert into filmweb.Users (login, password_hash, user_type) values ('viewer', 'xyz', 'v');
--- insert into filmweb.Users (login, password_hash, user_type) values ('journalist', 'xyz', 'j');
+-- insert into filmweb.Users (login, password_hash, user_type) values ('viewer', 'xyz', 'w');
+-- insert into filmweb.Users (login, password_hash, user_type) values ('journalist', 'xyz', 'd');
 
 -- insert into filmweb.Studios (studio_id, name) values (1, 'studio1');
 
@@ -276,7 +276,7 @@ CALL filmweb.newUser(
   '2022-01-01',
   'I am a new viewer',
   't',
-  'v',
+  'w',
   'viewer1',
   NULL,
   NULL,
@@ -305,3 +305,4 @@ drop table filmweb.Studios;
 drop table filmweb.Users;
 drop function filmweb.xor3;
 drop procedure filmweb.newUser;
+drop sequence filmweb.users_id_seq;
