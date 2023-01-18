@@ -10,6 +10,7 @@ from wtforms import StringField, SubmitField, SelectField, PasswordField, EmailF
 from wtforms.widgets import TextArea
 from wtforms.validators import DataRequired, Length, NumberRange
 import datetime
+import re
 
 app = Flask(__name__)
 fa = FontAwesome(app)

@@ -19,7 +19,7 @@ def getActors():
     actors = [(str(row.actor_id), row.firstname + ' ' + row.surname, row.birth_date) for row in actors]
     return unambiguous(actors)
 
-def unambiguous(data): # when directors/actors with the exactly same full name occure it appends birth_date to full_name
+def unambiguous(data): # when directors/actors with the exactly same full name occure it appends birth_date to full_name in dropdownlist
     full_names = [element[1] for element in data]
     data_unambiguous = ['' for _ in range(len(data))]
     count = 0
@@ -45,3 +45,22 @@ def initGenres():
             row = Genres(genre=genre)
             db.session.add(row)
     db.session.commit()
+
+def convertName(name): # convert name to have first big letter and small as the rest
+    converted = [name[0].upper()]
+    for char in name[1:]:
+        converted.append(char.lower())
+    return ''.join(converted)
+
+def nameHasNumbers(name): # check if name contains any numbers
+    return any(char.isdigit() for char in name)
+
+def nameInvalid(name):
+    # accepts regular names
+    # and names with one or multiple dashes '-'
+    # also with spaces e.g John Smith-Jackson
+    if nameHasNumbers(name):
+        return True
+    if re.match("^[a-zA-Z\s]+([-][a-zA-Z\s]+)*$", name): 
+        return False
+    return True
