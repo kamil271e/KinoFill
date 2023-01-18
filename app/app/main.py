@@ -41,16 +41,17 @@ def register():
             is_public = ""
             existing_name = ""
             if form.role.data == "Widz":
-                role = "v"  # viewer
+                role = "w"  # viewer
                 if form.viewer_role.data == "Prywatne":
                     is_public = "f"
+                    form.name.data = 'NULL'
                 else:
                     is_public = "t"
                     viewer = db.session.query(Viewer).filter(Viewer.nickname == form.name.data).first()
                     if viewer:
                         existing_name = "x"
             elif form.role.data == "Dziennikarz":
-                role = "j"  # journalist
+                role = "d"  # journalist
                 journalist = db.session.query(Journalist).filter(Journalist.nickname == form.name.data).first()
                 if journalist:
                     existing_name = "x"
@@ -60,6 +61,9 @@ def register():
                 if studio:
                     existing_name = "x"
 
+            if form.name.data != 'NULL':
+                form.name.data = f"'{form.name.data}'"
+
             if existing_name == "":
                 command = f"CALL filmweb.newuser(" \
                           f"'{form.login.data}', " \
@@ -68,7 +72,7 @@ def register():
                           f"'{form.user_desc.data}', " \
                           f"'t', " \
                           f"'{role}', " \
-                          f"'{form.name.data}', " \
+                          f"{form.name.data}, " \
                           f"NULL, " \
                           f"NULL, " \
                           f"NULL, " \
