@@ -332,14 +332,20 @@ def movie_details(movie_id):
     return render_template('movie_details.html', today=today, movie=movie, genres=genres_str, director=director, studio=studio)
 
 @app.route('/studio_details/<studio_id>')
+@login_required
 def studio_details(studio_id):
     studio = db.session.query(Studio).filter(Studio.studio_id == studio_id).first()
-    movies = db.session.query(Movie).filter(Movie.studio_id == studio_id)
-    series = db.session.query(Series).filter(Series.studio_id == studio_id)
-    actors = db.session.query(Actor).filter(Actor.studio_id == studio_id)
-    directors = db.session.query(Director).filter(Director.studio_id == studio_id)
+    if studio:
+        movies = db.session.query(Movie).filter(Movie.studio_id == studio_id)
+        series = db.session.query(Series).filter(Series.studio_id == studio_id)
+        actors = db.session.query(Actor).filter(Actor.studio_id == studio_id)
+        directors = db.session.query(Director).filter(Director.studio_id == studio_id)
+        int_sid = int(studio_id)
+    else:
+        flash('This studio does not exists')
+        return redirect(url_for("home"))
     return render_template('studio_details.html', today=today, studio=studio, movies=movies,
-                           series=series, actors=actors, directors=directors)
+                           series=series, actors=actors, directors=directors, int_sid=int_sid)
 
 @app.route('/director_details/<director_id>')
 def director_details(director_id):
@@ -349,6 +355,25 @@ def director_details(director_id):
     series = db.session.query(Series).filter(Series.director_id == director_id)
     return render_template('director_details.html', today=today, director=director,
                            studio=studio, movies=movies, series=series)
+
+@app.route('/studio_change', methods=['GET', 'POST'])
+@login_required
+def studio_change():
+    studio = db.session.query(Studio).filter(Studio.studio_id == current_user.user_id).first()
+    form = ChangeStudio(name=studio.name, country=studio.country, creation_date=studio.creation_date)
+    if form.validate_on_submit():
+        existing_studio = db.session.query(Studio).filter(Studio.name == form.name.data).first()
+        if existing_studio and form.name.data != studio.name:
+            flash("Studio name already exists. Please enter different name.")
+        else:
+            print(form.name.data)
+            studio.name = form.name.data
+            studio.country = form.country.data
+            studio.creation_date = form.creation_date.data
+            db.session.commit()
+            flash("Studio information updated")
+            return redirect(url_for("studio_details", studio_id=studio.studio_id))
+    return render_template('studio_change.html', today=today, form=form, studio=studio)
 
 
 if __name__ == '__main__':
