@@ -4,6 +4,7 @@ from utils import *
 class RegisterForm(FlaskForm):
     login = StringField("Login", validators=[DataRequired(), Length(5, 16)])
     password = PasswordField("Password", validators=[DataRequired(), Length(5, 16)])
+    password_confirm = PasswordField("Confirm password", validators=[DataRequired(), Length(5,6)]) #, EqualTo('password', message="Passwords must match")])
     role = SelectField("Role", choices=["Viewer", "Journalist", "Studio"])
     user_desc = StringField("Profile description", widget=TextArea())
     viewer_role = SelectField("Account type", choices=["Private", "Public"])
@@ -11,6 +12,9 @@ class RegisterForm(FlaskForm):
     submit = SubmitField("Register")
 
     def validate(self):
+        if self.password.data != self.password_confirm.data:
+            flash("Passwords must match")
+            return False
         if self.role.data != "Viewer" or self.viewer_role.data == "Public":
             name = self.name.data.strip()
             if len(name) < 1:

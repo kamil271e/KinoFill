@@ -29,3 +29,8 @@ input[type=text] {
     width: 100%;
 }
 
+/*.form-control {
+    border-radius: 5px;
+    border: 1px solid rgb(240, 128, 128);
+    border-color: red;
+}*/

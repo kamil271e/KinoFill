@@ -13,13 +13,13 @@
         {% endwith %}
         <h1 class="lh-lg display-5">Add actor</h1>
         {{ form.hidden_tag() }}
-        {{ form.firstname.label(class="form-label") }}
+        {{ form.firstname.label(class="form-label") }}  <small>*</small>
         {{ form.firstname(class="form-control") }}
         </br>
-        {{ form.surname.label(class="form-label") }}
+        {{ form.surname.label(class="form-label") }}  <small>*</small>
         {{ form.surname(class="form-control") }}
         </br>
-        {{ form.birth_date.label(class="form-label") }}
+        {{ form.birth_date.label(class="form-label") }}  <small>*</small>
         {{ form.birth_date(class="form-control") }}
         </br>
         {{ form.country.label(class="form-label") }}
@@ -29,7 +29,8 @@
             {{ form.studio.label(class="form-label") }}
             {{ form.studio(class="form-control") }}
         {% endif %}
-        </br>
+        <small>* mandatory fields</small>
+        <br/><br/>
         {{ form.submit(class="btn btn-info") }}
     </form>
 {% endblock %}
