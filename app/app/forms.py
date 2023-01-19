@@ -1,8 +1,10 @@
 from config import *
+from utils import *
 
 class RegisterForm(FlaskForm):
     login = StringField("Login", validators=[DataRequired(), Length(5, 16)])
     password = PasswordField("Password", validators=[DataRequired(), Length(5, 16)])
+    password_confirm = PasswordField("Confirm password", validators=[DataRequired(), Length(5,6)]) #, EqualTo('password', message="Passwords must match")])
     role = SelectField("Role", choices=["Viewer", "Journalist", "Studio"])
     user_desc = StringField("Profile description", widget=TextArea())
     viewer_role = SelectField("Account type", choices=["Private", "Public"])
@@ -10,6 +12,9 @@ class RegisterForm(FlaskForm):
     submit = SubmitField("Register")
 
     def validate(self):
+        if self.password.data != self.password_confirm.data:
+            flash("Passwords must match")
+            return False
         if self.role.data != "Viewer" or self.viewer_role.data == "Public":
             name = self.name.data.strip()
             if len(name) < 1:
@@ -62,7 +67,7 @@ class AddMovie(FlaskForm):
 
 
 class AddDirector(FlaskForm):
-    firstname = StringField("Name", validators=[DataRequired()])
+    firstname = StringField("Fisrt name", validators=[DataRequired()])
     surname = StringField("Surname", validators=[DataRequired()])
     birth_date = DateField("Birthdate", validators=[DataRequired()])#, format='%d.%m.%Y', validators=[DataRequired()])
     country = SelectField("Country", choices=countries)
@@ -75,6 +80,9 @@ class AddDirector(FlaskForm):
         super(AddDirector, self).__init__(*args, **kwargs)
 
     def validate(self):
+        if nameInvalid(self.firstname.data) or nameInvalid(self.surname.data):
+            flash("First name and surname cannot have any numbers or special characters")
+            return False
         if self.birth_date.data >= datetime.datetime.strptime(today, "%d.%m.%Y").date():
             flash("Date needs to be from past")
             return False
@@ -86,6 +94,8 @@ class AddDirector(FlaskForm):
             return False
         if self.country.data == '-':
             self.country.data = None
+        self.firstname.data = convertName(self.firstname.data)
+        self.surname.data = convertName(self.surname.data)
         return True
 
 
@@ -133,7 +143,7 @@ class AddSeries(FlaskForm):
         return True
 
 class AddActor(FlaskForm):
-    firstname = StringField("Name", validators=[DataRequired()])
+    firstname = StringField("First name", validators=[DataRequired()])
     surname = StringField("Surname", validators=[DataRequired()])
     birth_date = DateField("Birthdate", validators=[DataRequired()])#, format='%d.%m.%Y', validators=[DataRequired()])
     country = SelectField("Country", choices=countries)
@@ -146,17 +156,22 @@ class AddActor(FlaskForm):
         super(AddActor, self).__init__(*args, **kwargs)
 
     def validate(self):
+        if nameInvalid(self.firstname.data) or nameInvalid(self.surname.data):
+            flash("First name and surname cannot have any numbers or special characters")
+            return False
+        if len(self.firstname.data.strip()) < 2 or len(self.firstname.data.strip()) > 20:
+            flash("Enter valid firstname")
+            return False
+        if len(self.surname.data.strip()) < 2 or len(self.surname.data.strip()) > 20:
+            flash("Enter valid surname")
+            return False
         if self.birth_date.data >= datetime.datetime.strptime(today, "%d.%m.%Y").date():
             flash("Date needs to be from past")
             return False
-        if len(self.firstname.data.strip()) < 2 or len(self.firstname.data.strip()) > 20:
-            flash("Enter valid name")
-            return False
-        if len(self.surname.data.strip()) < 2 or len(self.surname.data.strip()) > 20:
-            flash("Enter valid name")
-            return False
         if self.country.data == '-':
             self.country.data = None
+        self.firstname.data = convertName(self.firstname.data)
+        self.surname.data = convertName(self.surname.data)
         return True
 
 class ChangeStudio(FlaskForm):

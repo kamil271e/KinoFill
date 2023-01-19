@@ -13,26 +13,31 @@
         {% endwith %}
         <h1 class="lh-lg display-5">Sign up</h1>
         {{ form.hidden_tag() }}
-        {{ form.login.label(class="form-label") }}
+        {{ form.login.label(class="form-label") }} <small>*</small>
         {{ form.login(class="form-control") }}
-        {{ form.password.label(class="form-label") }}
+        {{ form.password.label(class="form-label") }} <small>*</small>
         {{ form.password(class="form-control") }}
-        {{ form.role.label(class="form-label") }}
+        {{ form.password_confirm.label(class="form-label") }} <small>*</small>
+        {{ form.password_confirm(class="form-control") }}
+        {{ form.role.label(class="form-label") }} <small>*</small>
         <br/>
         {{ form.role(class="form-control", onchange="showDetails()") }}
         <div id="viewer_role_div">
             <br/>
-            {{ form.viewer_role.label(class="form-label") }}
+            {{ form.viewer_role.label(class="form-label") }} <small>*</small>
             {{ form.viewer_role(class="form-control", onchange="showDetails()") }}
         </div>
         <div id="name_div">
             <br/>
-            {{ form.name.label(class="form-label") }}
+            {{ form.name.label(class="form-label") }} <small>*</small>
             {{ form.name(class="form-control") }}
         </div>
         <br/>
         {{ form.user_desc.label(class="form-label") }}
         {{ form.user_desc(class="form-control") }}
+        <br/>
+        <small>* mandatory fields</small>
+        <br/>
         <br/>
         {{ form.submit(class="btn btn-info") }}
         <br/><br/>

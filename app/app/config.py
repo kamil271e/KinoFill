@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_sqlalchemy import SQLAlchemy
 from urllib.parse import quote_plus
 from flask_fontawesome import FontAwesome
@@ -8,8 +8,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField, PasswordField, EmailField, DateField, SelectMultipleField
 from wtforms.widgets import TextArea
-from wtforms.validators import DataRequired, Length, NumberRange
+from wtforms.validators import DataRequired, Length, NumberRange, EqualTo
 import datetime
+import re
 
 app = Flask(__name__)
 fa = FontAwesome(app)
