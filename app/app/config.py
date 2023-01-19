@@ -21,7 +21,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 login_manager.refresh_view = 'login'
-login_manager.login_message = "Tylko zalogowani użytkownicy mają dostęp do pełnej zawartości"
+login_manager.login_message = "Only logged in users have access to full content"
 
 global today
 today = date.today().strftime("%d.%m.%Y")
