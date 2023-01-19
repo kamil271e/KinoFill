@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <h1 class="lh-lg display-5">Add review</h1>
+        {{ form.hidden_tag() }}
+        {{ form.review_object_type.label(class="form-label") }}
+        {{ form.review_object_type(class="form-control", onchange="objectSelect()") }}
+        </br>
+
+        <div id="movie_select">
+            {% if movies != None %}
+                <select name="movie_select" class="selectpicker" data-live-search="true" title="Choose movie to review" data-width="100%">
+                    {% for option in movies %}
+                    <option value="{{ option }}">{{ option.name }} [Creation year: {{ option.creation_year }}]</option>
+                    {% endfor %}
+                </select>
+                </br>
+                </br>
+                {{ form.rate.label(class="form-label") }}
+                {{ form.rate(class="form-control") }}
+                </br>
+                {{ form.content.label(class="form-label") }}
+                {{ form.content(class="form-control") }}
+                </br>
+                {{ form.submit(class="btn btn-info") }}
+            {% else %}
+                <h3 class="form-label">We do not have any movies yet</h3>
+            {% endif %}
+        </div>
+
+        <div id="series_select">
+            {% if seriess != None %}
+                <select name="series_select" class="selectpicker" data-live-search="true" title="Choose series to review" data-width="100%">
+                    {% for option in seriess %}
+                    <option value="{{ option }}">{{ option.name }} [Episodes: {{ option.episodes }}]</option>
+                    {% endfor %}
+                </select>
+                </br>
+                </br>
+                {{ form.rate.label(class="form-label") }}
+                {{ form.rate(class="form-control") }}
+                </br>
+                {{ form.content.label(class="form-label") }}
+                {{ form.content(class="form-control") }}
+                </br>
+                {{ form.submit(class="btn btn-info") }}
+            {% else %}
+                <h3 class="form-label">We do not have any series yet</h3>
+            {% endif %}
+        </div>
+
+        <div id="actors_select">
+            {% if actors != None %}
+                <select name="series_select" class="selectpicker" data-live-search="true" title="Choose actor to review" data-width="100%">
+                    {% for option in actors %}
+                    <option value="{{ option }}">{{ option.firstname }} {{ option.surname }} [Birthday: {{ option.birth_date }}]</option>
+                    {% endfor %}
+                </select>
+                </br>
+                </br>
+                {{ form.rate.label(class="form-label") }}
+                {{ form.rate(class="form-control") }}
+                </br>
+                {{ form.content.label(class="form-label") }}
+                {{ form.content(class="form-control") }}
+                </br>
+                {{ form.submit(class="btn btn-info") }}
+            {% else %}
+                <h3 class="form-label">We do not have any actors yet</h3>
+            {% endif %}
+        </div>
+    </form>
+<script src="{{url_for('static', filename='reviewObjectSelect.js')}}"></script>
+{% endblock %}
+

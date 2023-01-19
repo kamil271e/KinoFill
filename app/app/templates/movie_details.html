@@ -21,5 +21,13 @@
         </br>
 
         <h3>Movie reviews</h3>
+        </br>
+        {% if current_user.user_type != 's' %}
+            <a href="{{url_for('add_review',
+            reviewer_type=current_user.user_type, reviewer_id=current_user.user_id,
+            object_type='m', object_id=movie.movie_id)}}">
+                <input type="button" class="btn btn-info" value="Add review">
+            </a>
+        {% endif %}
     </form>
 {% endblock %}
