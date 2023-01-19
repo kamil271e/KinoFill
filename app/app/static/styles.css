@@ -1,10 +1,14 @@
 body {
     position: relative;
-    min-height: 100vh;
+}
+
+footer {
+    position: sticky;
 }
 
 .container {
-    padding-bottom: 5%;    /* Footer height */
+    margin-bottom: 4rem;
+    padding-bottom: 5rem;
 }
 
 #range_seasons {
@@ -17,7 +21,6 @@ body {
     width: 85%;
 }
 
-
 input[type=text] {
     padding: 5px 20px;
     padding-left: 10px;
@@ -28,9 +31,3 @@ input[type=text] {
     height: 100%;
     width: 100%;
 }
-
-/*.form-control {
-    border-radius: 5px;
-    border: 1px solid rgb(240, 128, 128);
-    border-color: red;
-}*/

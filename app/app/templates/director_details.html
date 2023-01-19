@@ -11,11 +11,11 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        <h1 class="lh-lg display-5">{{ director.firstname }} {{ director.surname }}</h1>
-        <h4>Data urodzenia: {{ director.birth_date }}</h4>
-        <h4>Długość: {{ director.country }}</h4>
-        <h4>Ocena widzów: {{ director.rate }}</h4>
-        <h4>Wytwórnia filmowa: <a href="{{url_for('studio_details', studio_id=director.studio_id)}}">{{ studio.name }}</a></h4>
+        <h1 class="lh-lg display-5 text-center">{{ director.firstname }} {{ director.surname }}</h1>
+        <h4>Birthdate: {{ director.birth_date }}</h4>
+        <h4>Length: {{ director.country }}</h4>
+        <h4>Viewers rating: {{ director.rate }}</h4>
+        <h4>Studio: <a href="{{url_for('studio_details', studio_id=director.studio_id)}}">{{ studio.name }}</a></h4>
         </br>
         
         <ul class="nav nav-tabs" id="myTab" role="tablist">

@@ -11,10 +11,24 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        <h1 class="lh-lg display-5">{{ studio.name }}</h1>
-        <h4>Counrty: {{ studio.country }}</h4>
-        <h4>Creation year: {{ studio.creation_date }}</h4>
-        <h4>Viewers rating: {{ studio.viewers_rating }}</h4>
+        <h1 class="lh-lg display-5 text-center">{{ studio.name }}</h1>
+        <div class="d-flex justify-content-between">
+            <div>
+                <h4>Country: {{ studio.country }}</h4>
+                <h4>Creation year: {{ studio.creation_date }}</h4>
+                <h4>Viewers rating: {{ studio.viewers_rating }}</h4>
+            </div>
+            {% if int_sid == current_user.user_id %}
+                <div class="d-flex flex-column">
+                    <a href="{{url_for('studio_change')}}" title="Edit studio data">
+                        <h4><span class="fas fa-edit"></span> Edit studio data</h4>
+                    </a>
+                    <a href="{{url_for('home')}}" title="Delete studio">
+                        <h4><span class="fas fa-trash-alt"></span> Delete studio</h4>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
         </br>
 
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -107,7 +121,7 @@
                         <thead class="table-info">
                             <th>Full name</th>
                             <th>Birthdate</th>
-                            <th>Counrty</th>
+                            <th>Country</th>
                             <th>Viewers rating</th>
                         </thead>
                         <tbody>
@@ -132,7 +146,7 @@
                         <thead class="table-info">
                             <th>Full name</th>
                             <th>Birthdate</th>
-                            <th>Counrty</th>
+                            <th>Country</th>
                             <th>Viewers rating</th>
                         </thead>
                         <tbody>

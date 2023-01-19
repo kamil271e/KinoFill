@@ -18,8 +18,8 @@ class RegisterForm(FlaskForm):
         if self.role.data != "Viewer" or self.viewer_role.data == "Public":
             name = self.name.data.strip()
             if len(name) < 1:
-                # self.name.errors.append('Prosze podac nazwe użytkownika')
-                flash('Please enter username')
+                # self.name.errors.append('Please enter user name')
+                flash('Please enter user name')
                 return False
             elif len(name) > 20 or len(name) < 5:
                 # self.name.errors.append("Nazwa uzytkownika powinna mieć od 5 do 20 znaków")
@@ -172,4 +172,27 @@ class AddActor(FlaskForm):
             self.country.data = None
         self.firstname.data = convertName(self.firstname.data)
         self.surname.data = convertName(self.surname.data)
+        return True
+
+class ChangeStudio(FlaskForm):
+    name = StringField("Name", validators=[DataRequired()])
+    country = SelectField("Country", choices=countries)
+    creation_date = DateField("Creation Date")
+    submit = SubmitField("Confirm change")
+
+    def validate(self):
+        name = self.name.data.strip()
+        if self.creation_date.data != None and self.creation_date.data >= datetime.datetime.strptime(today, "%d.%m.%Y").date():
+            flash("Date must be in the past")
+            return False
+        if len(name) < 1:
+            # self.name.errors.append('Please enter user name')
+            flash('Please enter user name')
+            return False
+        elif len(name) > 20 or len(name) < 5:
+            # self.name.errors.append("Nazwa uzytkownika powinna mieć od 5 do 20 znaków")
+            flash("Studio name must be between 5-20 characters")
+            return False
+        if self.country.data == '-':
+            self.country.data = None
         return True
