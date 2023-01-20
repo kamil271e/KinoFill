@@ -383,10 +383,10 @@ def news():
     journalists = db.session.query(Journalist)
     return render_template('news.html', today=today, news=news, studios=studios, journalists=journalists)
 
-@app.route('/news/<id_news>')
+@app.route('/news/<news_id>')
 @login_required
-def single_news(id_news):
-    news = db.session.query(News).filter(News.id_news == id_news).first()
+def single_news(news_id):
+    news = db.session.query(News).filter(News.news_id == news_id).first()
     studio = db.session.query(Studio).filter(Studio.studio_id == news.studio_id).first()
     journalist = db.session.query(Journalist).filter(Journalist.journalist_id == news.journalist_id).first()
     return render_template('single_news.html', today=today, news=news, studio=studio, journalist=journalist)
@@ -398,23 +398,33 @@ def add_news():
         return redirect(url_for("news"))
     form = AddNews()
     if form.validate_on_submit():
-        content = str(form.title.data) + '<===>' + str(form.content.data)
-        if current_user.user_type == 's':
-            studio_id = current_user.user_id
-            journalist_id = None
+        news = db.session.query(News).filter(
+            News.title == form.title.data,
+            News.content == form.content.data,
+            News.publication_date == today
+        ).first()
+        if news is None:
+            if current_user.user_type == 's':
+                studio_id = current_user.user_id
+                journalist_id = None
+            else:
+                studio_id = None
+                journalist_id = current_user.user_id
+        
+            news = News(
+                title=form.title.data,
+                content=form.content.data,
+                publication_date=today,
+                journalist_id=journalist_id,
+                studio_id=studio_id
+            )
+            db.session.add(news)
+            db.session.commit()
+
+            flash("News added successfully")
+            return redirect(url_for("news"))
         else:
-            studio_id = None
-            journalist_id = current_user.user_id
-        news = News(
-            content=content,
-            publication_date=today,
-            journalist_id=journalist_id,
-            studio_id=studio_id
-        )
-        db.session.add(news)
-        db.session.commit()
-        flash("News added successfully")
-        return redirect(url_for("news"))
+            flash("This news has already been added to the database")
     return render_template('add_news.html', today=today, form=form)
 
 if __name__ == '__main__':

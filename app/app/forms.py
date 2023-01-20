@@ -204,8 +204,19 @@ class ChangeStudio(FlaskForm):
         return True
 
 class AddNews(FlaskForm):
-    title = StringField("Title", validators=[DataRequired()])
+    title = StringField("Title", validators=[DataRequired(),Length(max=30)])
     content = TextAreaField("Content", validators=[Length(min=30)], render_kw={"rows": 15})
     submit = SubmitField("Add news")
 
-    # return True
+    def validate(self):
+        self.content.data = self.content.data.strip()
+        return True
+
+class ChangeNews(FlaskForm):
+    title = StringField("Title", validators=[DataRequired(),Length(max=30)])
+    content = TextAreaField("Content", validators=[Length(min=30)], render_kw={"rows": 15})
+    submit = SubmitField("Edit")
+    
+    def validate(self):
+        self.content.data = self.content.data.strip()
+        return True

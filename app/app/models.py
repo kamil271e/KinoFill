@@ -260,13 +260,15 @@ class News(db.Model):
     __tablename__ = "news"
     __table_args__ = {'quote': False, 'schema': "filmweb", }
 
-    id_news = db.Column(db.Integer, primary_key=True)
+    news_id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(30), nullable=False)
     content = db.Column(TEXT, nullable=False)
     publication_date = db.Column(db.Date, nullable=False)
     journalist_id = db.Column(db.Integer, db.ForeignKey("filmweb.journalists.journalist_id"), nullable=True)
     studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studios.studio_id"), nullable=True)
 
-    def __init__(self, content, publication_date, journalist_id, studio_id):
+    def __init__(self, title, content, publication_date, journalist_id, studio_id):
+        self.title = title
         self.content = content
         self.publication_date = publication_date
         self.journalist_id = journalist_id

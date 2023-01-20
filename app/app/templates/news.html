@@ -25,27 +25,26 @@
                         <th></th>
                     </thead>
                     <tbody>
-                        {% for article in news %}
+                        {% for n in news %}
                         <tr>
-                            {% set title = article.content.split('<===>') %}
                             <td>
-                                <a href="{{url_for('single_news', id_news=article.id_news)}}">{{ title[0] }}</a>
+                                <a href="{{url_for('single_news', news_id=n.news_id)}}">{{ n.title }}</a>
                             </td>
                             {% for j in journalists %}
-                                {% if j.journalist_id == article.journalist_id %}
+                                {% if j.journalist_id == n.journalist_id %}
                                 <td>
-                                    <a href="{{url_for('journalist_details', journalist_id=j.journalist_id)}}">{{ d.name }}</a>
+                                    {{ j.nickname }}
                                 </td>
                                 {% endif %}
                             {% endfor %}
                             {% for studio in studios %}
-                                {% if studio.studio_id == article.studio_id %}
+                                {% if studio.studio_id == n.studio_id %}
                                 <td>
                                     <a href="{{url_for('studio_details', studio_id=studio.studio_id)}}">{{ studio.name }}</a>
                                 </td>
                                 {% endif %}
                             {% endfor %}
-                            <td>{{ article.publication_date }}</td>
+                            <td>{{ n.publication_date }}</td>
                             <td><a href="/edit_news" class="btn btn-info">Edit</a></td>
                             <td>
                             <form action="{{url_for('home')}}" method="post">
