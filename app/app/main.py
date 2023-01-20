@@ -313,7 +313,7 @@ def add_actor():
                 studio_id=stud_id)
             db.session.add(actor)
             db.session.commit()
-            flash("Actor successfuly added")
+            flash("Actor successfully added")
             return redirect(url_for("home"))
         else:
             flash("This director has already been added to the database")
@@ -375,6 +375,47 @@ def studio_change():
             return redirect(url_for("studio_details", studio_id=studio.studio_id))
     return render_template('studio_change.html', today=today, form=form, studio=studio)
 
+@app.route('/news', methods=['GET','POST'])
+@login_required
+def news():
+    news = db.session.query(News)
+    studios = db.session.query(Studio)
+    journalists = db.session.query(Journalist)
+    return render_template('news.html', today=today, news=news, studios=studios, journalists=journalists)
+
+@app.route('/news/<id_news>')
+@login_required
+def single_news(id_news):
+    news = db.session.query(News).filter(News.id_news == id_news).first()
+    studio = db.session.query(Studio).filter(Studio.studio_id == news.studio_id).first()
+    journalist = db.session.query(Journalist).filter(Journalist.journalist_id == news.journalist_id).first()
+    return render_template('single_news.html', today=today, news=news, studio=studio, journalist=journalist)
+
+@app.route('/add_news', methods=['GET','POST'])
+@login_required
+def add_news():
+    if current_user.user_type not in ['s', 'a', 'd']:
+        return redirect(url_for("news"))
+    form = AddNews()
+    if form.validate_on_submit():
+        content = str(form.title.data) + '<===>' + str(form.content.data)
+        if current_user.user_type == 's':
+            studio_id = current_user.user_id
+            journalist_id = None
+        else:
+            studio_id = None
+            journalist_id = current_user.user_id
+        news = News(
+            content=content,
+            publication_date=today,
+            journalist_id=journalist_id,
+            studio_id=studio_id
+        )
+        db.session.add(news)
+        db.session.commit()
+        flash("News added successfully")
+        return redirect(url_for("news"))
+    return render_template('add_news.html', today=today, form=form)
 
 if __name__ == '__main__':
     with app.app_context():

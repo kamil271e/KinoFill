@@ -48,6 +48,9 @@ class AddMovie(FlaskForm):
         if not self.name.data:
             flash("Please enter username")
             return False
+        if len(self.length.data) > 9:
+            flash("Length of the movie cannot be that long")
+            return False
         if not self.length.data:
             flash("Please enter length of the movie")
             return False
@@ -121,6 +124,9 @@ class AddSeries(FlaskForm):
             return False
         if not self.episodes.data:
             flash("Please enter number of episodes")
+            return False
+        if len(self.episodes.data) > 9:
+            flash("There can't be that many episodes")
             return False
         try:
             self.episodes.data = int(self.episodes.data)
@@ -196,3 +202,10 @@ class ChangeStudio(FlaskForm):
         if self.country.data == '-':
             self.country.data = None
         return True
+
+class AddNews(FlaskForm):
+    title = StringField("Title", validators=[DataRequired()])
+    content = TextAreaField("Content", validators=[Length(min=30)], render_kw={"rows": 15})
+    submit = SubmitField("Add news")
+
+    # return True

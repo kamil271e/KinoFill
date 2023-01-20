@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% set content = news.content.split('<===>') %}
+    <h1 class="lh-lg display-5">{{ content[0] }}</h1>
+    {% if news.studio_id %}
+        <small>
+            Written by <a href = "{{url_for('studio_details', studio_id=studio.studio_id)}}">{{ studio.name }}</a> on {{ news.publication_date }}
+        </small>
+    {% endif %}
+    {% if news.journalist_id %}
+        <small>Written by {{ journalist.name }} on {{ news.publication_date }}</small>
+    {% endif %}
+    <hr>
+    <div>
+        {{ content[1] | safe }}
+    </div>
+{% endblock %}

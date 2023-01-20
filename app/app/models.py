@@ -254,3 +254,23 @@ class Series_character(db.Model):
 
     def get_id(self):
         return (self.character_id)
+
+
+class News(db.Model):
+    __tablename__ = "news"
+    __table_args__ = {'quote': False, 'schema': "filmweb", }
+
+    id_news = db.Column(db.Integer, primary_key=True)
+    content = db.Column(TEXT, nullable=False)
+    publication_date = db.Column(db.Date, nullable=False)
+    journalist_id = db.Column(db.Integer, db.ForeignKey("filmweb.journalists.journalist_id"), nullable=True)
+    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studios.studio_id"), nullable=True)
+
+    def __init__(self, content, publication_date, journalist_id, studio_id):
+        self.content = content
+        self.publication_date = publication_date
+        self.journalist_id = journalist_id
+        self.studio_id = studio_id
+
+    def get_id(self):
+        return (self.id_news)
