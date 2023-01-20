@@ -395,6 +395,7 @@ def single_news(news_id):
 @login_required
 def add_news():
     if current_user.user_type not in ['s', 'a', 'd']:
+        flash("Only studio or journalist can add news")
         return redirect(url_for("news"))
     form = AddNews()
     if form.validate_on_submit():
@@ -426,6 +427,42 @@ def add_news():
         else:
             flash("This news has already been added to the database")
     return render_template('add_news.html', today=today, form=form)
+
+@app.route('/delete_news/<news_id>', methods=['GET','POST'])
+@login_required
+def delete_news(news_id):
+    news = db.session.query(News).filter(News.news_id == news_id).first()
+    db.session.delete(news)
+    db.session.commit()
+    flash("News deleted successfylly")
+    return redirect(url_for('news'))
+
+
+@app.route('/edit_news/<news_id>', methods=['GET','POST'])
+@login_required
+def edit_news(news_id):
+    news = db.session.query(News).filter(News.news_id == news_id).first()
+    form = EditNews(title=news.title, content=news.content)
+    #form.title.data = news.title
+    #form.content.data = news.content
+    if form.validate_on_submit():
+        check_news = db.session.query(News).filter(
+            News.title == form.title.data,
+            News.content == form.content.data,
+            News.publication_date == news.publication_date
+        ).first()
+        if check_news is None:
+            news.title = form.title.data
+            news.content = form.content.data
+            db.session.commit()
+            flash("News edited successfully")
+            return redirect(url_for("news"))
+        elif check_news.news_id == news.get_id():
+            flash("You didn't change anything")
+        else:
+            flash("This news has already been added to the database")
+
+    return render_template('edit_news.html', today=today, form=form)
 
 if __name__ == '__main__':
     with app.app_context():

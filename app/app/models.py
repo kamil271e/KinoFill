@@ -275,4 +275,4 @@ class News(db.Model):
         self.studio_id = studio_id
 
     def get_id(self):
-        return (self.id_news)
+        return (self.news_id)
