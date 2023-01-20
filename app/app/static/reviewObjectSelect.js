@@ -19,7 +19,4 @@ function objectSelect() {
         series.style.display = 'none'
         actors.style.display = 'block'
     }
-
-    var no_object = document.querySelectorAll("h3");
-    console.log(no_object)
 }

@@ -397,12 +397,12 @@ def studio_change():
     return render_template('studio_change.html', today=today, form=form, studio=studio)
 
 
-@app.route('/add_review/<reviewer_type>/<reviewer_id>', defaults={'object_type': None, 'object_id': None})
-@app.route('/add_review/<reviewer_type>/<reviewer_id>/<object_type>/<object_id>')
+@app.route('/add_review/<reviewer_type>/<reviewer_id>', defaults={'object_type': None, 'object_id': None}, methods=['GET', 'POST'])
+@app.route('/add_review/<reviewer_type>/<reviewer_id>/<object_type>/<object_id>', methods=['GET', 'POST'])
 @login_required
 def add_review(reviewer_type, reviewer_id, object_type, object_id):
     # TODO: check if this user wrote a review to this object earlier
-    print(reviewer_type, reviewer_id, object_type, object_id)
+    # print(reviewer_type, reviewer_id, object_type, object_id)
     if reviewer_type == 'w':
         viewer = db.session.query(Viewer).filter(Viewer.viewer_id == reviewer_id).first()
     elif reviewer_type == 'd':
@@ -415,7 +415,7 @@ def add_review(reviewer_type, reviewer_id, object_type, object_id):
     series = None
     actor = None
     movies = db.session.query(Movie)
-    seriess = db.session.query(Studio)
+    seriess = db.session.query(Series)
     actors = db.session.query(Actor)
 
     if object_type == 'm':
@@ -424,7 +424,7 @@ def add_review(reviewer_type, reviewer_id, object_type, object_id):
         form = AddReview(review_object_type="Movie")
     elif object_type == 's':
         if object_id:
-            series = db.session.query(Studio).filter(Studio.studio_id == object_id).first()
+            series = db.session.query(Series).filter(Series.series_id == object_id).first()
         form = AddReview(review_object_type="Series")
     elif object_type == 'a':
         if object_id:
@@ -434,6 +434,34 @@ def add_review(reviewer_type, reviewer_id, object_type, object_id):
         form = AddReview()
 
     # TODO: Add review to database after submit btn
+    if form.validate_on_submit():
+        if form.submit_m.data:
+            print("Movies")
+            print(request.form.get("movies_select"))
+            # movie_id = request.form.get("movies_select")
+            # if reviewer_type == "w":
+            #     review = db.session.query(Review).filter(Review.author_type == reviewer_type,
+            #                                              Review.viewer_id == reviewer_id,
+            #                                              Review.review_object == 'm',
+            #                                              Review.movie_id == movie_id).first()
+            # else:
+            #     review = db.session.query(Review).filter(Review.author_type == reviewer_type,
+            #                                              Review.journalist_id == reviewer_id,
+            #                                              Review.review_object == 'm',
+            #                                              Review.movie_id == movie_id).first()
+            # if review is None:
+            #     review = Review()
+            # else:
+            #     flash("This user has already posted review to this object")
+
+        elif form.submit_s.data:
+            print("series")
+            print(request.form.get("series_select"))
+        elif form.submit_a.data:
+            print("actors")
+            print(request.form.get("actors_select"))
+        else:
+            flash("Choose object to review")
 
     return render_template('add_review.html', today=today, form=form,
                            movie=movie, series=series, actor=actor,

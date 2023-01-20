@@ -194,4 +194,6 @@ class AddReview(FlaskForm):
     review_object_type = SelectField("Review object type", choices=["Movie", "Series", "Actor"])
     rate = SelectField("Rate", choices=["1", "2", "3", "4", "5"], default="3")
     content = StringField("Content (Optional)", widget=TextArea())
-    submit = SubmitField("Add Review")
+    submit_m = SubmitField("Add Review")
+    submit_s = SubmitField("Add Review")
+    submit_a = SubmitField("Add Review")

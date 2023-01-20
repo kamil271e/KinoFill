@@ -21,8 +21,8 @@
         <div id="movie_select">
             {% if movies != None %}
                 <select name="movie_select" class="selectpicker" data-live-search="true" title="Choose movie to review" data-width="100%">
-                    {% for option in movies %}
-                    <option value="{{ option }}">{{ option.name }} [Creation year: {{ option.creation_year }}]</option>
+                    {% for m in movies %}
+                    <option value="{{ m.movie_id }}">{{ m.name }} [Creation year: {{ m.creation_year }}]</option>
                     {% endfor %}
                 </select>
                 </br>
@@ -33,7 +33,7 @@
                 {{ form.content.label(class="form-label") }}
                 {{ form.content(class="form-control") }}
                 </br>
-                {{ form.submit(class="btn btn-info") }}
+                {{ form.submit_m(class="btn btn-info") }}
             {% else %}
                 <h3 class="form-label">We do not have any movies yet</h3>
             {% endif %}
@@ -42,8 +42,8 @@
         <div id="series_select">
             {% if seriess != None %}
                 <select name="series_select" class="selectpicker" data-live-search="true" title="Choose series to review" data-width="100%">
-                    {% for option in seriess %}
-                    <option value="{{ option }}">{{ option.name }} [Episodes: {{ option.episodes }}]</option>
+                    {% for s in seriess %}
+                    <option value="{{ s.series_id }}">{{ s.name }} [Episodes: {{ s.episodes }}]</option>
                     {% endfor %}
                 </select>
                 </br>
@@ -54,7 +54,7 @@
                 {{ form.content.label(class="form-label") }}
                 {{ form.content(class="form-control") }}
                 </br>
-                {{ form.submit(class="btn btn-info") }}
+                {{ form.submit_s(class="btn btn-info") }}
             {% else %}
                 <h3 class="form-label">We do not have any series yet</h3>
             {% endif %}
@@ -62,9 +62,9 @@
 
         <div id="actors_select">
             {% if actors != None %}
-                <select name="series_select" class="selectpicker" data-live-search="true" title="Choose actor to review" data-width="100%">
-                    {% for option in actors %}
-                    <option value="{{ option }}">{{ option.firstname }} {{ option.surname }} [Birthday: {{ option.birth_date }}]</option>
+                <select name="actors_select" class="selectpicker" data-live-search="true" title="Choose actor to review" data-width="100%">
+                    {% for a in actors %}
+                    <option value="{{ a.actor_id }}">{{ a.firstname }} {{ a.surname }} [Birthday: {{ a.birth_date }}]</option>
                     {% endfor %}
                 </select>
                 </br>
@@ -75,7 +75,7 @@
                 {{ form.content.label(class="form-label") }}
                 {{ form.content(class="form-control") }}
                 </br>
-                {{ form.submit(class="btn btn-info") }}
+                {{ form.submit_a(class="btn btn-info") }}
             {% else %}
                 <h3 class="form-label">We do not have any actors yet</h3>
             {% endif %}
