@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post" action="">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <h1 class="lh-lg display-5 text-center">{{ viewer.nickname }}</h1>
+        <br>
+        <h3>Reviews</h3>
+        <br>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="movies-tab" data-bs-toggle="tab" data-bs-target="#movies" type="button" role="tab" aria-controls="movies" aria-selected="true">Movies</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="series-tab" data-bs-toggle="tab" data-bs-target="#series" type="button" role="tab" aria-controls="series" aria-selected="false">Series</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="actors-tab" data-bs-toggle="tab" data-bs-target="#actors" type="button" role="tab" aria-controls="actors" aria-selected="false">Actors</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="movies" role="tabpanel" aria-labelledby="movies-tab">
+                {% if movies|length > 0 %}
+                    </br>
+                    <table class="table table-hover" id="user_review_movies_table">
+                        <thead class="table-info">
+                            <th>Name</th>
+                            <th>Rate</th>
+                            <th>Content</th>
+                            <th>Date</th>
+                        </thead>
+                        <tbody>
+                            {% for movie in movies %}
+                            <tr>
+                                <td>
+                                    <a href="{{url_for('movie_details', movie_id=movie.movie_id)}}">{{ movie.name }}</a>
+                                </td>
+                                {% for review in reviews %}
+                                    {% if review.movie_id == movie.movie_id %}
+                                        <td>{{ review.rate }}</td>
+                                        <td>{{ review.content }}</td>
+                                        <td>{{ review.posting_date }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    We don't have it in our database
+                {% endif %}
+            </div>
+            <div class="tab-pane fade" id="series" role="tabpanel" aria-labelledby="series-tab">
+                {% if series|length > 0 %}
+                    </br>
+                    <table class="table table-hover" id="user_review_series_table">
+                        <thead class="table-info">
+                            <th>Name</th>
+                            <th>Rate</th>
+                            <th>Content</th>
+                            <th>Date</th>
+                        </thead>
+                        <tbody>
+                            {% for s in series %}
+                            <tr>
+                                <td>
+                                    <a href="{{url_for('series_details', series_id=s.series_id)}}">{{ s.name }}</a>
+                                </td>
+                                {% for review in reviews %}
+                                    {% if review.series_id == s.series_id %}
+                                        <td>{{ review.rate }}</td>
+                                        <td>{{ review.content }}</td>
+                                        <td>{{ review.posting_date }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    We don't have it in our database
+                {% endif %}
+            </div>
+            <div class="tab-pane fade" id="actors" role="tabpanel" aria-labelledby="actors-tab">
+                {% if actors|length > 0 %}
+                    </br>
+                    <table class="table table-hover" id="user_review_actors_table">
+                        <thead class="table-info">
+                            <th>Name</th>
+                            <th>Rate</th>
+                            <th>Content</th>
+                            <th>Date</th>
+                        </thead>
+                        <tbody>
+                            {% for actor in actors %}
+                            <tr>
+                                <td>
+                                    <a href="{{url_for('actor_details', actor_id=actors.actor_id)}}">{{ actor.firstname }} {{ actor.surname }}</a>
+                                </td>
+                                {% for review in reviews %}
+                                    {% if review.actor_id == actor.actor_id %}
+                                        <td>{{ review.rate }}</td>
+                                        <td>{{ review.content }}</td>
+                                        <td>{{ review.posting_date }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    We don't have it in our database
+                {% endif %}
+            </div>
+        </div>
+    </form>
+{% endblock %}
+{% block scripts %}
+    <script src="{{url_for('static', filename='prettyTables.js')}}"></script>   
+{% endblock %}

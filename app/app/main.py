@@ -656,6 +656,7 @@ def edit_news(news_id):
 @app.route('/journalist_details/<journalist_id>')
 def journalist_details(journalist_id=None):
     journalist = db.session.query(Journalist).filter(Journalist.journalist_id == journalist_id).first()
+    
     if not journalist:
         flash('This journalist does not exists')
         return redirect(url_for('home'))
@@ -808,6 +809,35 @@ def add_review_actor(reviewer_type, reviewer_id, object_id):
                 return redirect(url_for("actor_details", actor_id=actor.actor_id))
 
     return render_template('add_review_actor.html', today=today, form=form, actor=actor)
+
+@app.route('/viewer_details/<viewer_id>')
+@login_required
+def viewer_details(viewer_id=None):
+    viewer = db.session.query(Viewer).filter(Viewer.viewer_id == viewer_id).first()
+    if viewer.is_public == 'f':
+        flash("Only public users have access to this")
+        return redirect(url_for('home'))
+    if viewer:
+        reviews = db.session.query(Review).filter(Review.author_type == 'w', Review.viewer_id == viewer_id)
+        movies = []
+        series = []
+        actors = []
+        for review in reviews:
+            if review.review_object == 'f':
+                movies.append(db.session.query(Movie).filter(Movie.movie_id == review.movie_id).first())
+                print('movie')
+            elif review.review_object == 's':
+                series.append(db.session.query(Series).filter(Series.series_id == review.series_id).first())
+                print('series')
+            elif review.review_object == 'a':
+                actors.append(db.session.query(Actor).filter(Actor.actor_id == review.actor_id).first()) 
+                print('actor')       
+    else:
+        flash('This viewer does not exists')
+        return redirect(url_for("list_objects"))
+    return render_template('viewer_details.html', today=today, movies=movies, series=series, actors=actors, reviews=reviews, viewer=viewer)
+
+
 
 if __name__ == '__main__':
     # Flask-SQLAlchemy 3.0 all access to db.engine (and db.session) requires an active Flask application context

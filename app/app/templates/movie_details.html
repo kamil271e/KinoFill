@@ -30,6 +30,7 @@
                     <button class="nav-link active" id="journalists-tab" data-bs-toggle="tab" data-bs-target="#journalists" type="button" role="tab" aria-controls="journalists" aria-selected="true">Journalists</button>
                 </li>
             </ul>
+            <br>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade" id="viewers" role="tabpanel" aria-labelledby="viewers-tab">
                     <table id="v_reviews", class="table table-hover">
@@ -161,4 +162,7 @@
             </a>
         {% endif %}
     </form>
+{% endblock %}
+{% block scripts %}
+    <script src="{{url_for('static', filename='prettyTables.js')}}"></script>   
 {% endblock %}
