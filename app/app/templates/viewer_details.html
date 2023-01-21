@@ -35,7 +35,8 @@
                             <th>Name</th>
                             <th>Rate</th>
                             <th>Content</th>
-                            <th>Date</th>
+                            <th>Posting date</th>
+                            <th></th>
                         </thead>
                         <tbody>
                             {% for movie in movies %}
@@ -48,6 +49,20 @@
                                         <td>{{ review.rate }}</td>
                                         <td>{{ review.content }}</td>
                                         <td>{{ review.posting_date }}</td>
+                                        {% if current_user.user_id == viewer.viewer_id %}
+                                            <td><div class="d-flex flex-row">
+                                                <a href="{{url_for('edit_review', object_type='f', object_id=movie.movie_id)}}"
+                                                    title="Edit review" style="margin-right: 10px">
+                                                    <h5><span class="fas fa-edit"></span></h5>
+                                                </a>
+                                                <a href="{{url_for('delete_review', object_type='f', object_id=movie.movie_id)}}"
+                                                    title="Delete review">
+                                                    <h5><span class="fas fa-trash-alt"></span></h5>
+                                                </a>
+                                            </div></td>
+                                        {% else %}
+                                            <td></td>
+                                        {% endif %}
                                     {% endif %}
                                 {% endfor %}
                             </tr>
@@ -66,7 +81,8 @@
                             <th>Name</th>
                             <th>Rate</th>
                             <th>Content</th>
-                            <th>Date</th>
+                            <th>Posting date</th>
+                            <th></th>
                         </thead>
                         <tbody>
                             {% for s in series %}
@@ -79,6 +95,20 @@
                                         <td>{{ review.rate }}</td>
                                         <td>{{ review.content }}</td>
                                         <td>{{ review.posting_date }}</td>
+                                        {% if current_user.user_id == viewer.viewer_id %}
+                                            <td><div class="d-flex flex-row">
+                                                <a href="{{url_for('edit_review', object_type='s', object_id=s.series_id)}}"
+                                                    title="Edit review" style="margin-right: 10px">
+                                                    <h5><span class="fas fa-edit"></span></h5>
+                                                </a>
+                                                <a href="{{url_for('delete_review', object_type='s', object_id=s.series_id)}}"
+                                                    title="Delete review">
+                                                    <h5><span class="fas fa-trash-alt"></span></h5>
+                                                </a>
+                                            </div></td>
+                                        {% else %}
+                                            <td></td>
+                                        {% endif %}
                                     {% endif %}
                                 {% endfor %}
                             </tr>
@@ -97,19 +127,34 @@
                             <th>Name</th>
                             <th>Rate</th>
                             <th>Content</th>
-                            <th>Date</th>
+                            <th>Posting date</th>
+                            <th></th>
                         </thead>
                         <tbody>
                             {% for actor in actors %}
                             <tr>
                                 <td>
-                                    <a href="{{url_for('actor_details', actor_id=actors.actor_id)}}">{{ actor.firstname }} {{ actor.surname }}</a>
+                                    <a href="{{url_for('actor_details', actor_id=actor.actor_id)}}">{{ actor.firstname }} {{ actor.surname }}</a>
                                 </td>
                                 {% for review in reviews %}
                                     {% if review.actor_id == actor.actor_id %}
                                         <td>{{ review.rate }}</td>
                                         <td>{{ review.content }}</td>
                                         <td>{{ review.posting_date }}</td>
+                                        {% if current_user.user_id == viewer.viewer_id %}
+                                            <td><div class="d-flex flex-row">
+                                                <a href="{{url_for('edit_review', object_type='a', object_id=actor.actor_id)}}"
+                                                    title="Edit review" style="margin-right: 10px">
+                                                    <h5><span class="fas fa-edit"></span></h5>
+                                                </a>
+                                                <a href="{{url_for('delete_review', object_type='a', object_id=actor.actor_id)}}"
+                                                    title="Delete review">
+                                                    <h5><span class="fas fa-trash-alt"></span></h5>
+                                                </a>
+                                            </div></td>
+                                        {% else %}
+                                            <td></td>
+                                        {% endif %}
                                     {% endif %}
                                 {% endfor %}
                             </tr>

@@ -656,11 +656,23 @@ def edit_news(news_id):
 @app.route('/journalist_details/<journalist_id>')
 def journalist_details(journalist_id=None):
     journalist = db.session.query(Journalist).filter(Journalist.journalist_id == journalist_id).first()
-    
-    if not journalist:
+    if journalist:
+        reviews = db.session.query(Review).filter(Review.author_type == 'd', Review.journalist_id == journalist_id)
+        movies = []
+        series = []
+        actors = []
+        for review in reviews:
+            if review.review_object == 'f':
+                movies.append(db.session.query(Movie).filter(Movie.movie_id == review.movie_id).first())
+            elif review.review_object == 's':
+                series.append(db.session.query(Series).filter(Series.series_id == review.series_id).first())
+            elif review.review_object == 'a':
+                actors.append(db.session.query(Actor).filter(Actor.actor_id == review.actor_id).first()) 
+    else:
         flash('This journalist does not exists')
         return redirect(url_for('home'))
-    return render_template('journalist_details.html', today=today, journalist=journalist)
+    return render_template('journalist_details.html', today=today, journalist=journalist, reviews=reviews, 
+                        movies=movies, series=series, actors=actors)
 
 @app.route('/series_details/<series_id>')
 def series_details(series_id=None):
@@ -825,13 +837,10 @@ def viewer_details(viewer_id=None):
         for review in reviews:
             if review.review_object == 'f':
                 movies.append(db.session.query(Movie).filter(Movie.movie_id == review.movie_id).first())
-                print('movie')
             elif review.review_object == 's':
                 series.append(db.session.query(Series).filter(Series.series_id == review.series_id).first())
-                print('series')
             elif review.review_object == 'a':
                 actors.append(db.session.query(Actor).filter(Actor.actor_id == review.actor_id).first()) 
-                print('actor')       
     else:
         flash('This viewer does not exists')
         return redirect(url_for("list_objects"))

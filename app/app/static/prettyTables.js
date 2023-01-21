@@ -149,7 +149,8 @@ $(document).ready(function () {
             null,
             {searchable: false},
             null,
-            {searchable: false}         
+            {searchable: false},
+            {searchable: false, orderable: false}              
         ],
     });
     $('#user_review_series_table').DataTable({
@@ -157,7 +158,8 @@ $(document).ready(function () {
             null,
             {searchable: false},
             null,
-            {searchable: false}         
+            {searchable: false},
+            {searchable: false, orderable: false}             
         ],
     });
     $('#user_review_actors_table').DataTable({
@@ -165,7 +167,38 @@ $(document).ready(function () {
             null,
             {searchable: false},
             null,
-            {searchable: false}         
+            {searchable: false},
+            {searchable: false, orderable: false}            
+        ],
+    });
+    $('#journalist_review_movies_table').DataTable({
+        columns: [
+            null,
+            {searchable: false},
+            null,
+            {searchable: false},
+            {searchable: false},
+            {searchable: false, orderable: false}              
+        ],
+    });
+    $('#journalist_review_series_table').DataTable({
+        columns: [
+            null,
+            {searchable: false},
+            null,
+            {searchable: false},
+            {searchable: false},
+            {searchable: false, orderable: false}             
+        ],
+    });
+    $('#journalist_review_actors_table').DataTable({
+        columns: [
+            null,
+            {searchable: false},
+            null,
+            {searchable: false},
+            {searchable: false},
+            {searchable: false, orderable: false}            
         ],
     });
 });

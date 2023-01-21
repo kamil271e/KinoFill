@@ -120,7 +120,9 @@
                                 {% for v in viewers %}
                                     {% if v.viewer_id == r.viewer_id %}
                                         {% if v.is_public == 't' %}
-                                            <td>{{ v.nickname }}</td>
+                                            <td>
+                                                <a href="{{url_for('viewer_details', viewer_id=v.viewer_id)}}">{{ v.nickname }}</a>
+                                            </td>
                                         {% else %}
                                             <td>Anonym</td>
                                         {% endif %}
