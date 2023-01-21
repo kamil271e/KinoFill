@@ -20,12 +20,80 @@
         <h4>Studio: <a href="{{url_for('studio_details', studio_id=movie.studio_id)}}">{{ studio.name }}</a></h4>
         </br>
 
-        <h3>Movie reviews</h3>
-        </br>
+        {% if v_reviews.count() > 0 or j_reviews.count() > 0 %}
+            <h3>Reviews</h3>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="viewers-tab" data-bs-toggle="tab" data-bs-target="#viewers" type="button" role="tab" aria-controls="viewers" aria-selected="true">Viewers</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="journalists-tab" data-bs-toggle="tab" data-bs-target="#journalists" type="button" role="tab" aria-controls="journalists" aria-selected="false">Journalists</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="viewers" role="tabpanel" aria-labelledby="viewers-tab">
+                    <table id="v_reviews", class="table table-hover">
+                        <thead class="table-info">
+                            <th>Reviewer</th>
+                            <th>Rate</th>
+                            <th>Content</th>
+                            <th>Posting date</th>
+                        </thead>
+                        <tbody>
+                            {% for r in v_reviews %}
+                            <tr>
+                                {% for v in viewers %}
+                                    {% if v.viewer_id == r.viewer_id %}
+                                        {% if v.is_public == 't' %}
+                                            <td>{{ v.nickname }}</td>
+                                        {% else %}
+                                            <td>Anonym</td>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                                <td>{{ r.rate }}</td>
+                                <td>{{ r.content }}</td>
+                                <td>{{ r.posting_date }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="journalists" role="tabpanel" aria-labelledby="journalists-tab">
+                    <table id="j_reviews", class="table table-hover">
+                        <thead class="table-info">
+                            <th>Reviewer</th>
+                            <th>Rate</th>
+                            <th>Content</th>
+                            <th>Posting date</th>
+                            <th>Viewers rating</th>
+                        </thead>
+                        <tbody>
+                            {% for r in j_reviews %}
+                            <tr>
+                                {% for j in journalists %}
+                                    {% if j.journalist_id == r.journalist_id %}
+                                        <td>{{ j.nickname }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                                <td>{{ r.rate }}</td>
+                                <td>{{ r.content }}</td>
+                                <td>{{ r.posting_date }}</td>
+                                <td>{{ r.viewers_rating }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% else %}
+            <h3>This movie does not have any reviews yet</h3>
+        {% endif %}
+
         {% if current_user.user_type != 's' %}
-            <a href="{{url_for('add_review',
-            reviewer_type=current_user.user_type, reviewer_id=current_user.user_id,
-            object_type='m', object_id=movie.movie_id)}}">
+            </br>
+            <a href="{{url_for('add_review_movie', reviewer_type=current_user.user_type,
+            reviewer_id=current_user.user_id, object_id=movie.movie_id)}}">
                 <input type="button" class="btn btn-info" value="Add review">
             </a>
         {% endif %}

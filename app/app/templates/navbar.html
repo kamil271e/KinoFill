@@ -22,12 +22,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('studio_details', studio_id=current_user.user_id) }}">My profile</a>
                     </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('add_review',
-                        reviewer_type=current_user.user_type, reviewer_id=current_user.user_id) }}">
-                            Add review</a>
-                    </li>
                 {% endif %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
