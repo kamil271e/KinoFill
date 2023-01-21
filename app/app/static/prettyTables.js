@@ -68,3 +68,15 @@ $(document).ready(function () {
         ],
     });
 });
+
+$(document).ready(function () {
+    $('#news_table').DataTable({
+        columns: [
+            null,
+            null,
+            {searchable: false},
+            {searchable: false, orderable: false},
+            {searchable: false, orderable: false},
+        ],
+    });
+});

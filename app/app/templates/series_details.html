@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post" action="">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <h1 class="lh-lg display-5 text-center">{{ series.name }}</h1>
+        <h4>Episodes: {{ series.episodes }}</h4>
+        <h4>Seasons: {{ series.seasons }}</h4>
+        <h4>Genre/Genres: {{ genres }}</h4>
+        <h4>Viewers rating: {{ series.viewers_rating }}</h4>
+        <h4>Director: {{ director.firstname }} {{ director.surname }}</h4>
+        <h4>Studio: <a href="{{url_for('studio_details', studio_id=series.studio_id)}}">{{ studio.name }}</a></h4>
+        </br>
+
+        <h3>Series reviews</h3>
+    </form>
+{% endblock %}

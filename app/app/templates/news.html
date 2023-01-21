@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h1 class="lh-lg display-5">Latest news</h1>
+    <a class="btn btn-info" href="{{url_for('add_news')}}">Add news</a>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="news" role="tabpanel">
+            {% if news.count() > 0 %}
+                </br>
+                <table id="news_table", class="table table-hover">
+                    <thead class="table-info">
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Date</th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        {% for n in news %}
+                        <tr>
+                            <td>
+                                <a href="{{url_for('single_news', news_id=n.news_id)}}">{{ n.title }}</a>
+                            </td>
+                            {% for j in journalists %}
+                                {% if j.journalist_id == n.journalist_id %}
+                                <td>
+                                    <a href="{{url_for('journalist_details', journalist_id=j.journalist_id)}}">{{ j.nickname }}</a>                                    
+                                </td>
+                                {% endif %}
+                            {% endfor %}
+                            {% for studio in studios %}
+                                {% if studio.studio_id == n.studio_id %}
+                                <td>
+                                    <a href="{{url_for('studio_details', studio_id=studio.studio_id)}}">{{ studio.name }}</a>
+                                </td>
+                                {% endif %}
+                            {% endfor %}
+                            <td>{{ n.publication_date }}</td>
+                            {% if current_user.user_id == n.studio_id or current_user.user_id == n.journalist_id %}
+                                <td><a href="{{url_for('edit_news', news_id=n.news_id)}}" class="btn btn-info">Edit</a></td>
+                                <td>
+                                <form action="{{url_for('delete_news', news_id=n.news_id)}}" method="post">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="submit" value="Delete" class="btn btn-danger">
+                                </form>
+                                </td>
+                            {% else %}
+                                <td></td>
+                                <td></td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    {% block scripts %}
+                        <script src="{{url_for('static', filename='prettyTables.js')}}"></script>   
+                    {% endblock %}
+                </table>
+            {% else %}
+                We don't have it in our database
+            {% endif %}
+        </div>
+{% endblock %}
+

@@ -173,7 +173,8 @@ CREATE TABLE filmweb.Reviews(
 );
 
 CREATE TABLE filmweb.News(
-    id_news serial PRIMARY KEY,
+    news_id serial PRIMARY KEY,
+    title varchar(30) NOT NULL,
     content text NOT NULL,
     publication_date date default CURRENT_DATE NOT NULL,
     journalist_id integer,
@@ -181,7 +182,8 @@ CREATE TABLE filmweb.News(
     FOREIGN KEY(journalist_id) REFERENCES filmweb.Journalists(journalist_id),
     FOREIGN KEY(studio_id) REFERENCES filmweb.Studios(studio_id),
     CHECK((studio_id is NOT NULL AND journalist_id is NULL) OR (studio_id is NULL AND journalist_id is NOT NULL)),
-    CHECK(publication_date <= CURRENT_DATE)
+    CHECK(publication_date <= CURRENT_DATE),
+    UNIQUE(title, content, publication_date)
 );
 
 CREATE TABLE filmweb.Movie_Characters(
@@ -233,6 +235,7 @@ CREATE TABLE filmweb.Journalists_reviews_ratings(
     FOREIGN KEY(review_id) REFERENCES filmweb.Reviews(review_id),
     CHECK(viewers_rating = -1 OR viewers_rating = 1)
 );
+
 
 -- sample inserts
 -- insert into filmweb.Users (login, password_hash, user_type) values ('label', 'xyz', 's');

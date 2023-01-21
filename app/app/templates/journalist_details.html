@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post" action="">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <h1 class="lh-lg display-5 text-center">{{ journalist.nickname }}</h1>
+        <div class="d-flex justify-content-between">
+            <div>
+                <h4>First name: {{ journalist.firstname }}</h4>
+                <h4>Surname: {{ journalist.surname }}</h4>
+                <h4>Birthdate: {{ journalist.birth_date }}</h4>
+            </div>
+            {% if journalist.journalist_id == current_user.user_id %}
+                <div class="d-flex flex-column">
+                    <a href="{{url_for('home')}}" title="Edit journalist data">
+                        <h4><span class="fas fa-edit"></span> Edit journalist data</h4>
+                    </a>
+                    <a href="{{url_for('home')}}" title="Delete journalist">
+                        <h4><span class="fas fa-trash-alt"></span> Delete journalist</h4>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </form>
+{% endblock %}

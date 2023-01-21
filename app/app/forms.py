@@ -49,6 +49,9 @@ class AddMovie(FlaskForm):
         if not self.name.data:
             flash("Please enter username")
             return False
+        if len(self.length.data) > 9:
+            flash("Length of the movie cannot be that long")
+            return False
         if not self.length.data:
             flash("Please enter length of the movie")
             return False
@@ -124,6 +127,9 @@ class AddSeries(FlaskForm):
             return False
         if not self.episodes.data:
             flash("Please enter number of episodes")
+            return False
+        if len(self.episodes.data) > 9:
+            flash("There can't be that many episodes")
             return False
         try:
             self.episodes.data = int(self.episodes.data)
@@ -204,6 +210,23 @@ class ChangeStudio(FlaskForm):
             self.country.data = None
         return True
 
+class AddNews(FlaskForm):
+    title = StringField("Title", validators=[DataRequired(),Length(max=30)])
+    content = StringField("Content", validators=[Length(min=30)], render_kw={"rows": 15}, widget=TextArea())
+    submit = SubmitField("Add news")
+
+    def validate(self):
+        self.content.data = self.content.data.strip()
+        return True
+
+class EditNews(FlaskForm):
+    title = StringField("Title", validators=[DataRequired(),Length(max=30)])
+    content = StringField("Content", validators=[Length(min=30)], render_kw={"rows": 15}, widget=TextArea())
+    submit = SubmitField("Edit")
+    
+    def validate(self):
+        self.content.data = self.content.data.strip()
+        return True
 
 class AddReview(FlaskForm):
     review_object_type = SelectField("Review object type", choices=["Movie", "Series", "Actor"])

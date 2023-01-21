@@ -337,7 +337,7 @@ def add_actor():
 
 @app.route('/movie_details/<movie_id>')
 @login_required
-def movie_details(movie_id):
+def movie_details(movie_id=None):
     movie = db.session.query(Movie).filter(Movie.movie_id == movie_id).first()
     if movie:
         studio = db.session.query(Studio).filter(Studio.studio_id == movie.studio_id).first()
@@ -361,7 +361,7 @@ def movie_details(movie_id):
 
 @app.route('/studio_details/<studio_id>')
 @login_required
-def studio_details(studio_id):
+def studio_details(studio_id=None):
     studio = db.session.query(Studio).filter(Studio.studio_id == studio_id).first()
     if studio:
         movies = db.session.query(Movie).filter(Movie.studio_id == studio_id)
@@ -377,7 +377,7 @@ def studio_details(studio_id):
 
 
 @app.route('/director_details/<director_id>')
-def director_details(director_id):
+def director_details(director_id=None):
     director = db.session.query(Director).filter(Director.director_id == director_id).first()
     if director:
         studio = db.session.query(Studio).filter(Studio.studio_id == director.studio_id).first()
@@ -564,6 +564,114 @@ def delete_review(object_type, object_id):
             flash("Review successfully deleted")
             return redirect(url_for("list_objects"))
 
+@app.route('/news', methods=['GET','POST'])
+@login_required
+def news():
+    news = db.session.query(News)
+    studios = db.session.query(Studio)
+    journalists = db.session.query(Journalist)
+    return render_template('news.html', today=today, news=news, studios=studios, journalists=journalists)
+
+@app.route('/news/<news_id>')
+@login_required
+def single_news(news_id):
+    news = db.session.query(News).filter(News.news_id == news_id).first()
+    studio = db.session.query(Studio).filter(Studio.studio_id == news.studio_id).first()
+    journalist = db.session.query(Journalist).filter(Journalist.journalist_id == news.journalist_id).first()
+    return render_template('single_news.html', today=today, news=news, studio=studio, journalist=journalist)
+
+@app.route('/add_news', methods=['GET','POST'])
+@login_required
+def add_news():
+    if current_user.user_type not in ['s', 'a', 'd']:
+        flash("Only studio or journalist can add news")
+        return redirect(url_for("news"))
+    form = AddNews()
+    if form.validate_on_submit():
+        news = db.session.query(News).filter(
+            News.title == form.title.data,
+            News.content == form.content.data,
+            News.publication_date == today
+        ).first()
+        if news is None:
+            if current_user.user_type == 's':
+                studio_id = current_user.user_id
+                journalist_id = None
+            else:
+                studio_id = None
+                journalist_id = current_user.user_id
+        
+            news = News(
+                title=form.title.data,
+                content=form.content.data,
+                publication_date=today,
+                journalist_id=journalist_id,
+                studio_id=studio_id
+            )
+            db.session.add(news)
+            db.session.commit()
+
+            flash("News added successfully")
+            return redirect(url_for("news"))
+        else:
+            flash("This news has already been added to the database")
+    return render_template('add_news.html', today=today, form=form)
+
+@app.route('/delete_news/<news_id>', methods=['GET','POST'])
+@login_required
+def delete_news(news_id):
+    news = db.session.query(News).filter(News.news_id == news_id).first()
+    db.session.delete(news)
+    db.session.commit()
+    flash("News deleted successfylly")
+    return redirect(url_for('news'))
+
+
+@app.route('/edit_news/<news_id>', methods=['GET','POST'])
+@login_required
+def edit_news(news_id):
+    news = db.session.query(News).filter(News.news_id == news_id).first()
+    form = EditNews(title=news.title, content=news.content)
+    #form.title.data = news.title
+    #form.content.data = news.content
+    if form.validate_on_submit():
+        check_news = db.session.query(News).filter(
+            News.title == form.title.data,
+            News.content == form.content.data,
+            News.publication_date == news.publication_date
+        ).first()
+        if check_news is None:
+            news.title = form.title.data
+            news.content = form.content.data
+            db.session.commit()
+            flash("News edited successfully")
+            return redirect(url_for("news"))
+        elif check_news.news_id == news.get_id():
+            flash("You didn't change anything")
+        else:
+            flash("This news has already been added to the database")
+
+    return render_template('edit_news.html', today=today, form=form)
+
+@app.route('/journalist_details/<journalist_id>')
+def journalist_details(journalist_id=None):
+    journalist = db.session.query(Journalist).filter(Journalist.journalist_id == journalist_id).first()
+    if not journalist:
+        flash('This journalist does not exists')
+        return redirect(url_for('home'))
+    return render_template('journalist_details.html', today=today, journalist=journalist)
+
+@app.route('/series_details/<series_id>')
+def series_details(series_id=None):
+    series = db.session.query(Series).filter(Series.series_id == series_id).first()
+    studio = db.session.query(Studio).filter(Studio.studio_id == series.studio_id).first()
+    director = db.session.query(Director).filter(Director.director_id == series.director_id).first()
+    genres = db.session.query(Series_genres).filter(Series_genres.series_id == series_id)
+    genres_str =''
+    for genre in genres:
+        genres_str += ', ' + genre.genre
+    genres_str = genres_str[2:]
+    return render_template('series_details.html', today=today, series=series, studio=studio, director=director, genres=genres_str)
 
 @app.route('/like/<review_id>/<action>')
 @login_required
