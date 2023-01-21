@@ -367,7 +367,7 @@ def studio_details(studio_id=None):
         movies = db.session.query(Movie).filter(Movie.studio_id == studio_id)
         series = db.session.query(Series).filter(Series.studio_id == studio_id)
         actors = db.session.query(Actor).filter(Actor.studio_id == studio_id)
-        directors = db.session.query(Director).filter(Director.studio_id == studio_id)
+        directors = db.session.query(Director) #.filter(Director.studio_id == studio_id)
         int_sid = int(studio_id)
     else:
         flash('This studio does not exists')

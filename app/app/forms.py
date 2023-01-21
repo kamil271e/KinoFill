@@ -5,7 +5,7 @@ from utils import *
 class RegisterForm(FlaskForm):
     login = StringField("Login", validators=[DataRequired(), Length(5, 16)])
     password = PasswordField("Password", validators=[DataRequired(), Length(5, 16)])
-    password_confirm = PasswordField("Confirm password", validators=[DataRequired(), Length(5,6)]) #, EqualTo('password', message="Passwords must match")])
+    password_confirm = PasswordField("Confirm password", validators=[DataRequired(), Length(5, 16)]) #, EqualTo('password', message="Passwords must match")])
     role = SelectField("Role", choices=["Viewer", "Journalist", "Studio"])
     user_desc = StringField("Profile description", widget=TextArea())
     viewer_role = SelectField("Account type", choices=["Private", "Public"])

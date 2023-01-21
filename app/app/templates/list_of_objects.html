@@ -176,6 +176,8 @@
                                     <td>
                                         <a href="{{url_for('studio_details', studio_id=studio.studio_id)}}">{{ studio.name }}</a>
                                     </td>
+                                {% else %}
+                                    <td>-</td>
                                 {% endif %}
                             {% endfor %}
                         </tr>
