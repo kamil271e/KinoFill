@@ -174,7 +174,8 @@ class Genres(db.Model):
 
     def __init__(self, genre):
         self.genre = genre
-    
+
+
 class Movie_genres(db.Model):
     __tablename___ = "movie_genres"
     __table_args__ = {'quote': False, 'schema': "filmweb", }
@@ -196,6 +197,7 @@ class Series_genres(db.Model):
     def __init__(self, series_id, genre):
         self.series_id = series_id
         self.genre = genre
+
 
 class Actor(db.Model):
     __tablename__ = "actors"
@@ -219,6 +221,7 @@ class Actor(db.Model):
 
     def get_id(self):
         return (self.actor_id)
+
 
 class Movie_character(db.Model):
     __tablename__ = "movie_characters"
@@ -288,3 +291,45 @@ class Review(db.Model):
 
     def get_id(self):
         return (self.review_id)
+
+    def like_post(self, user):
+        if not self.has_liked_post(user) and not self.has_disliked_post(user):
+            like = ReviewRating(viewers_rating=1, review_id=self.review_id, viewer_id=user.user_id)
+            db.session.add(like)
+
+    def dislike_post(self, user):
+        if not self.has_liked_post(user) and not self.has_disliked_post(user):
+            like = ReviewRating(viewers_rating=-1, review_id=self.review_id, viewer_id=user.user_id)
+            db.session.add(like)
+
+    def unlike_post(self, user):
+        if self.has_liked_post(user) or self.has_disliked_post(user):
+            db.session.query(ReviewRating).filter(
+                ReviewRating.review_id == self.review_id,
+                ReviewRating.viewer_id == user.user_id).delete()
+
+    def has_liked_post(self, user):
+        return db.session.query(ReviewRating).filter(
+                ReviewRating.viewers_rating == 1,
+                ReviewRating.review_id == self.review_id,
+                ReviewRating.viewer_id == user.user_id).count() > 0
+
+    def has_disliked_post(self, user):
+        return db.session.query(ReviewRating).filter(
+                ReviewRating.viewers_rating == -1,
+                ReviewRating.review_id == self.review_id,
+                ReviewRating.viewer_id == user.user_id).count() > 0
+
+
+class ReviewRating(db.Model):
+    __tablename__ = "journalists_reviews_ratings"
+    __table_args__ = {'quote': False, 'schema': "filmweb", }
+
+    viewers_rating = db.Column(db.Integer, nullable=False)
+    viewer_id = db.Column(db.Integer, db.ForeignKey("filmweb.viewers.viewer_id"), primary_key=True)
+    review_id = db.Column(db.Integer, db.ForeignKey("filmweb.reviews.review_id"), primary_key=True)
+
+    def __init__(self, viewer_id, review_id, viewers_rating=None):
+        self.viewer_id = viewer_id
+        self.review_id = review_id
+        self.viewers_rating = viewers_rating

@@ -565,6 +565,22 @@ def delete_review(object_type, object_id):
             return redirect(url_for("list_objects"))
 
 
+@app.route('/like/<review_id>/<action>')
+@login_required
+def like_action(review_id, action):
+    review = db.session.query(Review).filter(Review.review_id == review_id).first_or_404()
+    if action == 'like':
+        review.like_post(current_user)
+        db.session.commit()
+    elif action == 'dislike':
+        review.dislike_post(current_user)
+        db.session.commit()
+    elif action == 'unlike':
+        review.unlike_post(current_user)
+        db.session.commit()
+    return redirect(request.referrer)
+
+
 if __name__ == '__main__':
     # Flask-SQLAlchemy 3.0 all access to db.engine (and db.session) requires an active Flask application context
     with app.app_context():
