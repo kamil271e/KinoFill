@@ -233,7 +233,7 @@ CREATE TABLE filmweb.Journalists_reviews_ratings(
     PRIMARY KEY(review_id, viewer_id),
     FOREIGN KEY(viewer_id) REFERENCES filmweb.Viewers(viewer_id),
     FOREIGN KEY(review_id) REFERENCES filmweb.Reviews(review_id),
-    CHECK(viewers_rating <= 5 AND viewers_rating >= 1)
+    CHECK(viewers_rating = -1 OR viewers_rating = 1)
 );
 
 
