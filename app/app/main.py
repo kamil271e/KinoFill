@@ -420,11 +420,12 @@ def add_review_movie(reviewer_type, reviewer_id, object_id):
     movie = db.session.query(Movie).filter(Movie.movie_id == object_id).first()
     if movie is None:
         flash("This movie does not exists")
-        return redirect(url_for("home"))
+        return redirect(url_for("list_objects"))
     else:
         review = Review(author_type=reviewer_type,
                         review_object='f',
-                        movie_id=movie.movie_id)
+                        movie_id=movie.movie_id,
+                        posting_date=today)
 
         if reviewer_type == 'w':
             review.viewer_id = reviewer_id
@@ -432,97 +433,136 @@ def add_review_movie(reviewer_type, reviewer_id, object_id):
             review.journalist_id = reviewer_id
         else:
             flash('Review can be added only by viewer and journalist')
-            return redirect(url_for("home"))
+            return redirect(url_for("list_objects"))
 
-        review_db = db.session.query(Review).filter(Review == review).first()
+        review_db = db.session.query(Review).filter(Review.author_type == review.author_type,
+                                                    Review.viewer_id == review.viewer_id,
+                                                    Review.journalist_id == review.journalist_id,
+                                                    Review.movie_id == review.movie_id,
+                                                    Review.series_id == review.series_id,
+                                                    Review.actor_id == review.actor_id).first()
         if review_db:
             # TODO: redirect user to edit review page
             flash('This user has already posted review to this movie')
-            return redirect(url_for("list_objects"))
+            return redirect(url_for("edit_review", object_type='f', object_id=movie.movie_id))
         else:
             form = AddReviewMovie()
             if form.validate_on_submit():
-                print(review.posting_date)
                 review.rate = form.rate.data
                 review.content = form.content.data
 
                 db.session.add(review)
                 db.session.commit()
                 flash("Movie review successfully added")
-                return redirect(url_for("home"))
+                return redirect(url_for("movie_details", movie_id=movie.movie_id))
 
     return render_template('add_review_movie.html', today=today, form=form, movie=movie)
 
 
-@app.route('/add_review/<reviewer_type>/<reviewer_id>', defaults={'object_type': None, 'object_id': None}, methods=['GET', 'POST'])
-@app.route('/add_review/<reviewer_type>/<reviewer_id>/<object_type>/<object_id>', methods=['GET', 'POST'])
+@app.route('/edit_review/<object_type>/<object_id>', methods=['GET', 'POST'])
 @login_required
-def add_review(reviewer_type, reviewer_id, object_type, object_id):
-    # TODO: check if this user wrote a review to this object earlier
-    # print(reviewer_type, reviewer_id, object_type, object_id)
-    if reviewer_type == 'w':
-        viewer = db.session.query(Viewer).filter(Viewer.viewer_id == reviewer_id).first()
-    elif reviewer_type == 'd':
-        journalist = db.session.query(Journalist).filter(Journalist.journalist_id == reviewer_id).first()
-    else:
-        flash('Review can be added only by viewer and journalist')
-        return redirect(url_for("home"))
-
+def edit_review(object_type, object_id):
+    review = Review(author_type=current_user.user_type,
+                    review_object=object_type)
     movie = None
     series = None
     actor = None
-    movies = db.session.query(Movie)
-    seriess = db.session.query(Series)
-    actors = db.session.query(Actor)
 
-    if object_type == 'm':
-        if object_id:
-            movie = db.session.query(Movie).filter(Movie.movie_id == object_id).first()
-        form = AddReview(review_object_type="Movie")
+    if object_type == 'f':
+        movie = db.session.query(Movie).filter(Movie.movie_id == object_id).first()
+        review.movie_id = object_id
     elif object_type == 's':
-        if object_id:
-            series = db.session.query(Series).filter(Series.series_id == object_id).first()
-        form = AddReview(review_object_type="Series")
+        series = db.session.query(Series).filter(Series.series_id == object_id).first()
+        review.series_id = object_id
     elif object_type == 'a':
-        if object_id:
-            actor = db.session.query(Actor).filter(Actor.actor_id == object_id).first()
-        form = AddReview(review_object_type="Actor")
+        actor = db.session.query(Actor).filter(Actor.actor_id == object_id).first()
+        review.actor_id = object_id
     else:
-        form = AddReview()
+        flash("No such object type")
+        return redirect(url_for("list_objects"))
 
-    # TODO: Add review to database after submit btn
-    if form.validate_on_submit():
-        if form.submit_m.data:
-            print("Movies")
-            print(request.form.get("movies_select"))
-            # movie_id = request.form.get("movies_select")
-            # if reviewer_type == "w":
-            #     review = db.session.query(Review).filter(Review.author_type == reviewer_type,
-            #                                              Review.viewer_id == reviewer_id,
-            #                                              Review.review_object == 'm',
-            #                                              Review.movie_id == movie_id).first()
-            # else:
-            #     review = db.session.query(Review).filter(Review.author_type == reviewer_type,
-            #                                              Review.journalist_id == reviewer_id,
-            #                                              Review.review_object == 'm',
-            #                                              Review.movie_id == movie_id).first()
-            # if review is None:
-            #     review = Review()
-            # else:
-            #     flash("This user has already posted review to this object")
-
-        elif form.submit_s.data:
-            print("series")
-            print(request.form.get("series_select"))
-        elif form.submit_a.data:
-            print("actors")
-            print(request.form.get("actors_select"))
+    if movie is None and series is None and actor is None:
+        flash("This object does not exists")
+        return redirect(url_for("list_objects"))
+    else:
+        if current_user.user_type == 'w':
+            review.viewer_id = current_user.user_id
+        elif current_user.user_type == 'd':
+            review.journalist_id = current_user.user_id
         else:
-            flash("Choose object to review")
+            flash('Review can be added only by viewer and journalist')
+            return redirect(url_for("list_objects"))
 
-    return render_template('add_review.html', today=today, form=form,
-                           movie=movie, series=series, actor=actor,
-                           movies=movies, seriess=seriess, actors=actors)
+        review_db = db.session.query(Review).filter(Review.author_type == review.author_type,
+                                                    Review.viewer_id == review.viewer_id,
+                                                    Review.journalist_id == review.journalist_id,
+                                                    Review.movie_id == review.movie_id,
+                                                    Review.series_id == review.series_id,
+                                                    Review.actor_id == review.actor_id).first()
+        if review_db is None:
+            flash('This user has not posted review to this object')
+            return redirect(url_for("list_objects"))
+        else:
+            form = EditReview(rate=review_db.rate, content=review_db.content)
+            if form.validate_on_submit():
+                review_db.rate = form.rate.data
+                review_db.content = form.content.data
+                review_db.posting_date = today
+                db.session.commit()
+                flash("Review successfully edited")
+                return redirect(url_for("list_objects"))
+
+    return render_template('edit_review.html', today=today, form=form)
+
+@app.route('/delete_review/<object_type>/<object_id>', methods=['GET', 'POST'])
+@login_required
+def delete_review(object_type, object_id):
+    review = Review(author_type=current_user.user_type,
+                    review_object=object_type)
+    movie = None
+    series = None
+    actor = None
+
+    if object_type == 'f':
+        movie = db.session.query(Movie).filter(Movie.movie_id == object_id).first()
+        review.movie_id = object_id
+    elif object_type == 's':
+        series = db.session.query(Series).filter(Series.series_id == object_id).first()
+        review.series_id = object_id
+    elif object_type == 'a':
+        actor = db.session.query(Actor).filter(Actor.actor_id == object_id).first()
+        review.actor_id = object_id
+    else:
+        flash("No such object type")
+        return redirect(url_for("list_objects"))
+
+    if movie is None and series is None and actor is None:
+        flash("This object does not exists")
+        return redirect(url_for("list_objects"))
+    else:
+        if current_user.user_type == 'w':
+            review.viewer_id = current_user.user_id
+        elif current_user.user_type == 'd':
+            review.journalist_id = current_user.user_id
+        else:
+            flash('Review can be added only by viewer and journalist')
+            return redirect(url_for("list_objects"))
+
+        print(review.author_type, review.viewer_id, review.review_object, review.movie_id)
+        review_db = db.session.query(Review).filter(Review.author_type == review.author_type,
+                                                    Review.viewer_id == review.viewer_id,
+                                                    Review.journalist_id == review.journalist_id,
+                                                    Review.movie_id == review.movie_id,
+                                                    Review.series_id == review.series_id,
+                                                    Review.actor_id == review.actor_id).first()
+        if review_db is None:
+            flash('This user has not posted review to this object')
+            return redirect(url_for("list_objects"))
+        else:
+            db.session.delete(review_db)
+            db.session.commit()
+            flash("Review successfully deleted")
+            return redirect(url_for("list_objects"))
 
 
 if __name__ == '__main__':

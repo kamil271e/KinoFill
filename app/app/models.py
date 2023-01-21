@@ -273,7 +273,7 @@ class Review(db.Model):
     movie_id = db.Column(db.Integer, db.ForeignKey("filmweb.movies.movie_id"), nullable=True)
     actor_id = db.Column(db.Integer, db.ForeignKey("filmweb.actors.actor_id"), nullable=True)
 
-    def __init__(self, author_type, review_object, rate=0.0, posting_date=today, content='',
+    def __init__(self, author_type, review_object, rate=0.0, posting_date='', content='',
                  viewer_id=None, journalist_id=None, series_id=None, movie_id=None, actor_id=None):
         self.rate = rate
         self.posting_date = posting_date
