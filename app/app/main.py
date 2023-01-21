@@ -320,7 +320,7 @@ def add_actor():
     return render_template('add_actor.html', today=today, form=form)
 
 @app.route('/movie_details/<movie_id>')
-def movie_details(movie_id):
+def movie_details(movie_id=None):
     movie = db.session.query(Movie).filter(Movie.movie_id == movie_id).first()
     studio = db.session.query(Studio).filter(Studio.studio_id == movie.studio_id).first()
     director = db.session.query(Director).filter(Director.director_id == movie.director_id).first()
@@ -333,7 +333,7 @@ def movie_details(movie_id):
 
 @app.route('/studio_details/<studio_id>')
 @login_required
-def studio_details(studio_id):
+def studio_details(studio_id=None):
     studio = db.session.query(Studio).filter(Studio.studio_id == studio_id).first()
     if studio:
         movies = db.session.query(Movie).filter(Movie.studio_id == studio_id)
@@ -348,7 +348,7 @@ def studio_details(studio_id):
                            series=series, actors=actors, directors=directors, int_sid=int_sid)
 
 @app.route('/director_details/<director_id>')
-def director_details(director_id):
+def director_details(director_id=None):
     director = db.session.query(Director).filter(Director.director_id == director_id).first()
     studio = db.session.query(Studio).filter(Studio.studio_id == director.studio_id).first()
     movies = db.session.query(Movie).filter(Movie.director_id == director_id)
@@ -465,12 +465,24 @@ def edit_news(news_id):
     return render_template('edit_news.html', today=today, form=form)
 
 @app.route('/journalist_details/<journalist_id>')
-def journalist_details(journalist_id):
+def journalist_details(journalist_id=None):
     journalist = db.session.query(Journalist).filter(Journalist.journalist_id == journalist_id).first()
     if not journalist:
         flash('This journalist does not exists')
         return redirect(url_for('home'))
-    return render_template('journalist_details.html', journalist=journalist)
+    return render_template('journalist_details.html', today=today, journalist=journalist)
+
+@app.route('/series_details/<series_id>')
+def series_details(series_id=None):
+    series = db.session.query(Series).filter(Series.series_id == series_id).first()
+    studio = db.session.query(Studio).filter(Studio.studio_id == series.studio_id).first()
+    director = db.session.query(Director).filter(Director.director_id == series.director_id).first()
+    genres = db.session.query(Series_genres).filter(Series_genres.series_id == series_id)
+    genres_str =''
+    for genre in genres:
+        genres_str += ', ' + genre.genre
+    genres_str = genres_str[2:]
+    return render_template('series_details.html', today=today, series=series, studio=studio, director=director, genres=genres_str)
 
 if __name__ == '__main__':
     with app.app_context():
