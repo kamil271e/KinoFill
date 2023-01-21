@@ -464,6 +464,14 @@ def edit_news(news_id):
 
     return render_template('edit_news.html', today=today, form=form)
 
+@app.route('/journalist_details/<journalist_id>')
+def journalist_details(journalist_id):
+    journalist = db.session.query(Journalist).filter(Journalist.journalist_id == journalist_id).first()
+    if not journalist:
+        flash('This journalist does not exists')
+        return redirect(url_for('home'))
+    return render_template('journalist_details.html', journalist=journalist)
+
 if __name__ == '__main__':
     with app.app_context():
         initGenres()

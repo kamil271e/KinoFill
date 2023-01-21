@@ -33,7 +33,7 @@
                             {% for j in journalists %}
                                 {% if j.journalist_id == n.journalist_id %}
                                 <td>
-                                    {{ j.nickname }}
+                                    <a href="{{url_for('journalist_details', journalist_id=j.journalist_id)}}">{{ j.nickname }}</a>                                    
                                 </td>
                                 {% endif %}
                             {% endfor %}

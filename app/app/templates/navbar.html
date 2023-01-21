@@ -10,6 +10,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('news') }}">News</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('journalist_details', journalist_id=current_user.user_id) }}">My profile</a>
+                    </li>
                 {% endif %}
                 {% if current_user.user_type == 's' or current_user.user_type == 'a' %}
                     <li class="nav-item">
