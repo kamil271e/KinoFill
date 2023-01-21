@@ -9,7 +9,7 @@ class Users(db.Model, UserMixin):
     login = db.Column(db.String(64), unique=True, nullable=False)
     password_hash = db.Column(db.String(128))
     join_date = db.Column(db.Date)
-    description = db.Column(db.String(256))
+    description = db.Column(db.String)
     active = db.Column(db.String(1))
     user_type = db.Column(db.String(5))
 
@@ -254,3 +254,37 @@ class Series_character(db.Model):
 
     def get_id(self):
         return (self.character_id)
+
+
+class Review(db.Model):
+    __tablename__ = "reviews"
+    __table_args__ = {'quote': False, 'schema': "filmweb", }
+
+    review_id = db.Column(db.Integer, primary_key=True)
+    rate = db.Column(db.Integer, nullable=False)
+    posting_date = db.Column(db.Date, nullable=False)
+    content = db.Column(db.String, nullable=True)
+    author_type = db.Column(db.String(1), nullable=False)
+    review_object = db.Column(db.String(1), nullable=False)
+    viewers_rating = db.Column(db.Float, nullable=True)
+    viewer_id = db.Column(db.Integer, db.ForeignKey("filmweb.viewers.viewer_id"), nullable=True)
+    journalist_id = db.Column(db.Integer, db.ForeignKey("filmweb.journalists.journalist_id"), nullable=True)
+    series_id = db.Column(db.Integer, db.ForeignKey("filmweb.series.series_id"), nullable=True)
+    movie_id = db.Column(db.Integer, db.ForeignKey("filmweb.movies.movie_id"), nullable=True)
+    actor_id = db.Column(db.Integer, db.ForeignKey("filmweb.actors.actor_id"), nullable=True)
+
+    def __init__(self, author_type, review_object, rate=0.0, posting_date='', content='',
+                 viewer_id=None, journalist_id=None, series_id=None, movie_id=None, actor_id=None):
+        self.rate = rate
+        self.posting_date = posting_date
+        self.content = content
+        self.author_type = author_type
+        self.review_object = review_object
+        self.viewer_id = viewer_id
+        self.journalist_id = journalist_id
+        self.series_id = series_id
+        self.movie_id = movie_id
+        self.actor_id = actor_id
+
+    def get_id(self):
+        return (self.review_id)
