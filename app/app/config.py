@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.dialects.postgresql import TEXT
 from urllib.parse import quote_plus
 from flask_fontawesome import FontAwesome
 from flask_login import login_user, login_required, logout_user, current_user, UserMixin, LoginManager
 from datetime import date
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField, PasswordField, EmailField, DateField, SelectMultipleField
+from wtforms import StringField, SubmitField, SelectField, PasswordField, EmailField, DateField, SelectMultipleField, TextAreaField
 from wtforms.widgets import TextArea
 from wtforms.validators import DataRequired, Length, NumberRange, EqualTo
 import datetime

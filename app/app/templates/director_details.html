@@ -15,7 +15,11 @@
         <h4>Birthdate: {{ director.birth_date }}</h4>
         <h4>Length: {{ director.country }}</h4>
         <h4>Viewers rating: {{ director.rate }}</h4>
-        <h4>Studio: <a href="{{url_for('studio_details', studio_id=director.studio_id)}}">{{ studio.name }}</a></h4>
+        {% if studio.studio_id %}
+            <h4>Studio: <a href="{{url_for('studio_details', studio_id=director.studio_id)}}">{{ studio.name }}</a></h4>
+        {% else %}
+            <h4>Studio: brak</h4>
+        {% endif %}
         </br>
         
         <ul class="nav nav-tabs" id="myTab" role="tablist">
