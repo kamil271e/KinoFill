@@ -71,7 +71,9 @@
                         <tbody>
                             {% for s in series %}
                             <tr>
-                                <td>{{ s.name }}</td>
+                                <td>
+                                    <a href="{{url_for('series_details', series_id=s.series_id)}}">{{ s.name }}</a>
+                                </td>
                                 <td>{{ s.episodes }}</td>
                                 <td>{{ s.seasons }}</td>
                                 <td>{{ s.viewers_rating }}</td>

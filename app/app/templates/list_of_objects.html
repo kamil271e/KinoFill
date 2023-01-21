@@ -132,7 +132,9 @@
                     <tbody>
                         {% for actor in actors %}
                         <tr>
-                            <td>{{ actor.firstname }} {{ actor.surname }}</td>
+                            <td>
+                                <a href="{{url_for('actor_details', actor_id=actor.actor_id)}}">{{ actor.firstname }} {{ actor.surname }}</a>
+                            </td>
                             <td>{{ actor.birth_date }}</td>
                             <td>{{ actor.country }}</td>
                             <td>{{ actor.viewers_rating }}</td>
@@ -227,7 +229,9 @@
                     <tbody>
                         {% for j in journalists %}
                         <tr>
-                            <td><a href="{{url_for('journalist_details', journalist_id=j.journalist_id)}}">{{ j.nickname }}</a></td>
+                            <td>
+                                <a href="{{url_for('journalist_details', journalist_id=j.journalist_id)}}">{{ j.nickname }}</a>
+                            </td>
                             <td>{{ j.firstname }} {{ j.surname }}</td>
                             <td>{{ j.birth_date }}</td>
                         </tr>

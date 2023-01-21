@@ -95,7 +95,9 @@
                         <tbody>
                             {% for s in series %}
                             <tr>
-                                <td>{{ s.name }}</td>
+                                <td>
+                                    <a href="{{url_for('series_details', series_id=s.series_id)}}">{{ s.name }}</a>
+                                </td>
                                 <td>{{ s.episodes }}</td>
                                 <td>{{ s.seasons }}</td>
                                 {% for d in directors %}
@@ -127,7 +129,9 @@
                         <tbody>
                             {% for actor in actors %}
                             <tr>
-                                <td>{{ actor.firstname }} {{ actor.surname }}</td>
+                                <td>
+                                    <a href="{{url_for('actor_details', actor_id=actor.actor_id)}}">{{ actor.firstname }} {{ actor.surname }}</a>
+                                </td>
                                 <td>{{ actor.birth_date }}</td>
                                 <td>{{ actor.country }}</td>
                                 <td>{{ actor.viewers_rating }}</td>
@@ -152,7 +156,9 @@
                         <tbody>
                             {% for d in directors %}
                             <tr>
-                                <td>{{ d.firstname }} {{ d.surname }}</td>
+                                <td>
+                                    <a href="{{url_for('director_details', director_id=d.director_id)}}">{{ d.firstname }} {{ d.surname }}</a>
+                                </td>
                                 <td>{{ d.birth_date }}</td>
                                 <td>{{ d.country }}</td>
                                 <td>{{ d.rate }}</td>

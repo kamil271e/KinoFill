@@ -247,3 +247,13 @@ class EditReview(FlaskForm):
     rate = SelectField("Rate", choices=["1", "2", "3", "4", "5"])
     content = StringField("Content (Optional)", widget=TextArea())
     submit = SubmitField("Edit Review")
+
+
+class AddReviewSeries(AddReviewMovie):
+    def __init__(self):
+        super().__init__()
+
+
+class AddReviewActor(AddReviewMovie):
+    def __init__(self):
+        super().__init__()
