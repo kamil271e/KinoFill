@@ -15,7 +15,7 @@ CREATE TABLE filmweb.Users(
 CREATE TABLE filmweb.Studios(
     studio_id integer PRIMARY KEY,
     name varchar(30) NOT NULL UNIQUE,
-    country varchar(20),
+    country varchar(30),
     creation_date date,
     viewers_rating decimal(3, 2),
     FOREIGN KEY(studio_id) REFERENCES filmweb.Users(user_id),
@@ -27,7 +27,7 @@ CREATE TABLE filmweb.Directors(
     firstname varchar(20) NOT NULL,
     surname varchar(20) NOT NULL,
     birth_date date NOT NULL,
-    country varchar(20),
+    country varchar(30),
     rate decimal(3, 2),
     studio_id integer,
     FOREIGN KEY(studio_id) REFERENCES filmweb.Studios(studio_id),
@@ -71,7 +71,7 @@ CREATE TABLE filmweb.Actors(
     firstname varchar(20) NOT NULL,
     surname varchar(20) NOT NULL,
     birth_date date NOT NULL,
-    country varchar(20),
+    country varchar(30),
     viewers_rating decimal(3, 2),
     studio_id integer,
     FOREIGN KEY(studio_id) REFERENCES filmweb.Studios(studio_id),
@@ -109,7 +109,7 @@ CREATE OR REPLACE PROCEDURE filmweb.newUser(
   active CHAR(1),
   user_type CHAR(1), -- User
   nickname VARCHAR(30),
-  country VARCHAR(20),
+  country VARCHAR(30),
   creation_date DATE, -- Studio
   firstname VARCHAR(20),
   surname VARCHAR(20),
