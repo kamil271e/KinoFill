@@ -682,7 +682,7 @@ def delete_studio():
         flash('Studio successfully deleted')
         return redirect(url_for('home'))
     else:
-        flash('Cannot delete studio that is assign to movie, series, actor or director.')
+        flash('Cannot delete studio that is assigned to movie, series, actor or director.')
         return redirect(url_for('studio_details', studio_id=studio.studio_id))
 
 @app.route('/delete_director/<director_id>', methods=['GET', 'POST'])
@@ -697,8 +697,23 @@ def delete_director(director_id):
         flash('Director successfully deleted')
         return redirect(url_for('home'))
     else:
-        flash('Cannot delete director that is assign to movie or series.')
+        flash('Cannot delete director that is assigned to movie or series.')
         return redirect(url_for('director_details', director_id=director_id))
+
+@app.route('/delete_actor/<actor_id>', methods=['GET', 'POST'])
+@login_required
+def delete_actor(actor_id):
+    actor = db.session.query(Actor).filter(Actor.actor_id == actor_id).first()
+    movie_characters = db.session.query(Movie_character).filter(Movie_character.actor_id == actor_id).first()
+    series_characters = db.session.query(Series_character).filter(Series_character.actor_id == actor_id).first()
+    if not (movie_characters or series_characters):
+        db.session.delete(actor)
+        db.session.commit()
+        flash('Actor successfully deleted')
+        return redirect(url_for('home'))
+    else:
+        flash('Cannot delete actor that is assigned to movie characters or series characters.')
+        return redirect(url_for('actor_details', actor_id=actor_id))
 
 @app.route('/delete_review/<object_type>/<object_id>', methods=['GET', 'POST'])
 @login_required
