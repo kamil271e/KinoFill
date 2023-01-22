@@ -20,7 +20,7 @@
                     <a href="{{url_for('viewer_change')}}" title="Edit data">
                         <h4><span class="fas fa-edit"></span> Edit data</h4>
                     </a>
-                    <a href="{{url_for('home')}}" title="Delete account">
+                    <a href="{{url_for('delete_viewer', viewer_id=viewer.viewer_id)}}" title="Delete account">
                         <h4><span class="fas fa-trash-alt"></span> Delete account</h4>
                     </a>
                 </div>

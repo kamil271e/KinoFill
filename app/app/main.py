@@ -778,6 +778,26 @@ def delete_journalist(journalist_id):
         flash('Cannot delete journalist that is assigned to reviews or news.')
         return redirect(url_for('journalist_details', journalist_id=journalist_id))
 
+@app.route('/delete_viewer/<viewer_id>', methods=['GET', 'POST'])
+@login_required
+def delete_viewer(viewer_id):
+    viewer = db.session.query(Viewer).filter(Viewer.viewer_id == viewer_id).first()
+    user = db.session.query(Users).filter(Users.user_id == viewer_id).first()
+    reviews = db.session.query(Review).filter(Review.author_type == 'w', Review.viewer_id == viewer_id).first()
+    review_ratings = db.session.query(ReviewRating).filter(ReviewRating.viewer_id == viewer_id).first()
+    if not (reviews or review_ratings):
+        db.session.delete(viewer)
+        db.session.delete(user)
+        db.session.commit()
+        flash('Viewer account successfully deleted')
+        return redirect(url_for('list_objects'))
+    else:
+        flash('Cannot delete viewer that is assigned to reviews or review ratings.')
+        if viewer.is_public == 't':
+            return redirect(url_for('viewer_details', viewer_id=viewer_id))
+        else:
+            return redirect(url_for('list_objects'))
+
 @app.route('/delete_review/<object_type>/<object_id>', methods=['GET', 'POST'])
 @login_required
 def delete_review(object_type, object_id):
@@ -997,6 +1017,8 @@ def like_action(review_id, action):
         for rev in all_reviews:
             reviews_sum += rev.viewers_rating
             reviews_num += 1
+        if reviews_num == 0:
+            reviews_num = 1
         review.viewers_rating = float(reviews_sum / reviews_num)*2+3
         db.session.commit()
     elif action == 'dislike':
@@ -1008,6 +1030,8 @@ def like_action(review_id, action):
         for rev in all_reviews:
             reviews_sum += rev.viewers_rating
             reviews_num += 1
+        if reviews_num == 0:
+            reviews_num = 1
         review.viewers_rating = float(reviews_sum / reviews_num)*2+3
         db.session.commit()
     elif action == 'unlike':
@@ -1019,6 +1043,8 @@ def like_action(review_id, action):
         for rev in all_reviews:
             reviews_sum += rev.viewers_rating
             reviews_num += 1
+        if reviews_num == 0:
+            reviews_num = 1
         review.viewers_rating = float(reviews_sum / reviews_num)*2+3
         db.session.commit()
     return redirect(request.referrer)
