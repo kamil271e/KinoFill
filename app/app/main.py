@@ -686,6 +686,8 @@ def edit_review(object_type, object_id):
                 for rev in all_reviews:
                     reviews_sum += rev.rate
                     reviews_num += 1
+                if reviews_num == 0:
+                    reviews_num = 1
                 avg_rev = float(reviews_sum/reviews_num)
                 if object_type == 'f':
                     movie.viewers_rating = avg_rev
@@ -855,6 +857,8 @@ def delete_review(object_type, object_id):
             for rev in all_reviews:
                 reviews_sum += rev.rate
                 reviews_num += 1
+            if reviews_num == 0:
+                reviews_num = 1
             avg_rev = float(reviews_sum / reviews_num)
             if object_type == 'f':
                 movie.viewers_rating = avg_rev
@@ -1119,6 +1123,8 @@ def add_review_series(reviewer_type, reviewer_id, object_id):
                 for rev in all_reviews:
                     reviews_sum += rev.rate
                     reviews_num += 1
+                if reviews_num == 0:
+                    reviews_num = 1
                 series.viewers_rating = float(reviews_sum/reviews_num)
                 db.session.commit()
 
@@ -1174,6 +1180,8 @@ def add_review_actor(reviewer_type, reviewer_id, object_id):
                 for rev in all_reviews:
                     reviews_sum += rev.rate
                     reviews_num += 1
+                if reviews_num == 0:
+                    reviews_num = 1
                 actor.viewers_rating = float(reviews_sum/reviews_num)
                 db.session.commit()
 
