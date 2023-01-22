@@ -361,12 +361,14 @@ def studio_details(studio_id=None):
         movies = db.session.query(Movie).filter(Movie.studio_id == studio_id)
         series = db.session.query(Series).filter(Series.studio_id == studio_id)
         actors = db.session.query(Actor).filter(Actor.studio_id == studio_id)
-        directors = db.session.query(Director) #.filter(Director.studio_id == studio_id)
+        directors = db.session.query(Director).filter(Director.studio_id == studio_id)
+        all_directors = db.session.query(Director)
     else:
         flash('This studio does not exists')
         return redirect(url_for("list_objects"))
     return render_template('studio_details.html', today=today, studio=studio, movies=movies,
-                           series=series, actors=actors, directors=directors, user=user)
+                           series=series, actors=actors, directors=directors, user=user,
+                           all_directors=all_directors)
 
 
 @app.route('/director_details/<director_id>')

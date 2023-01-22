@@ -67,7 +67,7 @@
                                 </td>
                                 <td>{{ movie.creation_year }}</td>
                                 <td>{{ movie.length }}</td>
-                                {% for d in directors %}
+                                {% for d in all_directors %}
                                     {% if d.director_id == movie.director_id %}
                                         <td>
                                             <a href="{{url_for('director_details', director_id=d.director_id)}}">{{ d.firstname }} {{ d.surname }}</a>
@@ -102,7 +102,7 @@
                                 </td>
                                 <td>{{ s.episodes }}</td>
                                 <td>{{ s.seasons }}</td>
-                                {% for d in directors %}
+                                {% for d in all_directors %}
                                     {% if d.director_id == s.director_id %}
                                         <td>
                                             <a href="{{url_for('director_details', director_id=d.director_id)}}">{{ d.firstname }} {{ d.surname }}</a>

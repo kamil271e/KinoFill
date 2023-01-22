@@ -19,7 +19,7 @@
         <h4>Studio: <a href="{{url_for('studio_details', studio_id=movie.studio_id)}}">{{ studio.name }}</a></h4>
         </br>
         <h3>Cast</h3>
-        <div class="tab-content" id="myTabContent">
+        <div class="tab-content" id="myTabContent_cast">
             <div class="tab-pane fade show active" id="cast" role="tabpanel">
                 {% if characters.count() > 0 %}
                     </br>
