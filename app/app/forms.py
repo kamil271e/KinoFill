@@ -71,7 +71,7 @@ class AddMovie(FlaskForm):
 
 
 class AddDirector(FlaskForm):
-    firstname = StringField("Fisrt name", validators=[DataRequired()])
+    firstname = StringField("First name", validators=[DataRequired()])
     surname = StringField("Surname", validators=[DataRequired()])
     birth_date = DateField("Birthdate",
                            validators=[DataRequired()])  # , format='%d.%m.%Y', validators=[DataRequired()])

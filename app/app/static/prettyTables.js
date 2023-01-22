@@ -201,5 +201,12 @@ $(document).ready(function () {
             {searchable: false, orderable: false}            
         ],
     });
+    $('#cast_table').DataTable({
+        columns: [
+            null,
+            null,
+            {searchable: false}
+        ],
+    });
 });
 

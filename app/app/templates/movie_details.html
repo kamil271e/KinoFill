@@ -19,7 +19,40 @@
         <h4>Director: <a href="{{url_for('director_details', director_id=movie.director_id)}}">{{ director.firstname }} {{ director.surname }}</h4></a>
         <h4>Studio: <a href="{{url_for('studio_details', studio_id=movie.studio_id)}}">{{ studio.name }}</a></h4>
         </br>
-
+        <h3>Cast</h3>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="cast" role="tabpanel">
+                {% if characters.count() > 0 %}
+                    </br>
+                    <table id="cast_table", class="table table-hover">
+                        <thead class="table-info">
+                            <th>Character</th>
+                            <th>Actor</th>
+                            <th>Viewers rating</th>
+                        </thead>
+                        <tbody>
+                            {% for character in characters %}
+                            <tr>
+                                {% for actor in actors %}
+                                    {% if actor.actor_id == character.actor_id %}
+                                        <td>{{ character.character_name }}</td>
+                                        <td>
+                                            <a href="{{url_for('actor_details', actor_id=actor.actor_id)}}">{{ actor.firstname }} {{ actor.surname }}</a>
+                                        </td>
+                                        <td>{{ actor.viewers_rating }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        <script src="{{url_for('static', filename='prettyTables.js')}}"></script>   
+                    </table>
+                {% else %}
+                    We don't have it in our database
+                {% endif %}
+            </div>
+        </div>
+        <br>
         {% if v_reviews.count() > 0 or j_reviews.count() > 0 %}
             <h3>Reviews</h3>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -85,6 +118,7 @@
                             <th>Content</th>
                             <th>Posting date</th>
                             <th>Viewers rating</th>
+                            {% if current_user.user_type == 's' %}<th></th>{% endif %}
                             {% if current_user.user_type == 'w' %}
                                 <th style="width: 10%">Rate review</th>
                             {% elif current_user.user_type == 'd' %}
@@ -143,6 +177,8 @@
                                             {% else %}
                                                 <td></td>
                                             {% endif %}
+                                        {% else %}
+                                            <td></td>
                                         {% endif %}
                                     {% endif %}
                                 {% endfor %}

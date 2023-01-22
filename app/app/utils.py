@@ -47,10 +47,28 @@ def initGenres():
     db.session.commit()
 
 def convertName(name): # convert name to have first big letter and small as the rest
-    converted = [name[0].upper()]
-    for char in name[1:]:
-        converted.append(char.lower())
-    return ''.join(converted)
+    dash_fragments = name.split('-')
+    space_fragments = name.split(' ')
+    converted = ""
+    if len(dash_fragments) > 1:
+        for fragment in dash_fragments:
+            c = [fragment[0].upper()]
+            for char in fragment[1:]:
+                c.append(char.lower())
+            converted += "".join(c)+'-'
+        return converted[:-1]
+    if len(space_fragments) > 1:
+        for fragment in space_fragments:
+            c = [fragment[0].upper()]
+            for char in fragment[1:]:
+                c.append(char.lower())
+            converted += "".join(c)+' '
+        return converted[:-1]
+    if len(space_fragments) == 1 and len(dash_fragments) == 1:
+        c = [name[0].upper()]
+        for char in name[1:]:
+            c.append(char.lower())
+        return ''.join(c)
 
 def nameHasNumbers(name): # check if name contains any numbers
     return any(char.isdigit() for char in name)
@@ -61,6 +79,6 @@ def nameInvalid(name):
     # also with spaces e.g John Smith-Jackson
     if nameHasNumbers(name):
         return True
-    if re.match("^[a-zA-Z\s]+([-][a-zA-Z\s]+)*$", name): 
+    if re.match("^[a-zA-ZœęßóąśðæŋəłżźćńµΩĘÓĄŚÐÆŊŁŻŹĆŃ\s]+([-][a-zA-ZœęßóąśðæŋəłżźćńµΩĘÓĄŚÐÆŊŁŻŹĆŃ\s]+)*$", name): 
         return False
     return True

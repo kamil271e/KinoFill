@@ -340,12 +340,16 @@ def movie_details(movie_id=None):
         j_reviews = db.session.query(Review).filter(Review.movie_id == movie_id, Review.author_type == 'd')
         viewers = db.session.query(Viewer)
         journalists = db.session.query(Journalist)
+        characters = db.session.query(Movie_character).filter(Movie_character.movie_id == movie_id)
+        actors=[]
+        for character in characters:
+            actors.append(db.session.query(Actor).filter(Actor.actor_id == character.actor_id).first())
     else:
         flash("This movie does not exists")
         return redirect(url_for("list_objects"))
     return render_template('movie_details.html', today=today, movie=movie, genres=genres_str,
                            director=director, studio=studio, v_reviews=v_reviews, j_reviews=j_reviews,
-                           viewers=viewers, journalists=journalists)
+                           viewers=viewers, journalists=journalists, characters=characters, actors=actors)
 
 
 @app.route('/studio_details/<studio_id>')
@@ -678,11 +682,15 @@ def series_details(series_id=None):
         j_reviews = db.session.query(Review).filter(Review.series_id == series_id, Review.author_type == 'd')
         viewers = db.session.query(Viewer)
         journalists = db.session.query(Journalist)
+        characters = db.session.query(Series_character).filter(Series_character.series_id == series_id)
+        actors=[]
+        for character in characters:
+            actors.append(db.session.query(Actor).filter(Actor.actor_id == character.actor_id).first())
     else:
         flash("This series does not exists")
         return redirect(url_for("list_objects"))
     return render_template('series_details.html', today=today, series=series, studio=studio, director=director, genres=genres_str,
-                        v_reviews=v_reviews, j_reviews=j_reviews, viewers=viewers, journalists=journalists)
+                        v_reviews=v_reviews, j_reviews=j_reviews, viewers=viewers, journalists=journalists, characters=characters, actors=actors)
 
 @app.route('/like/<review_id>/<action>')
 @login_required

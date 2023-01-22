@@ -158,6 +158,7 @@
                             <th>Content</th>
                             <th>Posting date</th>
                             <th>Viewers rating</th>
+                            {% if current_user.user_type == 's' %}<th></th>{% endif %}
                             {% if current_user.user_type == 'w' %}
                                 <th style="width: 10%">Rate review</th>
                             {% elif current_user.user_type == 'd' %}
@@ -214,6 +215,8 @@
                                             {% else %}
                                                 <td></td>
                                             {% endif %}
+                                        {% else %}
+                                            <td></td>
                                         {% endif %}
                                     {% endif %}
                                 {% endfor %}
