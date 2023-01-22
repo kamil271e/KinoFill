@@ -17,7 +17,9 @@
         </small>
     {% endif %}
     {% if news.journalist_id %}
-        <small>Written by {{ journalist.name }} on {{ news.publication_date }}</small>
+        <small>
+            Written by <a href = "{{url_for('journalist_details', journalist_id=journalist.journalist_id)}}">{{ journalist.name }}</a>on {{ news.publication_date }}
+        </small>
     {% endif %}
     <hr>
     <div>

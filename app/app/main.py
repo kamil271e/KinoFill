@@ -71,21 +71,10 @@ def register():
                 form.name.data = f"'{form.name.data}'"
 
             if existing_name == "":
-                command = f"CALL filmweb.newuser(" \
-                          f"'{form.login.data}', " \
-                          f"'{hashed_password}', " \
-                          f"'{today}', " \
-                          f"'{form.user_desc.data}', " \
-                          f"'t', " \
-                          f"'{role}', " \
-                          f"{form.name.data}, " \
-                          f"NULL, " \
-                          f"NULL, " \
-                          f"NULL, " \
-                          f"NULL, " \
-                          f"NULL, " \
-                          f"'{is_public}'" \
-                          f");"
+                # calling procedure more safely
+                command = text("CALL filmweb.newuser(:login, :password, :join_date, :user_desc, :active, :role, :name, :country, :creation_date, :firstname, :surname, :birthdate, :is_public);")
+                command = command.bindparams(login=form.login.data, password=hashed_password, join_date=today, user_desc=form.user_desc.data, active='t',
+                                role=role, name=form.name.data.strip("'"), country=None, creation_date=None, firstname=None, surname=None, birthdate=None, is_public=is_public)
                 print(command)
                 db.session.execute(command)
                 db.session.commit()
@@ -347,16 +336,20 @@ def movie_details(movie_id=None):
         for genre in genres:
             genres_str += ', ' + genre.genre
         genres_str = genres_str[2:]
-        v_reviews = db.session.query(Review).filter(Review.movie_id == movie.movie_id, Review.author_type == 'w')
-        j_reviews = db.session.query(Review).filter(Review.movie_id == movie.movie_id, Review.author_type == 'd')
+        v_reviews = db.session.query(Review).filter(Review.movie_id == movie_id, Review.author_type == 'w')
+        j_reviews = db.session.query(Review).filter(Review.movie_id == movie_id, Review.author_type == 'd')
         viewers = db.session.query(Viewer)
         journalists = db.session.query(Journalist)
+        characters = db.session.query(Movie_character).filter(Movie_character.movie_id == movie_id)
+        actors=[]
+        for character in characters:
+            actors.append(db.session.query(Actor).filter(Actor.actor_id == character.actor_id).first())
     else:
         flash("This movie does not exists")
         return redirect(url_for("list_objects"))
     return render_template('movie_details.html', today=today, movie=movie, genres=genres_str,
                            director=director, studio=studio, v_reviews=v_reviews, j_reviews=j_reviews,
-                           viewers=viewers, journalists=journalists)
+                           viewers=viewers, journalists=journalists, characters=characters, actors=actors)
 
 
 @app.route('/studio_details/<studio_id>')
@@ -364,16 +357,16 @@ def movie_details(movie_id=None):
 def studio_details(studio_id=None):
     studio = db.session.query(Studio).filter(Studio.studio_id == studio_id).first()
     if studio:
+        user = db.session.query(Users).filter(Users.user_id == studio_id).first()
         movies = db.session.query(Movie).filter(Movie.studio_id == studio_id)
         series = db.session.query(Series).filter(Series.studio_id == studio_id)
         actors = db.session.query(Actor).filter(Actor.studio_id == studio_id)
         directors = db.session.query(Director) #.filter(Director.studio_id == studio_id)
-        int_sid = int(studio_id)
     else:
         flash('This studio does not exists')
         return redirect(url_for("list_objects"))
     return render_template('studio_details.html', today=today, studio=studio, movies=movies,
-                           series=series, actors=actors, directors=directors, int_sid=int_sid)
+                           series=series, actors=actors, directors=directors, user=user)
 
 
 @app.route('/director_details/<director_id>')
@@ -656,22 +649,49 @@ def edit_news(news_id):
 @app.route('/journalist_details/<journalist_id>')
 def journalist_details(journalist_id=None):
     journalist = db.session.query(Journalist).filter(Journalist.journalist_id == journalist_id).first()
-    if not journalist:
+    if journalist:
+        reviews = db.session.query(Review).filter(Review.author_type == 'd', Review.journalist_id == journalist_id)
+        user = db.session.query(Users).filter(Users.user_id == journalist_id).first()
+        movies = []
+        series = []
+        actors = []
+        for review in reviews:
+            if review.review_object == 'f':
+                movies.append(db.session.query(Movie).filter(Movie.movie_id == review.movie_id).first())
+            elif review.review_object == 's':
+                series.append(db.session.query(Series).filter(Series.series_id == review.series_id).first())
+            elif review.review_object == 'a':
+                actors.append(db.session.query(Actor).filter(Actor.actor_id == review.actor_id).first()) 
+    else:
         flash('This journalist does not exists')
         return redirect(url_for('home'))
-    return render_template('journalist_details.html', today=today, journalist=journalist)
+    return render_template('journalist_details.html', today=today, journalist=journalist, reviews=reviews, 
+                        movies=movies, series=series, actors=actors, user=user)
 
 @app.route('/series_details/<series_id>')
 def series_details(series_id=None):
     series = db.session.query(Series).filter(Series.series_id == series_id).first()
-    studio = db.session.query(Studio).filter(Studio.studio_id == series.studio_id).first()
-    director = db.session.query(Director).filter(Director.director_id == series.director_id).first()
-    genres = db.session.query(Series_genres).filter(Series_genres.series_id == series_id)
-    genres_str =''
-    for genre in genres:
-        genres_str += ', ' + genre.genre
-    genres_str = genres_str[2:]
-    return render_template('series_details.html', today=today, series=series, studio=studio, director=director, genres=genres_str)
+    if series:
+        studio = db.session.query(Studio).filter(Studio.studio_id == series.studio_id).first()
+        director = db.session.query(Director).filter(Director.director_id == series.director_id).first()
+        genres = db.session.query(Series_genres).filter(Series_genres.series_id == series_id)
+        genres_str =''
+        for genre in genres:
+            genres_str += ', ' + genre.genre
+        genres_str = genres_str[2:]
+        v_reviews = db.session.query(Review).filter(Review.series_id == series_id, Review.author_type == 'w')
+        j_reviews = db.session.query(Review).filter(Review.series_id == series_id, Review.author_type == 'd')
+        viewers = db.session.query(Viewer)
+        journalists = db.session.query(Journalist)
+        characters = db.session.query(Series_character).filter(Series_character.series_id == series_id)
+        actors=[]
+        for character in characters:
+            actors.append(db.session.query(Actor).filter(Actor.actor_id == character.actor_id).first())
+    else:
+        flash("This series does not exists")
+        return redirect(url_for("list_objects"))
+    return render_template('series_details.html', today=today, series=series, studio=studio, director=director, genres=genres_str,
+                        v_reviews=v_reviews, j_reviews=j_reviews, viewers=viewers, journalists=journalists, characters=characters, actors=actors)
 
 @app.route('/like/<review_id>/<action>')
 @login_required
@@ -687,6 +707,144 @@ def like_action(review_id, action):
         review.unlike_post(current_user)
         db.session.commit()
     return redirect(request.referrer)
+
+@app.route('/actor_details/<actor_id>')
+def actor_details(actor_id=None):
+    actor = db.session.query(Actor).filter(Actor.actor_id == actor_id).first()
+    if actor:
+        studio = db.session.query(Studio).filter(Studio.studio_id == actor.studio_id).first()
+        movie_characters = db.session.query(Movie_character).filter(Movie_character.actor_id == actor_id)
+        series_characters = db.session.query(Series_character).filter(Series_character.actor_id == actor_id)
+        movies = []
+        for character in movie_characters:
+            movies.append(db.session.query(Movie).filter(Movie.movie_id == character.movie_id).first())
+        series = []
+        for character in series_characters:
+            series.append(db.session.query(Series).filter(Series.series_id == character.series_id).first())
+        v_reviews = db.session.query(Review).filter(Review.actor_id == actor_id, Review.author_type == 'w')
+        j_reviews = db.session.query(Review).filter(Review.actor_id == actor_id, Review.author_type == 'd')
+        viewers = db.session.query(Viewer)
+        journalists = db.session.query(Journalist)
+    else:
+        flash("This actor does not exists")
+        return redirect(url_for("list_objects"))
+    return render_template('actor_details.html', today=today, studio=studio, actor=actor, movies=movies, series=series,
+        movie_characters=movie_characters, series_characters=series_characters, v_reviews=v_reviews, j_reviews=j_reviews,
+        viewers=viewers, journalists=journalists)
+
+@app.route('/add_review_series/<reviewer_type>/<reviewer_id>/<object_id>', methods=['GET', 'POST'])
+@login_required
+def add_review_series(reviewer_type, reviewer_id, object_id):
+    series = db.session.query(Series).filter(Series.series_id == object_id).first()
+    if series is None:
+        flash("This series does not exists")
+        return redirect(url_for("list_objects"))
+    else:
+        review = Review(author_type=reviewer_type,
+                        review_object='s',
+                        series_id=series.series_id,
+                        posting_date=today)
+
+        if reviewer_type == 'w':
+            review.viewer_id = reviewer_id
+        elif reviewer_type == 'd':
+            review.journalist_id = reviewer_id
+        else:
+            flash('Review can be added only by viewer and journalist')
+            return redirect(url_for("list_objects"))
+
+        review_db = db.session.query(Review).filter(Review.author_type == review.author_type,
+                                                    Review.viewer_id == review.viewer_id,
+                                                    Review.journalist_id == review.journalist_id,
+                                                    Review.movie_id == review.movie_id,
+                                                    Review.series_id == review.series_id,
+                                                    Review.actor_id == review.actor_id).first()
+        if review_db:
+            # TODO: redirect user to edit review page
+            flash('This user has already posted review to this series')
+            return redirect(url_for("edit_review", object_type='s', object_id=series.series_id))
+        else:
+            form = AddReviewSeries()
+            if form.validate_on_submit():
+                review.rate = form.rate.data
+                review.content = form.content.data
+
+                db.session.add(review)
+                db.session.commit()
+                flash("Series review successfully added")
+                return redirect(url_for("series_details", series_id=series.series_id))
+
+    return render_template('add_review_series.html', today=today, form=form, series=series)
+
+@app.route('/add_review_actor/<reviewer_type>/<reviewer_id>/<object_id>', methods=['GET', 'POST'])
+@login_required
+def add_review_actor(reviewer_type, reviewer_id, object_id):
+    actor = db.session.query(Actor).filter(Actor.actor_id == object_id).first()
+    if actor is None:
+        flash("This actor does not exists")
+        return redirect(url_for("list_objects"))
+    else:
+        review = Review(author_type=reviewer_type,
+                        review_object='a',
+                        actor_id=actor.actor_id,
+                        posting_date=today)
+
+        if reviewer_type == 'w':
+            review.viewer_id = reviewer_id
+        elif reviewer_type == 'd':
+            review.journalist_id = reviewer_id
+        else:
+            flash('Review can be added only by viewer and journalist')
+            return redirect(url_for("list_objects"))
+
+        review_db = db.session.query(Review).filter(Review.author_type == review.author_type,
+                                                    Review.viewer_id == review.viewer_id,
+                                                    Review.journalist_id == review.journalist_id,
+                                                    Review.movie_id == review.movie_id,
+                                                    Review.series_id == review.series_id,
+                                                    Review.actor_id == review.actor_id).first()
+        if review_db:
+            # TODO: redirect user to edit review page
+            flash('This user has already posted review to this actor')
+            return redirect(url_for("edit_review", object_type='a', object_id=actor.actor_id))
+        else:
+            form = AddReviewActor()
+            if form.validate_on_submit():
+                review.rate = form.rate.data
+                review.content = form.content.data
+
+                db.session.add(review)
+                db.session.commit()
+                flash("Actor review successfully added")
+                return redirect(url_for("actor_details", actor_id=actor.actor_id))
+
+    return render_template('add_review_actor.html', today=today, form=form, actor=actor)
+
+@app.route('/viewer_details/<viewer_id>')
+@login_required
+def viewer_details(viewer_id=None):
+    viewer = db.session.query(Viewer).filter(Viewer.viewer_id == viewer_id).first()
+    if viewer.is_public == 'f':
+        flash("Only public users have access to this")
+        return redirect(url_for('home'))
+    if viewer:
+        reviews = db.session.query(Review).filter(Review.author_type == 'w', Review.viewer_id == viewer_id)
+        user = db.session.query(Users).filter(Users.user_id == viewer_id).first()
+        movies = []
+        series = []
+        actors = []
+        for review in reviews:
+            if review.review_object == 'f':
+                movies.append(db.session.query(Movie).filter(Movie.movie_id == review.movie_id).first())
+            elif review.review_object == 's':
+                series.append(db.session.query(Series).filter(Series.series_id == review.series_id).first())
+            elif review.review_object == 'a':
+                actors.append(db.session.query(Actor).filter(Actor.actor_id == review.actor_id).first()) 
+    else:
+        flash('This viewer does not exists')
+        return redirect(url_for("list_objects"))
+    return render_template('viewer_details.html', today=today, movies=movies, series=series, actors=actors, reviews=reviews, viewer=viewer, user=user)
+
 
 
 if __name__ == '__main__':

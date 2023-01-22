@@ -26,6 +26,9 @@ class RegisterForm(FlaskForm):
                 # self.name.errors.append("Nazwa uzytkownika powinna mieć od 5 do 20 znaków")
                 flash("Username should have between 5 and 20 characters")
                 return False
+        if len(self.user_desc.data) > 200:
+            flash("User description should not exceed 200 characters")
+            return False
         return True
 
 
@@ -71,7 +74,7 @@ class AddMovie(FlaskForm):
 
 
 class AddDirector(FlaskForm):
-    firstname = StringField("Fisrt name", validators=[DataRequired()])
+    firstname = StringField("First name", validators=[DataRequired()])
     surname = StringField("Surname", validators=[DataRequired()])
     birth_date = DateField("Birthdate",
                            validators=[DataRequired()])  # , format='%d.%m.%Y', validators=[DataRequired()])
@@ -217,6 +220,9 @@ class AddNews(FlaskForm):
 
     def validate(self):
         self.content.data = self.content.data.strip()
+        if len(self.content.data) > 2500:
+            flash("News shouldn't be longer than 2500 characters")
+            return False
         return True
 
 class EditNews(FlaskForm):
@@ -226,6 +232,9 @@ class EditNews(FlaskForm):
     
     def validate(self):
         self.content.data = self.content.data.strip()
+        if len(self.content.data) > 2500:
+            flash("News shouldn't be longer than 2500 characters")
+            return False
         return True
 
 class AddReview(FlaskForm):
@@ -239,11 +248,21 @@ class AddReview(FlaskForm):
 
 class AddReviewMovie(FlaskForm):
     rate = SelectField("Rate", choices=["1", "2", "3", "4", "5"], default="3")
-    content = StringField("Content (Optional)", widget=TextArea())
+    content = StringField("Content (Optional)", widget=TextArea(), validators=[Length(max=30)])
     submit = SubmitField("Add Review")
 
 
 class EditReview(FlaskForm):
     rate = SelectField("Rate", choices=["1", "2", "3", "4", "5"])
-    content = StringField("Content (Optional)", widget=TextArea())
+    content = StringField("Content (Optional)", widget=TextArea(), validators=[Length(max=30)])
     submit = SubmitField("Edit Review")
+
+
+class AddReviewSeries(AddReviewMovie):
+    def __init__(self):
+        super().__init__()
+
+
+class AddReviewActor(AddReviewMovie):
+    def __init__(self):
+        super().__init__()

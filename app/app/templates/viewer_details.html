@@ -11,17 +11,9 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        <h1 class="lh-lg display-5 text-center">{{ journalist.nickname }}</h1>
+        <h1 class="lh-lg display-5 text-center">{{ viewer.nickname }}</h1>
         <small class="description">{{ user.description }}</small>
         <br><br><br>
-        <div class="d-flex justify-content-between">
-            <div>
-                <h4>First name: {{ journalist.firstname }}</h4>
-                <h4>Surname: {{ journalist.surname }}</h4>
-                <h4>Birthdate: {{ journalist.birth_date }}</h4>
-            </div>
-        </div>
-        <br>
         <h3>Reviews</h3>
         <br>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -39,13 +31,12 @@
             <div class="tab-pane fade show active" id="movies" role="tabpanel" aria-labelledby="movies-tab">
                 {% if movies|length > 0 %}
                     </br>
-                    <table class="table table-hover" id="journalist_review_movies_table">
+                    <table class="table table-hover" id="user_review_movies_table">
                         <thead class="table-info">
                             <th>Name</th>
                             <th>Rate</th>
                             <th>Content</th>
                             <th>Posting date</th>
-                            <th>Viewers rating</th>
                             <th></th>
                         </thead>
                         <tbody>
@@ -59,8 +50,7 @@
                                         <td>{{ review.rate }}</td>
                                         <td>{{ review.content }}</td>
                                         <td>{{ review.posting_date }}</td>
-                                        <td>{{ review.viewers_rating }}</td>
-                                        {% if current_user.user_id == journalist.journalist_id %}
+                                        {% if current_user.user_id == viewer.viewer_id %}
                                             <td><div class="d-flex flex-row">
                                                 <a href="{{url_for('edit_review', object_type='f', object_id=movie.movie_id)}}"
                                                     title="Edit review" style="margin-right: 10px">
@@ -70,31 +60,6 @@
                                                     title="Delete review">
                                                     <h5><span class="fas fa-trash-alt"></span></h5>
                                                 </a>
-                                            </div></td>
-                                        {% elif current_user.user_type == 'w' %}
-                                            <td><div class="d-flex flex-row">
-                                            {% if not review.has_liked_post(current_user) and not review.has_disliked_post(current_user) %}
-                                                <a href="{{url_for('like_action', review_id=review.review_id, action='like')}}"
-                                                   title="Like" style="margin-right: 10px">
-                                                    <h5><span class="fa-solid fa-thumbs-up"></span></h5>
-                                                </a>
-                                                <a href="{{url_for('like_action', review_id=review.review_id, action='dislike')}}"
-                                                   title="Dislike" style="margin-right: 10px">
-                                                    <h5><span class="fa-solid fa-thumbs-down"></span></h5>
-                                                </a>
-                                            {% elif review.has_liked_post(current_user) %}
-                                                <a href="{{url_for('like_action', review_id=review.review_id, action='unlike')}}"
-                                                   title="Remove like" style="margin-right: 10px; color: green">
-                                                    <h5><span class="fa-solid fa-thumbs-up"></span></h5>
-                                                </a>
-                                                <h5><span class="fa-solid fa-thumbs-down"></span></h5>
-                                            {% elif review.has_disliked_post(current_user) %}
-                                                <h5><span class="fa-solid fa-thumbs-up btn-secondary"></span></h5>
-                                                <a href="{{url_for('like_action', review_id=review.review_id, action='unlike')}}"
-                                                   title="Remove dislike" style="margin-left: 10px; color: red">
-                                                    <h5><span class="fa-solid fa-thumbs-down btn-danger"></span></h5>
-                                                </a>
-                                            {% endif %}
                                             </div></td>
                                         {% else %}
                                             <td></td>
@@ -112,13 +77,12 @@
             <div class="tab-pane fade" id="series" role="tabpanel" aria-labelledby="series-tab">
                 {% if series|length > 0 %}
                     </br>
-                    <table class="table table-hover" id="journalist_review_series_table">
+                    <table class="table table-hover" id="user_review_series_table">
                         <thead class="table-info">
                             <th>Name</th>
                             <th>Rate</th>
                             <th>Content</th>
-                            <th>Date</th>
-                            <th>Viewers rating</th>
+                            <th>Posting date</th>
                             <th></th>
                         </thead>
                         <tbody>
@@ -132,8 +96,7 @@
                                         <td>{{ review.rate }}</td>
                                         <td>{{ review.content }}</td>
                                         <td>{{ review.posting_date }}</td>
-                                        <td>{{ review.viewers_rating }}</td>
-                                        {% if current_user.user_id == journalist.journalist_id %}
+                                        {% if current_user.user_id == viewer.viewer_id %}
                                             <td><div class="d-flex flex-row">
                                                 <a href="{{url_for('edit_review', object_type='s', object_id=s.series_id)}}"
                                                     title="Edit review" style="margin-right: 10px">
@@ -143,31 +106,6 @@
                                                     title="Delete review">
                                                     <h5><span class="fas fa-trash-alt"></span></h5>
                                                 </a>
-                                            </div></td>
-                                            {% elif current_user.user_type == 'w' %}
-                                            <td><div class="d-flex flex-row">
-                                            {% if not review.has_liked_post(current_user) and not review.has_disliked_post(current_user) %}
-                                                <a href="{{url_for('like_action', review_id=review.review_id, action='like')}}"
-                                                   title="Like" style="margin-right: 10px">
-                                                    <h5><span class="fa-solid fa-thumbs-up"></span></h5>
-                                                </a>
-                                                <a href="{{url_for('like_action', review_id=review.review_id, action='dislike')}}"
-                                                   title="Dislike" style="margin-right: 10px">
-                                                    <h5><span class="fa-solid fa-thumbs-down"></span></h5>
-                                                </a>
-                                            {% elif review.has_liked_post(current_user) %}
-                                                <a href="{{url_for('like_action', review_id=review.review_id, action='unlike')}}"
-                                                   title="Remove like" style="margin-right: 10px; color: green">
-                                                    <h5><span class="fa-solid fa-thumbs-up"></span></h5>
-                                                </a>
-                                                <h5><span class="fa-solid fa-thumbs-down"></span></h5>
-                                            {% elif review.has_disliked_post(current_user) %}
-                                                <h5><span class="fa-solid fa-thumbs-up btn-secondary"></span></h5>
-                                                <a href="{{url_for('like_action', review_id=review.review_id, action='unlike')}}"
-                                                   title="Remove dislike" style="margin-left: 10px; color: red">
-                                                    <h5><span class="fa-solid fa-thumbs-down btn-danger"></span></h5>
-                                                </a>
-                                            {% endif %}
                                             </div></td>
                                         {% else %}
                                             <td></td>
@@ -185,13 +123,12 @@
             <div class="tab-pane fade" id="actors" role="tabpanel" aria-labelledby="actors-tab">
                 {% if actors|length > 0 %}
                     </br>
-                    <table class="table table-hover" id="journalist_review_actors_table">
+                    <table class="table table-hover" id="user_review_actors_table">
                         <thead class="table-info">
                             <th>Name</th>
                             <th>Rate</th>
                             <th>Content</th>
-                            <th>Publication date</th>
-                            <th>Viewers rating</th>
+                            <th>Posting date</th>
                             <th></th>
                         </thead>
                         <tbody>
@@ -205,42 +142,16 @@
                                         <td>{{ review.rate }}</td>
                                         <td>{{ review.content }}</td>
                                         <td>{{ review.posting_date }}</td>
-                                        <td>{{ review.viewers_rating }}</td>
-                                        {% if current_user.user_id == journalist.journalist_id %}
+                                        {% if current_user.user_id == viewer.viewer_id %}
                                             <td><div class="d-flex flex-row">
-                                                <a href="{{url_for('edit_review', object_type='a', object_id=actor.actors_id)}}"
+                                                <a href="{{url_for('edit_review', object_type='a', object_id=actor.actor_id)}}"
                                                     title="Edit review" style="margin-right: 10px">
                                                     <h5><span class="fas fa-edit"></span></h5>
                                                 </a>
-                                                <a href="{{url_for('delete_review', object_type='a', object_id=actor.actors_id)}}"
+                                                <a href="{{url_for('delete_review', object_type='a', object_id=actor.actor_id)}}"
                                                     title="Delete review">
                                                     <h5><span class="fas fa-trash-alt"></span></h5>
                                                 </a>
-                                            </div></td>
-                                            {% elif current_user.user_type == 'w' %}
-                                            <td><div class="d-flex flex-row">
-                                            {% if not review.has_liked_post(current_user) and not review.has_disliked_post(current_user) %}
-                                                <a href="{{url_for('like_action', review_id=review.review_id, action='like')}}"
-                                                   title="Like" style="margin-right: 10px">
-                                                    <h5><span class="fa-solid fa-thumbs-up"></span></h5>
-                                                </a>
-                                                <a href="{{url_for('like_action', review_id=review.review_id, action='dislike')}}"
-                                                   title="Dislike" style="margin-right: 10px">
-                                                    <h5><span class="fa-solid fa-thumbs-down"></span></h5>
-                                                </a>
-                                            {% elif review.has_liked_post(current_user) %}
-                                                <a href="{{url_for('like_action', review_id=review.review_id, action='unlike')}}"
-                                                   title="Remove like" style="margin-right: 10px; color: green">
-                                                    <h5><span class="fa-solid fa-thumbs-up"></span></h5>
-                                                </a>
-                                                <h5><span class="fa-solid fa-thumbs-down"></span></h5>
-                                            {% elif review.has_disliked_post(current_user) %}
-                                                <h5><span class="fa-solid fa-thumbs-up btn-secondary"></span></h5>
-                                                <a href="{{url_for('like_action', review_id=review.review_id, action='unlike')}}"
-                                                   title="Remove dislike" style="margin-left: 10px; color: red">
-                                                    <h5><span class="fa-solid fa-thumbs-down btn-danger"></span></h5>
-                                                </a>
-                                            {% endif %}
                                             </div></td>
                                         {% else %}
                                             <td></td>
