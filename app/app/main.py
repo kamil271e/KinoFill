@@ -29,7 +29,11 @@ def login():
                 elif user.user_type == 'd':
                     return redirect(url_for("journalist_details", journalist_id=user.user_id))
                 else:
-                    return redirect(url_for("user"))
+                    viewer = db.session.query(Viewer).filter(Viewer.viewer_id == user.user_id).first()
+                    if viewer.is_public == 't':
+                        return redirect(url_for("viewer_details", viewer_id=user.user_id))
+                    else:
+                        return redirect(url_for("list_objects"))
             else:
                 flash("Incorrect password")
         else:
