@@ -419,6 +419,7 @@ def studio_change():
         return redirect(url_for("list_objects"))
     return render_template('studio_change.html', today=today, form=form, studio=studio)
 
+
 @app.route('/journalist_change', methods=['GET', 'POST'])
 @login_required
 def journalist_change():
@@ -443,6 +444,7 @@ def journalist_change():
         flash('This journalist does not exists')
         return redirect(url_for("list_objects"))
     return render_template('journalist_change.html', today=today, form=form, journalist=journalist, user=user)
+
 
 @app.route('/viewer_change', methods=['GET', 'POST'])
 @login_required
@@ -498,6 +500,7 @@ def movie_change(movie_id=None):
         return redirect(url_for("list_objects"))
     return render_template('movie_change.html', today=today, form=form, movie=movie)
 
+
 @app.route('/series_change/<series_id>', methods=['GET', 'POST'])
 @login_required
 def series_change(series_id=None):
@@ -519,6 +522,7 @@ def series_change(series_id=None):
         flash('This series does not exists')
         return redirect(url_for("list_objects"))
     return render_template('series_change.html', today=today, form=form, series=series)
+
 
 @app.route('/actor_change/<actor_id>', methods=['GET', 'POST'])
 @login_required
@@ -543,6 +547,7 @@ def actor_change(actor_id=None):
         return redirect(url_for("list_objects"))
     return render_template('actor_change.html', today=today, form=form, actor=actor)
 
+
 @app.route('/director_change/<director_id>', methods=['GET', 'POST'])
 @login_required
 def director_change(director_id=None):
@@ -565,6 +570,7 @@ def director_change(director_id=None):
         flash('This director does not exists')
         return redirect(url_for("list_objects"))
     return render_template('director_change.html', today=today, form=form, director=director)
+
 
 @app.route('/add_review_movie/<reviewer_type>/<reviewer_id>/<object_id>', methods=['GET', 'POST'])
 @login_required
@@ -714,6 +720,18 @@ def delete_actor(actor_id):
     else:
         flash('Cannot delete actor that is assigned to movie characters or series characters.')
         return redirect(url_for('actor_details', actor_id=actor_id))
+
+@app.route('/delete_movie/<movie_id>')
+@login_required
+def delete_movie(movie_id):
+    flash('Cannot delete movie that is assigned to studio')
+    return redirect(url_for('movie_details', movie_id=movie_id))
+
+@app.route('/delete_series/<series_id>')
+@login_required
+def delete_series(series_id):
+    flash('Cannot delete series that is assigned to studio')
+    return redirect(url_for('series_details', series_id=series_id))
 
 @app.route('/delete_review/<object_type>/<object_id>', methods=['GET', 'POST'])
 @login_required
