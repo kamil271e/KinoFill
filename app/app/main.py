@@ -169,6 +169,7 @@ def add_movie():
     form = AddMovie(choose_studio=choose_studio)
     form.studio.choices = getStudios()
     form.director.choices = getDirectors()
+
     if form.validate_on_submit():
         if form.redirect_add_director.data:
             return redirect(url_for("add_director"))
@@ -407,7 +408,6 @@ def studio_change():
             if existing_studio and form.name.data != studio.name:
                 flash("Studio name already exists. Please enter different name.")
             else:
-                print(form.name.data)
                 studio.name = form.name.data
                 studio.country = form.country.data
                 studio.creation_date = form.creation_date.data
@@ -419,6 +419,152 @@ def studio_change():
         return redirect(url_for("list_objects"))
     return render_template('studio_change.html', today=today, form=form, studio=studio)
 
+@app.route('/journalist_change', methods=['GET', 'POST'])
+@login_required
+def journalist_change():
+    journalist = db.session.query(Journalist).filter(Journalist.journalist_id == current_user.user_id).first()
+    user = db.session.query(Users).filter(Users.user_id == current_user.user_id).first()
+    if journalist:
+        form = ChangeJournalist(nickname=journalist.nickname, firstname=journalist.firstname, surname=journalist.surname, birth_date=journalist.birth_date, user_desc=user.description)
+        if form.validate_on_submit():
+            existing_journalist = db.session.query(Journalist).filter(Journalist.nickname == form.nickname.data).first()
+            if existing_journalist and form.nickname.data != journalist.nickname:
+                flash("Journalist nickname already exists. Please enter different nickname.")
+            else:
+                journalist.nickname = form.nickname.data
+                journalist.firstname = form.firstname.data
+                journalist.surname = form.surname.data
+                journalist.birth_date = form.birth_date.data
+                user.description = form.user_desc.data
+                db.session.commit()
+                flash("Journalist information updated")
+                return redirect(url_for("journalist_details", journalist_id=journalist.journalist_id))
+    else:
+        flash('This journalist does not exists')
+        return redirect(url_for("list_objects"))
+    return render_template('journalist_change.html', today=today, form=form, journalist=journalist, user=user)
+
+@app.route('/viewer_change', methods=['GET', 'POST'])
+@login_required
+def viewer_change():
+    viewer = db.session.query(Viewer).filter(Viewer.viewer_id == current_user.user_id).first()
+    user = db.session.query(Users).filter(Users.user_id == current_user.user_id).first()
+    if viewer:
+        form = ChangePublicViewer(nickname=viewer.nickname, user_desc=user.description, viewer_role=user.user_type)
+        if form.validate_on_submit():
+            existing_viewer = db.session.query(Viewer).filter(Viewer.nickname == form.nickname.data).first()
+            if existing_viewer and form.nickname.data != viewer.nickname:
+                flash("Viewer nickname already exists. Please enter different nickname.")
+            else:
+                if form.viewer_role.data == 'Private':
+                    user.description = None
+                    viewer.is_public = 'f'
+                    viewer.nickname = None
+                    db.session.commit()
+                    flash("User type changed to private")
+                    return redirect(url_for('home'))
+                else:
+                    viewer.is_public = 't'
+                    viewer.nickname = form.nickname.data
+                    user.description = form.user_desc.data
+                    db.session.commit()
+                    flash("Viewer information updated")
+                    return redirect(url_for("viewer_details", viewer_id=viewer.viewer_id))
+    else:
+        flash('This viewer does not exists')
+        return redirect(url_for("list_objects"))
+    return render_template('viewer_change.html', today=today, form=form, viewer=viewer, user=user)
+
+
+@app.route('/movie_change/<movie_id>', methods=['GET', 'POST'])
+@login_required
+def movie_change(movie_id=None):
+    movie = db.session.query(Movie).filter(Movie.movie_id == movie_id).first()
+    if movie:
+        form = ChangeMovie(choose_studio=False,name=movie.name, creation_year=movie.creation_year, length=movie.length)
+        if form.validate_on_submit():
+            existing_movie = db.session.query(Movie).filter(Movie.name == form.name.data, Movie.creation_year == form.creation_year.data).first()
+            if existing_movie and form.name.data != movie.name and form.creation_year.data != movie.creation_year:
+                flash("This movie already exists. Please enter different data.")
+            else:
+                movie.name = form.name.data
+                movie.creation_year = form.creation_year.data
+                movie.length = form.length.data
+                db.session.commit()
+                flash("Movie information updated")
+                return redirect(url_for("movie_details", movie_id=movie.movie_id))
+    else:
+        flash('This movie does not exists')
+        return redirect(url_for("list_objects"))
+    return render_template('movie_change.html', today=today, form=form, movie=movie)
+
+@app.route('/series_change/<series_id>', methods=['GET', 'POST'])
+@login_required
+def series_change(series_id=None):
+    series = db.session.query(Series).filter(Series.series_id == series_id).first()
+    if series:
+        form = ChangeSeries(name=series.name, episodes=series.episodes, seasons=series.seasons)
+        if form.validate_on_submit():
+            existing_series = db.session.query(Series).filter(Series.name == form.name.data, Series.episodes == form.episodes.data).first()
+            if existing_series and form.name.data != series.name and form.episodes.data != series.episodes:
+                flash("This series already exists. Please enter different data.")
+            else:
+                series.name = form.name.data
+                series.episodes = form.episodes.data
+                series.seasons = form.seasons.data
+                db.session.commit()
+                flash("Series information updated")
+                return redirect(url_for("series_details", series_id=series.series_id))
+    else:
+        flash('This series does not exists')
+        return redirect(url_for("list_objects"))
+    return render_template('series_change.html', today=today, form=form, series=series)
+
+@app.route('/actor_change/<actor_id>', methods=['GET', 'POST'])
+@login_required
+def actor_change(actor_id=None):
+    actor = db.session.query(Actor).filter(Actor.actor_id == actor_id).first()
+    if actor:
+        form = ChangeActor(choose_studio=False, firstname=actor.firstname, surname=actor.surname, birth_date=actor.birth_date, country=actor.country)
+        if form.validate_on_submit():
+            existing_actor = db.session.query(Actor).filter(Actor.firstname == form.firstname.data, Actor.surname == form.surname.data, Actor.birth_date == form.birth_date.data).first()
+            if existing_actor and form.firstname.data != actor.firstname and form.surname.data != actor.surname and form.birth_date.data != actor.birth_date:
+                flash("This actor already exists. Please enter different data.")
+            else:
+                actor.firstname = form.firstname.data
+                actor.surname = form.surname.data
+                actor.birth_date = form.birth_date.data
+                actor.country = form.country.data
+                db.session.commit()
+                flash("Actor information updated")
+                return redirect(url_for("actor_details", actor_id=actor.actor_id))
+    else:
+        flash('This actor does not exists')
+        return redirect(url_for("list_objects"))
+    return render_template('actor_change.html', today=today, form=form, actor=actor)
+
+@app.route('/director_change/<director_id>', methods=['GET', 'POST'])
+@login_required
+def director_change(director_id=None):
+    director = db.session.query(Director).filter(Director.director_id == director_id).first()
+    if director:
+        form = ChangeDirector(choose_studio=False, firstname=director.firstname, surname=director.surname, birth_date=director.birth_date, country=director.country)
+        if form.validate_on_submit():
+            existing_director = db.session.query(Director).filter(Director.firstname == form.firstname.data, Director.surname == form.surname.data, Director.birth_date == form.birth_date.data).first()
+            if existing_director and form.firstname.data != director.firstname and form.surname.data != director.surname and form.birth_date.data != director.birth_date:
+                flash("This director already exists. Please enter different data.")
+            else:
+                director.firstname = form.firstname.data
+                director.surname = form.surname.data
+                director.birth_date = form.birth_date.data
+                director.country = form.country.data
+                db.session.commit()
+                flash("Director information updated")
+                return redirect(url_for("director_details", director_id=director.director_id))
+    else:
+        flash('This director does not exists')
+        return redirect(url_for("list_objects"))
+    return render_template('director_change.html', today=today, form=form, director=director)
 
 @app.route('/add_review_movie/<reviewer_type>/<reviewer_id>/<object_id>', methods=['GET', 'POST'])
 @login_required
@@ -839,8 +985,8 @@ def add_review_actor(reviewer_type, reviewer_id, object_id):
 def viewer_details(viewer_id=None):
     viewer = db.session.query(Viewer).filter(Viewer.viewer_id == viewer_id).first()
     if viewer.is_public == 'f':
-        flash("Only public users have access to this")
-        return redirect(url_for('home'))
+        flash("Change account type to public in order to get access")
+        return redirect(url_for('viewer_change'))
     if viewer:
         reviews = db.session.query(Review).filter(Review.author_type == 'w', Review.viewer_id == viewer_id)
         user = db.session.query(Users).filter(Users.user_id == viewer_id).first()

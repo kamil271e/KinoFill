@@ -1,15 +1,13 @@
 window.onload = showDetails()
 
 function showDetails() {
-    var role = document.getElementById("role").selectedOptions[0].value
     var viewer_role = document.getElementById("viewer_role").selectedOptions[0].value
-//    console.log(role)
-    if(role == "Viewer") {
+    if(1 == 1) {
         document.getElementById("viewer_role_div").style.display = 'block'
         if(viewer_role == "Public") {
-            document.getElementById("name_div").style.display = 'block'
+            document.getElementById("public_div").style.display = 'block'
         } else {
-            document.getElementById("name_div").style.display = 'none'
+            document.getElementById("public_div").style.display = 'none'
         }
     }
 }

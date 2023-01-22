@@ -16,10 +16,22 @@
         <br><br><br>
         <div class="d-flex justify-content-between">
             <div>
-                <h4>First name: {{ journalist.firstname }}</h4>
-                <h4>Surname: {{ journalist.surname }}</h4>
-                <h4>Birthdate: {{ journalist.birth_date }}</h4>
+                <div>
+                    <h4>First name: {{ journalist.firstname }}</h4>
+                    <h4>Surname: {{ journalist.surname }}</h4>
+                    <h4>Birthdate: {{ journalist.birth_date }}</h4>
+                </div>
             </div>
+            {% if journalist.journalist_id == current_user.user_id %}
+                <div class="d-flex flex-column">
+                    <a href="{{url_for('journalist_change')}}" title="Edit data">
+                        <h4><span class="fas fa-edit"></span> Edit data</h4>
+                    </a>
+                    <a href="{{url_for('home')}}" title="Delete account">
+                        <h4><span class="fas fa-trash-alt"></span> Delete account</h4>
+                    </a>
+                </div>
+            {% endif %}
         </div>
         <br>
         <h3>Reviews</h3>

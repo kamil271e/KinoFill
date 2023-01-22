@@ -12,12 +12,26 @@
             {% endif %}
         {% endwith %}
         <h1 class="lh-lg display-5 text-center">{{ series.name }}</h1>
-        <h4>Episodes: {{ series.episodes }}</h4>
-        <h4>Seasons: {{ series.seasons }}</h4>
-        <h4>Genre/Genres: {{ genres }}</h4>
-        <h4>Viewers rating: {{ series.viewers_rating }}</h4>
-        <h4>Director: <a href="{{url_for('director_details', director_id=series.director_id)}}">{{ director.firstname }} {{ director.surname }}</a></h4>
-        <h4>Studio: <a href="{{url_for('studio_details', studio_id=series.studio_id)}}">{{ studio.name }}</a></h4>
+                <div class="d-flex justify-content-between">
+            <div>
+                <h4>Episodes: {{ series.episodes }}</h4>
+                <h4>Seasons: {{ series.seasons }}</h4>
+                <h4>Genre/Genres: {{ genres }}</h4>
+                <h4>Viewers rating: {{ series.viewers_rating }}</h4>
+                <h4>Director: <a href="{{url_for('director_details', director_id=series.director_id)}}">{{ director.firstname }} {{ director.surname }}</a></h4>
+                <h4>Studio: <a href="{{url_for('studio_details', studio_id=series.studio_id)}}">{{ studio.name }}</a></h4>
+            </div>
+            {% if series.studio_id == current_user.user_id %}
+                <div class="d-flex flex-column">
+                    <a href="{{url_for('series_change', series_id=series.series_id)}}" title="Edit series data">
+                        <h4><span class="fas fa-edit"></span> Edit series data</h4>
+                    </a>
+                    <a href="{{url_for('home')}}" title="Delete series">
+                        <h4><span class="fas fa-trash-alt"></span> Delete series</h4>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
     </br>
     <h3>Cast</h3>
     <div class="tab-content" id="myTabContent_cast">

@@ -12,12 +12,28 @@
             {% endif %}
         {% endwith %}
         <h1 class="lh-lg display-5 text-center">{{ movie.name }}</h1>
-        <h4>Length: {{ movie.length }} min</h4>
-        <h4>Genre/Genres: {{ genres }}</h4>
-        <h4>Viewers rating: {{ movie.viewers_rating }}</h4>
-        <h4>Director: <a href="{{url_for('director_details', director_id=movie.director_id)}}">{{ director.firstname }} {{ director.surname }}</a></h4>
-        <h4>Studio: <a href="{{url_for('studio_details', studio_id=movie.studio_id)}}">{{ studio.name }}</a></h4>
+        <div class="d-flex justify-content-between">
+            <div>
+                <h4>Creation year: {{ movie.creation_year }}</h4>
+                <h4>Length: {{ movie.length }} min</h4>
+                <h4>Genre/Genres: {{ genres }}</h4>
+                <h4>Viewers rating: {{ movie.viewers_rating }}</h4>
+                <h4>Director: <a href="{{url_for('director_details', director_id=movie.director_id)}}">{{ director.firstname }} {{ director.surname }}</a></h4>
+                <h4>Studio: <a href="{{url_for('studio_details', studio_id=movie.studio_id)}}">{{ studio.name }}</a></h4>
+            </div>
+            {% if movie.studio_id == current_user.user_id %}
+                <div class="d-flex flex-column">
+                    <a href="{{url_for('movie_change', movie_id=movie.movie_id)}}" title="Edit movie data">
+                        <h4><span class="fas fa-edit"></span> Edit movie data</h4>
+                    </a>
+                    <a href="{{url_for('home')}}" title="Delete movie">
+                        <h4><span class="fas fa-trash-alt"></span> Delete movie</h4>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
         </br>
+        
         <h3>Cast</h3>
         <div class="tab-content" id="myTabContent_cast">
             <div class="tab-pane fade show active" id="cast" role="tabpanel">

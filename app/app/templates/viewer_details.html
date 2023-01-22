@@ -13,6 +13,19 @@
         {% endwith %}
         <h1 class="lh-lg display-5 text-center">{{ viewer.nickname }}</h1>
         <small class="description">{{ user.description }}</small>
+        <div class="d-flex justify-content-between">
+            <div> </div>
+            {% if viewer.viewer_id == current_user.user_id %}
+                <div class="d-flex flex-column">
+                    <a href="{{url_for('viewer_change')}}" title="Edit data">
+                        <h4><span class="fas fa-edit"></span> Edit data</h4>
+                    </a>
+                    <a href="{{url_for('home')}}" title="Delete account">
+                        <h4><span class="fas fa-trash-alt"></span> Delete account</h4>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
         <br><br><br>
         <h3>Reviews</h3>
         <br>

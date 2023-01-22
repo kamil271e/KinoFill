@@ -12,14 +12,28 @@
             {% endif %}
         {% endwith %}
         <h1 class="lh-lg display-5 text-center">{{ director.firstname }} {{ director.surname }}</h1>
-        <h4>Birthdate: {{ director.birth_date }}</h4>
-        <h4>Length: {{ director.country }}</h4>
-        <h4>Viewers rating: {{ director.rate }}</h4>
-        {% if studio.studio_id %}
-            <h4>Studio: <a href="{{url_for('studio_details', studio_id=director.studio_id)}}">{{ studio.name }}</a></h4>
-        {% else %}
-            <h4>Studio: -</h4>
-        {% endif %}
+        <div class="d-flex justify-content-between">
+            <div>
+                <h4>Birthdate: {{ director.birth_date }}</h4>
+                <h4>Length: {{ director.country }}</h4>
+                <h4>Viewers rating: {{ director.rate }}</h4>
+                {% if studio.studio_id %}
+                    <h4>Studio: <a href="{{url_for('studio_details', studio_id=director.studio_id)}}">{{ studio.name }}</a></h4>
+                {% else %}
+                    <h4>Studio: -</h4>
+                {% endif %}            
+            </div>
+            {% if director.studio_id == current_user.user_id %}
+                <div class="d-flex flex-column">
+                    <a href="{{url_for('director_change', director_id=director.director_id)}}" title="Edit director data">
+                        <h4><span class="fas fa-edit"></span> Edit director data</h4>
+                    </a>
+                    <a href="{{url_for('home')}}" title="Delete director">
+                        <h4><span class="fas fa-trash-alt"></span> Delete director</h4>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
         </br>
         
         <ul class="nav nav-tabs" id="myTab" role="tablist">

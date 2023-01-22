@@ -197,8 +197,7 @@ class ChangeStudio(FlaskForm):
 
     def validate(self):
         name = self.name.data.strip()
-        if self.creation_date.data != None and self.creation_date.data >= datetime.datetime.strptime(today,
-                                                                                                     "%d.%m.%Y").date():
+        if self.creation_date.data != None and self.creation_date.data >= datetime.datetime.strptime(today,"%d.%m.%Y").date():
             flash("Date must be in the past")
             return False
         if len(name) < 1:
@@ -266,3 +265,125 @@ class AddReviewSeries(AddReviewMovie):
 class AddReviewActor(AddReviewMovie):
     def __init__(self):
         super().__init__()
+
+
+class ChangeMovie(AddMovie):
+    submit = SubmitField("Confirm change")
+    def __init__(self, choose_studio, *args, **kwargs):
+        super().__init__(choose_studio, *args, **kwargs)
+
+
+class ChangeSeries(FlaskForm):
+    name = StringField("Title")
+    episodes = StringField("Number of episodes")
+    seasons = StringField("Number of seasons")
+    submit = SubmitField("Edit series")
+
+    def validate(self):
+        if not self.name.data:
+            flash("Please enter series title")
+            return False
+        if len(self.name.data.strip()) > 30:
+            flash("Title is too long")
+            return False
+
+        if not self.episodes.data:
+            flash("Please enter number of episodes")
+            return False
+        if len(self.episodes.data) > 9:
+            flash("There can't be that many episodes")
+            return False
+        try:
+            self.episodes.data = int(self.episodes.data)
+        except:
+            flash("Number of episodes needs to be an integer")
+            return False
+        if int(self.episodes.data) < 0:
+            flash("Number of episodes cannot be negative")
+            return False
+        
+        if not self.seasons.data:
+            flash("Please enter number of seasons")
+            return False
+        if len(self.seasons.data) > 9:
+            flash("There can't be that many seasons")
+            return False
+        try:
+            self.seasons.data = int(self.seasons.data)
+        except:
+            flash("Number of seasons needs to be an integer")
+            return False
+        if int(self.seasons.data) < 0:
+            flash("Number of episodes cannot be negative")
+            return False
+        if int(self.seasons.data) > int(self.episodes.data):
+            flash("Number of seasons cannot be greater than number of episodes")
+            return False
+
+        return True
+
+
+class ChangeActor(AddActor):
+    submit = SubmitField("Confirm change")
+    def __init__(self, choose_studio, *args, **kwargs):
+        super().__init__(choose_studio, *args, **kwargs)
+
+
+class ChangeDirector(AddDirector):
+    submit = SubmitField("Confirm change")
+    def __init__(self, choose_studio, *args, **kwargs):
+        super().__init__(choose_studio, *args, **kwargs)
+
+
+class ChangeJournalist(FlaskForm):
+    nickname = StringField('Nickname', validators=[DataRequired()])
+    firstname = StringField('First Name')
+    surname = StringField('Surname')
+    birth_date = DateField('Birth date')
+    user_desc = StringField("Profile description", widget=TextArea())
+    submit = SubmitField("Confirm change")
+
+    def validate(self):
+        if self.birth_date.data != None and self.birth_date.data >= datetime.datetime.strptime(today,"%d.%m.%Y").date():
+            flash("Date must be in the past")
+            return False
+        if str(self.firstname.data) != "":
+            if nameInvalid(self.firstname.data):
+                flash("First name cannot have any numbers or special characters")
+                return False
+            if len(self.firstname.data.strip()) < 2 or len(self.firstname.data.strip()) > 20:
+                flash("Enter valid firstname")
+                return False 
+        if str(self.surname.data) != "":
+            print(self.surname.data)
+            if nameInvalid(self.surname.data):
+                flash("Surname cannot have any numbers or special characters")
+                return False
+            if len(self.surname.data.strip()) < 2 or len(self.surname.data.strip()) > 20:
+                flash("Enter valid surname")
+                return False 
+        if len(self.nickname.data) > 20 or len(self.nickname.data) < 5:
+            flash("Nickname should have between 5 and 20 characters")
+            return False
+        if len(self.user_desc.data) > 200:
+            flash("User description should not exceed 200 characters")
+            return False
+        
+        return True
+
+class ChangePublicViewer(FlaskForm):
+    nickname = StringField('Nickname', validators=[DataRequired()])
+    user_desc = StringField("Profile description", widget=TextArea())
+    viewer_role = SelectField("Account type", choices=["Public", "Private"])
+    submit = SubmitField("Confirm changes")
+    
+    def validate(self):
+        if self.viewer_role.data == 'Public':
+            if len(self.nickname.data) > 20 or len(self.nickname.data) < 5:
+                flash("Nickname should have between 5 and 20 characters")
+                return False
+            if len(self.user_desc.data) > 200:
+                flash("User description should not exceed 200 characters")
+                return False
+        
+        return True
