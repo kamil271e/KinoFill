@@ -675,7 +675,6 @@ def delete_studio():
     series = db.session.query(Series).filter(Series.studio_id == studio.studio_id).first()
     actors = db.session.query(Actor).filter(Actor.studio_id == studio.studio_id).first()
     directors = db.session.query(Director).filter(Director.studio_id == studio.studio_id).first()
-    print(movies, series, actors, directors)
     if not (movies or series or actors or directors):
         db.session.delete(studio)
         db.session.delete(user)
@@ -683,8 +682,23 @@ def delete_studio():
         flash('Studio successfully deleted')
         return redirect(url_for('home'))
     else:
-        flash('Cannot delete studio that is assign to movies, series, actors or directors.')
+        flash('Cannot delete studio that is assign to movie, series, actor or director.')
         return redirect(url_for('studio_details', studio_id=studio.studio_id))
+
+@app.route('/delete_director/<director_id>', methods=['GET', 'POST'])
+@login_required
+def delete_director(director_id):
+    director = db.session.query(Director).filter(Director.director_id == director_id).first()
+    movies = db.session.query(Movie).filter(Movie.director_id == director_id).first()
+    series = db.session.query(Series).filter(Series.director_id == director_id).first()
+    if not (movies or series):
+        db.session.delete(director)
+        db.session.commit()
+        flash('Director successfully deleted')
+        return redirect(url_for('home'))
+    else:
+        flash('Cannot delete director that is assign to movie or series.')
+        return redirect(url_for('director_details', director_id=director_id))
 
 @app.route('/delete_review/<object_type>/<object_id>', methods=['GET', 'POST'])
 @login_required
