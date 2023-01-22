@@ -71,10 +71,13 @@ def register():
                 form.name.data = f"'{form.name.data}'"
 
             if existing_name == "":
+                name = form.name.data.strip("'")
+                if(name == 'NULL'):
+                    name = None
                 # calling procedure more safely
                 command = text("CALL filmweb.newuser(:login, :password, :join_date, :user_desc, :active, :role, :name, :country, :creation_date, :firstname, :surname, :birthdate, :is_public);")
                 command = command.bindparams(login=form.login.data, password=hashed_password, join_date=today, user_desc=form.user_desc.data, active='t',
-                                role=role, name=form.name.data.strip("'"), country=None, creation_date=None, firstname=None, surname=None, birthdate=None, is_public=is_public)
+                                role=role, name=name, country=None, creation_date=None, firstname=None, surname=None, birthdate=None, is_public=is_public)
                 print(command)
                 db.session.execute(command)
                 db.session.commit()
@@ -205,13 +208,15 @@ def add_movie():
                 if not actor_id or not character_names:
                     break
                 names_list = character_names.split(",")
+                print(names_list)
                 for character_name in names_list:
-                    movie_character = Movie_character(
-                        character_name=character_name.lstrip(),
-                        movie_id=movie.get_id(),
-                        actor_id=actor_id
-                    )
-                    db.session.add(movie_character)
+                    if character_name != ' ' and character_name != '':
+                        movie_character = Movie_character(
+                            character_name=character_name.lstrip(),
+                            movie_id=movie.get_id(),
+                            actor_id=actor_id
+                        )
+                        db.session.add(movie_character)
 
             db.session.commit()
             flash("Movie successfully added")
@@ -275,12 +280,13 @@ def add_series():
                     break
                 names_list = character_names.split(",")
                 for character_name in names_list:
-                    series_character = Series_character(
-                        character_name=character_name,
-                        series_id=series.get_id(),
-                        actor_id=actor_id
-                    )
-                    db.session.add(series_character)
+                    if character_name != ' ' and character_name != '':
+                        series_character = Series_character(
+                            character_name=character_name,
+                            series_id=series.get_id(),
+                            actor_id=actor_id
+                        )
+                        db.session.add(series_character)
 
             db.session.commit()
             flash("Series successfully added")
