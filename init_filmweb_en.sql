@@ -236,6 +236,20 @@ CREATE TABLE filmweb.Journalists_reviews_ratings(
     CHECK(viewers_rating = -1 OR viewers_rating = 1)
 );
 
+CREATE OR REPLACE FUNCTION filmweb.mean_rate(pMovieId integer)
+RETURNS numeric(3, 2) AS $$
+DECLARE
+	vRatingMean numeric(3, 2);
+BEGIN
+	SELECT ROUND( AVG(rate)::numeric, 2 )
+	INTO vRatingMean
+	FROM filmweb.Reviews
+	WHERE movie_id = pMovieId;
+
+	RETURN vRatingMean;
+END;
+$$ LANGUAGE plpgsql;
+
 
 -- sample inserts
 -- insert into filmweb.Users (login, password_hash, user_type) values ('label', 'xyz', 's');
@@ -289,7 +303,7 @@ CALL filmweb.newUser(
   't'
 );
 
-
+drop table filmweb.Ratings;
 drop table filmweb.Journalists_reviews_ratings;
 drop table filmweb.Series_genres;
 drop table filmweb.Movie_genres;
@@ -307,5 +321,6 @@ drop table filmweb.Directors;
 drop table filmweb.Studios;
 drop table filmweb.Users;
 drop function filmweb.xor3;
+drop function filmweb.mean_rate;
 drop procedure filmweb.newUser;
 drop sequence filmweb.users_id_seq;
