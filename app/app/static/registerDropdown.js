@@ -12,4 +12,8 @@ function showDetails() {
             document.getElementById("name_div").style.display = 'none'
         }
     }
+    else if(role == "Journalist" || role == "Studio"){
+        document.getElementById("viewer_role_div").style.display = 'none'
+        document.getElementById("name_div").style.display = 'block'
+    }
 }

@@ -26,7 +26,7 @@
                     <a href="{{url_for('movie_change', movie_id=movie.movie_id)}}" title="Edit movie data">
                         <h4><span class="fas fa-edit"></span> Edit movie data</h4>
                     </a>
-                    <a href="{{url_for('home')}}" title="Delete movie">
+                    <a href="{{url_for('delete_movie', movie_id=movie.movie_id)}}" title="Delete movie">
                         <h4><span class="fas fa-trash-alt"></span> Delete movie</h4>
                     </a>
                 </div>
