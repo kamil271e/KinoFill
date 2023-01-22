@@ -348,6 +348,7 @@ def movie_details(movie_id=None):
         actors=[]
         for character in characters:
             actors.append(db.session.query(Actor).filter(Actor.actor_id == character.actor_id).first())
+        actors = list(set(actors))
     else:
         flash("This movie does not exists")
         return redirect(url_for("list_objects"))
@@ -693,6 +694,7 @@ def series_details(series_id=None):
         actors=[]
         for character in characters:
             actors.append(db.session.query(Actor).filter(Actor.actor_id == character.actor_id).first())
+        actors = list(set(actors))
     else:
         flash("This series does not exists")
         return redirect(url_for("list_objects"))
