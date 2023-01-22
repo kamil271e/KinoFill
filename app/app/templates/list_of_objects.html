@@ -138,13 +138,17 @@
                             <td>{{ actor.birth_date }}</td>
                             <td>{{ actor.country }}</td>
                             <td>{{ actor.viewers_rating }}</td>
-                            {% for studio in studios %}
-                                {% if studio.studio_id == actor.studio_id %}
-                                    <td>
-                                        <a href="{{url_for('studio_details', studio_id=studio.studio_id)}}">{{ studio.name }}</a>
-                                    </td>
-                                {% endif %}
-                            {% endfor %}
+                            {% if actor.studio_id %}
+                                {% for studio in studios %}
+                                    {% if studio.studio_id == actor.studio_id %}
+                                        <td>
+                                            <a href="{{url_for('studio_details', studio_id=studio.studio_id)}}">{{ studio.name }}</a>
+                                        </td>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <td>-</td>
+                            {% endif %}
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -173,15 +177,18 @@
                             <td>{{ d.birth_date }}</td>
                             <td>{{ d.country }}</td>
                             <td>{{ d.rate }}</td>
-                            {% for studio in studios %}
-                                {% if studio.studio_id == d.studio_id %}
-                                    <td>
-                                        <a href="{{url_for('studio_details', studio_id=studio.studio_id)}}">{{ studio.name }}</a>
-                                    </td>
-                                {% else %}
-                                    <td>-</td>
-                                {% endif %}
-                            {% endfor %}
+                            {% if d.studio_id %}
+                                {% for studio in studios %}
+                                    {% if studio.studio_id == d.studio_id %}
+                                        <td>
+                                            <a href="{{url_for('studio_details', studio_id=studio.studio_id)}}">{{ studio.name }}</a>
+                                        </td>
+                                        {% set studio_exists = true %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <td>-</td>
+                            {% endif %}
                         </tr>
                         {% endfor %}
                     </tbody>
