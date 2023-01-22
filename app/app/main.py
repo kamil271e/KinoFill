@@ -666,6 +666,26 @@ def edit_review(object_type, object_id):
 
     return render_template('edit_review.html', today=today, form=form)
 
+@app.route('/delete_studio/', methods=['GET', 'POST'])
+@login_required
+def delete_studio():
+    studio = db.session.query(Studio).filter(Studio.studio_id == current_user.user_id).first()
+    user = db.session.query(Users).filter(Users.user_id == studio.studio_id).first()
+    movies = db.session.query(Movie).filter(Movie.studio_id == studio.studio_id).first()
+    series = db.session.query(Series).filter(Series.studio_id == studio.studio_id).first()
+    actors = db.session.query(Actor).filter(Actor.studio_id == studio.studio_id).first()
+    directors = db.session.query(Director).filter(Director.studio_id == studio.studio_id).first()
+    print(movies, series, actors, directors)
+    if not (movies or series or actors or directors):
+        db.session.delete(studio)
+        db.session.delete(user)
+        db.session.commit()
+        flash('Studio successfully deleted')
+        return redirect(url_for('home'))
+    else:
+        flash('Cannot delete studio that is assign to movies, series, actors or directors.')
+        return redirect(url_for('studio_details', studio_id=studio.studio_id))
+
 @app.route('/delete_review/<object_type>/<object_id>', methods=['GET', 'POST'])
 @login_required
 def delete_review(object_type, object_id):
