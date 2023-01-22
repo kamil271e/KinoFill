@@ -714,7 +714,7 @@ def delete_studio():
         db.session.delete(user)
         db.session.commit()
         flash('Studio successfully deleted')
-        return redirect(url_for('home'))
+        return redirect(url_for('list_of_objects'))
     else:
         flash('Cannot delete studio that is assigned to movie, series, actor or director.')
         return redirect(url_for('studio_details', studio_id=studio.studio_id))
@@ -729,7 +729,7 @@ def delete_director(director_id):
         db.session.delete(director)
         db.session.commit()
         flash('Director successfully deleted')
-        return redirect(url_for('home'))
+        return redirect(url_for('list_of_objects'))
     else:
         flash('Cannot delete director that is assigned to movie or series.')
         return redirect(url_for('director_details', director_id=director_id))
@@ -744,7 +744,7 @@ def delete_actor(actor_id):
         db.session.delete(actor)
         db.session.commit()
         flash('Actor successfully deleted')
-        return redirect(url_for('home'))
+        return redirect(url_for('list_of_objects'))
     else:
         flash('Cannot delete actor that is assigned to movie characters or series characters.')
         return redirect(url_for('actor_details', actor_id=actor_id))
