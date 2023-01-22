@@ -16,11 +16,11 @@
         <h4>Seasons: {{ series.seasons }}</h4>
         <h4>Genre/Genres: {{ genres }}</h4>
         <h4>Viewers rating: {{ series.viewers_rating }}</h4>
-        <h4>Director: <a href="{{url_for('director_details', director_id=series.director_id)}}">{{ director.firstname }} {{ director.surname }}</h4></a>
+        <h4>Director: <a href="{{url_for('director_details', director_id=series.director_id)}}">{{ director.firstname }} {{ director.surname }}</a></h4>
         <h4>Studio: <a href="{{url_for('studio_details', studio_id=series.studio_id)}}">{{ studio.name }}</a></h4>
     </br>
     <h3>Cast</h3>
-    <div class="tab-content" id="myTabContent">
+    <div class="tab-content" id="myTabContent_cast">
         <div class="tab-pane fade show active" id="cast" role="tabpanel">
             {% if characters.count() > 0 %}
                 </br>
