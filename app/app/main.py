@@ -761,6 +761,23 @@ def delete_series(series_id):
     flash('Cannot delete series that is assigned to studio')
     return redirect(url_for('series_details', series_id=series_id))
 
+@app.route('/delete_journalist/<journalist_id>', methods=['GET', 'POST'])
+@login_required
+def delete_journalist(journalist_id):
+    journalist = db.session.query(Journalist).filter(Journalist.journalist_id == journalist_id).first()
+    user = db.session.query(Users).filter(Users.user_id == journalist_id).first()
+    reviews = db.session.query(Review).filter(Review.author_type == 'd', Review.journalist_id == journalist_id).first()
+    news = db.session.query(News).filter(News.journalist_id == journalist_id).first()
+    if not (reviews or news):
+        db.session.delete(journalist)
+        db.session.delete(user)
+        db.session.commit()
+        flash('Journalist account successfully deleted')
+        return redirect(url_for('list_objects'))
+    else:
+        flash('Cannot delete journalist that is assigned to reviews or news.')
+        return redirect(url_for('journalist_details', journalist_id=journalist_id))
+
 @app.route('/delete_review/<object_type>/<object_id>', methods=['GET', 'POST'])
 @login_required
 def delete_review(object_type, object_id):
