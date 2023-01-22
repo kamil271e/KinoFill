@@ -594,7 +594,6 @@ def add_review_movie(reviewer_type, reviewer_id, object_id):
                                                     Review.series_id == review.series_id,
                                                     Review.actor_id == review.actor_id).first()
         if review_db:
-            # TODO: redirect user to edit review page
             flash('This user has already posted review to this movie')
             return redirect(url_for("edit_review", object_type='f', object_id=movie.movie_id))
         else:
@@ -605,6 +604,22 @@ def add_review_movie(reviewer_type, reviewer_id, object_id):
 
                 db.session.add(review)
                 db.session.commit()
+                # count mean of reviews
+                command = text("SELECT filmweb.mean_rate(:pMovieId);")
+                command = command.bindparams(pMovieId=movie.movie_id)
+                res_text = ""
+                for res in db.session.execute(command):
+                    res_text = str(res).split('Decimal')[1].split(',')[0][2:-2]
+                movie.viewers_rating = float(res_text)
+                db.session.commit()
+                # all_reviews = db.session.query(Review).filter(Review.movie_id == review.movie_id)
+                # reviews_sum = 0
+                # reviews_num = 0
+                # for rev in all_reviews:
+                #     reviews_sum += rev.rate
+                #     reviews_num += 1
+                # print(reviews_sum, reviews_num)
+
                 flash("Movie review successfully added")
                 return redirect(url_for("movie_details", movie_id=movie.movie_id))
 
