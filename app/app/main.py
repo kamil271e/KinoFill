@@ -201,15 +201,17 @@ def add_movie():
                 role_form = 'actor_' + str(i)
                 hidden_form = role_form + '_h'
                 actor_id = request.form.get(hidden_form)
-                character_name = request.form.get(role_form)
-                if not actor_id or not character_name:
+                character_names = request.form.get(role_form)
+                if not actor_id or not character_names:
                     break
-                movie_character = Movie_character(
-                    character_name=character_name,
-                    movie_id=movie.get_id(),
-                    actor_id=actor_id
-                )
-                db.session.add(movie_character)
+                names_list = character_names.split(",")
+                for character_name in names_list:
+                    movie_character = Movie_character(
+                        character_name=character_name.lstrip(),
+                        movie_id=movie.get_id(),
+                        actor_id=actor_id
+                    )
+                    db.session.add(movie_character)
 
             db.session.commit()
             flash("Movie successfully added")
@@ -268,15 +270,17 @@ def add_series():
                 role_form = 'actor_' + str(i)
                 hidden_form = role_form + '_h'
                 actor_id = request.form.get(hidden_form)
-                character_name = request.form.get(role_form)
-                if not actor_id or not character_name:
+                character_names = request.form.get(role_form)
+                if not actor_id or not character_names:
                     break
-                series_character = Series_character(
-                    character_name=character_name,
-                    series_id=series.get_id(),
-                    actor_id=actor_id
-                )
-                db.session.add(series_character)
+                names_list = character_names.split(",")
+                for character_name in names_list:
+                    series_character = Series_character(
+                        character_name=character_name,
+                        series_id=series.get_id(),
+                        actor_id=actor_id
+                    )
+                    db.session.add(series_character)
 
             db.session.commit()
             flash("Series successfully added")

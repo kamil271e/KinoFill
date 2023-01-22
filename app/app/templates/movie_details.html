@@ -15,7 +15,7 @@
         <h4>Length: {{ movie.length }} min</h4>
         <h4>Genre/Genres: {{ genres }}</h4>
         <h4>Viewers rating: {{ movie.viewers_rating }}</h4>
-        <h4>Director: <a href="{{url_for('director_details', director_id=movie.director_id)}}">{{ director.firstname }} {{ director.surname }}</h4></a>
+        <h4>Director: <a href="{{url_for('director_details', director_id=movie.director_id)}}">{{ director.firstname }} {{ director.surname }}</a></h4>
         <h4>Studio: <a href="{{url_for('studio_details', studio_id=movie.studio_id)}}">{{ studio.name }}</a></h4>
         </br>
         <h3>Cast</h3>
