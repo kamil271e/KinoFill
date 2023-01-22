@@ -71,21 +71,10 @@ def register():
                 form.name.data = f"'{form.name.data}'"
 
             if existing_name == "":
-                command = f"CALL filmweb.newuser(" \
-                          f"'{form.login.data}', " \
-                          f"'{hashed_password}', " \
-                          f"'{today}', " \
-                          f"'{form.user_desc.data}', " \
-                          f"'t', " \
-                          f"'{role}', " \
-                          f"{form.name.data}, " \
-                          f"NULL, " \
-                          f"NULL, " \
-                          f"NULL, " \
-                          f"NULL, " \
-                          f"NULL, " \
-                          f"'{is_public}'" \
-                          f");"
+                # calling procedure more safely
+                command = text("CALL filmweb.newuser(:login, :password, :join_date, :user_desc, :active, :role, :name, :country, :creation_date, :firstname, :surname, :birthdate, :is_public);")
+                command = command.bindparams(login=form.login.data, password=hashed_password, join_date=today, user_desc=form.user_desc.data, active='t',
+                                role=role, name=form.name.data, country=None, creation_date=None, firstname=None, surname=None, birthdate=None, is_public=is_public)
                 print(command)
                 db.session.execute(command)
                 db.session.commit()

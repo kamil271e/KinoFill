@@ -217,6 +217,9 @@ class AddNews(FlaskForm):
 
     def validate(self):
         self.content.data = self.content.data.strip()
+        if len(self.content.data) > 2500:
+            flash("News shouldn't be longer than 2500 characters")
+            return False
         return True
 
 class EditNews(FlaskForm):
@@ -226,6 +229,9 @@ class EditNews(FlaskForm):
     
     def validate(self):
         self.content.data = self.content.data.strip()
+        if len(self.content.data) > 2500:
+            flash("News shouldn't be longer than 2500 characters")
+            return False
         return True
 
 class AddReview(FlaskForm):
@@ -239,13 +245,13 @@ class AddReview(FlaskForm):
 
 class AddReviewMovie(FlaskForm):
     rate = SelectField("Rate", choices=["1", "2", "3", "4", "5"], default="3")
-    content = StringField("Content (Optional)", widget=TextArea())
+    content = StringField("Content (Optional)", widget=TextArea(), validators=[Length(max=30)])
     submit = SubmitField("Add Review")
 
 
 class EditReview(FlaskForm):
     rate = SelectField("Rate", choices=["1", "2", "3", "4", "5"])
-    content = StringField("Content (Optional)", widget=TextArea())
+    content = StringField("Content (Optional)", widget=TextArea(), validators=[Length(max=30)])
     submit = SubmitField("Edit Review")
 
 
