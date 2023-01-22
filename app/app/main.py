@@ -26,6 +26,8 @@ def login():
                 flash("User successfully logged in")
                 if user.user_type == 's':
                     return redirect(url_for("studio_details", studio_id=user.user_id))
+                elif user.user_type == 'd':
+                    return redirect(url_for("journalist_details", journalist_id=user.user_id))
                 else:
                     return redirect(url_for("user"))
             else:
@@ -612,14 +614,6 @@ def add_review_movie(reviewer_type, reviewer_id, object_id):
                     res_text = str(res).split('Decimal')[1].split(',')[0][2:-2]
                 movie.viewers_rating = float(res_text)
                 db.session.commit()
-                # all_reviews = db.session.query(Review).filter(Review.movie_id == review.movie_id)
-                # reviews_sum = 0
-                # reviews_num = 0
-                # for rev in all_reviews:
-                #     reviews_sum += rev.rate
-                #     reviews_num += 1
-                # print(reviews_sum, reviews_num)
-
                 flash("Movie review successfully added")
                 return redirect(url_for("movie_details", movie_id=movie.movie_id))
 
@@ -676,6 +670,25 @@ def edit_review(object_type, object_id):
                 review_db.content = form.content.data
                 review_db.posting_date = today
                 db.session.commit()
+
+                # calculate average rate
+                all_reviews = db.session.query(Review).filter(Review.movie_id == review.movie_id,
+                                                              Review.series_id == review.series_id,
+                                                              Review.actor_id == review.actor_id)
+                reviews_sum = 0
+                reviews_num = 0
+                for rev in all_reviews:
+                    reviews_sum += rev.rate
+                    reviews_num += 1
+                avg_rev = float(reviews_sum/reviews_num)
+                if object_type == 'f':
+                    movie.viewers_rating = avg_rev
+                elif object_type == 's':
+                    series.viewers_rating = avg_rev
+                elif object_type == 'a':
+                    actor.viewers_rating = avg_rev
+                db.session.commit()
+
                 flash("Review successfully edited")
                 return redirect(url_for("list_objects"))
 
@@ -728,6 +741,25 @@ def delete_review(object_type, object_id):
         else:
             db.session.delete(review_db)
             db.session.commit()
+
+            # calculate average rate
+            all_reviews = db.session.query(Review).filter(Review.movie_id == review.movie_id,
+                                                          Review.series_id == review.series_id,
+                                                          Review.actor_id == review.actor_id)
+            reviews_sum = 0
+            reviews_num = 0
+            for rev in all_reviews:
+                reviews_sum += rev.rate
+                reviews_num += 1
+            avg_rev = float(reviews_sum / reviews_num)
+            if object_type == 'f':
+                movie.viewers_rating = avg_rev
+            elif object_type == 's':
+                series.viewers_rating = avg_rev
+            elif object_type == 'a':
+                actor.viewers_rating = avg_rev
+            db.session.commit()
+
             flash("Review successfully deleted")
             return redirect(url_for("list_objects"))
 
@@ -875,11 +907,35 @@ def like_action(review_id, action):
     if action == 'like':
         review.like_post(current_user)
         db.session.commit()
+        all_reviews = db.session.query(ReviewRating).filter(ReviewRating.review_id == review.review_id)
+        reviews_sum = 0
+        reviews_num = 0
+        for rev in all_reviews:
+            reviews_sum += rev.viewers_rating
+            reviews_num += 1
+        review.viewers_rating = float(reviews_sum / reviews_num)*2+3
+        db.session.commit()
     elif action == 'dislike':
         review.dislike_post(current_user)
         db.session.commit()
+        all_reviews = db.session.query(ReviewRating).filter(ReviewRating.review_id == review.review_id)
+        reviews_sum = 0
+        reviews_num = 0
+        for rev in all_reviews:
+            reviews_sum += rev.viewers_rating
+            reviews_num += 1
+        review.viewers_rating = float(reviews_sum / reviews_num)*2+3
+        db.session.commit()
     elif action == 'unlike':
         review.unlike_post(current_user)
+        db.session.commit()
+        all_reviews = db.session.query(ReviewRating).filter(ReviewRating.review_id == review.review_id)
+        reviews_sum = 0
+        reviews_num = 0
+        for rev in all_reviews:
+            reviews_sum += rev.viewers_rating
+            reviews_num += 1
+        review.viewers_rating = float(reviews_sum / reviews_num)*2+3
         db.session.commit()
     return redirect(request.referrer)
 
@@ -935,7 +991,6 @@ def add_review_series(reviewer_type, reviewer_id, object_id):
                                                     Review.series_id == review.series_id,
                                                     Review.actor_id == review.actor_id).first()
         if review_db:
-            # TODO: redirect user to edit review page
             flash('This user has already posted review to this series')
             return redirect(url_for("edit_review", object_type='s', object_id=series.series_id))
         else:
@@ -946,6 +1001,17 @@ def add_review_series(reviewer_type, reviewer_id, object_id):
 
                 db.session.add(review)
                 db.session.commit()
+
+                # calculate average rate
+                all_reviews = db.session.query(Review).filter(Review.series_id == review.series_id)
+                reviews_sum = 0
+                reviews_num = 0
+                for rev in all_reviews:
+                    reviews_sum += rev.rate
+                    reviews_num += 1
+                series.viewers_rating = float(reviews_sum/reviews_num)
+                db.session.commit()
+
                 flash("Series review successfully added")
                 return redirect(url_for("series_details", series_id=series.series_id))
 
@@ -990,6 +1056,17 @@ def add_review_actor(reviewer_type, reviewer_id, object_id):
 
                 db.session.add(review)
                 db.session.commit()
+
+                # calculate average rate
+                all_reviews = db.session.query(Review).filter(Review.actor_id == review.actor_id)
+                reviews_sum = 0
+                reviews_num = 0
+                for rev in all_reviews:
+                    reviews_sum += rev.rate
+                    reviews_num += 1
+                actor.viewers_rating = float(reviews_sum/reviews_num)
+                db.session.commit()
+
                 flash("Actor review successfully added")
                 return redirect(url_for("actor_details", actor_id=actor.actor_id))
 
