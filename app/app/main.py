@@ -74,7 +74,7 @@ def register():
                 # calling procedure more safely
                 command = text("CALL filmweb.newuser(:login, :password, :join_date, :user_desc, :active, :role, :name, :country, :creation_date, :firstname, :surname, :birthdate, :is_public);")
                 command = command.bindparams(login=form.login.data, password=hashed_password, join_date=today, user_desc=form.user_desc.data, active='t',
-                                role=role, name=form.name.data, country=None, creation_date=None, firstname=None, surname=None, birthdate=None, is_public=is_public)
+                                role=role, name=form.name.data.strip("'"), country=None, creation_date=None, firstname=None, surname=None, birthdate=None, is_public=is_public)
                 print(command)
                 db.session.execute(command)
                 db.session.commit()
@@ -357,16 +357,16 @@ def movie_details(movie_id=None):
 def studio_details(studio_id=None):
     studio = db.session.query(Studio).filter(Studio.studio_id == studio_id).first()
     if studio:
+        user = db.session.query(Users).filter(Users.user_id == studio_id).first()
         movies = db.session.query(Movie).filter(Movie.studio_id == studio_id)
         series = db.session.query(Series).filter(Series.studio_id == studio_id)
         actors = db.session.query(Actor).filter(Actor.studio_id == studio_id)
         directors = db.session.query(Director) #.filter(Director.studio_id == studio_id)
-        int_sid = int(studio_id)
     else:
         flash('This studio does not exists')
         return redirect(url_for("list_objects"))
     return render_template('studio_details.html', today=today, studio=studio, movies=movies,
-                           series=series, actors=actors, directors=directors, int_sid=int_sid)
+                           series=series, actors=actors, directors=directors, user=user)
 
 
 @app.route('/director_details/<director_id>')
@@ -651,6 +651,7 @@ def journalist_details(journalist_id=None):
     journalist = db.session.query(Journalist).filter(Journalist.journalist_id == journalist_id).first()
     if journalist:
         reviews = db.session.query(Review).filter(Review.author_type == 'd', Review.journalist_id == journalist_id)
+        user = db.session.query(Users).filter(Users.user_id == journalist_id).first()
         movies = []
         series = []
         actors = []
@@ -665,7 +666,7 @@ def journalist_details(journalist_id=None):
         flash('This journalist does not exists')
         return redirect(url_for('home'))
     return render_template('journalist_details.html', today=today, journalist=journalist, reviews=reviews, 
-                        movies=movies, series=series, actors=actors)
+                        movies=movies, series=series, actors=actors, user=user)
 
 @app.route('/series_details/<series_id>')
 def series_details(series_id=None):
@@ -828,6 +829,7 @@ def viewer_details(viewer_id=None):
         return redirect(url_for('home'))
     if viewer:
         reviews = db.session.query(Review).filter(Review.author_type == 'w', Review.viewer_id == viewer_id)
+        user = db.session.query(Users).filter(Users.user_id == viewer_id).first()
         movies = []
         series = []
         actors = []
@@ -841,7 +843,7 @@ def viewer_details(viewer_id=None):
     else:
         flash('This viewer does not exists')
         return redirect(url_for("list_objects"))
-    return render_template('viewer_details.html', today=today, movies=movies, series=series, actors=actors, reviews=reviews, viewer=viewer)
+    return render_template('viewer_details.html', today=today, movies=movies, series=series, actors=actors, reviews=reviews, viewer=viewer, user=user)
 
 
 

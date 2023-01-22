@@ -31,3 +31,8 @@ input[type=text] {
     height: 100%;
     width: 100%;
 }
+
+.description{
+    display: block;
+    text-align: center;
+}

@@ -12,13 +12,15 @@
             {% endif %}
         {% endwith %}
         <h1 class="lh-lg display-5 text-center">{{ studio.name }}</h1>
+        <small class="description">{{ user.description }}</small>
+        <br><br><br>
         <div class="d-flex justify-content-between">
             <div>
                 <h4>Country: {{ studio.country }}</h4>
                 <h4>Creation year: {{ studio.creation_date }}</h4>
                 <h4>Viewers rating: {{ studio.viewers_rating }}</h4>
             </div>
-            {% if int_sid == current_user.user_id %}
+            {% if studio.studio_id == current_user.user_id %}
                 <div class="d-flex flex-column">
                     <a href="{{url_for('studio_change')}}" title="Edit studio data">
                         <h4><span class="fas fa-edit"></span> Edit studio data</h4>
