@@ -217,7 +217,7 @@ def add_movie():
                 names_list = set(character_names.split(","))
                 print(names_list)
                 for character_name in names_list:
-                    if character_name != ' ' and character_name != '':
+                    if " ".join(character_name.split()) != "":
                         movie_character = Movie_character(
                             character_name=character_name.lstrip(),
                             movie_id=movie.get_id(),
@@ -287,7 +287,7 @@ def add_series():
                     break
                 names_list = set(character_names.split(","))
                 for character_name in names_list:
-                    if character_name != ' ' and character_name != '':
+                    if " ".join(character_name.split()) != "":
                         series_character = Series_character(
                             character_name=character_name,
                             series_id=series.get_id(),
