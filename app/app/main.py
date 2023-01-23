@@ -157,7 +157,7 @@ def add_director():
             db.session.add(director)
             db.session.commit()
             flash("Director successfully added")
-            return redirect(url_for("home"))
+            return redirect(url_for("list_objects"))
         else:
             flash("This director has already been added to the database")
     return render_template('add_director.html', today=today, form=form)
@@ -214,7 +214,7 @@ def add_movie():
                 character_names = request.form.get(role_form)
                 if not actor_id or not character_names:
                     break
-                names_list = character_names.split(",")
+                names_list = set(character_names.split(","))
                 print(names_list)
                 for character_name in names_list:
                     if character_name != ' ' and character_name != '':
@@ -227,7 +227,7 @@ def add_movie():
 
             db.session.commit()
             flash("Movie successfully added")
-            return redirect(url_for("home"))
+            return redirect(url_for("list_objects"))
         else:
             flash("This movie has already been added to the database")
     return render_template('add_movie.html', today=today, form=form,
@@ -285,7 +285,7 @@ def add_series():
                 character_names = request.form.get(role_form)
                 if not actor_id or not character_names:
                     break
-                names_list = character_names.split(",")
+                names_list = set(character_names.split(","))
                 for character_name in names_list:
                     if character_name != ' ' and character_name != '':
                         series_character = Series_character(
@@ -297,7 +297,7 @@ def add_series():
 
             db.session.commit()
             flash("Series successfully added")
-            return redirect(url_for("home"))
+            return redirect(url_for("list_objects"))
         else:
             flash("This series has already been added to the database")
     return render_template('add_series.html', today=today, form=form,
@@ -335,7 +335,7 @@ def add_actor():
             db.session.add(actor)
             db.session.commit()
             flash("Actor successfully added")
-            return redirect(url_for("home"))
+            return redirect(url_for("list_objects"))
         else:
             flash("This director has already been added to the database")
     return render_template('add_actor.html', today=today, form=form)
@@ -470,7 +470,7 @@ def viewer_change():
                     viewer.nickname = None
                     db.session.commit()
                     flash("User type changed to private")
-                    return redirect(url_for('home'))
+                    return redirect(url_for('list_objects'))
                 else:
                     viewer.is_public = 't'
                     viewer.nickname = form.nickname.data
@@ -985,7 +985,7 @@ def journalist_details(journalist_id=None):
                 actors.append(db.session.query(Actor).filter(Actor.actor_id == review.actor_id).first()) 
     else:
         flash('This journalist does not exists')
-        return redirect(url_for('home'))
+        return redirect(url_for('list_objects'))
     return render_template('journalist_details.html', today=today, journalist=journalist, reviews=reviews, 
                         movies=movies, series=series, actors=actors, user=user)
 

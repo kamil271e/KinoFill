@@ -138,7 +138,7 @@ class AddSeries(FlaskForm):
         if not self.name.data:
             flash("Please enter series title")
             return False
-        if len(self.name < 1):
+        if len(self.name.data) < 1:
             flash("Please enter valid series name")
             return False
         if not self.episodes.data:
