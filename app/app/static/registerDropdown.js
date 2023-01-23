@@ -8,12 +8,15 @@ function showDetails() {
         document.getElementById("viewer_role_div").style.display = 'block'
         if(viewer_role == "Public") {
             document.getElementById("name_div").style.display = 'block'
+            document.getElementById("user_desc_div").style.display = 'block'
         } else {
             document.getElementById("name_div").style.display = 'none'
+            document.getElementById("user_desc_div").style.display = 'none'
         }
     }
     else if(role == "Journalist" || role == "Studio"){
         document.getElementById("viewer_role_div").style.display = 'none'
         document.getElementById("name_div").style.display = 'block'
+        document.getElementById("user_desc_div").style.display = 'block'
     }
 }
