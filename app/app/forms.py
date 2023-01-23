@@ -50,8 +50,9 @@ class AddMovie(FlaskForm):
         if self.redirect_add_director.data:
             return True
         if not self.name.data:
-            flash("Please enter username")
+            flash("Please enter movie name")
             return False
+        self.name.data == self.name.data.strip()
         if len(self.length.data) > 9:
             flash("Length of the movie cannot be that long")
             return False
@@ -130,6 +131,7 @@ class AddSeries(FlaskForm):
         if not self.name.data:
             flash("Please enter series title")
             return False
+        self.name.data = self.name.data.strip()
         if not self.episodes.data:
             flash("Please enter number of episodes")
             return False
@@ -287,6 +289,7 @@ class ChangeSeries(FlaskForm):
         if not self.name.data:
             flash("Please enter series title")
             return False
+        self.name.data = self.name.data.strip()
         if len(self.name.data.strip()) > 30:
             flash("Title is too long")
             return False
@@ -384,6 +387,7 @@ class ChangePublicViewer(FlaskForm):
     
     def validate(self):
         if self.viewer_role.data == 'Public':
+            self.nickname.data = self.nickname.data.strip()
             if len(self.nickname.data) > 20 or len(self.nickname.data) < 5:
                 flash("Nickname should have between 5 and 20 characters")
                 return False

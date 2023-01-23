@@ -717,10 +717,11 @@ def delete_studio():
     directors = db.session.query(Director).filter(Director.studio_id == studio.studio_id).first()
     if not (movies or series or actors or directors):
         db.session.delete(studio)
+        db.session.commit()
         db.session.delete(user)
         db.session.commit()
         flash('Studio successfully deleted')
-        return redirect(url_for('list_of_objects'))
+        return redirect(url_for('list_objects'))
     else:
         flash('Cannot delete studio that is assigned to movie, series, actor or director.')
         return redirect(url_for('studio_details', studio_id=studio.studio_id))
@@ -776,6 +777,7 @@ def delete_journalist(journalist_id):
     news = db.session.query(News).filter(News.journalist_id == journalist_id).first()
     if not (reviews or news):
         db.session.delete(journalist)
+        db.session.commit()
         db.session.delete(user)
         db.session.commit()
         flash('Journalist account successfully deleted')
@@ -793,6 +795,7 @@ def delete_viewer(viewer_id):
     review_ratings = db.session.query(ReviewRating).filter(ReviewRating.viewer_id == viewer_id).first()
     if not (reviews or review_ratings):
         db.session.delete(viewer)
+        db.session.commit()
         db.session.delete(user)
         db.session.commit()
         flash('Viewer account successfully deleted')
