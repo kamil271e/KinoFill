@@ -303,7 +303,6 @@ CALL filmweb.newUser(
   't'
 );
 
-drop table filmweb.Ratings;
 drop table filmweb.Journalists_reviews_ratings;
 drop table filmweb.Series_genres;
 drop table filmweb.Movie_genres;

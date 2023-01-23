@@ -3,8 +3,8 @@ from utils import *
 
 
 class RegisterForm(FlaskForm):
-    login = StringField("Login", validators=[DataRequired(), Length(5, 16)])
-    password = PasswordField("Password", validators=[DataRequired(), Length(5, 16)])
+    login = StringField("Login",validators=[DataRequired(), Length(5, 16)], render_kw={"placeholder": "Enter 5 to 16 characters"})
+    password = PasswordField("Password", validators=[DataRequired(), Length(5, 16)], render_kw={"placeholder": "Enter 5 to 16 characters"})
     password_confirm = PasswordField("Confirm password", validators=[DataRequired(), Length(5, 16)]) #, EqualTo('password', message="Passwords must match")])
     role = SelectField("Role", choices=["Viewer", "Journalist", "Studio"])
     user_desc = StringField("Profile description", widget=TextArea())
@@ -77,8 +77,8 @@ class AddMovie(FlaskForm):
 
 
 class AddDirector(FlaskForm):
-    firstname = StringField("First name", validators=[DataRequired()])
-    surname = StringField("Surname", validators=[DataRequired()])
+    firstname = StringField("First name", validators=[DataRequired()], render_kw={"placeholder": "Enter 2 to 20 characters"})
+    surname = StringField("Surname", validators=[DataRequired()], render_kw={"placeholder": "Enter 2 to 20 characters"})
     birth_date = DateField("Birthdate",
                            validators=[DataRequired()])  # , format='%d.%m.%Y', validators=[DataRequired()])
     country = SelectField("Country", choices=countries)
@@ -112,7 +112,7 @@ class AddDirector(FlaskForm):
 
 
 class AddSeries(FlaskForm):
-    name = StringField("Title")
+    name = StringField("Title", render_kw={"placeholder": "Enter max 30 characters"})
     episodes = StringField("Number of episodes")
     director = SelectField("Director")
     studio = SelectField("Studio")
@@ -132,7 +132,7 @@ class AddSeries(FlaskForm):
             flash("Please enter series title")
             return False
         if len(self.name.strip() < 1):
-            flash("Plrease enter valid series name")
+            flash("Please enter valid series name")
             return False
         if not self.episodes.data:
             flash("Please enter number of episodes")
@@ -162,8 +162,8 @@ class AddSeries(FlaskForm):
 
 
 class AddActor(FlaskForm):
-    firstname = StringField("First name", validators=[DataRequired()])
-    surname = StringField("Surname", validators=[DataRequired()])
+    firstname = StringField("First name", validators=[DataRequired()], render_kw={"placeholder": "Enter 2 to 20 characters"})
+    surname = StringField("Surname", validators=[DataRequired()], render_kw={"placeholder": "Enter 2 to 20 characters"})
     birth_date = DateField("Birthdate",
                            validators=[DataRequired()])  # , format='%d.%m.%Y', validators=[DataRequired()])
     country = SelectField("Country", choices=countries)
@@ -196,7 +196,7 @@ class AddActor(FlaskForm):
 
 
 class ChangeStudio(FlaskForm):
-    name = StringField("Name", validators=[DataRequired()])
+    name = StringField("Name", validators=[DataRequired()], render_kw={"placeholder": "Enter 5 to 20 characters"})
     country = SelectField("Country", choices=countries)
     creation_date = DateField("Creation Date")
     submit = SubmitField("Confirm change")
@@ -219,7 +219,7 @@ class ChangeStudio(FlaskForm):
         return True
 
 class AddNews(FlaskForm):
-    title = StringField("Title", validators=[DataRequired(),Length(max=30)])
+    title = StringField("Title", validators=[DataRequired(), Length(max=30)], render_kw={"placeholder": "Enter max 30 characters"})
     content = StringField("Content", validators=[Length(min=30)], render_kw={"rows": 15}, widget=TextArea())
     submit = SubmitField("Add news")
 
@@ -231,7 +231,7 @@ class AddNews(FlaskForm):
         return True
 
 class EditNews(FlaskForm):
-    title = StringField("Title", validators=[DataRequired(),Length(max=30)])
+    title = StringField("Title", validators=[DataRequired(), Length(max=30)], render_kw={"placeholder": "Enter max 30 characters"})
     content = StringField("Content", validators=[Length(min=30)], render_kw={"rows": 15}, widget=TextArea())
     submit = SubmitField("Edit")
     
@@ -280,7 +280,7 @@ class ChangeMovie(AddMovie):
 
 
 class ChangeSeries(FlaskForm):
-    name = StringField("Title")
+    name = StringField("Title", render_kw={"placeholder": "Enter max 30 characters"})
     episodes = StringField("Number of episodes")
     seasons = StringField("Number of seasons")
     submit = SubmitField("Edit series")
@@ -344,9 +344,9 @@ class ChangeDirector(AddDirector):
 
 
 class ChangeJournalist(FlaskForm):
-    nickname = StringField('Nickname', validators=[DataRequired()])
-    firstname = StringField('First Name')
-    surname = StringField('Surname')
+    nickname = StringField('Nickname', validators=[DataRequired()], render_kw={"placeholder": "Enter 5 to 20 characters"})
+    firstname = StringField('First Name', render_kw={"placeholder": "Enter 2 to 20 characters"})
+    surname = StringField('Surname', render_kw={"placeholder": "Enter 2 to 20 characters"})
     birth_date = DateField('Birth date')
     user_desc = StringField("Profile description", widget=TextArea())
     submit = SubmitField("Confirm change")
@@ -381,7 +381,7 @@ class ChangeJournalist(FlaskForm):
         return True
 
 class ChangePublicViewer(FlaskForm):
-    nickname = StringField('Nickname', validators=[DataRequired()])
+    nickname = StringField('Nickname', validators=[DataRequired()], render_kw={"placeholder": "Enter 5 to 20 characters"})
     user_desc = StringField("Profile description", widget=TextArea())
     viewer_role = SelectField("Account type", choices=["Public", "Private"])
     submit = SubmitField("Confirm changes")
