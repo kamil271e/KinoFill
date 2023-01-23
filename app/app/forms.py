@@ -13,16 +13,18 @@ class RegisterForm(FlaskForm):
     submit = SubmitField("Register")
 
     def validate(self):
+        # self.login.data = " ".join(self.login.data.split())
+        self.user_desc.data = " ".join(self.user_desc.data.split())
         if self.password.data != self.password_confirm.data:
             flash("Passwords must match")
             return False
         if self.role.data != "Viewer" or self.viewer_role.data == "Public":
-            name = self.name.data.strip()
-            if len(name) < 1:
+            self.name.data = " ".join(self.name.data.split())
+            if len(self.name.data) < 1:
                 # self.name.errors.append('Please enter user name')
                 flash('Please enter user name')
                 return False
-            elif len(name) > 20 or len(name) < 5:
+            elif len(self.name.data) > 20 or len(self.name.data) < 5:
                 # self.name.errors.append("Nazwa uzytkownika powinna mieć od 5 do 20 znaków")
                 flash("Username should have between 5 and 20 characters")
                 return False
@@ -47,12 +49,14 @@ class AddMovie(FlaskForm):
         super(AddMovie, self).__init__(*args, **kwargs)
 
     def validate(self):
+        self.name.data = " ".join(self.name.data.split())
+        self.length.data = " ".join(self.length.data.split())
         if self.redirect_add_director.data:
             return True
         if not self.name.data:
             flash("Please enter movie name")
             return False
-        if len(self.name.data.strip()) < 1:
+        if len(self.name.data) < 1:
             flash("Please enter valid movie title")
             return False
         if len(self.length.data) > 9:
@@ -69,7 +73,7 @@ class AddMovie(FlaskForm):
         if int(self.length.data) <= 0:
             flash("Please enter valid length of the movie")
             return False
-        if len(self.name.data.strip()) > 30:
+        if len(self.name.data) > 30:
             flash("The name must not exceeded 30 characters. Please try again")
             return False
 
@@ -91,17 +95,18 @@ class AddDirector(FlaskForm):
         super(AddDirector, self).__init__(*args, **kwargs)
 
     def validate(self):
-        if nameInvalid(self.firstname.data.strip()) or nameInvalid(self.surname.data.strip()):
+        self.firstname.data = " ".join(self.firstname.data.split())
+        self.surname.data = " ".join(self.surname.data.split())
+        if nameInvalid(self.firstname.data) or nameInvalid(self.surname.data):
             flash("First name and surname cannot have any numbers or special characters")
             return False
         if self.birth_date.data >= datetime.datetime.strptime(today, "%d.%m.%Y").date():
             flash("Date needs to be from past")
             return False
-        if len(self.firstname.data.strip()) < 2 or len(
-                self.firstname.data.strip()) > 20:  # TODO numbers and sepcial characters handling
+        if len(self.firstname.data) < 2 or len(self.firstname.data) > 20:
             flash("Enter valid name")
             return False
-        if len(self.surname.data.strip()) < 2 or len(self.surname.data.strip()) > 20:
+        if len(self.surname.data) < 2 or len(self.surname.data) > 20:
             flash("Enter valid surname")
             return False
         if self.country.data == '-':
@@ -126,12 +131,14 @@ class AddSeries(FlaskForm):
         super(AddSeries, self).__init__(*args, **kwargs)
 
     def validate(self):
+        self.name.data = " ".join(self.name.data.split())
+        self.episodes.data = " ".join(self.episodes.data.split())
         if self.redirect_add_director.data:
             return True
         if not self.name.data:
             flash("Please enter series title")
             return False
-        if len(self.name.strip() < 1):
+        if len(self.name.data) < 1:
             flash("Please enter valid series name")
             return False
         if not self.episodes.data:
@@ -151,7 +158,7 @@ class AddSeries(FlaskForm):
         if self.episodes.data < int(request.form['range']):
             flash("Number of seasons cannot be greater than number of episodes")
             return False
-        if len(self.name.data.strip()) > 30:
+        if len(self.name.data) > 30:
             flash("Title is too long")
             return False
         if int(self.episodes.data) < 0:
@@ -176,22 +183,24 @@ class AddActor(FlaskForm):
         super(AddActor, self).__init__(*args, **kwargs)
 
     def validate(self):
-        if nameInvalid(self.firstname.data.strip()) or nameInvalid(self.surname.data.strip()):
+        self.firstname.data = " ".join(self.firstname.data.split())
+        self.surname.data = " ".join(self.surname.data.split())
+        if nameInvalid(self.firstname.data) or nameInvalid(self.surname.data):
             flash("First name and surname cannot have any numbers or special characters")
-            return False
-        if len(self.firstname.data.strip()) < 2 or len(self.firstname.data.strip()) > 20:
-            flash("Enter valid firstname")
-            return False
-        if len(self.surname.data.strip()) < 2 or len(self.surname.data.strip()) > 20:
-            flash("Enter valid surname")
             return False
         if self.birth_date.data >= datetime.datetime.strptime(today, "%d.%m.%Y").date():
             flash("Date needs to be from past")
             return False
+        if len(self.firstname.data) < 2 or len(self.firstname.data) > 20:
+            flash("Enter valid name")
+            return False
+        if len(self.surname.data) < 2 or len(self.surname.data) > 20:
+            flash("Enter valid surname")
+            return False
         if self.country.data == '-':
             self.country.data = None
-        self.firstname.data = convertName(self.firstname.data.strip())
-        self.surname.data = convertName(self.surname.data.strip())
+        self.firstname.data = convertName(self.firstname.data)
+        self.surname.data = convertName(self.surname.data)
         return True
 
 
@@ -202,15 +211,15 @@ class ChangeStudio(FlaskForm):
     submit = SubmitField("Confirm change")
 
     def validate(self):
-        name = self.name.data.strip()
+        self.name.data = " ".join(self.name.data.split())
         if self.creation_date.data != None and self.creation_date.data >= datetime.datetime.strptime(today,"%d.%m.%Y").date():
             flash("Date must be in the past")
             return False
-        if len(name) < 1:
+        if len(self.name.data) < 1:
             # self.name.errors.append('Please enter user name')
             flash('Please enter user name')
             return False
-        elif len(name) > 20 or len(name) < 5:
+        elif len(self.name.data) > 20 or len(self.name.data) < 5:
             # self.name.errors.append("Nazwa uzytkownika powinna mieć od 5 do 20 znaków")
             flash("Studio name must be between 5-20 characters")
             return False
@@ -224,7 +233,8 @@ class AddNews(FlaskForm):
     submit = SubmitField("Add news")
 
     def validate(self):
-        self.content.data = self.content.data.strip()
+        self.title.data = " ".join(self.content.data.split())
+        self.content.data = " ".join(self.content.data.split())
         if len(self.content.data) > 2500:
             flash("News shouldn't be longer than 2500 characters")
             return False
@@ -236,7 +246,8 @@ class EditNews(FlaskForm):
     submit = SubmitField("Edit")
     
     def validate(self):
-        self.content.data = self.content.data.strip()
+        self.title.data = " ".join(self.content.data.split())
+        self.content.data = " ".join(self.content.data.split())
         if len(self.content.data) > 2500:
             flash("News shouldn't be longer than 2500 characters")
             return False
@@ -245,10 +256,14 @@ class EditNews(FlaskForm):
 class AddReview(FlaskForm):
     review_object_type = SelectField("Review object type", choices=["Movie", "Series", "Actor"])
     rate = SelectField("Rate", choices=["1", "2", "3", "4", "5"], default="3")
-    content = StringField("Content (Optional)", widget=TextArea())
+    content = StringField("Content (Optional)", widget=TextArea(), validators=[Length(max=30)])
     submit_m = SubmitField("Add Review")
     submit_s = SubmitField("Add Review")
     submit_a = SubmitField("Add Review")
+
+    def validate(self):
+        self.content.data = " ".join(self.content.data.split())
+        return True
 
 
 class AddReviewMovie(FlaskForm):
@@ -256,11 +271,19 @@ class AddReviewMovie(FlaskForm):
     content = StringField("Content (Optional)", widget=TextArea(), validators=[Length(max=30)])
     submit = SubmitField("Add Review")
 
+    def validate(self):
+        self.content.data = " ".join(self.content.data.split())
+        return True
+
 
 class EditReview(FlaskForm):
     rate = SelectField("Rate", choices=["1", "2", "3", "4", "5"])
     content = StringField("Content (Optional)", widget=TextArea(), validators=[Length(max=30)])
     submit = SubmitField("Edit Review")
+
+    def validate(self):
+        self.content.data = " ".join(self.content.data.split())
+        return True
 
 
 class AddReviewSeries(AddReviewMovie):
@@ -286,6 +309,9 @@ class ChangeSeries(FlaskForm):
     submit = SubmitField("Edit series")
 
     def validate(self):
+        self.name.data = " ".join(self.name.data.split())
+        self.episodes.data = " ".join(self.episodes.data.split())
+        self.seasons.data = " ".join(self.seasons.data.split())
         if not self.name.data:
             flash("Please enter series title")
             return False
@@ -352,29 +378,32 @@ class ChangeJournalist(FlaskForm):
     submit = SubmitField("Confirm change")
 
     def validate(self):
+        self.firstname.data = " ".join(self.firstname.data.split())
+        self.surname.data = " ".join(self.surname.data.split())
+        self.nickname.data = " ".join(self.nickname.data.split())
+        self.user_desc.data = " ".join(self.user_desc.data.split())
+
         if self.birth_date.data != None and self.birth_date.data >= datetime.datetime.strptime(today,"%d.%m.%Y").date():
             flash("Date must be in the past")
             return False
-        if str(self.firstname.data.strip()) != "":
-            self.firstname.data = self.firstname.data.strip()
-            if nameInvalid(self.firstname.data.strip()):
+        if str(self.firstname.data) != "":
+            if nameInvalid(self.firstname.data):
                 flash("First name cannot have any numbers or special characters")
                 return False
-            if len(self.firstname.data.strip()) < 2 or len(self.firstname.data.strip()) > 20:
+            if len(self.firstname.data) < 2 or len(self.firstname.data) > 20:
                 flash("Enter valid firstname")
                 return False 
-        if str(self.surname.data.strip()) != "":
-            self.surname.data = self.surname.data.strip()
-            if nameInvalid(self.surname.data.strip()):
+        if str(self.surname.data) != "":
+            if nameInvalid(self.surname.data):
                 flash("Surname cannot have any numbers or special characters")
                 return False
-            if len(self.surname.data.strip()) < 2 or len(self.surname.data.strip()) > 20:
+            if len(self.surname.data) < 2 or len(self.surname.data) > 20:
                 flash("Enter valid surname")
                 return False 
-        if len(self.nickname.data.strip()) > 20 or len(self.nickname.data.strip()) < 5:
+        if len(self.nickname.data) > 20 or len(self.nickname.data) < 5:
             flash("Nickname should have between 5 and 20 characters")
             return False
-        if len(self.user_desc.data.strip()) > 200:
+        if len(self.user_desc.data) > 200:
             flash("User description should not exceed 200 characters")
             return False
         
@@ -387,12 +416,13 @@ class ChangePublicViewer(FlaskForm):
     submit = SubmitField("Confirm changes")
     
     def validate(self):
+        self.nickname.data = " ".join(self.nickname.data.split())
+        self.user_desc.data = " ".join(self.user_desc.data.split())
         if self.viewer_role.data == 'Public':
-            self.nickname.data = self.nickname.data.strip()
-            if len(self.nickname.data.strip()) > 20 or len(self.nickname.data.strip()) < 5:
+            if len(self.nickname.data) > 20 or len(self.nickname.data) < 5:
                 flash("Nickname should have between 5 and 20 characters")
                 return False
-            if len(self.user_desc.data.strip()) > 200:
+            if len(self.user_desc.data) > 200:
                 flash("User description should not exceed 200 characters")
                 return False
         

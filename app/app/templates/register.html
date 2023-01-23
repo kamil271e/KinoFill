@@ -33,8 +33,10 @@
             {{ form.name(class="form-control") }}
         </div>
         <br/>
-        {{ form.user_desc.label(class="form-label") }}
-        {{ form.user_desc(class="form-control") }}
+        <div id="user_desc_div">
+            {{ form.user_desc.label(class="form-label") }}
+            {{ form.user_desc(class="form-control") }}
+        </div>
         <br/>
         <small>* mandatory fields</small>
         <br/>
