@@ -693,6 +693,8 @@ def edit_review(object_type, object_id):
                 if reviews_num == 0:
                     reviews_num = 1
                 avg_rev = float(reviews_sum/reviews_num)
+                if avg_rev == 0:
+                    avg_rev = None
                 if object_type == 'f':
                     movie.viewers_rating = avg_rev
                 elif object_type == 's':
@@ -867,6 +869,8 @@ def delete_review(object_type, object_id):
             if reviews_num == 0:
                 reviews_num = 1
             avg_rev = float(reviews_sum / reviews_num)
+            if avg_rev == 0:
+                avg_rev = None
             if object_type == 'f':
                 movie.viewers_rating = avg_rev
             elif object_type == 's':
