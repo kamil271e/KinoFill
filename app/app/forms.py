@@ -315,10 +315,10 @@ class ChangeSeries(FlaskForm):
         if not self.name.data:
             flash("Please enter series title")
             return False
-        if len(self.name.data.strip()) > 30:
+        if len(self.name.data) > 30:
             flash("Title is too long")
             return False
-        if len(self.name.data.strip() < 1):
+        if len(self.name.data) < 1:
             flash("Enter valid series title")
             return False
         if not self.episodes.data:

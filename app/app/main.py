@@ -792,18 +792,6 @@ def delete_actor(actor_id):
         flash('Cannot delete actor that is assigned to movie characters or series characters.')
         return redirect(url_for('actor_details', actor_id=actor_id))
 
-@app.route('/delete_movie/<movie_id>')
-@login_required
-def delete_movie(movie_id):
-    flash('Cannot delete movie that is assigned to studio')
-    return redirect(url_for('movie_details', movie_id=movie_id))
-
-@app.route('/delete_series/<series_id>')
-@login_required
-def delete_series(series_id):
-    flash('Cannot delete series that is assigned to studio')
-    return redirect(url_for('series_details', series_id=series_id))
-
 @app.route('/delete_journalist/<journalist_id>', methods=['GET', 'POST'])
 @login_required
 def delete_journalist(journalist_id):
