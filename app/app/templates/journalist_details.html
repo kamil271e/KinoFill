@@ -220,11 +220,11 @@
                                         <td>{{ review.viewers_rating }}</td>
                                         {% if current_user.user_id == journalist.journalist_id %}
                                             <td><div class="d-flex flex-row">
-                                                <a href="{{url_for('edit_review', object_type='a', object_id=actor.actors_id)}}"
+                                                <a href="{{url_for('edit_review', object_type='a', object_id=actor.actor_id)}}"
                                                     title="Edit review" style="margin-right: 10px">
                                                     <h5><span class="fas fa-edit"></span></h5>
                                                 </a>
-                                                <a href="{{url_for('delete_review', object_type='a', object_id=actor.actors_id)}}"
+                                                <a href="{{url_for('delete_review', object_type='a', object_id=actor.actor_id)}}"
                                                     title="Delete review">
                                                     <h5><span class="fas fa-trash-alt"></span></h5>
                                                 </a>
