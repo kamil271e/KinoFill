@@ -88,6 +88,8 @@ class AddDirector(FlaskForm):
         super(AddDirector, self).__init__(*args, **kwargs)
 
     def validate(self):
+        self.firstname.data = self.firstname.data.strip()
+        self.surname.data = self.surname.data.strip()
         if nameInvalid(self.firstname.data) or nameInvalid(self.surname.data):
             flash("First name and surname cannot have any numbers or special characters")
             return False
@@ -170,6 +172,8 @@ class AddActor(FlaskForm):
         super(AddActor, self).__init__(*args, **kwargs)
 
     def validate(self):
+        self.firstname.data = self.firstname.data.strip()
+        self.surname.data = self.surname.data.strip()
         if nameInvalid(self.firstname.data) or nameInvalid(self.surname.data):
             flash("First name and surname cannot have any numbers or special characters")
             return False
@@ -348,6 +352,7 @@ class ChangeJournalist(FlaskForm):
             flash("Date must be in the past")
             return False
         if str(self.firstname.data) != "":
+            self.firstname.data = self.firstname.data.strip()
             if nameInvalid(self.firstname.data):
                 flash("First name cannot have any numbers or special characters")
                 return False
@@ -355,7 +360,7 @@ class ChangeJournalist(FlaskForm):
                 flash("Enter valid firstname")
                 return False 
         if str(self.surname.data) != "":
-            print(self.surname.data)
+            self.surname.data = self.surname.data.strip()
             if nameInvalid(self.surname.data):
                 flash("Surname cannot have any numbers or special characters")
                 return False

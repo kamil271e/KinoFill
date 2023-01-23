@@ -29,7 +29,11 @@ def login():
                 elif user.user_type == 'd':
                     return redirect(url_for("journalist_details", journalist_id=user.user_id))
                 else:
-                    return redirect(url_for("user"))
+                    viewer = db.session.query(Viewer).filter(Viewer.viewer_id == user.user_id).first()
+                    if viewer.is_public == 't':
+                        return redirect(url_for("viewer_details", viewer_id=user.user_id))
+                    else:
+                        return redirect(url_for("list_objects"))
             else:
                 flash("Incorrect password")
         else:
@@ -686,6 +690,8 @@ def edit_review(object_type, object_id):
                 for rev in all_reviews:
                     reviews_sum += rev.rate
                     reviews_num += 1
+                if reviews_num == 0:
+                    reviews_num = 1
                 avg_rev = float(reviews_sum/reviews_num)
                 if object_type == 'f':
                     movie.viewers_rating = avg_rev
@@ -714,7 +720,7 @@ def delete_studio():
         db.session.delete(user)
         db.session.commit()
         flash('Studio successfully deleted')
-        return redirect(url_for('home'))
+        return redirect(url_for('list_of_objects'))
     else:
         flash('Cannot delete studio that is assigned to movie, series, actor or director.')
         return redirect(url_for('studio_details', studio_id=studio.studio_id))
@@ -729,7 +735,7 @@ def delete_director(director_id):
         db.session.delete(director)
         db.session.commit()
         flash('Director successfully deleted')
-        return redirect(url_for('home'))
+        return redirect(url_for('list_of_objects'))
     else:
         flash('Cannot delete director that is assigned to movie or series.')
         return redirect(url_for('director_details', director_id=director_id))
@@ -744,7 +750,7 @@ def delete_actor(actor_id):
         db.session.delete(actor)
         db.session.commit()
         flash('Actor successfully deleted')
-        return redirect(url_for('home'))
+        return redirect(url_for('list_of_objects'))
     else:
         flash('Cannot delete actor that is assigned to movie characters or series characters.')
         return redirect(url_for('actor_details', actor_id=actor_id))
@@ -760,6 +766,43 @@ def delete_movie(movie_id):
 def delete_series(series_id):
     flash('Cannot delete series that is assigned to studio')
     return redirect(url_for('series_details', series_id=series_id))
+
+@app.route('/delete_journalist/<journalist_id>', methods=['GET', 'POST'])
+@login_required
+def delete_journalist(journalist_id):
+    journalist = db.session.query(Journalist).filter(Journalist.journalist_id == journalist_id).first()
+    user = db.session.query(Users).filter(Users.user_id == journalist_id).first()
+    reviews = db.session.query(Review).filter(Review.author_type == 'd', Review.journalist_id == journalist_id).first()
+    news = db.session.query(News).filter(News.journalist_id == journalist_id).first()
+    if not (reviews or news):
+        db.session.delete(journalist)
+        db.session.delete(user)
+        db.session.commit()
+        flash('Journalist account successfully deleted')
+        return redirect(url_for('list_objects'))
+    else:
+        flash('Cannot delete journalist that is assigned to reviews or news.')
+        return redirect(url_for('journalist_details', journalist_id=journalist_id))
+
+@app.route('/delete_viewer/<viewer_id>', methods=['GET', 'POST'])
+@login_required
+def delete_viewer(viewer_id):
+    viewer = db.session.query(Viewer).filter(Viewer.viewer_id == viewer_id).first()
+    user = db.session.query(Users).filter(Users.user_id == viewer_id).first()
+    reviews = db.session.query(Review).filter(Review.author_type == 'w', Review.viewer_id == viewer_id).first()
+    review_ratings = db.session.query(ReviewRating).filter(ReviewRating.viewer_id == viewer_id).first()
+    if not (reviews or review_ratings):
+        db.session.delete(viewer)
+        db.session.delete(user)
+        db.session.commit()
+        flash('Viewer account successfully deleted')
+        return redirect(url_for('list_objects'))
+    else:
+        flash('Cannot delete viewer that is assigned to reviews or review ratings.')
+        if viewer.is_public == 't':
+            return redirect(url_for('viewer_details', viewer_id=viewer_id))
+        else:
+            return redirect(url_for('list_objects'))
 
 @app.route('/delete_review/<object_type>/<object_id>', methods=['GET', 'POST'])
 @login_required
@@ -818,6 +861,8 @@ def delete_review(object_type, object_id):
             for rev in all_reviews:
                 reviews_sum += rev.rate
                 reviews_num += 1
+            if reviews_num == 0:
+                reviews_num = 1
             avg_rev = float(reviews_sum / reviews_num)
             if object_type == 'f':
                 movie.viewers_rating = avg_rev
@@ -980,6 +1025,8 @@ def like_action(review_id, action):
         for rev in all_reviews:
             reviews_sum += rev.viewers_rating
             reviews_num += 1
+        if reviews_num == 0:
+            reviews_num = 1
         review.viewers_rating = float(reviews_sum / reviews_num)*2+3
         db.session.commit()
     elif action == 'dislike':
@@ -991,6 +1038,8 @@ def like_action(review_id, action):
         for rev in all_reviews:
             reviews_sum += rev.viewers_rating
             reviews_num += 1
+        if reviews_num == 0:
+            reviews_num = 1
         review.viewers_rating = float(reviews_sum / reviews_num)*2+3
         db.session.commit()
     elif action == 'unlike':
@@ -1002,6 +1051,8 @@ def like_action(review_id, action):
         for rev in all_reviews:
             reviews_sum += rev.viewers_rating
             reviews_num += 1
+        if reviews_num == 0:
+            reviews_num = 1
         review.viewers_rating = float(reviews_sum / reviews_num)*2+3
         db.session.commit()
     return redirect(request.referrer)
@@ -1076,6 +1127,8 @@ def add_review_series(reviewer_type, reviewer_id, object_id):
                 for rev in all_reviews:
                     reviews_sum += rev.rate
                     reviews_num += 1
+                if reviews_num == 0:
+                    reviews_num = 1
                 series.viewers_rating = float(reviews_sum/reviews_num)
                 db.session.commit()
 
@@ -1131,6 +1184,8 @@ def add_review_actor(reviewer_type, reviewer_id, object_id):
                 for rev in all_reviews:
                     reviews_sum += rev.rate
                     reviews_num += 1
+                if reviews_num == 0:
+                    reviews_num = 1
                 actor.viewers_rating = float(reviews_sum/reviews_num)
                 db.session.commit()
 

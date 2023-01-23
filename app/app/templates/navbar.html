@@ -36,6 +36,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('viewer_details', viewer_id=current_user.user_id) }}">My profile</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('delete_viewer', viewer_id=current_user.user_id) }}">Delete account</a>
+                    </li>
                 {% endif %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
