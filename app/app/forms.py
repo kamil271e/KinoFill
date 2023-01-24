@@ -235,7 +235,7 @@ class AddNews(FlaskForm):
     submit = SubmitField("Add news")
 
     def validate(self):
-        self.title.data = " ".join(self.content.data.split())
+        self.title.data = " ".join(self.title.data.split())
         self.content.data = " ".join(self.content.data.split())
         if len(self.content.data) > 2500:
             flash("News shouldn't be longer than 2500 characters")
@@ -248,7 +248,7 @@ class EditNews(FlaskForm):
     submit = SubmitField("Edit")
     
     def validate(self):
-        self.title.data = " ".join(self.content.data.split())
+        self.title.data = " ".join(self.title.data.split())
         self.content.data = " ".join(self.content.data.split())
         if len(self.content.data) > 2500:
             flash("News shouldn't be longer than 2500 characters")

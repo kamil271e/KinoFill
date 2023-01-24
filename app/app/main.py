@@ -1026,6 +1026,7 @@ def add_news():
         return redirect(url_for("news"))
     form = AddNews()
     if form.validate_on_submit():
+        print(form.title.data+'\n\n\n\n\n')
         news = db.session.query(News).filter(
             News.title == form.title.data,
             News.content == form.content.data,
