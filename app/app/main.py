@@ -758,7 +758,7 @@ def edit_review(object_type, object_id):
                     studio.viewers_rating = None
                 else:
                     studio.viewers_rating = float(
-                        (int(studio.viewers_rating * (studio_reviews) - (int(old_rate) - int(new_rate)))) / studio_reviews)
+                        (round(studio.viewers_rating * (studio_reviews) - (int(old_rate) - int(new_rate)))) / studio_reviews)
                     if studio.viewers_rating > 5:
                         studio.viewers_rating = 5
                     elif studio.viewers_rating < 1:
@@ -778,7 +778,7 @@ def edit_review(object_type, object_id):
                         director.rate = None
                     else:
                         director.rate = float(
-                            (int(director.rate * (director_reviews) - (int(old_rate) - int(new_rate)))) / director_reviews)
+                            (round(director.rate * (director_reviews) - (int(old_rate) - int(new_rate)))) / director_reviews)
                         if director.rate > 5:
                             director.rate = 5
                         elif director.rate < 1:
@@ -970,7 +970,7 @@ def delete_review(object_type, object_id):
                 studio.viewers_rating = None
             else:
                 studio.viewers_rating = float(
-                    (int(studio.viewers_rating * (studio_reviews + 1) - review_db.rate)) / studio_reviews)
+                    (round(studio.viewers_rating * (studio_reviews + 1) - review_db.rate)) / studio_reviews)
                 if studio.viewers_rating > 5:
                     studio.viewers_rating = 5
                 elif studio.viewers_rating < 1:
@@ -990,7 +990,7 @@ def delete_review(object_type, object_id):
                     director.rate = None
                 else:
                     director.rate = float(
-                        (int(director.rate * (director_reviews + 1) - review_db.rate)) / director_reviews)
+                        (round(director.rate * (director_reviews + 1) - review_db.rate)) / director_reviews)
                     if director.rate > 5:
                         director.rate = 5
                     elif director.rate < 1:
