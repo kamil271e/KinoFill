@@ -102,6 +102,9 @@ class AddDirector(FlaskForm):
         if nameInvalid(self.firstname.data) or nameInvalid(self.surname.data):
             flash("First name and surname cannot have any numbers or special characters")
             return False
+        if self.birth_date.data is None:
+            flash("Enter valid date")
+            return False
         if self.birth_date.data >= datetime.datetime.strptime(today, "%d.%m.%Y").date():
             flash("Date needs to be from past")
             return False
@@ -189,6 +192,9 @@ class AddActor(FlaskForm):
         self.surname.data = " ".join(self.surname.data.split())
         if nameInvalid(self.firstname.data) or nameInvalid(self.surname.data):
             flash("First name and surname cannot have any numbers or special characters")
+            return False
+        if self.birth_date.data is None:
+            flash("Enter valid date")
             return False
         if self.birth_date.data >= datetime.datetime.strptime(today, "%d.%m.%Y").date():
             flash("Date needs to be from past")
