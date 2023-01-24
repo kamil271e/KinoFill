@@ -641,7 +641,7 @@ def add_review_movie(reviewer_type, reviewer_id, object_id):
                     movies = db.session.query(Movie).filter(Movie.studio_id == movie.studio_id)
                     for m in movies:
                         studio_reviews += db.session.query(Review).filter(Review.movie_id == m.movie_id).count()
-                    studio.viewers_rating = float((studio.viewers_rating * (studio_reviews - 1) + review.rate) / studio_reviews)
+                    studio.viewers_rating = float(round(studio.viewers_rating * (studio_reviews - 1) + review.rate) / studio_reviews)
 
                 # count average director reviews
                 director = db.session.query(Director).filter(Director.director_id == movie.director_id).first()
@@ -1274,7 +1274,7 @@ def add_review_series(reviewer_type, reviewer_id, object_id):
                     movies = db.session.query(Movie).filter(Movie.studio_id == series.studio_id)
                     for m in movies:
                         studio_reviews += db.session.query(Review).filter(Review.movie_id == m.movie_id).count()
-                    studio.viewers_rating = float((studio.viewers_rating * (studio_reviews - 1) + review.rate) / studio_reviews)
+                    studio.viewers_rating = float(round(studio.viewers_rating * (studio_reviews - 1) + review.rate) / studio_reviews)
 
                 # count average director reviews
                 director = db.session.query(Director).filter(Director.director_id == series.director_id).first()
@@ -1362,7 +1362,7 @@ def add_review_actor(reviewer_type, reviewer_id, object_id):
                     movies = db.session.query(Movie).filter(Movie.studio_id == actor.studio_id)
                     for m in movies:
                         studio_reviews += db.session.query(Review).filter(Review.movie_id == m.movie_id).count()
-                    studio.viewers_rating = float((studio.viewers_rating * (studio_reviews - 1) + review.rate) / studio_reviews)
+                    studio.viewers_rating = float(round(studio.viewers_rating * (studio_reviews - 1) + review.rate) / studio_reviews)
 
                 db.session.commit()
 
