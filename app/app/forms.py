@@ -24,8 +24,10 @@ class RegisterForm(FlaskForm):
                 # self.name.errors.append('Please enter user name')
                 flash('Please enter user name')
                 return False
-            elif len(self.name.data) > 20 or len(self.name.data) < 5:
-                # self.name.errors.append("Nazwa uzytkownika powinna mieć od 5 do 20 znaków")
+            elif self.role.data == "Studio" and len(self.name.data) > 30 and len(self.name.data) < 5:
+                flash("Studio name should have between 5 and 30 characters")
+                return False
+            elif self.role.data != "Studio" and len(self.name.data) > 20 or len(self.name.data) < 5:
                 flash("Username should have between 5 and 20 characters")
                 return False
         if len(self.user_desc.data) > 200:
