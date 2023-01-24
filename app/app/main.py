@@ -629,7 +629,7 @@ def add_review_movie(reviewer_type, reviewer_id, object_id):
                 # count average studio reviews
                 studio = db.session.query(Studio).filter(Studio.studio_id == movie.studio_id).first()
                 if studio.viewers_rating is None:
-                    studio.viewers_rating = movie.viewers_rating
+                    studio.viewers_rating = float(review.rate)
                 else:
                     studio_reviews = 0
                     seriess = db.session.query(Series).filter(Series.studio_id == movie.studio_id)
@@ -641,7 +641,7 @@ def add_review_movie(reviewer_type, reviewer_id, object_id):
                     movies = db.session.query(Movie).filter(Movie.studio_id == movie.studio_id)
                     for m in movies:
                         studio_reviews += db.session.query(Review).filter(Review.movie_id == m.movie_id).count()
-                    studio.viewers_rating = float((studio.viewers_rating * (studio_reviews - 1) + movie.viewers_rating) / studio_reviews)
+                    studio.viewers_rating = float((studio.viewers_rating * (studio_reviews - 1) + review.rate) / studio_reviews)
 
                 # count average director reviews
                 director = db.session.query(Director).filter(Director.director_id == movie.director_id).first()
@@ -655,7 +655,7 @@ def add_review_movie(reviewer_type, reviewer_id, object_id):
                     movies = db.session.query(Movie).filter(Movie.director_id == movie.director_id)
                     for m in movies:
                         director_reviews += db.session.query(Review).filter(Review.movie_id == m.movie_id).count()
-                    director.rate = float((director.rate * (director_reviews - 1) + movie.viewers_rating) / director_reviews)
+                    director.rate = float((director.rate * (director_reviews - 1) + review.rate) / director_reviews)
 
                 db.session.commit()
                 flash("Movie review successfully added")
@@ -709,8 +709,10 @@ def edit_review(object_type, object_id):
             return redirect(url_for("list_objects"))
         else:
             form = EditReview(rate=review_db.rate, content=review_db.content)
+            old_rate = review_db.rate
             if form.validate_on_submit():
                 review_db.rate = form.rate.data
+                new_rate = review_db.rate
                 review_db.content = form.content.data
                 review_db.posting_date = today
                 db.session.commit()
@@ -731,13 +733,61 @@ def edit_review(object_type, object_id):
                     avg_rev = None
                 if object_type == 'f':
                     movie.viewers_rating = avg_rev
+                    rev_obj = movie
                 elif object_type == 's':
                     series.viewers_rating = avg_rev
+                    rev_obj = series
                 elif object_type == 'a':
                     actor.viewers_rating = avg_rev
+                    rev_obj = actor
+                db.session.commit()
+
+                # count average studio reviews
+                studio = db.session.query(Studio).filter(Studio.studio_id == rev_obj.studio_id).first()
+                studio_reviews = 0
+                seriess = db.session.query(Series).filter(Series.studio_id == rev_obj.studio_id)
+                for s in seriess:
+                    studio_reviews += db.session.query(Review).filter(Review.series_id == s.series_id).count()
+                actors = db.session.query(Actor).filter(Actor.studio_id == rev_obj.studio_id)
+                for a in actors:
+                    studio_reviews += db.session.query(Review).filter(Review.actor_id == a.actor_id).count()
+                movies = db.session.query(Movie).filter(Movie.studio_id == rev_obj.studio_id)
+                for m in movies:
+                    studio_reviews += db.session.query(Review).filter(Review.movie_id == m.movie_id).count()
+                if studio_reviews == 0:
+                    studio.viewers_rating = None
+                else:
+                    studio.viewers_rating = float(
+                        (int(studio.viewers_rating * (studio_reviews) - (int(old_rate) - int(new_rate)))) / studio_reviews)
+                    if studio.viewers_rating > 5:
+                        studio.viewers_rating = 5
+                    elif studio.viewers_rating < 1:
+                        studio.viewers_rating = 1
+
+                # count average director reviews
+                if object_type != 'a':
+                    director = db.session.query(Director).filter(Director.director_id == rev_obj.director_id).first()
+                    director_reviews = 0
+                    seriess = db.session.query(Series).filter(Series.director_id == rev_obj.director_id)
+                    for s in seriess:
+                        director_reviews += db.session.query(Review).filter(Review.series_id == s.series_id).count()
+                    movies = db.session.query(Movie).filter(Movie.director_id == rev_obj.director_id)
+                    for m in movies:
+                        director_reviews += db.session.query(Review).filter(Review.movie_id == m.movie_id).count()
+                    if director_reviews == 0:
+                        director.rate = None
+                    else:
+                        director.rate = float(
+                            (int(director.rate * (director_reviews) - (int(old_rate) - int(new_rate)))) / director_reviews)
+                        if director.rate > 5:
+                            director.rate = 5
+                        elif director.rate < 1:
+                            director.rate = 1
+
                 db.session.commit()
 
                 flash("Review successfully edited")
+                # return redirect(request.referrer)
                 return redirect(url_for("list_objects"))
 
     return render_template('edit_review.html', today=today, form=form)
@@ -854,7 +904,7 @@ def delete_review(object_type, object_id):
         return redirect(url_for("list_objects"))
 
     if movie is None and series is None and actor is None:
-        flash("This object does not exists")
+        flash("This object does not exist")
         return redirect(url_for("list_objects"))
     else:
         if current_user.user_type == 'w':
@@ -895,14 +945,62 @@ def delete_review(object_type, object_id):
                 avg_rev = None
             if object_type == 'f':
                 movie.viewers_rating = avg_rev
+                rev_obj = movie
             elif object_type == 's':
                 series.viewers_rating = avg_rev
+                rev_obj = series
             elif object_type == 'a':
                 actor.viewers_rating = avg_rev
+                rev_obj = actor
+            db.session.commit()
+
+            # count average studio reviews
+            studio = db.session.query(Studio).filter(Studio.studio_id == rev_obj.studio_id).first()
+            studio_reviews = 0
+            seriess = db.session.query(Series).filter(Series.studio_id == rev_obj.studio_id)
+            for s in seriess:
+                studio_reviews += db.session.query(Review).filter(Review.series_id == s.series_id).count()
+            actors = db.session.query(Actor).filter(Actor.studio_id == rev_obj.studio_id)
+            for a in actors:
+                studio_reviews += db.session.query(Review).filter(Review.actor_id == a.actor_id).count()
+            movies = db.session.query(Movie).filter(Movie.studio_id == rev_obj.studio_id)
+            for m in movies:
+                studio_reviews += db.session.query(Review).filter(Review.movie_id == m.movie_id).count()
+            if studio_reviews == 0:
+                studio.viewers_rating = None
+            else:
+                studio.viewers_rating = float(
+                    (int(studio.viewers_rating * (studio_reviews + 1) - review_db.rate)) / studio_reviews)
+                if studio.viewers_rating > 5:
+                    studio.viewers_rating = 5
+                elif studio.viewers_rating < 1:
+                    studio.viewers_rating = 1
+
+            # count average director reviews
+            if object_type != 'a':
+                director = db.session.query(Director).filter(Director.director_id == rev_obj.director_id).first()
+                director_reviews = 0
+                seriess = db.session.query(Series).filter(Series.director_id == rev_obj.director_id)
+                for s in seriess:
+                    director_reviews += db.session.query(Review).filter(Review.series_id == s.series_id).count()
+                movies = db.session.query(Movie).filter(Movie.director_id == rev_obj.director_id)
+                for m in movies:
+                    director_reviews += db.session.query(Review).filter(Review.movie_id == m.movie_id).count()
+                if director_reviews == 0:
+                    director.rate = None
+                else:
+                    director.rate = float(
+                        (int(director.rate * (director_reviews + 1) - review_db.rate)) / director_reviews)
+                    if director.rate > 5:
+                        director.rate = 5
+                    elif director.rate < 1:
+                        director.rate = 1
+
             db.session.commit()
 
             flash("Review successfully deleted")
-            return redirect(url_for("list_objects"))
+            return redirect(request.referrer)
+            # return redirect(url_for("list_objects"))
 
 @app.route('/news', methods=['GET','POST'])
 @login_required
@@ -1164,7 +1262,7 @@ def add_review_series(reviewer_type, reviewer_id, object_id):
                 # count average studio reviews
                 studio = db.session.query(Studio).filter(Studio.studio_id == series.studio_id).first()
                 if studio.viewers_rating is None:
-                    studio.viewers_rating = series.viewers_rating
+                    studio.viewers_rating = float(review.rate)
                 else:
                     studio_reviews = 0
                     seriess = db.session.query(Series).filter(Series.studio_id == series.studio_id)
@@ -1176,12 +1274,12 @@ def add_review_series(reviewer_type, reviewer_id, object_id):
                     movies = db.session.query(Movie).filter(Movie.studio_id == series.studio_id)
                     for m in movies:
                         studio_reviews += db.session.query(Review).filter(Review.movie_id == m.movie_id).count()
-                    studio.viewers_rating = float((studio.viewers_rating * (studio_reviews - 1) + series.viewers_rating) / studio_reviews)
+                    studio.viewers_rating = float((studio.viewers_rating * (studio_reviews - 1) + review.rate) / studio_reviews)
 
                 # count average director reviews
                 director = db.session.query(Director).filter(Director.director_id == series.director_id).first()
                 if director.rate is None:
-                    director.rate = series.viewers_rating
+                    director.rate = float(review.rate)
                 else:
                     director_reviews = 0
                     seriess = db.session.query(Series).filter(Series.director_id == series.director_id)
@@ -1190,7 +1288,7 @@ def add_review_series(reviewer_type, reviewer_id, object_id):
                     movies = db.session.query(Movie).filter(Movie.director_id == series.director_id)
                     for m in movies:
                         director_reviews += db.session.query(Review).filter(Review.movie_id == m.movie_id).count()
-                    director.rate = float((director.rate * (director_reviews - 1) + series.viewers_rating) / director_reviews)
+                    director.rate = float((director.rate * (director_reviews - 1) + review.rate) / director_reviews)
 
                 db.session.commit()
                 flash("Series review successfully added")
@@ -1252,7 +1350,7 @@ def add_review_actor(reviewer_type, reviewer_id, object_id):
                 # count average studio reviews
                 studio = db.session.query(Studio).filter(Studio.studio_id == actor.studio_id).first()
                 if studio.viewers_rating is None:
-                    studio.viewers_rating = actor.viewers_rating
+                    studio.viewers_rating = float(review.rate)
                 else:
                     studio_reviews = 0
                     seriess = db.session.query(Series).filter(Series.studio_id == actor.studio_id)
@@ -1264,7 +1362,7 @@ def add_review_actor(reviewer_type, reviewer_id, object_id):
                     movies = db.session.query(Movie).filter(Movie.studio_id == actor.studio_id)
                     for m in movies:
                         studio_reviews += db.session.query(Review).filter(Review.movie_id == m.movie_id).count()
-                    studio.viewers_rating = float((studio.viewers_rating * (studio_reviews - 1) + actor.viewers_rating) / studio_reviews)
+                    studio.viewers_rating = float((studio.viewers_rating * (studio_reviews - 1) + review.rate) / studio_reviews)
 
                 db.session.commit()
 

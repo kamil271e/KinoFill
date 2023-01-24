@@ -35,7 +35,7 @@ class RegisterForm(FlaskForm):
 
 
 class AddMovie(FlaskForm):
-    name = StringField("Title")
+    name = StringField("Title", render_kw={"placeholder": "Enter max 30 characters"})
     creation_year = SelectField('Creation year', coerce=int, choices=range(int(today[6:]), int(today[6:]) - 100, -1))
     length = StringField("Length (in minutes)")
     director = SelectField("Director")
