@@ -1198,6 +1198,8 @@ def actor_details(actor_id=None):
         series = []
         for character in series_characters:
             series.append(db.session.query(Series).filter(Series.series_id == character.series_id).first())
+        movies = list(set(movies))
+        series = list(set(series))
         v_reviews = db.session.query(Review).filter(Review.actor_id == actor_id, Review.author_type == 'w')
         j_reviews = db.session.query(Review).filter(Review.actor_id == actor_id, Review.author_type == 'd')
         viewers = db.session.query(Viewer)
