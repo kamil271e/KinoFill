@@ -81,7 +81,7 @@ def register():
                 if(name == 'NULL'):
                     name = None
                 # calling procedure more safely
-                command = text("CALL filmweb.newuser(:login, :password, :join_date, :user_desc, :active, :role, :name, :country, :creation_date, :firstname, :surname, :birthdate, :is_public);")
+                command = text("CALL kinofill.newuser(:login, :password, :join_date, :user_desc, :active, :role, :name, :country, :creation_date, :firstname, :surname, :birthdate, :is_public);")
                 command = command.bindparams(login=form.login.data, password=hashed_password, join_date=today, user_desc=form.user_desc.data, active='t',
                                 role=role, name=name, country=None, creation_date=None, firstname=None, surname=None, birthdate=None, is_public=is_public)
                 print(command)
@@ -618,7 +618,7 @@ def add_review_movie(reviewer_type, reviewer_id, object_id):
                 db.session.commit()
 
                 # count average movie reviews
-                command = text("SELECT filmweb.mean_rate(:pMovieId);")
+                command = text("SELECT kinofill.mean_rate(:pMovieId);")
                 command = command.bindparams(pMovieId=movie.movie_id)
                 res_text = ""
                 for res in db.session.execute(command):

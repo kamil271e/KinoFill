@@ -17,7 +17,7 @@ import re
 app = Flask(__name__)
 fa = FontAwesome(app)
 app.secret_key = '123'
-app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://postgres:{quote_plus('Welcome1@')}@localhost/Filmweb2"
+app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://postgres:{quote_plus('123')}@localhost/kinofill"
 # app.config['UPLOAD_FOLDER'] = "static/images/"
 db = SQLAlchemy(app)
 login_manager = LoginManager()
