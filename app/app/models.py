@@ -3,7 +3,7 @@ from config import *
 
 class Users(db.Model, UserMixin):
     __tablename__ = "users"
-    __table_args__ = {'quote': False, 'schema': "filmweb"}
+    __table_args__ = {'quote': False, 'schema': "kinofill"}
 
     user_id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String(64), unique=True, nullable=False)
@@ -38,9 +38,9 @@ class Users(db.Model, UserMixin):
 
 class Viewer(db.Model):
     __tablename__ = "viewers"
-    __table_args__ = {'quote': False, 'schema': "filmweb", }
+    __table_args__ = {'quote': False, 'schema': "kinofill", }
 
-    viewer_id = db.Column(db.Integer, db.ForeignKey("filmweb.users.user_id"), primary_key=True)
+    viewer_id = db.Column(db.Integer, db.ForeignKey("kinofill.users.user_id"), primary_key=True)
     is_public = db.Column(db.String(1), nullable=False) # t - public, f - private
     nickname = db.Column(db.String(30))
 
@@ -55,9 +55,9 @@ class Viewer(db.Model):
 
 class Journalist(db.Model):
     __tablename__ = "journalists"
-    __table_args__ = {'quote': False, 'schema': "filmweb", }
+    __table_args__ = {'quote': False, 'schema': "kinofill", }
 
-    journalist_id = db.Column(db.Integer, db.ForeignKey("filmweb.users.user_id"), primary_key=True)
+    journalist_id = db.Column(db.Integer, db.ForeignKey("kinofill.users.user_id"), primary_key=True)
     nickname = db.Column(db.String(20), nullable=False, unique=True)
     firstname = db.Column(db.String(20))
     surname = db.Column(db.String(20))
@@ -76,9 +76,9 @@ class Journalist(db.Model):
 
 class Studio(db.Model):
     __tablename__ = "studios"
-    __table_args__ = {'quote': False, 'schema': "filmweb", }
+    __table_args__ = {'quote': False, 'schema': "kinofill", }
 
-    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.users.user_id"), primary_key=True)
+    studio_id = db.Column(db.Integer, db.ForeignKey("kinofill.users.user_id"), primary_key=True)
     name = db.Column(db.String(20), nullable=False, unique=True)
     country = db.Column(db.String(20))
     creation_date = db.Column(db.Date)
@@ -97,7 +97,7 @@ class Studio(db.Model):
 
 class Director(db.Model):
     __tablename__ = "directors"
-    __table_args__ = {'quote': False, 'schema': "filmweb", }
+    __table_args__ = {'quote': False, 'schema': "kinofill", }
 
     director_id = db.Column(db.Integer, primary_key=True)
     firstname = db.Column(db.String(20), nullable=False, unique=True)
@@ -105,7 +105,7 @@ class Director(db.Model):
     birth_date = db.Column(db.Date, nullable=False, unique=True)
     country = db.Column(db.String(20))
     rate = db.Column(db.Float)
-    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studios.studio_id"))
+    studio_id = db.Column(db.Integer, db.ForeignKey("kinofill.studios.studio_id"))
 
     def __init__(self, firstname, surname, birth_date, country, rate, studio_id):
         self.firstname = firstname
@@ -121,15 +121,15 @@ class Director(db.Model):
 
 class Movie(db.Model):
     __tablename__ = "movies"
-    __table_args__ = {'quote': False, 'schema': "filmweb", }
+    __table_args__ = {'quote': False, 'schema': "kinofill", }
 
     movie_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False, unique=True)
     creation_year = db.Column(db.Integer, nullable=False, unique=True)
     length = db.Column(db.Integer, nullable=False)
     viewers_rating = db.Column(db.Float)
-    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studios.studio_id"), nullable=False)
-    director_id = db.Column(db.Integer, db.ForeignKey("filmweb.directors.director_id"), nullable=False)
+    studio_id = db.Column(db.Integer, db.ForeignKey("kinofill.studios.studio_id"), nullable=False)
+    director_id = db.Column(db.Integer, db.ForeignKey("kinofill.directors.director_id"), nullable=False)
 
     def __init__(self, name, creation_year, length, viewers_rating, studio_id, director_id):
         self.name = name
@@ -144,15 +144,15 @@ class Movie(db.Model):
 
 class Series(db.Model):
     __tablename__ = "series"
-    __table_args__ = {'quote': False, 'schema': "filmweb", }
+    __table_args__ = {'quote': False, 'schema': "kinofill", }
 
     series_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False, unique=True)
     episodes = db.Column(db.Integer, nullable=False, unique=True)
     seasons = db.Column(db.Integer, nullable=False)
     viewers_rating = db.Column(db.Float)
-    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studios.studio_id"), nullable=False)
-    director_id = db.Column(db.Integer, db.ForeignKey("filmweb.directors.director_id"), nullable=False)
+    studio_id = db.Column(db.Integer, db.ForeignKey("kinofill.studios.studio_id"), nullable=False)
+    director_id = db.Column(db.Integer, db.ForeignKey("kinofill.directors.director_id"), nullable=False)
 
     def __init__(self, name, episodes, seasons, viewers_rating, studio_id, director_id):
         self.name = name
@@ -168,7 +168,7 @@ class Series(db.Model):
 
 class Genres(db.Model):
     __tablename___ = "genres"
-    __table_args__ = {'quote': False, 'schema': "filmweb", }
+    __table_args__ = {'quote': False, 'schema': "kinofill", }
 
     genre = db.Column(db.String(20), primary_key=True)
 
@@ -178,10 +178,10 @@ class Genres(db.Model):
 
 class Movie_genres(db.Model):
     __tablename___ = "movie_genres"
-    __table_args__ = {'quote': False, 'schema': "filmweb", }
+    __table_args__ = {'quote': False, 'schema': "kinofill", }
 
-    movie_id = db.Column(db.Integer, db.ForeignKey("filmweb.movies.movie_id"), primary_key = True)
-    genre = db.Column(db.String(20), db.ForeignKey("filmweb.genres.genre"), primary_key=True)
+    movie_id = db.Column(db.Integer, db.ForeignKey("kinofill.movies.movie_id"), primary_key = True)
+    genre = db.Column(db.String(20), db.ForeignKey("kinofill.genres.genre"), primary_key=True)
 
     def __init__(self, movie_id, genre):
         self.movie_id = movie_id
@@ -189,10 +189,10 @@ class Movie_genres(db.Model):
 
 class Series_genres(db.Model):
     __tablename___ = "series_genres"
-    __table_args__ = {'quote': False, 'schema': "filmweb", }
+    __table_args__ = {'quote': False, 'schema': "kinofill", }
 
-    series_id = db.Column(db.Integer, db.ForeignKey("filmweb.series.series_id"), primary_key = True)
-    genre = db.Column(db.String(20), db.ForeignKey("filmweb.genres.genre"), primary_key=True)
+    series_id = db.Column(db.Integer, db.ForeignKey("kinofill.series.series_id"), primary_key = True)
+    genre = db.Column(db.String(20), db.ForeignKey("kinofill.genres.genre"), primary_key=True)
 
     def __init__(self, series_id, genre):
         self.series_id = series_id
@@ -201,7 +201,7 @@ class Series_genres(db.Model):
 
 class Actor(db.Model):
     __tablename__ = "actors"
-    __table_args__ = {'quote': False, 'schema': "filmweb", }
+    __table_args__ = {'quote': False, 'schema': "kinofill", }
 
     actor_id = db.Column(db.Integer, primary_key=True)
     firstname = db.Column(db.String(20), nullable=False, unique=True)
@@ -209,7 +209,7 @@ class Actor(db.Model):
     birth_date = db.Column(db.Date, nullable=False, unique=True)
     country = db.Column(db.String(20))
     viewers_rating = db.Column(db.Float)
-    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studios.studio_id"))
+    studio_id = db.Column(db.Integer, db.ForeignKey("kinofill.studios.studio_id"))
 
     def __init__(self, firstname, surname, birth_date, country, rate, studio_id):
         self.firstname = firstname
@@ -225,12 +225,12 @@ class Actor(db.Model):
 
 class Movie_character(db.Model):
     __tablename__ = "movie_characters"
-    __table_args__ = {'quote': False, 'schema': "filmweb", }
+    __table_args__ = {'quote': False, 'schema': "kinofill", }
 
     character_id = db.Column(db.Integer, primary_key=True)
     character_name = db.Column(db.String(30), nullable=False, unique=True)
-    movie_id = db.Column(db.Integer, db.ForeignKey("filmweb.movies.movie_id"), nullable=False, unique=True)
-    actor_id = db.Column(db.Integer, db.ForeignKey("filmweb.actors.actor_id"), nullable=False, unique=True)
+    movie_id = db.Column(db.Integer, db.ForeignKey("kinofill.movies.movie_id"), nullable=False, unique=True)
+    actor_id = db.Column(db.Integer, db.ForeignKey("kinofill.actors.actor_id"), nullable=False, unique=True)
 
     def __init__(self, character_name, movie_id, actor_id):
         self.character_name = character_name
@@ -243,12 +243,12 @@ class Movie_character(db.Model):
 
 class Series_character(db.Model):
     __tablename__ = "series_characters"
-    __table_args__ = {'quote': False, 'schema': "filmweb", }
+    __table_args__ = {'quote': False, 'schema': "kinofill", }
 
     character_id = db.Column(db.Integer, primary_key=True)
     character_name = db.Column(db.String(30), nullable=False, unique=True)
-    series_id = db.Column(db.Integer, db.ForeignKey("filmweb.series.series_id"), nullable=False, unique=True)
-    actor_id = db.Column(db.Integer, db.ForeignKey("filmweb.actors.actor_id"), nullable=False, unique=True)
+    series_id = db.Column(db.Integer, db.ForeignKey("kinofill.series.series_id"), nullable=False, unique=True)
+    actor_id = db.Column(db.Integer, db.ForeignKey("kinofill.actors.actor_id"), nullable=False, unique=True)
 
     def __init__(self, character_name, series_id, actor_id):
         self.character_name = character_name
@@ -261,14 +261,14 @@ class Series_character(db.Model):
 
 class News(db.Model):
     __tablename__ = "news"
-    __table_args__ = {'quote': False, 'schema': "filmweb", }
+    __table_args__ = {'quote': False, 'schema': "kinofill", }
 
     news_id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(30), nullable=False)
     content = db.Column(TEXT, nullable=False)
     publication_date = db.Column(db.Date, nullable=False)
-    journalist_id = db.Column(db.Integer, db.ForeignKey("filmweb.journalists.journalist_id"), nullable=True)
-    studio_id = db.Column(db.Integer, db.ForeignKey("filmweb.studios.studio_id"), nullable=True)
+    journalist_id = db.Column(db.Integer, db.ForeignKey("kinofill.journalists.journalist_id"), nullable=True)
+    studio_id = db.Column(db.Integer, db.ForeignKey("kinofill.studios.studio_id"), nullable=True)
 
     def __init__(self, title, content, publication_date, journalist_id, studio_id):
         self.title = title
@@ -282,7 +282,7 @@ class News(db.Model):
 
 class Review(db.Model):
     __tablename__ = "reviews"
-    __table_args__ = {'quote': False, 'schema': "filmweb", }
+    __table_args__ = {'quote': False, 'schema': "kinofill", }
 
     review_id = db.Column(db.Integer, primary_key=True)
     rate = db.Column(db.Integer, nullable=False)
@@ -291,11 +291,11 @@ class Review(db.Model):
     author_type = db.Column(db.String(1), nullable=False)
     review_object = db.Column(db.String(1), nullable=False)
     viewers_rating = db.Column(db.Float, nullable=True)
-    viewer_id = db.Column(db.Integer, db.ForeignKey("filmweb.viewers.viewer_id"), nullable=True)
-    journalist_id = db.Column(db.Integer, db.ForeignKey("filmweb.journalists.journalist_id"), nullable=True)
-    series_id = db.Column(db.Integer, db.ForeignKey("filmweb.series.series_id"), nullable=True)
-    movie_id = db.Column(db.Integer, db.ForeignKey("filmweb.movies.movie_id"), nullable=True)
-    actor_id = db.Column(db.Integer, db.ForeignKey("filmweb.actors.actor_id"), nullable=True)
+    viewer_id = db.Column(db.Integer, db.ForeignKey("kinofill.viewers.viewer_id"), nullable=True)
+    journalist_id = db.Column(db.Integer, db.ForeignKey("kinofill.journalists.journalist_id"), nullable=True)
+    series_id = db.Column(db.Integer, db.ForeignKey("kinofill.series.series_id"), nullable=True)
+    movie_id = db.Column(db.Integer, db.ForeignKey("kinofill.movies.movie_id"), nullable=True)
+    actor_id = db.Column(db.Integer, db.ForeignKey("kinofill.actors.actor_id"), nullable=True)
 
     def __init__(self, author_type, review_object, rate=0.0, posting_date='', content='',
                  viewer_id=None, journalist_id=None, series_id=None, movie_id=None, actor_id=None):
@@ -344,11 +344,11 @@ class Review(db.Model):
 
 class ReviewRating(db.Model):
     __tablename__ = "journalists_reviews_ratings"
-    __table_args__ = {'quote': False, 'schema': "filmweb", }
+    __table_args__ = {'quote': False, 'schema': "kinofill", }
 
     viewers_rating = db.Column(db.Integer, nullable=False)
-    viewer_id = db.Column(db.Integer, db.ForeignKey("filmweb.viewers.viewer_id"), primary_key=True)
-    review_id = db.Column(db.Integer, db.ForeignKey("filmweb.reviews.review_id"), primary_key=True)
+    viewer_id = db.Column(db.Integer, db.ForeignKey("kinofill.viewers.viewer_id"), primary_key=True)
+    review_id = db.Column(db.Integer, db.ForeignKey("kinofill.reviews.review_id"), primary_key=True)
 
     def __init__(self, viewer_id, review_id, viewers_rating=None):
         self.viewer_id = viewer_id

@@ -4,6 +4,7 @@ Flask
 Flask_Migrate
 Flask_SQLAlchemy
 Flask_Login
+flask_fontawesome
 Flask_WTF
 SQLAlchemy
 psycopg2-binary #for using postgres

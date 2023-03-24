@@ -12,7 +12,7 @@ class RegisterForm(FlaskForm):
     name = StringField("Name")
     submit = SubmitField("Register")
 
-    def validate(self):
+    def validate(self, extra_validators=None):
         # self.login.data = " ".join(self.login.data.split())
         self.user_desc.data = " ".join(self.user_desc.data.split())
         if self.password.data != self.password_confirm.data:
