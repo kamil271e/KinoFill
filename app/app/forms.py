@@ -50,7 +50,7 @@ class AddMovie(FlaskForm):
         self.choose_studio = choose_studio
         super(AddMovie, self).__init__(*args, **kwargs)
 
-    def validate(self):
+    def validate(self, extra_validators=None):
         self.name.data = " ".join(self.name.data.split())
         self.length.data = " ".join(self.length.data.split())
         if self.redirect_add_director.data:
@@ -96,7 +96,7 @@ class AddDirector(FlaskForm):
         self.choose_studio = choose_studio
         super(AddDirector, self).__init__(*args, **kwargs)
 
-    def validate(self):
+    def validate(self, extra_validators=None):
         self.firstname.data = " ".join(self.firstname.data.split())
         self.surname.data = " ".join(self.surname.data.split())
         if nameInvalid(self.firstname.data) or nameInvalid(self.surname.data):
@@ -135,7 +135,7 @@ class AddSeries(FlaskForm):
         self.choose_studio = choose_studio
         super(AddSeries, self).__init__(*args, **kwargs)
 
-    def validate(self):
+    def validate(self, extra_validators=None):
         self.name.data = " ".join(self.name.data.split())
         self.episodes.data = " ".join(self.episodes.data.split())
         if self.redirect_add_director.data:
@@ -187,7 +187,7 @@ class AddActor(FlaskForm):
         self.choose_studio = choose_studio
         super(AddActor, self).__init__(*args, **kwargs)
 
-    def validate(self):
+    def validate(self, extra_validators=None):
         self.firstname.data = " ".join(self.firstname.data.split())
         self.surname.data = " ".join(self.surname.data.split())
         if nameInvalid(self.firstname.data) or nameInvalid(self.surname.data):
@@ -218,7 +218,7 @@ class ChangeStudio(FlaskForm):
     creation_date = DateField("Creation Date")
     submit = SubmitField("Confirm change")
 
-    def validate(self):
+    def validate(self, extra_validators=None):
         self.name.data = " ".join(self.name.data.split())
         if self.creation_date.data != None and self.creation_date.data >= datetime.datetime.strptime(today,"%d.%m.%Y").date():
             flash("Date must be in the past")
@@ -240,7 +240,7 @@ class AddNews(FlaskForm):
     content = StringField("Content", validators=[Length(min=30)], render_kw={"rows": 15}, widget=TextArea())
     submit = SubmitField("Add news")
 
-    def validate(self):
+    def validate(self, extra_validators=None):
         self.title.data = " ".join(self.title.data.split())
         self.content.data = " ".join(self.content.data.split())
         if len(self.content.data) > 2500:
@@ -253,7 +253,7 @@ class EditNews(FlaskForm):
     content = StringField("Content", validators=[Length(min=30)], render_kw={"rows": 15}, widget=TextArea())
     submit = SubmitField("Edit")
     
-    def validate(self):
+    def validate(self, extra_validators=None):
         self.title.data = " ".join(self.title.data.split())
         self.content.data = " ".join(self.content.data.split())
         if len(self.content.data) > 2500:
@@ -269,7 +269,7 @@ class AddReview(FlaskForm):
     submit_s = SubmitField("Add Review")
     submit_a = SubmitField("Add Review")
 
-    def validate(self):
+    def validate(self, extra_validators=None):
         self.content.data = " ".join(self.content.data.split())
         return True
 
@@ -279,7 +279,7 @@ class AddReviewMovie(FlaskForm):
     content = StringField("Content (Optional)", widget=TextArea(), validators=[Length(max=30)])
     submit = SubmitField("Add Review")
 
-    def validate(self):
+    def validate(self, extra_validators=None):
         self.content.data = " ".join(self.content.data.split())
         return True
 
@@ -289,7 +289,7 @@ class EditReview(FlaskForm):
     content = StringField("Content (Optional)", widget=TextArea(), validators=[Length(max=30)])
     submit = SubmitField("Edit Review")
 
-    def validate(self):
+    def validate(self, extra_validators=None):
         self.content.data = " ".join(self.content.data.split())
         return True
 
@@ -316,7 +316,7 @@ class ChangeSeries(FlaskForm):
     seasons = StringField("Number of seasons")
     submit = SubmitField("Edit series")
 
-    def validate(self):
+    def validate(self, extra_validators=None):
         self.name.data = " ".join(self.name.data.split())
         self.episodes.data = " ".join(self.episodes.data.split())
         self.seasons.data = " ".join(self.seasons.data.split())
@@ -385,7 +385,7 @@ class ChangeJournalist(FlaskForm):
     user_desc = StringField("Profile description", widget=TextArea())
     submit = SubmitField("Confirm change")
 
-    def validate(self):
+    def validate(self, extra_validators=None):
         self.firstname.data = " ".join(self.firstname.data.split())
         self.surname.data = " ".join(self.surname.data.split())
         self.nickname.data = " ".join(self.nickname.data.split())
@@ -423,7 +423,7 @@ class ChangePublicViewer(FlaskForm):
     viewer_role = SelectField("Account type", choices=["Public", "Private"])
     submit = SubmitField("Confirm changes")
     
-    def validate(self):
+    def validate(self, extra_validators=None):
         self.nickname.data = " ".join(self.nickname.data.split())
         self.user_desc.data = " ".join(self.user_desc.data.split())
         if self.viewer_role.data == 'Public':
